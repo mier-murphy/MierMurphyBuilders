@@ -15,7 +15,7 @@ const Layout = ({ children }: LayoutProps) => {
   useEffect(() => {
     // Load the GoHighLevel/LeadConnector chat widget once, site-wide
     const existingScript = document.querySelector(
-      'script[data-widget-id="6a43f7f155ef5e64139e87f7"]'
+      'script[data-widget-id="6a4be675af4e62471825701c"]'
     );
     if (!existingScript) {
       const script = document.createElement("script");
@@ -24,7 +24,7 @@ const Layout = ({ children }: LayoutProps) => {
         "data-resources-url",
         "https://widgets.leadconnectorhq.com/chat-widget/loader.js"
       );
-      script.setAttribute("data-widget-id", "6a43f7f155ef5e64139e87f7");
+      script.setAttribute("data-widget-id", "6a4be675af4e62471825701c");
       script.async = true;
       document.body.appendChild(script);
     }

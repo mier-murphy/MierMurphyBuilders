@@ -103,15 +103,10 @@
 
   /* Premium card with hover lift */
   .luxury-card {
-    @apply rounded-2xl overflow-hidden transition-all duration-500 bg-card;
-    box-shadow: 0 4px 24px -4px hsla(220, 20%, 18%, 0.06);
-    border: 1px solid hsl(140, 8%, 90%);
+
   }
 
-  .luxury-card:hover {
-    transform: translateY(-6px);
-    box-shadow: 0 20px 40px -12px hsla(145, 55%, 35%, 0.12), 0 8px 20px -8px hsla(220, 20%, 18%, 0.08);
-  }
+ 
 
   .section-padding {
     @apply py-20 px-6 md:py-28 md:px-12 lg:px-24;
@@ -181,4 +176,38 @@ html {
 
 ::-webkit-scrollbar-thumb:hover {
   background: hsl(145, 55%, 35%);
+}
+
+
+.marquee {
+  --gap: 2rem;
+  display: flex;
+  overflow: hidden;
+  gap: var(--gap);
+}
+
+@media (min-width: 768px) {
+  .marquee {
+    --gap: 3.5rem;
+  }
+}
+
+.marquee__group {
+  flex-shrink: 0;
+  min-width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  gap: var(--gap);
+  animation: scroll 18s linear infinite;
+  will-change: transform;
+}
+
+@keyframes scroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(calc(-100% - var(--gap)));
+  }
 }

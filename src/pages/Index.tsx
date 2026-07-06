@@ -162,11 +162,12 @@ const Index = () => {
           <div className="absolute inset-0 bg-gradient-to-t from-[hsl(220,20%,12%)]/70 via-transparent to-[hsl(220,20%,12%)]/30" />
         </div>
 
-        <div className="relative z-10 max-w-7xl mx-auto px-6 w-full grid grid-cols-1 lg:grid-cols-2 gap-12 items-center pt-32 pb-20">
+        <div className="relative z-10 max-w-[80rem] mx-auto py-32 px-2 w-full grid grid-cols-1 lg:grid-cols-7 gap-5 items-center">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, delay: 0.3 }}
+            className="lg:col-span-3"
           >
             <p className="font-sans text-sm tracking-[0.3em] text-brand-green-light uppercase mb-6 font-medium">
               Premier Contractors · Thousand Oaks
@@ -198,8 +199,9 @@ const Index = () => {
               </a>
             </div>
           </motion.div>
-
+          <div className="lg:col-span-4 ">
           <LeadCaptureForm variant="full" />
+          </div>
         </div>
 
         {/* Curved bottom edge */}

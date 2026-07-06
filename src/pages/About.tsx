@@ -29,7 +29,7 @@ const About = () => {
           <img src={heroImage} alt="Craftsmanship" className="w-full h-full object-cover" loading="eager" />
           <div className="absolute inset-0 bg-gradient-to-r from-background via-background/90 to-background/60" />
         </div>
-        <div className="relative z-10 max-w-7xl mx-auto px-6 py-32 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+        <div className="relative z-10 max-w-[80rem] mx-auto px-6 py-32 grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
           <motion.div initial={{ opacity: 0, x: -40 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.8 }}>
             <p className="font-sans text-xs tracking-[0.4em] text-primary uppercase mb-4">Our Story</p>
             <h1 className="font-serif text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">

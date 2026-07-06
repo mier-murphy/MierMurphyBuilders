@@ -77,7 +77,7 @@ const Services = () => {
       {/* HERO */}
       <section className="relative min-h-[85vh] flex items-center overflow-hidden">
         <div className="absolute inset-0 bg-[hsl(220,20%,12%)]" />
-        <div className="relative z-10 max-w-7xl mx-auto px-6 py-32 w-full grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+        <div className="relative z-10 max-w-[90rem] mx-auto px-6 pt-40 pb-20 w-full grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           <motion.div initial={{ opacity: 0, x: -30 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.8 }}>
             <div className="inline-flex items-center gap-2 bg-primary/15 border border-primary/25 rounded-full px-4 py-1.5 mb-6">
               <span className="font-sans text-xs font-semibold text-primary tracking-wide">WHAT WE DO</span>

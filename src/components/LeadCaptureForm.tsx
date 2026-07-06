@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Send, Shield, Award, Clock } from "lucide-react";
 import { toast } from "sonner";
 import { motion } from "framer-motion";
@@ -23,6 +23,26 @@ const LeadCaptureForm = ({ variant = "compact", className = "" }: LeadCaptureFor
   const [formData, setFormData] = useState({ name: "", email: "", phone: "", service: "" });
   const [isSubmitting, setIsSubmitting] = useState(false);
 
+  useEffect(() => {
+    // Always remove any previously-injected embed script and add a fresh one.
+    // GHL's form_embed.js only scans the DOM once on load — in a React SPA,
+    // navigating client-side adds a NEW iframe that the old script instance
+    // never sees, so it must be reloaded to re-initialize this iframe.
+    const old = document.querySelector(
+      'script[src="https://api.advanceedgellc.com/js/form_embed.js"]'
+    );
+    if (old) old.remove();
+
+    const script = document.createElement("script");
+    script.src = "https://api.advanceedgellc.com/js/form_embed.js";
+    script.async = true;
+    document.body.appendChild(script);
+
+    return () => {
+      script.remove();
+    };
+  }, []);
+
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     const result = leadSchema.safeParse(formData);
@@ -43,32 +63,32 @@ const LeadCaptureForm = ({ variant = "compact", className = "" }: LeadCaptureFor
 
   return (
     <motion.div
-      initial={{ opacity: 0, y: 20 }}
+      initial={{ opacity: 0, y: 30 }}
       animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.6, delay: 0.3 }}
-      className={className}
+      transition={{ duration: 0.8, delay: 0.3 }}
+      className={`w-full ${className}`}
     >
-            <ScrollReveal delay={0.2}>
-              <div className="luxury-card p-2 md:p-2 bg-[#1F242EF2] border-none">
-                <iframe
-                  src="https://api.advanceedgellc.com/widget/form/RPCz6XYtpV7o0WxW0b7C"
-                  style={{ width: "100%", height: "620px", border: "none", borderRadius: "8px" }}
-                  id="inline-RPCz6XYtpV7o0WxW0b7C" 
-                  data-layout="{'id':'INLINE'}"
-                  data-trigger-type="alwaysShow"
-                  data-trigger-value=""
-                  data-activation-type="alwaysActivated"
-                  data-activation-value=""
-                  data-deactivation-type="neverDeactivate"
-                  data-deactivation-value=""
-                  data-form-name="M&M Home ContactForm"
-                  data-height="582"
-                  data-layout-iframe-id="inline-RPCz6XYtpV7o0WxW0b7C"
-                  data-form-id="RPCz6XYtpV7o0WxW0b7C"
-                  title="M&M Home ContactForm"
-                />
-              </div>
-            </ScrollReveal>
+      <ScrollReveal delay={0.2}>
+        <div className="luxury-card p-2 md:p-2 w-full overflow-visible shadow-none ">
+          <iframe
+            src="https://api.advanceedgellc.com/widget/form/P3nuSM5VvQSxnsiO8vPP"
+            style={{ width: "100%", height: "950px", border: "none", borderRadius: "8px" }}
+            id="inline-P3nuSM5VvQSxnsiO8vPP"
+            data-layout="{'id':'INLINE'}"
+            data-trigger-type="alwaysShow"
+            data-trigger-value=""
+            data-activation-type="alwaysActivated"
+            data-activation-value=""
+            data-deactivation-type="neverDeactivate"
+            data-deactivation-value=""
+            data-form-name="M&M Contact Form"
+            data-height="950"
+            data-layout-iframe-id="inline-P3nuSM5VvQSxnsiO8vPP"
+            data-form-id="P3nuSM5VvQSxnsiO8vPP"
+            title="M&M Contact Form"
+          />
+        </div>
+      </ScrollReveal>
     </motion.div>
   );
 };
