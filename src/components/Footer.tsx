@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { Phone, Mail, MapPin } from "lucide-react";
 import jgcLogo from "@/assets/jgc-logo.avif";
-
+import mml from "@/assets/mier-logo.webp";
 const Footer = () => {
   return (
     <footer className="section-dark">
@@ -16,7 +16,7 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
           {/* Brand */}
           <div>
-            <img src={jgcLogo} alt="Company Logo" className="h-14 w-auto mb-4" />
+            <img src={mml} alt="Company Logo" className=" w-auto mb-4" />
             <p className="text-sm font-sans text-white/60 leading-relaxed">
               Master craftsmanship for discerning Thousand Oaks estates. 
               Building beyond expectation since 2004.

@@ -126,7 +126,7 @@ const ServiceMoldRemediation = () => {
           <img src={projectMold} alt="Professional mold remediation specialist in a Ventura County home" className="w-full h-full object-cover" />
           <div className="absolute inset-0 bg-gradient-to-r from-[hsl(220,20%,12%)]/95 via-[hsl(220,20%,12%)]/80 to-[hsl(220,20%,12%)]/60" />
         </div>
-        <div className="relative z-10 max-w-7xl mx-auto px-6 pt-32 pb-16 w-full grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+        <div className="relative z-10 max-w-[90rem] mx-auto px-6 pt-40 pb-20 w-full grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }}>
             <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-primary/15 border border-primary/25 mb-6">
               <Bug className="w-7 h-7 text-primary" />
