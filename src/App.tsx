@@ -14,6 +14,12 @@ import ServiceExterior from "./pages/ServiceExterior";
 import ServiceWaterDamage from "./pages/ServiceWaterDamage";
 import ServiceMoldRemediation from "./pages/ServiceMoldRemediation";
 import Projects from "./pages/Projects";
+import Cabin from "./pages/projects/cabin"
+import CondoRetreat from "./pages/projects/condo-retreat"
+import CommercialCellStore from "./pages/projects/commercial-cell-store"
+import Ranch from "./pages/projects/ranch"
+import Blog from "./pages/Blog";
+import BlogPost from "./pages/BlogPost";
 import Contact from "./pages/Contact";
 import Areas from "./pages/Areas";
 import Area91360 from "./pages/areas/Area91360";
@@ -49,6 +55,12 @@ const App = () => (
             <Route path="/services/water-damage" element={<ServiceWaterDamage />} />
             <Route path="/services/mold-remediation" element={<ServiceMoldRemediation />} />
             <Route path="/projects" element={<Projects />} />
+            <Route path="/projects/cabin" element={<Cabin />} />
+            <Route path="/projects/condo-retreat" element={<CondoRetreat />} />
+            <Route path="/projects/commercial-cell-store" element={<CommercialCellStore />} />
+            <Route path="/projects/ranch" element={<Ranch />} />
+            <Route path="/blog" element={<Blog />} />
+            <Route path="/blog/:slug" element={<BlogPost />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/areas" element={<Areas />} />
             <Route path="/areas/91360" element={<Area91360 />} />

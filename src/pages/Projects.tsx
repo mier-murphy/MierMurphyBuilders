@@ -14,15 +14,15 @@ import heroCraftsmanship from "@/assets/hero-craftsmanship.jpg";
 const categories = ["All", "Interior", "Exterior", "Restoration"];
 
 const projects = [
-  { title: "Westlake Village Estate Living Room", category: "Interior", image: projectInterior, sqft: "3,200", timeline: "6 weeks" },
-  { title: "Thousand Oaks Mediterranean Facade", category: "Exterior", image: projectExterior, sqft: "4,800", timeline: "8 weeks" },
-  { title: "Emergency Water Restoration", category: "Restoration", image: projectRestoration, sqft: "2,100", timeline: "3 weeks" },
-  { title: "Luxury Master Bathroom", category: "Interior", image: projectBathroom, sqft: "450", timeline: "4 weeks" },
-  { title: "Mold Remediation & Rebuild", category: "Restoration", image: projectMold, sqft: "1,800", timeline: "5 weeks" },
-  { title: "Venetian Plaster Feature Wall", category: "Interior", image: heroCraftsmanship, sqft: "800", timeline: "2 weeks" },
-  { title: "Stucco Repair & Repaint", category: "Exterior", image: projectExterior, sqft: "3,500", timeline: "4 weeks" },
-  { title: "Whole-Home Water Damage Recovery", category: "Restoration", image: projectRestoration, sqft: "3,800", timeline: "8 weeks" },
-  { title: "Custom Drywall & Coffered Ceiling", category: "Interior", image: projectInterior, sqft: "1,200", timeline: "3 weeks" },
+  { slug: "cabin", title: "Westlake Village Estate Living Room", category: "Exterior", image: projectInterior, sqft: "3,200", timeline: "6 weeks" },
+  { slug: "condo-retreat", title: "Thousand Oaks Mediterranean Facade", category: "Interior", image: projectExterior, sqft: "4,800", timeline: "8 weeks" },
+  { slug: "emergency-water-restoration", title: "Emergency Water Restoration", category: "Restoration", image: projectRestoration, sqft: "2,100", timeline: "3 weeks" },
+  { slug: "commercial-cell-store", title: "Luxury Master Bathroom", category: "Interior", image: projectBathroom, sqft: "450", timeline: "4 weeks" },
+  { slug: "mold-remediation-rebuild", title: "Mold Remediation & Rebuild", category: "Restoration", image: projectMold, sqft: "1,800", timeline: "5 weeks" },
+  { slug: "ranch", title: "Venetian Plaster Feature Wall", category: "Interior", image: heroCraftsmanship, sqft: "800", timeline: "2 weeks" },
+  { slug: "stucco-repair-repaint", title: "Stucco Repair & Repaint", category: "Exterior", image: projectExterior, sqft: "3,500", timeline: "4 weeks" },
+  { slug: "whole-home-water-damage-recovery", title: "Whole-Home Water Damage Recovery", category: "Restoration", image: projectRestoration, sqft: "3,800", timeline: "8 weeks" },
+  { slug: "custom-drywall-coffered-ceiling", title: "Custom Drywall & Coffered Ceiling", category: "Interior", image: projectInterior, sqft: "1,200", timeline: "3 weeks" },
 ];
 
 const Projects = () => {
@@ -78,7 +78,7 @@ const Projects = () => {
           <motion.div layout className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {filtered.map((project, i) => (
               <ScrollReveal key={project.title + i} delay={i * 0.05}>
-                <div className="luxury-card group cursor-pointer">
+                <Link to={`/projects/${project.slug}`} className="luxury-card group cursor-pointer block">
                   <div className="relative h-72 overflow-hidden">
                     <img
                       src={project.image}
@@ -103,7 +103,7 @@ const Projects = () => {
                       <h3 className="font-serif text-lg font-bold">{project.title}</h3>
                     </div>
                   </div>
-                </div>
+                </Link>
               </ScrollReveal>
             ))}
           </motion.div>

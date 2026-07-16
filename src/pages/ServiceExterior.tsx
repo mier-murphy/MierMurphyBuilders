@@ -5,8 +5,8 @@ import ScrollReveal from "@/components/ScrollReveal";
 import ProcessTimeline from "@/components/ProcessTimeline";
 import LeadCaptureForm from "@/components/LeadCaptureForm";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
-import projectExterior from "@/assets/project-exterior.jpg";
-import iicrcBadge from "@/assets/iicrc-badge.png";
+import projectExterior from "@/assets/exterior-m.webp";
+import iicrcBadge from "@/assets/exterior-m.webp";
 
 const faqs = [
   {

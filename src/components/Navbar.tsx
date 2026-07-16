@@ -61,6 +61,7 @@ const navLinks = [
     megaMenu: true,
   },
   { label: "Projects", href: "/projects" },
+  { label: "Blog", href: "/blog" },
   { label: "Contact", href: "/contact" },
 ];
 
@@ -92,10 +93,10 @@ const Navbar = () => {
       transition={{ duration: 0.6, ease: "easeOut" }}
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
         scrolled
-        ? "bg-background/95 backdrop-blur-md py-4 shadow-md border-b border-border"
+        ? "bg-background/95 backdrop-blur-md py-3 shadow-md border-b border-border"
           : isHome
-          ? "bg-transparent py-6"
-          : "bg-background py-5 border-b border-border"
+          ? "bg-background/70 py-4"
+          : "bg-background py-4 border-b border-border"
       }`}
     >
       <div className="max-w-7xl mx-auto px-6 flex items-center justify-between">
@@ -116,7 +117,7 @@ const Navbar = () => {
               {link.href === "#" ? (
                 <button
                   className={`flex items-center gap-1 px-4 py-2 text-sm font-sans font-semibold tracking-wide transition-colors duration-300 ${
-                    scrolled || !isHome ? "text-foreground/80" : "text-white/85"
+                    scrolled || !isHome ? "text-foreground/80" : "text-foreground/80"
                   } ${navHoverColor}`}
                 >
                   {link.label}
@@ -128,7 +129,7 @@ const Navbar = () => {
                   className={`flex items-center gap-1 px-4 py-2 text-sm font-sans font-semibold tracking-wide transition-colors duration-300 ${
                     location.pathname === link.href || location.pathname.startsWith(link.href.replace(/\/$/, '') + '/')
                       ? "text-primary"
-                      : scrolled || !isHome ? "text-foreground/80" : "text-white/85"
+                      : scrolled || !isHome ? "text-foreground/80" : "text-foreground/80"
                   } ${navHoverColor}`}
                 >
                   {link.label}
@@ -224,10 +225,10 @@ const Navbar = () => {
           <a
             href="tel:+18055550199"
             className={`flex items-center gap-2 text-sm font-sans font-medium transition-colors ${
-              scrolled || !isHome ? "text-muted-foreground hover:text-primary" : "text-white/80 hover:text-white"
+              scrolled || !isHome ? "text-muted-foreground hover:text-primary" : "text-muted-foreground hover:text-primary"
             }`}
           >
-            <Phone className="w-4 h-4" />
+            <Phone className="w-4 h-4" />x
             (805) 555-0199
           </a>
           <Link

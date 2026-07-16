@@ -3,6 +3,7 @@ import { useLocation } from "react-router-dom";
 import Navbar from "./Navbar";
 import Footer from "./Footer";
 import ClientsBar from "./ClientsBar";
+import ScrollToTopButton from "./Scrolltotopbutton";
 
 interface LayoutProps {
   children: ReactNode;
@@ -11,6 +12,14 @@ interface LayoutProps {
 const Layout = ({ children }: LayoutProps) => {
   const location = useLocation();
   const isHome = location.pathname === "/";
+
+  useEffect(() => {
+    // Reset scroll position on every route change — without this, React Router
+    // keeps whatever scroll position you were at on the previous page, so
+    // navigating away from a scrolled-down page lands you at the bottom of
+    // the new one instead of the top.
+    window.scrollTo(0, 0);
+  }, [location.pathname]);
 
   useEffect(() => {
     // Load the GoHighLevel/LeadConnector chat widget once, site-wide
@@ -36,6 +45,7 @@ const Layout = ({ children }: LayoutProps) => {
       <main>{children}</main>
       {!isHome && <ClientsBar />}
       <Footer />
+      <ScrollToTopButton />
     </div>
   );
 };

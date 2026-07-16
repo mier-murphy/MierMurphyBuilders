@@ -6,9 +6,9 @@ import LeadCaptureForm from "@/components/LeadCaptureForm";
 import ScrollReveal from "@/components/ScrollReveal";
 import ClientsBar from "@/components/ClientsBar";
 import heroImage from "@/assets/hero-craftsmanship.jpg";
-import projectInterior from "@/assets/project-interior.jpg";
-import projectExterior from "@/assets/project-exterior.jpg";
-import projectRestoration from "@/assets/project-restoration.jpg";
+import projectInterior from "@/assets/Interior.webp";
+import projectExterior from "@/assets/exterior.webp";
+import projectRestoration from "@/assets/remediation.webp";
 import projectBathroom from "@/assets/project-bathroom.jpg";
 import iicrcBadge from "@/assets/iicrc-badge.png";
 

@@ -14,7 +14,7 @@
     --popover: 0 0% 100%;
     --popover-foreground: 220 20% 18%;
 
-    --primary: 145 55% 35%;
+    --primary: 91, 38%, 35%;
     --primary-foreground: 0 0% 100%;
 
     --secondary: 48 90% 50%;
@@ -71,7 +71,7 @@
   }
 
   ::selection {
-    background: hsl(145 55% 35% / 0.2);
+    background: hsl(91, 38%, 45% / 0.2);
     color: hsl(220 20% 18%);
   }
 }
@@ -98,7 +98,7 @@
   }
 
   .gold-gradient-text {
-    color: hsl(145, 55%, 35%);
+    color: hsl(91, 38%, 35%);
   }
 
   /* Premium card with hover lift */
@@ -114,7 +114,7 @@
 
   .gold-divider {
     @apply w-16 h-1 mx-auto rounded-full;
-    background: linear-gradient(90deg, hsl(145, 55%, 35%), hsl(48, 90%, 50%));
+    background: linear-gradient(90deg, hsl(91, 38%, 45%), hsl(48, 90%, 50%));
   }
 
   .text-shadow-luxury {
@@ -150,7 +150,7 @@
   .trust-badge {
     @apply inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm font-sans font-medium;
     background: hsl(145, 55%, 35% / 0.08);
-    color: hsl(145, 55%, 30%);
+    color: hsl(91, 38%, 30%);
     border: 1px solid hsl(145, 55%, 35% / 0.15);
   }
 }
@@ -170,16 +170,16 @@ html {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: hsl(145, 55%, 45%);
+  background: hsl(91, 38%, 45%);
   border-radius: 3px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: hsl(145, 55%, 35%);
+  background: hsl(91, 38%, 40%);
 }
 
 
-.marquee {
+/* .marquee {
   --gap: 2rem;
   display: flex;
   overflow: hidden;
@@ -190,9 +190,9 @@ html {
   .marquee {
     --gap: 3.5rem;
   }
-}
+} */
 
-.marquee__group {
+/* .marquee__group {
   flex-shrink: 0;
   min-width: 100%;
   display: flex;
@@ -201,7 +201,7 @@ html {
   gap: var(--gap);
   animation: scroll 18s linear infinite;
   will-change: transform;
-}
+} */
 
 @keyframes scroll {
   from {
@@ -210,4 +210,8 @@ html {
   to {
     transform: translateX(calc(-100% - var(--gap)));
   }
+}
+
+.hover\:bg-primary\/90:hover {
+  background-color: #749950 !important;
 }
