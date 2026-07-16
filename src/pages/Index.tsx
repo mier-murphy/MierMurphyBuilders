@@ -219,7 +219,7 @@ const Index = () => {
             <span className="trust-badge"><CheckCircle className="w-4 h-4" /> Licensed & Insured</span>
             <span className="trust-badge"><CheckCircle className="w-4 h-4" /> IICRC S500 & S520 Certified</span>
             <span className="trust-badge"><CheckCircle className="w-4 h-4" /> 24/7 Emergency Response</span>
-            <span className="trust-badge"><CheckCircle className="w-4 h-4" /> Free In-Home Estimatessssss</span>
+            <span className="trust-badge"><CheckCircle className="w-4 h-4" /> Free In-Home Estimates</span>
           </div>
         </div>
       </section>
