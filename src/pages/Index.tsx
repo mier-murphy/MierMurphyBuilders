@@ -6,8 +6,9 @@ import LeadCaptureForm from "@/components/LeadCaptureForm";
 import ScrollReveal from "@/components/ScrollReveal";
 import ClientsBar from "@/components/ClientsBar";
 import heroImage from "@/assets/hero-craftsmanship.jpg";
-import projectInterior from "@/assets/Interior.webp";
-import projectExterior from "@/assets/exterior.webp";
+import projectExterior from "@/assets/cabin/cabin-hero.avif";
+import projectInterior from "@/assets/condo-retreat/condo-retreat-hero.avif";
+import projectComercial from "@/assets/commercial-cell-store/commercial-cell-store-hero.avif";
 import projectRestoration from "@/assets/remediation.webp";
 import projectBathroom from "@/assets/project-bathroom.jpg";
 import iicrcBadge from "@/assets/iicrc-badge.png";
@@ -25,49 +26,52 @@ const services = [
     description: "Venetian plaster, drywall finishing, and custom interior textures for luxury homes in Thousand Oaks, Westlake Village, and the Conejo Valley.",
     icon: Paintbrush,
     image: projectInterior,
-    href: "/services#interior",
+    href: "/services/interior",
   },
   {
     title: "Exterior Excellence",
     description: "Premium stucco application, exterior restoration, and architectural facades for Thousand Oaks and Westlake Village estates.",
     icon: Home,
     image: projectExterior,
-    href: "/services#exterior",
+    href: "/services/exterior",
   },
   {
     title: "Water Damage Restoration",
     description: "IICRC S500 certified emergency water damage restoration in Thousand Oaks and Westlake Village. 24/7 rapid response.",
     icon: Droplets,
     image: projectRestoration,
-    href: "/services#water",
+    href: "/services/water-damage",
   },
   {
     title: "Mold Remediation Specialists",
     description: "IICRC S520 certified mold remediation. Professional mold testing, containment, and removal for safe homes.",
     icon: Bug,
     image: projectBathroom,
-    href: "/services#mold",
+    href: "/services/mold-remediation",
   },
 ];
 
 const projects = [
   {
-    title: "Westlake Village Estate Renovation",
-    category: "Interior Renovation",
+    title: "Transforming a historical cabin into a sophisticated living space.",
+    category: "Exterior",
     location: "Westlake Village, CA 91361",
-    image: projectInterior,
-  },
-  {
-    title: "Thousand Oaks Mediterranean Revival",
-    category: "Exterior Stucco Restoration",
-    location: "Thousand Oaks, CA 91360",
     image: projectExterior,
+    link: "/projects/cabin",
   },
   {
-    title: "Conejo Valley Luxury Pool Deck",
-    category: "Pool Remodel",
+    title: "Urban Condo Remodel Los Angeles, CA",
+    category: "Interior",
+    location: "Thousand Oaks, CA 91360",
+    image: projectInterior,
+    link: "/projects/condo-retreat",
+  },
+  {
+    title: "Cellphone & Electronics Repair Store Commercial Build-Out",
+    category: "Interior",
     location: "Thousand Oaks, CA 91362",
-    image: projectRestoration,
+    image: projectComercial,
+    link: "/projects/commercial-cell-store",
   },
 ];
 
@@ -443,7 +447,7 @@ const Index = () => {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {projects.map((project, i) => (
               <ScrollReveal key={project.title} delay={i * 0.15}>
-                <Link to="/projects" className="luxury-card group block">
+                <Link to={project.link} className="luxury-card group block">
                   <div className="relative h-80 overflow-hidden rounded-t-2xl">
                     <img
                       src={project.image}

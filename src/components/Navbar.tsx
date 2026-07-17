@@ -228,7 +228,7 @@ const Navbar = () => {
               scrolled || !isHome ? "text-muted-foreground hover:text-primary" : "text-muted-foreground hover:text-primary"
             }`}
           >
-            <Phone className="w-4 h-4" />x
+            <Phone className="w-4 h-4" />+
             (805) 555-0199
           </a>
           <Link
