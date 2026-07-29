@@ -50,7 +50,7 @@ const Contact = () => {
               </h2>
               <div className="space-y-6">
                 {[
-                  { icon: Phone, label: "Phone", value: "(805) 555-0199", href: "tel:+18055550199" },
+                  { icon: Phone, label: "Phone", value: "(805) 998-9082", href: "tel:+18059989082" },
                   { icon: Mail, label: "Email", value: "info@mierandmurphy.com", href: "mailto:info@mierandmurphy.com" },
                   { icon: MapPin, label: "Location", value: "Thousand Oaks, California" },
                   { icon: Clock, label: "Hours", value: "Mon–Fri: 7AM–6PM | Sat: 8AM–2PM" },
@@ -97,7 +97,7 @@ const Contact = () => {
           <div className="lg:col-span-3">
             <ScrollReveal delay={0.2}>
               <div className="luxury-card p-2 md:p-2">
-                <iframe
+                {/* <iframe
                   src="https://api.advanceedgellc.com/widget/form/2NK7xMC2cHLB4WdlKzyu"
                   style={{ width: "100%", height: "950px", border: "none", borderRadius: "8px" }}
                   id="inline-2NK7xMC2cHLB4WdlKzyu"
@@ -113,7 +113,7 @@ const Contact = () => {
                   data-layout-iframe-id="inline-2NK7xMC2cHLB4WdlKzyu"
                   data-form-id="2NK7xMC2cHLB4WdlKzyu"
                   title="M&M Contact Form"
-                />
+                /> */}
               </div>
             </ScrollReveal>
           </div>

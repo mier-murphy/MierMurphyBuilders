@@ -269,10 +269,10 @@ const AboutLegacy = () => {
                 Get a Free Estimate
               </Link>
               <a
-                href="tel:+18055550199"
+                href="tel:+18059989082"
                 className="border-2 border-foreground/20 text-foreground px-8 py-4 rounded-xl font-sans text-sm font-semibold hover:bg-foreground/5 transition-all duration-300"
               >
-                Call (805) 555-0199
+                Call (805) 998-9082
               </a>
             </div>
           </ScrollReveal>

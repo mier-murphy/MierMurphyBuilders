@@ -196,10 +196,10 @@ const Index = () => {
                 <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
               </Link>
               <a
-                href="tel:+18055550199"
+                href="tel:+18059989082"
                 className="inline-flex items-center gap-2 px-8 py-4 rounded-xl font-sans text-sm font-medium text-white border border-white/25 hover:bg-white/10 transition-all"
               >
-                <Phone className="w-4 h-4" /> (805) 555-0199
+                <Phone className="w-4 h-4" /> (805) 998-9082
               </a>
             </div>
           </motion.div>
@@ -650,10 +650,10 @@ const Index = () => {
                 Get Your Free Estimate
               </Link>
               <a
-                href="tel:+18055550199"
+                href="tel:+18059989082"
                 className="inline-flex items-center gap-2 px-8 py-4 rounded-xl font-sans text-sm font-medium text-primary border-2 border-primary/20 hover:bg-primary/5 transition-all"
               >
-                <Phone className="w-4 h-4" /> (805) 555-0199
+                <Phone className="w-4 h-4" /> (805) 998-9082
               </a>
             </div>
           </ScrollReveal>

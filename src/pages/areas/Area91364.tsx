@@ -45,7 +45,7 @@ const data: AreaPageData = {
   faqs: [
     { question: "Do you handle hillside properties in southern Woodland Hills?", answer: "Yes, we're experienced with the hillside and canyon-adjacent properties common in southern Woodland Hills. Our crews are equipped for challenging access and steep-grade work." },
     { question: "What fire-resistant options are available?", answer: "We offer Class A fire-rated stucco, intumescent coatings, and fire-resistant sealants recommended for properties in the wildfire interface zones of southern Woodland Hills." },
-    { question: "How do I get started with a project?", answer: "Call us at (805) 555-0199 or fill out our online form. We'll schedule a free on-site consultation within 48 hours to discuss your project and provide a detailed estimate." },
+    { question: "How do I get started with a project?", answer: "Call us at (805) 998-9082 or fill out our online form. We'll schedule a free on-site consultation within 48 hours to discuss your project and provide a detailed estimate." },
   ],
   nearbyAreas: [
     { name: "Woodland Hills", zip: "91367", href: "/areas/91367" },

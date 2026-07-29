@@ -75,8 +75,8 @@ const Footer = () => {
             <ul className="space-y-4">
               <li className="flex items-start gap-3">
                 <Phone className="w-4 h-4 text-brand-yellow mt-1 flex-shrink-0" />
-                <a href="tel:+18055550199" className="text-sm font-sans text-white/50 hover:text-brand-yellow transition-colors">
-                  (805) 555-0199
+                <a href="tel:+18059989082" className="text-sm font-sans text-white/50 hover:text-brand-yellow transition-colors">
+                  (805) 998-9082
                 </a>
               </li>
               <li className="flex items-start gap-3">
@@ -101,6 +101,20 @@ const Footer = () => {
           <p className="text-xs font-sans text-white/40">
             © {new Date().getFullYear()} Mier & Murphy Builders. All rights reserved.
           </p>
+          <div className="flex items-center gap-2 text-xs font-sans text-white/40">
+            <span>              <a
+                href="/PrivacyPolicy"
+                className=" text-white/40 hover:text-brand-yellow"
+              >
+Privacy Policy              </a></span>
+            <span className="text-brand-yellow">•</span>
+            <span><a
+                href="/TermsAndConditions"
+                className="text-white/40   hover:text-brand-yellow"
+              >
+Terms Of Conditions              </a></span>
+          
+          </div>
           <div className="flex items-center gap-2 text-xs font-sans text-white/40">
             <span>IICRC Certified</span>
             <span className="text-brand-yellow">•</span>

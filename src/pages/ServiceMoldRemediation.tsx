@@ -141,11 +141,11 @@ const ServiceMoldRemediation = () => {
               Protect your family. Preserve your investment.
             </p>
             <a
-              href="tel:+18055550199"
+              href="tel:+18059989082"
               className="inline-flex items-center gap-2 bg-primary text-primary-foreground px-8 py-4 rounded-lg font-sans text-base font-semibold hover:bg-primary/90 transition-all duration-300 group"
             >
               <Phone className="w-5 h-5" />
-              Schedule Inspection: (805) 555-0199
+              Schedule Inspection: (805) 998-9082
             </a>
           </motion.div>
           <LeadCaptureForm variant="full" />
@@ -157,7 +157,7 @@ const ServiceMoldRemediation = () => {
         <div className="max-w-5xl mx-auto flex flex-col md:flex-row items-center justify-center gap-4 text-center md:text-left">
           <AlertTriangle className="w-6 h-6 text-destructive flex-shrink-0" />
           <p className="font-sans text-sm text-foreground">
-            <strong>Health concern?</strong> Mold exposure can cause respiratory issues, allergic reactions, and neurological symptoms. If you suspect mold in your Thousand Oaks or Westlake Village home, call <a href="tel:+18055550199" className="text-primary font-semibold hover:underline">(805) 555-0199</a> for a professional assessment.
+            <strong>Health concern?</strong> Mold exposure can cause respiratory issues, allergic reactions, and neurological symptoms. If you suspect mold in your Thousand Oaks or Westlake Village home, call <a href="tel:+18059989082" className="text-primary font-semibold hover:underline">(805) 998-9082</a> for a professional assessment.
           </p>
         </div>
       </section>
@@ -403,8 +403,8 @@ const ServiceMoldRemediation = () => {
               Every day of untreated mold increases health risks and remediation costs. Schedule a professional IICRC S520 certified mold inspection for your Thousand Oaks or Westlake Village home today.
             </p>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-              <a href="tel:+18055550199" className="inline-flex items-center gap-2 bg-primary text-primary-foreground px-8 py-4 rounded-lg font-sans text-base font-semibold hover:bg-primary/90 transition-all duration-300 group">
-                <Phone className="w-5 h-5" /> Call (805) 555-0199
+              <a href="tel:+18059989082" className="inline-flex items-center gap-2 bg-primary text-primary-foreground px-8 py-4 rounded-lg font-sans text-base font-semibold hover:bg-primary/90 transition-all duration-300 group">
+                <Phone className="w-5 h-5" /> Call (805) 998-9082
               </a>
               <Link to="/contact" className="inline-flex items-center gap-2 glass px-8 py-4 rounded-lg font-sans text-sm font-medium text-primary hover:bg-primary/10 transition-all duration-300">
                 Request Inspection Online <ArrowRight className="w-4 h-4" />

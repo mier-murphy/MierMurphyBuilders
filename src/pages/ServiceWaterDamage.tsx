@@ -31,7 +31,7 @@ const faqs = [
   },
   {
     q: "What should I do immediately after discovering water damage in my home?",
-    a: "Stop the water source if safe to do so, turn off electricity in affected areas, move valuables to dry areas, and call Mier & Murphy immediately at (805) 555-0199. Do not attempt to use household vacuums on standing water—industrial extraction is required for proper restoration.",
+    a: "Stop the water source if safe to do so, turn off electricity in affected areas, move valuables to dry areas, and call Mier & Murphy immediately at (805) 998-9082. Do not attempt to use household vacuums on standing water—industrial extraction is required for proper restoration.",
   },
   {
     q: "Do you work with all insurance companies in Ventura County?",
@@ -131,11 +131,11 @@ const ServiceWaterDamage = () => {
               IICRC S500 certified. Rapid response when every minute counts.
             </p>
             <a
-              href="tel:+18055550199"
+              href="tel:+18059989082"
               className="inline-flex items-center gap-2 bg-primary text-primary-foreground px-8 py-4 rounded-lg font-sans text-base font-semibold hover:bg-primary/90 transition-all duration-300 group"
             >
               <Phone className="w-5 h-5" />
-              Call Now: (805) 555-0199
+              Call Now: (805) 998-9082
             </a>
           </motion.div>
           <LeadCaptureForm variant="full" />
@@ -147,7 +147,7 @@ const ServiceWaterDamage = () => {
         <div className="max-w-5xl mx-auto flex flex-col md:flex-row items-center justify-center gap-4 text-center md:text-left">
           <AlertTriangle className="w-6 h-6 text-destructive flex-shrink-0" />
           <p className="font-sans text-sm text-foreground">
-            <strong>Water damage emergency?</strong> Don't wait. Call <a href="tel:+18055550199" className="text-primary font-semibold hover:underline">(805) 555-0199</a> now for immediate dispatch. Our IICRC-certified team responds to Thousand Oaks and Westlake Village within 60 minutes, 24/7/365.
+            <strong>Water damage emergency?</strong> Don't wait. Call <a href="tel:+18059989082" className="text-primary font-semibold hover:underline">(805) 998-9082</a> now for immediate dispatch. Our IICRC-certified team responds to Thousand Oaks and Westlake Village within 60 minutes, 24/7/365.
           </p>
         </div>
       </section>
@@ -357,8 +357,8 @@ const ServiceWaterDamage = () => {
               Every hour of delay increases damage and restoration costs. Call our 24/7 emergency hotline for immediate dispatch of our IICRC S500 certified team to your Thousand Oaks or Westlake Village property.
             </p>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-              <a href="tel:+18055550199" className="inline-flex items-center gap-2 bg-primary text-primary-foreground px-8 py-4 rounded-lg font-sans text-base font-semibold hover:bg-primary/90 transition-all duration-300 group">
-                <Phone className="w-5 h-5" /> Emergency: (805) 555-0199
+              <a href="tel:+18059989082" className="inline-flex items-center gap-2 bg-primary text-primary-foreground px-8 py-4 rounded-lg font-sans text-base font-semibold hover:bg-primary/90 transition-all duration-300 group">
+                <Phone className="w-5 h-5" /> Emergency: (805) 998-9082
               </a>
               <Link to="/contact" className="inline-flex items-center gap-2 glass px-8 py-4 rounded-lg font-sans text-sm font-medium text-primary hover:bg-primary/10 transition-all duration-300">
                 Request Callback <ArrowRight className="w-4 h-4" />

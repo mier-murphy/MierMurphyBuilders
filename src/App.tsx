@@ -21,6 +21,8 @@ import Ranch from "./pages/projects/ranch"
 import Blog from "./pages/Blog";
 import BlogPost from "./pages/BlogPost";
 import Contact from "./pages/Contact";
+import PrivacyPolicy from "./pages/PrivacyPolicy";
+import TermsAndConditions from "./pages/TermsAndConditions";
 import Areas from "./pages/Areas";
 import Area91360 from "./pages/areas/Area91360";
 import Area91362 from "./pages/areas/Area91362";
@@ -33,6 +35,7 @@ import Area91311 from "./pages/areas/Area91311";
 import Area91367 from "./pages/areas/Area91367";
 import Area91364 from "./pages/areas/Area91364";
 import Area90265 from "./pages/areas/Area90265";
+import Area93021 from "./pages/areas/Area93021";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -62,6 +65,8 @@ const App = () => (
             <Route path="/blog" element={<Blog />} />
             <Route path="/blog/:slug" element={<BlogPost />} />
             <Route path="/contact" element={<Contact />} />
+            <Route path="/PrivacyPolicy" element={<PrivacyPolicy />} />
+            <Route path="/TermsAndConditions" element={<TermsAndConditions />} />
             <Route path="/areas" element={<Areas />} />
             <Route path="/areas/91360" element={<Area91360 />} />
             <Route path="/areas/91362" element={<Area91362 />} />
@@ -74,6 +79,7 @@ const App = () => (
             <Route path="/areas/91367" element={<Area91367 />} />
             <Route path="/areas/91364" element={<Area91364 />} />
             <Route path="/areas/90265" element={<Area90265 />} />
+            <Route path="/areas/93021" element={<Area93021 />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </Layout>

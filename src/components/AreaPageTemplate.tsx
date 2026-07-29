@@ -62,8 +62,8 @@ const AreaPageTemplate = ({ data }: { data: AreaPageData }) => {
               <Link to="/contact" className="inline-flex items-center gap-2 bg-primary text-primary-foreground px-8 py-3 rounded-xl font-sans text-sm font-semibold hover:bg-primary/90 transition-all group">
                 Get a Free Estimate <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
               </Link>
-              <a href="tel:+18055550199" className="inline-flex items-center gap-2 border-2 border-white/20 text-white px-8 py-3 rounded-xl font-sans text-sm font-medium hover:bg-white/10 transition-all">
-                <Phone className="w-4 h-4" /> (805) 555-0199
+              <a href="tel:+18059989082" className="inline-flex items-center gap-2 border-2 border-white/20 text-white px-8 py-3 rounded-xl font-sans text-sm font-medium hover:bg-white/10 transition-all">
+                <Phone className="w-4 h-4" /> (805) 998-9082
               </a>
             </div>
           </motion.div>
@@ -204,8 +204,8 @@ const AreaPageTemplate = ({ data }: { data: AreaPageData }) => {
               <Link to="/contact" className="inline-flex items-center gap-2 bg-primary text-primary-foreground px-8 py-4 rounded-xl font-sans text-sm font-bold hover:bg-primary/90 transition-all shadow-lg group">
                 Schedule Consultation <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
               </Link>
-              <a href="tel:+18055550199" className="inline-flex items-center gap-2 border-2 border-border text-foreground px-8 py-4 rounded-xl font-sans text-sm font-semibold hover:bg-muted transition-all">
-                <Phone className="w-4 h-4" /> Call (805) 555-0199
+              <a href="tel:+18059989082" className="inline-flex items-center gap-2 border-2 border-border text-foreground px-8 py-4 rounded-xl font-sans text-sm font-semibold hover:bg-muted transition-all">
+                <Phone className="w-4 h-4" /> Call (805) 998-9082
               </a>
             </div>
           </ScrollReveal>
