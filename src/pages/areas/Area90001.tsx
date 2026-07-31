@@ -1,6 +1,6 @@
 import { Shield, Paintbrush, Droplets, Bug, Home, Hammer } from "lucide-react";
 import AreaPageTemplate, { AreaPageData } from "@/components/AreaPageTemplate";
-import projectExterior from "@/assets/project-exterior.jpg";
+import projectExterior from "@/assets/area91.jpeg";
 
 const data: AreaPageData = {
   zipCode: "90001",
