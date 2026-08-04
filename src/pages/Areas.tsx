@@ -18,6 +18,12 @@ const areas = [
   { zip: "91367", name: "Woodland Hills", tier: "Extended", description: "Western San Fernando Valley's premier executive community.", href: "/areas/91367" },
   { zip: "91364", name: "Woodland Hills South", tier: "Extended", description: "Hillside luxury and established residential charm along Mulholland.", href: "/areas/91364" },
   { zip: "90265", name: "Malibu", tier: "Premium", description: "Iconic coastal properties requiring marine-grade expertise.", href: "/areas/90265" },
+  { zip: "93021", name: "Moorpark", tier: "Premium", description: "Moorpark homeowners take pride in well-maintained homes", href: "/areas/93021" },
+  { zip: "93062", name: "Simi Valley", tier: "Premium", description: "Simi Valley is known for its family neighborhoods", href: "/areas/93062" },
+  { zip: "90001", name: "Los Angeles", tier: "Premium", description: "Los Angeles is home to everything from historic residences and luxury estates to modern homes and investment properties.", href: "/areas/90001" },
+  { zip: "91319", name: "Ventura County", tier: "Premium", description: "Ventura county homeowners take pride in well-maintained homes, quiet neighborhoods, and lasting quality.", href: "/areas/91319" },
+
+
 ];
 
 const tierColors: Record<string, string> = {

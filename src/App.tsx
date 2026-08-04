@@ -36,6 +36,10 @@ import Area91367 from "./pages/areas/Area91367";
 import Area91364 from "./pages/areas/Area91364";
 import Area90265 from "./pages/areas/Area90265";
 import Area93021 from "./pages/areas/Area93021";
+import Area93062 from "./pages/areas/Area93062";
+import Area90001 from "./pages/areas/Area90001";
+import Area91319 from "./pages/areas/Area91319";
+
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -80,6 +84,10 @@ const App = () => (
             <Route path="/areas/91364" element={<Area91364 />} />
             <Route path="/areas/90265" element={<Area90265 />} />
             <Route path="/areas/93021" element={<Area93021 />} />
+            <Route path="/areas/93062" element={<Area93062 />} />
+            <Route path="/areas/90001" element={<Area90001 />} />
+            <Route path="/areas/91319" element={<Area91319 />} />
+
             <Route path="*" element={<NotFound />} />
           </Routes>
         </Layout>

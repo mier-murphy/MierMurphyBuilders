@@ -12,6 +12,9 @@ const megaMenuAreas = {
       { label: "Thousand Oaks", zip: "91360", href: "/areas/91360" },
       { label: "Newbury Park / Westlake", zip: "91362", href: "/areas/91362" },
       { label: "Westlake Village", zip: "91361", href: "/areas/91361" },
+      { label: "Ventura County", zip: "91319", href: "/areas/91319" },
+
+      
     ],
   },
   secondary: {
@@ -20,6 +23,8 @@ const megaMenuAreas = {
       { label: "Newbury Park", zip: "91320", href: "/areas/91320" },
       { label: "Agoura Hills", zip: "91301", href: "/areas/91301" },
       { label: "Oak Park", zip: "91377", href: "/areas/91377" },
+      { label: "Moorpark", zip: "93021", href: "/areas/93021" },
+      { label: "Simi Valley", zip: "93062", href: "/areas/93062" },
     ],
   },
   premium: {
@@ -30,6 +35,7 @@ const megaMenuAreas = {
       { label: "Chatsworth", zip: "91311", href: "/areas/91311" },
       { label: "Woodland Hills", zip: "91367", href: "/areas/91367" },
       { label: "Woodland Hills South", zip: "91364", href: "/areas/91364" },
+      { label: "Los Angeles", zip: "90001", href: "/areas/90001" },
     ],
   },
 };
@@ -81,6 +87,18 @@ const Navbar = () => {
     setIsOpen(false);
     setActiveDropdown(null);
   }, [location]);
+
+  // Lock body scroll while the mobile menu is open so the page behind
+  // it doesn't scroll along with (or instead of) the menu's own list.
+  useEffect(() => {
+    if (isOpen) {
+      const original = document.body.style.overflow;
+      document.body.style.overflow = "hidden";
+      return () => {
+        document.body.style.overflow = original;
+      };
+    }
+  }, [isOpen]);
 
   const isHome = location.pathname === "/";
   const navTextColor = isHome && !scrolled ? "text-white" : "text-foreground";
@@ -258,7 +276,16 @@ const Navbar = () => {
             exit={{ opacity: 0, height: 0 }}
             className="lg:hidden overflow-hidden bg-background border-b border-border"
           >
-            <div className="px-6 py-6 space-y-1">
+            {/*
+              FIX: the scrollable list and the sticky CTA are now split into
+              two children instead of one long block. The list is capped to
+              the remaining viewport height and scrolls on its own; the CTA
+              stays pinned at the bottom so it's always reachable, and every
+              link (including Projects / Blog / Contact) is reachable by
+              scrolling this inner container instead of being clipped by the
+              fixed header.
+            */}
+            <div className="px-6 py-4 space-y-1 max-h-[calc(100vh-88px)] overflow-y-auto overscroll-contain">
               {navLinks.map((link) => (
                 <div key={link.label}>
                   <Link
@@ -301,14 +328,16 @@ const Navbar = () => {
                   )}
                 </div>
               ))}
-              <div className="pt-4 border-t border-border">
-                <Link
-                  to="/contact"
-                  className="block w-full text-center bg-primary text-primary-foreground px-6 py-3 rounded-xl text-sm font-sans font-semibold"
-                >
-                  Get Free Quote
-                </Link>
-              </div>
+            </div>
+
+            {/* Sticky CTA — always visible regardless of scroll position above */}
+            <div className="px-6 py-4 border-t border-border bg-background">
+              <Link
+                to="/contact"
+                className="block w-full text-center bg-primary text-primary-foreground px-6 py-3 rounded-xl text-sm font-sans font-semibold"
+              >
+                Get Free Quote
+              </Link>
             </div>
           </motion.div>
         )}
