@@ -50,11 +50,11 @@ const data: AreaPageData = {
     { question: "How much does interior painting cost in Ventura county?", answer: "Interior painting in Ventura county typically ranges from $3–$6 per square foot depending on prep work, finishes, and ceiling height. We provide free detailed estimates with no hidden fees." },
   ],
   nearbyAreas: [
-    { name: "Simi Valley", zip: "91362", href: "/areas/91362" },
-    { name: "Ventura county", zip: "91361", href: "/areas/91361" },
-    { name: "Camarillo", zip: "91320", href: "/areas/91320" },
-    { name: "Santa Rosa Valley", zip: "91301", href: "/areas/91301" },
-    { name: "Ventura County", zip: "91377", href: "/areas/91377" },
+    { name: "Los Angeles", zip: "90001", href: "/areas/90001" },
+    { name: "Calabasas", zip: "91302", href: "/areas/91302" },
+    { name: "Woodland Hills", zip: "91367", href: "/areas/91367" },
+    { name: "Agoura Hills", zip: "91301", href: "/areas/91301" },
+    { name: "Conejo Valley", zip: "", href: "/areas/" },
   ],
   jsonLd: {
     "@context": "https://schema.org",

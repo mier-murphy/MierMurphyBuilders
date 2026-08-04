@@ -43,18 +43,18 @@ const data: AreaPageData = {
     "East Simi Valley",
   ],
   faqs: [
-    { question: "How quickly can you respond to a water emergency in Simi Valley?", answer: "Our team is based locally and can reach any address in Simi Valley within 60 minutes for emergency water damage calls. We maintain 24/7 dispatch specifically for local residents." },
-    { question: "Do you handle HOA-compliant exterior painting in Simi Valley?", answer: "Absolutely. We're familiar with the color palettes and guidelines required by most Simi Valley HOAs. We can coordinate directly with your HOA board to ensure full compliance before work begins." },
-    { question: "What's the best exterior paint for Simi Valley weather?", answer: "We recommend elastomeric coatings for stucco homes in 93062. These flexible paints expand and contract with temperature changes and resist cracking from Santa Ana wind exposure — critical for homes in the Conejo Valley." },
-    { question: "Are you licensed and insured for work in Ventura County?", answer: "Yes. We hold a valid California Contractor's License (CSLB) and carry comprehensive general liability insurance plus workers' compensation. We're also IICRC-certified for water damage and mold remediation." },
-    { question: "How much does interior painting cost in Simi Valley?", answer: "Interior painting in Simi Valley typically ranges from $3–$6 per square foot depending on prep work, finishes, and ceiling height. We provide free detailed estimates with no hidden fees." },
+    { question: "Do you work on hillside properties?", answer: "Yes. We're experienced with the access and drainage considerations that come with hillside homes in areas like Wood Ranch and Big Sky." },
+    { question: "Can you match existing stucco textures?", answer: "Yes, we assess and match original stucco texture on-site before any repair or repaint work begins." },
+    { question: "Do you provide emergency water damage response throughout Simi Valley?", answer: "Yes, our certified team offers 24/7 response for plumbing failures, roof leaks, and flooding countywide." },
+    { question: "Do you offer services for both interior and exterior projects?", answer: "Yes, we handle interior painting, exterior coatings, and everything in between on the same job." },
+
   ],
   nearbyAreas: [
-    { name: "Simi Valley", zip: "91362", href: "/areas/91362" },
-    { name: "Simi Valley", zip: "91361", href: "/areas/91361" },
-    { name: "Camarillo", zip: "91320", href: "/areas/91320" },
-    { name: "Santa Rosa Valley", zip: "91301", href: "/areas/91301" },
-    { name: "Ventura County", zip: "91377", href: "/areas/91377" },
+    { name: "Moorpark", zip: "93021", href: "/areas/93021" },
+    { name: "Thousand Oaks", zip: "91360", href: "/areas/91360" },
+    { name: "Chatsworth", zip: "91311", href: "/areas/91311" },
+    { name: "West Hills", zip: "91307", href: "/areas/91307" },
+    { name: "Ventura County", zip: "91319", href: "/areas/91319" },
   ],
   jsonLd: {
     "@context": "https://schema.org",
