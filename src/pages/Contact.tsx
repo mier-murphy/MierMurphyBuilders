@@ -97,7 +97,7 @@ const Contact = () => {
           <div className="lg:col-span-3">
             <ScrollReveal delay={0.2}>
               <div className="luxury-card p-2 md:p-2">
-                <iframe
+                {/* <iframe
                   src="https://api.advanceedgellc.com/widget/form/2NK7xMC2cHLB4WdlKzyu"
                   style={{ width: "100%", height: "950px", border: "none", borderRadius: "8px" }}
                   id="inline-2NK7xMC2cHLB4WdlKzyu"
@@ -113,7 +113,7 @@ const Contact = () => {
                   data-layout-iframe-id="inline-2NK7xMC2cHLB4WdlKzyu"
                   data-form-id="2NK7xMC2cHLB4WdlKzyu"
                   title="M&M Contact Form"
-                />
+                /> */}
               </div>
             </ScrollReveal>
           </div>
