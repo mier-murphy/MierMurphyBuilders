@@ -70,7 +70,7 @@ const LeadCaptureForm = ({ variant = "compact", className = "" }: LeadCaptureFor
     >
       <ScrollReveal delay={0.2}>
         <div className="luxury-card p-2 md:p-2 w-full overflow-visible shadow-none ">
-          {/* <iframe
+          <iframe
             src="https://api.advanceedgellc.com/widget/form/P3nuSM5VvQSxnsiO8vPP"
             style={{ width: "100%", height: "950px", border: "none", borderRadius: "8px" }}
             id="inline-P3nuSM5VvQSxnsiO8vPP"
@@ -86,7 +86,7 @@ const LeadCaptureForm = ({ variant = "compact", className = "" }: LeadCaptureFor
             data-layout-iframe-id="inline-P3nuSM5VvQSxnsiO8vPP"
             data-form-id="P3nuSM5VvQSxnsiO8vPP"
             title="M&M Contact Form"
-          /> */}
+          />
         </div>
       </ScrollReveal>
     </motion.div>
