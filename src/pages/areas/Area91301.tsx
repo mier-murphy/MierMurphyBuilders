@@ -61,7 +61,7 @@ const data: AreaPageData = {
     name: "Mier & Murphy Builders – Agoura Hills 91301",
     description: "Professional painting, restoration and renovation in Agoura Hills 91301.",
     areaServed: { "@type": "PostalAddress", addressLocality: "Agoura Hills", addressRegion: "CA", postalCode: "91301" },
-    telephone: "+1-805-555-0199",
+    telephone: "+1-805-998-9082",
   },
 };
 

@@ -61,7 +61,7 @@ const data: AreaPageData = {
     name: "Mier & Murphy Builders – Oak Park 91377",
     description: "Premium painting, restoration and renovation in Oak Park 91377.",
     areaServed: { "@type": "PostalAddress", addressLocality: "Oak Park", addressRegion: "CA", postalCode: "91377" },
-    telephone: "+1-805-555-0199",
+    telephone: "+1-805-998-9082",
   },
 };
 

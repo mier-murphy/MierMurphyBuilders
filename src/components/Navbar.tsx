@@ -86,6 +86,17 @@ const Navbar = () => {
   useEffect(() => {
     setIsOpen(false);
     setActiveDropdown(null);
+    // IMPORTANT: unlock body scroll synchronously here, not just via the
+    // isOpen-cleanup effect below. If the mobile menu was open, the body is
+    // still `overflow: hidden` at this exact moment (the cleanup for that
+    // only fires on the NEXT render, once `isOpen` has actually flipped to
+    // false). Layout.tsx's own scroll-reset effect also runs on this same
+    // `location` change, and if it runs while the body is still locked,
+    // `window.scrollTo(0, 0)` is a no-op — the page then "unlocks" a beat
+    // later still sitting at the old scroll position, which is what made
+    // navigation land on the footer/mid-page on mobile only (desktop never
+    // locks body scroll, so it never hit this race).
+    document.body.style.overflow = "";
   }, [location]);
 
   // Lock body scroll while the mobile menu is open so the page behind
@@ -277,67 +288,80 @@ const Navbar = () => {
             className="lg:hidden overflow-hidden bg-background border-b border-border"
           >
             {/*
-              FIX: the scrollable list and the sticky CTA are now split into
-              two children instead of one long block. The list is capped to
-              the remaining viewport height and scrolls on its own; the CTA
-              stays pinned at the bottom so it's always reachable, and every
-              link (including Projects / Blog / Contact) is reachable by
-              scrolling this inner container instead of being clipped by the
-              fixed header.
-            */}
-            <div className="px-6 py-4 space-y-1 max-h-[calc(100vh-88px)] overflow-y-auto overscroll-contain">
-              {navLinks.map((link) => (
-                <div key={link.label}>
-                  <Link
-                    to={link.href}
-                    className="block py-3 text-lg font-serif text-foreground hover:text-primary transition-colors"
-                  >
-                    {link.label}
-                  </Link>
-                  {link.children && (
-                    <div className="pl-4 space-y-1">
-                      {link.children.map((child) => (
-                        <Link
-                          key={child.label}
-                          to={child.href}
-                          className="block py-2 text-sm font-sans text-muted-foreground hover:text-primary transition-colors"
-                        >
-                          {child.label}
-                        </Link>
-                      ))}
-                    </div>
-                  )}
-                  {link.megaMenu && (
-                    <div className="pl-4 space-y-3 pb-2">
-                      {Object.entries(megaMenuAreas).map(([key, group]) => (
-                        <div key={key}>
-                          <p className="text-[10px] tracking-[0.2em] text-primary uppercase font-bold font-sans py-1">{group.label}</p>
-                          {group.items.map((area) => (
-                            <Link
-                              key={area.zip}
-                              to={area.href}
-                              className="flex items-center justify-between py-2 text-sm font-sans text-muted-foreground hover:text-primary transition-colors"
-                            >
-                              <span>{area.label}</span>
-                              <span className="text-xs font-mono text-muted-foreground/60">{area.zip}</span>
-                            </Link>
-                          ))}
-                        </div>
-                      ))}
-                    </div>
-                  )}
-                </div>
-              ))}
-            </div>
+              FIX: this whole block (list + CTA) is now ONE flex column
+              capped to the remaining viewport height
+              (calc(100vh - header offset)). The nav list is flex-1 with
+              min-h-0 so it's the part that shrinks and scrolls
+              (overflow-y-auto), while the CTA is flex-shrink-0 so it's
+              always reserved space and always visible.
 
-            {/* Sticky CTA — always visible regardless of scroll position above */}
-            <div className="px-6 py-4 border-t border-border bg-background">
-              <Link
-                to="/contact"
-                className="block w-full text-center bg-primary text-primary-foreground px-6 py-3 rounded-xl text-sm font-sans font-semibold"
-              >
-                Get Free Quote
-              </Link>
+              Previously the list had its OWN max-h independent of the
+              CTA's height, so on shorter screens the two could together
+              exceed the viewport. Since the whole menu lives inside a
+              position:fixed header (not the normal page flow), that
+              overflow had no way to scroll into view — it just got cut
+              off below the screen, which is why "Contact" (the last
+              plain link, right above the CTA) and/or the CTA itself
+              could appear missing or overlapped on mobile.
+            */}
+            <div
+              className="flex flex-col"
+              style={{ maxHeight: scrolled ? "calc(100vh - 72px)" : "calc(100vh - 88px)" }}
+            >
+              <div className="flex-1 min-h-0 overflow-y-auto overscroll-contain px-6 py-4 space-y-1">
+                {navLinks.map((link) => (
+                  <div key={link.label}>
+                    <Link
+                      to={link.href}
+                      className="block py-3 text-lg font-serif text-foreground hover:text-primary transition-colors"
+                    >
+                      {link.label}
+                    </Link>
+                    {link.children && (
+                      <div className="pl-4 space-y-1">
+                        {link.children.map((child) => (
+                          <Link
+                            key={child.label}
+                            to={child.href}
+                            className="block py-2 text-sm font-sans text-muted-foreground hover:text-primary transition-colors"
+                          >
+                            {child.label}
+                          </Link>
+                        ))}
+                      </div>
+                    )}
+                    {link.megaMenu && (
+                      <div className="pl-4 space-y-3 pb-2">
+                        {Object.entries(megaMenuAreas).map(([key, group]) => (
+                          <div key={key}>
+                            <p className="text-[10px] tracking-[0.2em] text-primary uppercase font-bold font-sans py-1">{group.label}</p>
+                            {group.items.map((area) => (
+                              <Link
+                                key={area.zip}
+                                to={area.href}
+                                className="flex items-center justify-between py-2 text-sm font-sans text-muted-foreground hover:text-primary transition-colors"
+                              >
+                                <span>{area.label}</span>
+                                <span className="text-xs font-mono text-muted-foreground/60">{area.zip}</span>
+                              </Link>
+                            ))}
+                          </div>
+                        ))}
+                      </div>
+                    )}
+                  </div>
+                ))}
+              </div>
+
+              {/* CTA — always reserved/visible space, never pushed off-screen */}
+              <div className="flex-shrink-0 px-6 py-4 border-t border-border bg-background">
+                <Link
+                  to="/contact"
+                  className="block w-full text-center bg-primary text-primary-foreground px-6 py-3 rounded-xl text-sm font-sans font-semibold"
+                >
+                  Get Free Quote
+                </Link>
+              </div>
             </div>
           </motion.div>
         )}

@@ -60,7 +60,7 @@ const data: AreaPageData = {
     name: "Mier & Murphy Builders – Woodland Hills 91367",
     description: "Professional painting, restoration and renovation in Woodland Hills 91367.",
     areaServed: { "@type": "PostalAddress", addressLocality: "Woodland Hills", addressRegion: "CA", postalCode: "91367" },
-    telephone: "+1-805-555-0199",
+    telephone: "+1-805-998-9082",
   },
 };
 

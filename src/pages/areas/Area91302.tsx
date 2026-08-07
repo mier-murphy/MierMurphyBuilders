@@ -61,7 +61,7 @@ const data: AreaPageData = {
     name: "Mier & Murphy Builders – Calabasas / Westlake Village 91302",
     description: "Luxury painting, restoration and renovation in Calabasas and Westlake Village 91302.",
     areaServed: { "@type": "PostalAddress", addressLocality: "Calabasas", addressRegion: "CA", postalCode: "91302" },
-    telephone: "+1-805-555-0199",
+    telephone: "+1-805-998-9082",
   },
 };
 

@@ -62,7 +62,7 @@ const data: AreaPageData = {
     name: "Mier & Murphy Builders – Ventura county 91319",
     description: "Premium painting, stucco, water damage restoration and mold remediation in Ventura county 91319.",
     areaServed: { "@type": "PostalAddress", addressLocality: "Ventura county", addressRegion: "CA", postalCode: "91319" },
-    telephone: "+1-805-555-0199",
+    telephone: "+1-805-998-9082",
     url: "https://mierandmurphy.com/areas/91319",
   },
 };

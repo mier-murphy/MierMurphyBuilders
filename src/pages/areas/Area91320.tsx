@@ -61,7 +61,7 @@ const data: AreaPageData = {
     name: "Mier & Murphy Builders – Newbury Park 91320",
     description: "Quality painting, restoration and renovation in Newbury Park 91320.",
     areaServed: { "@type": "PostalAddress", addressLocality: "Newbury Park", addressRegion: "CA", postalCode: "91320" },
-    telephone: "+1-805-555-0199",
+    telephone: "+1-805-998-9082",
   },
 };
 

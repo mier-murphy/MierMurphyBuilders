@@ -61,7 +61,7 @@ const data: AreaPageData = {
     name: "Mier & Murphy Builders – Westlake Village 91361",
     description: "Luxury painting, restoration and renovation in Westlake Village 91361.",
     areaServed: { "@type": "PostalAddress", addressLocality: "Westlake Village", addressRegion: "CA", postalCode: "91361" },
-    telephone: "+1-805-555-0199",
+    telephone: "+1-805-998-9082",
   },
 };
 

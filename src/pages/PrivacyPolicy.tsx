@@ -103,7 +103,7 @@ const PrivacyPolicy = () => {
               </a>
               <br />
               <a
-                href="tel: 805-555-0199"
+                href="tel: 805-998-9082"
                 className="text-primary underline hover:text-primary/80"
               >(805) 998-9082
               </a>

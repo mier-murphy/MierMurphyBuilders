@@ -61,7 +61,7 @@ const data: AreaPageData = {
     name: "Mier & Murphy Builders – Malibu 90265",
     description: "Premium coastal painting, restoration and renovation in Malibu 90265.",
     areaServed: { "@type": "PostalAddress", addressLocality: "Malibu", addressRegion: "CA", postalCode: "90265" },
-    telephone: "+1-805-555-0199",
+    telephone: "+1-805-998-9082",
   },
 };
 

@@ -61,7 +61,7 @@ const data: AreaPageData = {
     name: "Mier & Murphy Builders – Newbury Park / Westlake 91362",
     description: "Luxury painting, stucco, water damage restoration and mold remediation in 91362.",
     areaServed: { "@type": "PostalAddress", addressLocality: "Newbury Park", addressRegion: "CA", postalCode: "91362" },
-    telephone: "+1-805-555-0199",
+    telephone: "+1-805-998-9082",
   },
 };
 

@@ -62,7 +62,7 @@ const data: AreaPageData = {
     name: "Mier & Murphy Builders – Simi Valley 93062",
     description: "Premium painting, stucco, water damage restoration and mold remediation in Simi Valley 93062.",
     areaServed: { "@type": "PostalAddress", addressLocality: "Simi Valley", addressRegion: "CA", postalCode: "93062" },
-    telephone: "+1-805-555-0199",
+    telephone: "+1-805-998-9082",
     url: "https://mierandmurphy.com/areas/93062",
   },
 };

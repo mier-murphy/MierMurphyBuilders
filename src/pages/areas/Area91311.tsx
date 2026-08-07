@@ -60,7 +60,7 @@ const data: AreaPageData = {
     name: "Mier & Murphy Builders – Chatsworth 91311",
     description: "Professional painting, restoration and renovation in Chatsworth 91311.",
     areaServed: { "@type": "PostalAddress", addressLocality: "Chatsworth", addressRegion: "CA", postalCode: "91311" },
-    telephone: "+1-805-555-0199",
+    telephone: "+1-805-998-9082",
   },
 };
 
