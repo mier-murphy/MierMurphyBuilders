@@ -9,10 +9,12 @@ import Index from "./pages/Index";
 import AboutLegacy from "./pages/AboutLegacy";
 import AboutTeam from "./pages/AboutTeam";
 import AboutTestimonials from "./pages/AboutTestimonials";
-import ServiceInterior from "./pages/ServiceInterior";
-import ServiceExterior from "./pages/ServiceExterior";
-import ServiceWaterDamage from "./pages/ServiceWaterDamage";
-import ServiceMoldRemediation from "./pages/ServiceMoldRemediation";
+import { BathroomKitchenRemodeling } from "./pages/BathroomKitchenRemodeling";
+import { WaterDamageMoldRemediation } from "./pages/WaterDamageMoldRemediation";
+import { DrywallPlasterStuccoRepair } from "./pages/DrywallPlasterStuccoRepair";
+import { BalconyDeckRepair } from "./pages/balconyDeckRepair";
+import { CommercialTenantImprovement } from "./pages/CommercialTenantImprovement";
+import ComingSoon from "@/components/ComingSoon";
 import Projects from "./pages/Projects";
 import Cabin from "./pages/projects/cabin"
 import CondoRetreat from "./pages/projects/condo-retreat"
@@ -39,8 +41,8 @@ import Area93021 from "./pages/areas/Area93021";
 import Area93062 from "./pages/areas/Area93062";
 import Area90001 from "./pages/areas/Area90001";
 import Area91319 from "./pages/areas/Area91319";
-
 import NotFound from "./pages/NotFound";
+import { ScrollToTop } from "./components/ScrollToTop";
 
 const queryClient = new QueryClient();
 
@@ -52,15 +54,20 @@ const App = () => (
       <Sonner />
       <BrowserRouter>
         <Layout>
+          <ScrollToTop/>
           <Routes>
             <Route path="/" element={<Index />} />
-            <Route path="/about/legacy" element={<AboutLegacy />} />
+            <Route path="/about/team" element={<AboutTeam />} />
+
+            <Route path="/about/ComingSoon" element={<ComingSoon serviceName={""} description={""} icon={undefined} />} />
             <Route path="/about/team" element={<AboutTeam />} />
             <Route path="/about/testimonials" element={<AboutTestimonials />} />
-            <Route path="/services/interior" element={<ServiceInterior />} />
-            <Route path="/services/exterior" element={<ServiceExterior />} />
-            <Route path="/services/water-damage" element={<ServiceWaterDamage />} />
-            <Route path="/services/mold-remediation" element={<ServiceMoldRemediation />} />
+            <Route path="/services/bathroom-kitchen-remodeling" element={<BathroomKitchenRemodeling />} />
+            <Route path="/services/water-damage-mold-remediation" element={<WaterDamageMoldRemediation />} />
+            <Route path="/services/drywall-plaster-stucco-repair" element={<DrywallPlasterStuccoRepair />} />
+            <Route path="/services/balcony-deck-repair" element={<BalconyDeckRepair/>} />
+            <Route path="/services/commercial-tenant-improvement" element={<CommercialTenantImprovement/>} />
+
             <Route path="/projects" element={<Projects />} />
             <Route path="/projects/cabin" element={<Cabin />} />
             <Route path="/projects/condo-retreat" element={<CondoRetreat />} />

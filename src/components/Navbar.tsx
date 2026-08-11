@@ -55,10 +55,11 @@ const navLinks = [
     label: "Services",
     href: "#",
     children: [
-      { label: "Interior Masterworks", href: "/services/interior" },
-      { label: "Exterior Excellence", href: "/services/exterior" },
-      { label: "Water Damage Restoration", href: "/services/water-damage" },
-      { label: "Mold Remediation", href: "/services/mold-remediation" },
+      { label: "Bathroom & kitchen remodeling", href: "/services/bathroom-kitchen-remodeling" },
+      { label: "Water damage & mold remediation", href: "/services/water-damage-mold-remediation" },
+      { label: "Drywall, plaster & stucco repair", href: "/services/drywall-plaster-stucco-repair" },
+      { label: "Balcony & deck repair", href: "/services/balcony-deck-repair" },
+      { label: "Commercial tenant improvement", href: "/services/commercial-tenant-improvement" },
     ],
   },
   {
