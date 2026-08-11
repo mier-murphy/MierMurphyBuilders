@@ -12,7 +12,7 @@ import AboutTestimonials from "./pages/AboutTestimonials";
 import { BathroomKitchenRemodeling } from "./pages/BathroomKitchenRemodeling";
 import { WaterDamageMoldRemediation } from "./pages/WaterDamageMoldRemediation";
 import { DrywallPlasterStuccoRepair } from "./pages/DrywallPlasterStuccoRepair";
-import { BalconyDeckRepair } from "./pages/balconyDeckRepair";
+import { BalconyDeckRepair } from "./pages/BalconyDeckRepair";
 import { CommercialTenantImprovement } from "./pages/CommercialTenantImprovement";
 import ComingSoon from "@/components/ComingSoon";
 import Projects from "./pages/Projects";
