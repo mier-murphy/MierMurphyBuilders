@@ -11,7 +11,9 @@ import projectInterior from "@/assets/condo-retreat/condo-retreat-hero.avif";
 import projectComercial from "@/assets/commercial-cell-store/commercial-cell-store-hero.avif";
 import projectRestoration from "@/assets/remediation.webp";
 import projectBathroom from "@/assets/project-bathroom.jpg";
+import whyChoose from "@/assets/why-choose-us-section.webp";
 import iicrcBadge from "@/assets/iicrc-badge.png";
+import OurStorySection from "@/components/OurStorySection";
 
 const stats = [
   { value: "20+", label: "Years Serving Thousand Oaks", icon: Clock },
@@ -174,17 +176,16 @@ const Index = () => {
             className="lg:col-span-3"
           >
             <p className="font-sans text-sm tracking-[0.3em] text-brand-green-light uppercase mb-6 font-medium">
-              Premier Contractors · Thousand Oaks
+            IICRC Certified
             </p>
 
-            <h1 className="font-serif text-4xl md:text-5xl lg:text-6xl font-bold leading-[1.1] mb-8 text-white text-shadow-luxury">
-              Luxury Home Builders &{" "}
-              <span className="text-brand-yellow">Restoration Experts</span>
+            <h1 className="font-serif text-4xl md:text-5xl lg:text-[3.5rem] font-bold leading-[1.1] mb-8 text-white text-shadow-luxury">
+            Thousand Oaks General Contractor for{" "}
+              <span className="text-brand-yellow">Remodeling, Restoration, and Repair</span>
             </h1>
 
             <p className="font-sans text-lg text-white/75 max-w-xl mb-10 font-light leading-relaxed">
-              IICRC Certified general contractor serving Thousand Oaks, Westlake Village & the Conejo Valley since 2004. 
-              Specializing in Venetian plaster, stucco, water damage restoration & mold remediation.
+            Mier & Murphy Builders is a family-owned and family-operated construction company in Thousand Oaks, with 20 years of building experience.
             </p>
 
             <div className="flex flex-col sm:flex-row items-start gap-4">
@@ -192,7 +193,7 @@ const Index = () => {
                 to="/contact"
                 className="bg-primary text-primary-foreground px-8 py-4 rounded-xl font-sans text-sm font-semibold hover:bg-primary/90 transition-all duration-300 flex items-center gap-2 group shadow-lg"
               >
-                Get Your Free Estimate
+                Get a Free Estimate
                 <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
               </Link>
               <a
@@ -218,16 +219,17 @@ const Index = () => {
 
       {/* ── TRUST BAR ── */}
       <section className="py-6 bg-background">
-        <div className="max-w-5xl mx-auto px-6">
+        <div className="max-w-6xl mx-auto px-6">
           <div className="flex flex-wrap items-center justify-center gap-3">
-            <span className="trust-badge"><CheckCircle className="w-4 h-4" /> Licensed & Insured</span>
+            <span className="trust-badge"><CheckCircle className="w-4 h-4" /> 20 Years of Building Experience</span>
+            <span className="trust-badge"><CheckCircle className="w-4 h-4" /> Family Owned & Operated</span>
             <span className="trust-badge"><CheckCircle className="w-4 h-4" /> IICRC S500 & S520 Certified</span>
-            <span className="trust-badge"><CheckCircle className="w-4 h-4" /> 24/7 Emergency Response</span>
-            <span className="trust-badge"><CheckCircle className="w-4 h-4" /> Free In-Home Estimates</span>
+            <span className="trust-badge"><CheckCircle className="w-4 h-4" /> CA Lic. #1077044</span>
           </div>
         </div>
       </section>
-
+      {/* ── OUR STORY ── */}
+      <OurStorySection />
       {/* ── CLIENTS ── */}
       <ClientsBar />
 
@@ -328,10 +330,10 @@ const Index = () => {
           <div className="max-w-6xl mx-auto">
             <ScrollReveal>
               <div className="text-center mb-16">
-                <p className="font-sans text-xs tracking-[0.4em] text-brand-yellow uppercase font-semibold mb-3">Local Expertise You Can Trust</p>
+                <p className="font-sans text-xs tracking-[0.4em] text-brand-yellow uppercase font-semibold mb-3">Built on Trust</p>
                 <h2 className="font-serif text-3xl md:text-4xl lg:text-5xl font-bold mb-4 text-white">
-                  Why Thousand Oaks & Westlake Village{" "}
-                  <span className="text-brand-yellow">Choose Us</span>
+                Why Thousand Oaks Homeowners Choose{" "}
+                  <span className="text-brand-yellow">Mier & Murphy Builders</span>
                 </h2>
                 <div className="gold-divider mt-6" />
               </div>
@@ -341,19 +343,18 @@ const Index = () => {
               <ScrollReveal>
                 <div className="space-y-6">
                   <h3 className="font-serif text-2xl font-bold text-white">
-                    The Conejo Valley's Premier Luxury Contractor
+                  A Contractor You Can Actually Count On
                   </h3>
                   <p className="font-sans text-sm text-white/65 leading-relaxed">
-                    As lifelong members of the Thousand Oaks community, we understand the unique challenges 
-                    of building and restoring homes in the Conejo Valley. Our founder, Frank Mier, has been in 
-                    construction since age 10 — bringing decades of hands-on experience to every project.
+                  When you hire a contractor, you are trusting them with your home and your money. We built Mier & Murphy on the things that earn that trust: honest work, real certifications, and a family name on every job. Here is what sets us apart in the Conejo Valley.
                   </p>
                   <div className="space-y-4">
                     {[
-                      { title: "Local Thousand Oaks Business", desc: "Family-owned and operated in the Conejo Valley since 2004." },
-                      { title: "Climate-Smart Construction", desc: "Solutions engineered for Southern California's unique conditions." },
-                      { title: "Rapid Emergency Response", desc: "Within 60 minutes for water damage emergencies." },
-                      { title: "Insurance-Approved Contractor", desc: "We work directly with all major insurance carriers." },
+                      { title: "Family owned and operated ", desc: "with 20 years of building experience" },
+                      { title: "IICRC certified ", desc: "for water damage (S500) and mold remediation (S520)" },
+                      { title: "Licensed contractor", desc: "CA Lic. #1077044" },
+                      { title: "HOA-experienced", desc: "on balcony and deck repair projects" },
+                      { title: "Local to Thousand Oaks", desc: "and the Conejo Valley" },
                     ].map((item) => (
                       <div key={item.title} className="flex items-start gap-3">
                         <CheckCircle className="w-5 h-5 text-brand-yellow mt-0.5 flex-shrink-0" />
@@ -367,22 +368,17 @@ const Index = () => {
               </ScrollReveal>
 
               <ScrollReveal delay={0.2}>
-                <div className="rounded-2xl p-8 bg-white/5 border border-white/10">
-                  <h3 className="font-serif text-xl font-bold mb-6 text-brand-yellow">Comprehensive Services</h3>
-                  <ul className="space-y-4 font-sans text-sm text-white/65">
-                    {[
-                      { icon: Paintbrush, title: "Venetian Plaster & Drywall", desc: "Custom interior textures and level 5 finishes" },
-                      { icon: Home, title: "Stucco & Exterior", desc: "Three-coat stucco, smooth coat, and complete restoration" },
-                      { icon: Droplets, title: "Water Damage Restoration", desc: "24/7 emergency extraction and structural drying" },
-                      { icon: Bug, title: "Mold Remediation", desc: "Professional testing, containment, and safe removal" },
-                      { icon: Shield, title: "General Construction", desc: "Kitchen remodels, additions, and whole-home renovations" },
-                    ].map((item) => (
-                      <li key={item.title} className="flex items-start gap-3">
-                        <item.icon className="w-4 h-4 text-brand-yellow mt-1 flex-shrink-0" />
-                        <span><strong className="text-white">{item.title}:</strong> {item.desc}</span>
-                      </li>
-                    ))}
-                  </ul>
+                <div className="rounded-2xl  bg-white/5 border border-white/10">
+                
+              <div className="flex-shrink-0 bg-primary/5 p-3 rounded-3xl ">
+                <img
+                  src={whyChoose}
+                  alt="IICRC Certified Firm badge"
+                  className=" object-contain"
+                  loading="lazy"
+                />
+              </div>
+           
                 </div>
               </ScrollReveal>
             </div>

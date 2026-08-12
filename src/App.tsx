@@ -9,11 +9,11 @@ import Index from "./pages/Index";
 import AboutLegacy from "./pages/AboutLegacy";
 import AboutTeam from "./pages/AboutTeam";
 import AboutTestimonials from "./pages/AboutTestimonials";
-import { BathroomKitchenRemodeling } from "./pages/BathroomKitchenRemodeling";
-import { WaterDamageMoldRemediation } from "./pages/WaterDamageMoldRemediation";
-import { DrywallPlasterStuccoRepair } from "./pages/DrywallPlasterStuccoRepair";
-import { BalconyDeckRepair } from "./pages/BalconyDeckRepair";
-import { CommercialTenantImprovement } from "./pages/CommercialTenantImprovement";
+import  BathroomKitchenRemodeling  from "./pages/BathroomKitchenRemodeling";
+import  WaterDamageMoldRemediation  from "./pages/WaterDamageMoldRemediation";
+import  DrywallPlasterStuccoRepair  from "./pages/DrywallPlasterStuccoRepair";
+import  BalconyDeckRepair  from "./pages/BalconyDeckRepair";
+import  CommercialTenantImprovement  from "./pages/CommercialTenantImprovement";
 import ComingSoon from "@/components/ComingSoon";
 import Projects from "./pages/Projects";
 import Cabin from "./pages/projects/cabin"
@@ -44,6 +44,8 @@ import Area91319 from "./pages/areas/Area91319";
 import NotFound from "./pages/NotFound";
 import { ScrollToTop } from "./components/ScrollToTop";
 
+
+
 const queryClient = new QueryClient();
 
 const App = () => (
@@ -67,6 +69,8 @@ const App = () => (
             <Route path="/services/drywall-plaster-stucco-repair" element={<DrywallPlasterStuccoRepair />} />
             <Route path="/services/balcony-deck-repair" element={<BalconyDeckRepair/>} />
             <Route path="/services/commercial-tenant-improvement" element={<CommercialTenantImprovement/>} />
+
+          
 
             <Route path="/projects" element={<Projects />} />
             <Route path="/projects/cabin" element={<Cabin />} />
@@ -94,7 +98,7 @@ const App = () => (
             <Route path="/areas/93062" element={<Area93062 />} />
             <Route path="/areas/90001" element={<Area90001 />} />
             <Route path="/areas/91319" element={<Area91319 />} />
-
+           
             <Route path="*" element={<NotFound />} />
           </Routes>
         </Layout>

@@ -46,9 +46,9 @@ const TermsAndConditions = () => {
               <li><strong className="text-foreground">Message and Data Rates:</strong> Message and data rates may apply based on your mobile carrier and plan. Mier &amp; Murphy Builders is not responsible for any charges from your mobile carrier.</li>
               <li><strong className="text-foreground">Opt-Out:</strong> You may opt out of receiving text messages at any time by replying STOP to any message. You will receive a one-time confirmation message, and no further messages will be sent unless you opt in again.</li>
               <li><strong className="text-foreground">Help:</strong> Reply HELP to any message, or contact us at              <a
-                href="mailto:info@mierandmurphy.com"
+                href="mailto:frank@miercomstruction.com"
                 className="text-primary underline hover:text-primary/80"
-              >info@mierandmurphy.com
+              >frank@miercomstruction.com
               </a> for assistance.</li>
               <li><strong className="text-foreground">Supported Carriers:</strong> Carriers are not liable for delayed or undelivered messages. Message delivery is subject to effective transmission from your network provider.</li>
               <li><strong className="text-foreground">No Sharing of Opt-In Data:</strong> Your mobile phone number and SMS consent information will not be shared or sold to any third party for marketing or promotional purposes.</li>
@@ -111,9 +111,9 @@ const TermsAndConditions = () => {
               Thousand Oaks, California
               <br />
               <a
-                href="mailto:info@mierandmurphy.com"
+                href="mailto:frank@miercomstruction.com"
                 className="text-primary underline hover:text-primary/80"
-              >info@mierandmurphy.com
+              >frank@miercomstruction.com
               </a>
               <br />
               <a
