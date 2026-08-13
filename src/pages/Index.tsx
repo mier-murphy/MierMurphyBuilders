@@ -4,15 +4,21 @@ import { ArrowRight, Shield, Award, Clock, Star, Droplets, Home, Paintbrush, Bug
 import { useState } from "react";
 import LeadCaptureForm from "@/components/LeadCaptureForm";
 import ScrollReveal from "@/components/ScrollReveal";
-import ClientsBar from "@/components/ClientsBar";
+
 import heroImage from "@/assets/hero-craftsmanship.jpg";
 import projectExterior from "@/assets/cabin/cabin-hero.avif";
 import projectInterior from "@/assets/condo-retreat/condo-retreat-hero.avif";
 import projectComercial from "@/assets/commercial-cell-store/commercial-cell-store-hero.avif";
 import projectRestoration from "@/assets/remediation.webp";
-import projectBathroom from "@/assets/project-bathroom.jpg";
-import whyChoose from "@/assets/why-choose-us-section.webp";
-import iicrcBadge from "@/assets/iicrc-badge.png";
+
+import projectBathroom from "@/assets/btkc/kc-hero.webp";
+import projectWater from "@/assets/water/water-hero.webp";
+import projectDrywall from "@/assets/drywall/drywall-hero.webp";
+import projectBalcony from "@/assets/balcony/balcony-hero.webp";
+import projectCtenent from "@/assets/ctenant/ctenent-hero.webp";
+
+import whyChoose from "@/assets/home-why-choose.webp";
+import iicrcBadge from "@/assets/iicrc-badge.avif";
 import OurStorySection from "@/components/OurStorySection";
 
 const stats = [
@@ -24,32 +30,39 @@ const stats = [
 
 const services = [
   {
-    title: "Interior Masterworks",
-    description: "Venetian plaster, drywall finishing, and custom interior textures for luxury homes in Thousand Oaks, Westlake Village, and the Conejo Valley.",
+    title: "Expert Bathroom and Kitchen Remodelingin Thousand Oaks",
+    description: "Full bathroom and kitchen remodels for homeowners across Thousand Oaks, Westlake Village, and Simi Valley, with clear timelines, permits handled for you, and a family-owned crew behind every job.",
     icon: Paintbrush,
-    image: projectInterior,
-    href: "/services/interior",
-  },
-  {
-    title: "Exterior Excellence",
-    description: "Premium stucco application, exterior restoration, and architectural facades for Thousand Oaks and Westlake Village estates.",
-    icon: Home,
-    image: projectExterior,
-    href: "/services/exterior",
-  },
-  {
-    title: "Water Damage Restoration",
-    description: "IICRC S500 certified emergency water damage restoration in Thousand Oaks and Westlake Village. 24/7 rapid response.",
-    icon: Droplets,
-    image: projectRestoration,
-    href: "/services/water-damage",
-  },
-  {
-    title: "Mold Remediation Specialists",
-    description: "IICRC S520 certified mold remediation. Professional mold testing, containment, and removal for safe homes.",
-    icon: Bug,
     image: projectBathroom,
-    href: "/services/mold-remediation",
+    href: "/services/bathroom-kitchen-remodeling",
+  },
+  {
+    title: "Trusted Water Damage and Mold RemediationExperts",
+    description: "IICRC certified water damage and mold remediation for homeowners in Thousand Oaks, Westlake Village, and Simi Valley. We know what water damage does to a home, because it happened to ours.",
+    icon: Home,
+    image: projectWater,
+    href: "/services/water-damage-mold-remediation",
+  },
+  {
+    title: "Seamless Drywall and Stucco Repairin Thousand Oaks",
+    description: "Drywall, plaster, and stucco repair for homeowners in Thousand Oaks, Westlake Village, and Simi Valley, matched to your existing finish so the repair disappears into the wall.",
+    icon: Droplets,
+    image: projectDrywall,
+    href: "/services/drywall-plaster-stucco-repair",
+  },
+  {
+    title: "Balcony and Deck Repair Experts in Thousand Oaks",
+    description: "Structural balcony and deck repair for homeowners, HOAs, and property managers in Thousand Oaks, Westlake Village, and Simi Valley. We help you meet California's inspection deadlines.",
+    icon: Bug,
+    image: projectBalcony,
+    href: "/services/balcony-deck-repair",
+  },
+  {
+    title: "Commercial Tenant Improvement Contractor in Thousand Oaks",
+    description: "Build-out and renovation work for retail and office spaces in Thousand Oaks, Westlake Village, and the surrounding Conejo Valley, planned around your lease timeline from day one.",
+    icon: Bug,
+    image: projectCtenent,
+    href: "/services/commercial-tenant-improvement",
   },
 ];
 
@@ -109,28 +122,39 @@ const serviceAreas = [
 
 const faqs = [
   {
-    question: "What areas does Mier & Murphy Builders serve in the Conejo Valley?",
-    answer: "Mier & Murphy Builders proudly serves Thousand Oaks (91360, 91362), Westlake Village (91361, 91302), Newbury Park (91320), Agoura Hills (91301), Oak Park (91377), Calabasas, and the greater Conejo Valley region.",
+    question: "How long does a bathroom remodel take?",
+    answer:
+      "Most bathroom remodels take a few weeks from start to finish, depending on the scope of work, permitting, and material availability. We walk through the expected timeline with you before work begins.",
   },
   {
-    question: "Are you licensed and certified for water damage restoration?",
-    answer: "Yes. Mier & Murphy Builders holds IICRC S500 certification for water damage restoration and IICRC S520 certification for mold remediation. We are fully licensed, bonded, and insured.",
+    question: "Do I need a permit for my remodel?",
+    answer:
+      "Most bathroom and kitchen remodels in Thousand Oaks require permits, especially when plumbing or electrical work is involved. We handle the permitting process as part of your project.",
   },
   {
-    question: "How quickly can you respond to water damage emergencies?",
-    answer: "We offer 24/7 emergency water damage response. As a local company, we can typically arrive on-site within 60 minutes for urgent water extraction and flood damage assessment.",
+    question: "How do I know if I have mold, and what should I do?",
+    answer:
+      "Common signs of mold include a musty smell, visible spotting on walls or ceilings, and past water damage that was not fully dried out. If you suspect mold, contact us for an inspection before it spreads further.",
   },
   {
-    question: "What types of stucco and plaster work do you offer?",
-    answer: "We specialize in Venetian plaster, traditional three-coat stucco, smooth-coat stucco, Santa Barbara finish, Spanish lace texture, skip-trowel finishes, and complete stucco repair.",
+    question: "What is the difference between water damage restoration and mold remediation?",
+    answer:
+      "Water damage restoration deals with removing water and drying out a structure after a leak, flood, or other water event. Mold remediation deals with removing mold growth that has already started, often as a result of water damage that went untreated. We handle both, and often one leads directly into the other.",
   },
   {
-    question: "Do you offer free estimates for home renovation?",
-    answer: "Yes. We offer complimentary in-home consultations and detailed estimates for all interior renovation, exterior stucco, water damage restoration, and mold remediation projects.",
+    question: "Do I need an SB-326 or SB-721 balcony inspection?",
+    answer:
+      "California law requires periodic inspection of exterior elevated elements like balconies and decks on multi-family properties. If your HOA or property has not had one, contact us to check your deadline and get an inspection scheduled.",
   },
   {
-    question: "What makes Mier & Murphy different from other contractors?",
-    answer: "We are a family-owned business with 500+ completed projects, IICRC dual certification, and a 100% satisfaction rate. Our 'Build to Live, Live to Build' philosophy means we treat every home as our own.",
+    question: "What is stucco color matching and can you fix a small crack?",
+    answer:
+      "Stucco color and texture matching means repairing a damaged section so it blends into the surrounding wall instead of standing out as a patch. We handle repairs of all sizes, from small cracks to larger sections.",
+  },
+  {
+    question: "Are you licensed?",
+    answer:
+      "Yes. Mier & Murphy Builders is licensed under CA Lic. #1077044.",
   },
 ];
 
@@ -231,38 +255,9 @@ const Index = () => {
       {/* ── OUR STORY ── */}
       <OurStorySection />
       {/* ── CLIENTS ── */}
-      <ClientsBar />
+   
 
-      {/* ── STATS ── Subtle warm background with curves */}
-      <section className="relative section-padding bg-muted overflow-hidden">
-        <div className="max-w-6xl mx-auto relative z-10">
-          <ScrollReveal>
-            <div className="text-center mb-16">
-              <p className="font-sans text-xs tracking-[0.4em] text-primary uppercase font-semibold mb-3">Thousand Oaks' Most Trusted Contractor</p>
-              <h2 className="font-serif text-3xl md:text-4xl lg:text-5xl font-bold mb-4 text-foreground">
-                The Mier & Murphy <span className="text-primary">Difference</span>
-              </h2>
-              <div className="gold-divider mt-6" />
-            </div>
-          </ScrollReveal>
 
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-            {stats.map((stat, i) => (
-              <ScrollReveal key={stat.label} delay={i * 0.12}>
-                <div className="text-center group">
-                  <div className="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-primary/10 mb-5 group-hover:bg-primary/20 transition-all duration-500">
-                    <stat.icon className="w-7 h-7 text-primary" />
-                  </div>
-                  <div className="font-serif text-3xl md:text-4xl font-bold text-foreground mb-2">
-                    {stat.value}
-                  </div>
-                  <p className="font-sans text-sm text-muted-foreground">{stat.label}</p>
-                </div>
-              </ScrollReveal>
-            ))}
-          </div>
-        </div>
-      </section>
 
       {/* ── SERVICES ── Cards with rounded images */}
       <section className="section-padding bg-background">

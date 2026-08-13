@@ -15,18 +15,21 @@ import CondoRemodel from "@/assets/condo-retreat/condo-retreat-hero.avif";
 import CommercialStore from "@/assets/commercial-cell-store/commercial-cell-store-hero.avif";
 import PorterRanch from "@/assets/ranch/ranch-hero.avif";
 
-const categories = ["All", "Interior", "Exterior", "Restoration"];
+const categories = ["All", "Interior", "Exterior", ];
 
 const projects = [
   { slug: "cabin", title: "Big Bear Cabin Complete Remodel", category: "Exterior", image: CabinRemodel, sqft: "3,200", timeline: "6 weeks" },
-  { slug: "condo-retreat", title: "Urban Condo Remodel Los Angeles, CA", category: "Interior", image: CondoRemodel, sqft: "4,800", timeline: "8 weeks" },
-  { slug: "emergency-water-restoration", title: "Emergency Water Restoration", category: "Restoration", image: projectRestoration, sqft: "2,100", timeline: "3 weeks" },
+  { slug: "condo-retreat", title: "Urban Condo Remodel Los Angeles, CA", category: "Interior", image: CondoRemodel, sqft: "4,800", timeline: "8 weeks" }, 
   { slug: "commercial-cell-store", title: "Cellphone & Electronics Repair Store Commercial Build-Out", category: "Interior", image: CommercialStore, sqft: "450", timeline: "4 weeks" },
-  { slug: "mold-remediation-rebuild", title: "Mold Remediation & Rebuild", category: "Restoration", image: projectMold, sqft: "1,800", timeline: "5 weeks" },
   { slug: "ranch", title: "Porter Ranch Home Renovation", category: "Interior", image: PorterRanch, sqft: "800", timeline: "2 weeks" },
-  { slug: "stucco-repair-repaint", title: "Stucco Repair & Repaint", category: "Exterior", image: projectExterior, sqft: "3,500", timeline: "4 weeks" },
-  { slug: "whole-home-water-damage-recovery", title: "Whole-Home Water Damage Recovery", category: "Restoration", image: projectRestoration, sqft: "3,800", timeline: "8 weeks" },
-  { slug: "custom-drywall-coffered-ceiling", title: "Custom Drywall & Coffered Ceiling", category: "Interior", image: projectInterior, sqft: "1,200", timeline: "3 weeks" },
+
+
+  // { slug: "mold-remediation-rebuild", title: "Mold Remediation & Rebuild", category: "Restoration", image: projectMold, sqft: "1,800", timeline: "5 weeks" },
+ 
+  // { slug: "stucco-repair-repaint", title: "Stucco Repair & Repaint", category: "Exterior", image: projectExterior, sqft: "3,500", timeline: "4 weeks" },
+  // { slug: "whole-home-water-damage-recovery", title: "Whole-Home Water Damage Recovery", category: "Restoration", image: projectRestoration, sqft: "3,800", timeline: "8 weeks" },
+  // { slug: "custom-drywall-coffered-ceiling", title: "Custom Drywall & Coffered Ceiling", category: "Interior", image: projectInterior, sqft: "1,200", timeline: "3 weeks" },
+  // { slug: "emergency-water-restoration", title: "Emergency Water Restoration", category: "Restoration", image: projectRestoration, sqft: "2,100", timeline: "3 weeks" },
 ];
 
 const Projects = () => {

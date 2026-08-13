@@ -1,12 +1,39 @@
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
+import { Helmet } from "react-helmet-async";
 import { ArrowRight, CheckCircle, Paintbrush, Award, Clock, Shield, Star, MapPin } from "lucide-react";
 import ScrollReveal from "@/components/ScrollReveal";
 import ProcessTimeline from "@/components/ProcessTimeline";
 import LeadCaptureForm from "@/components/LeadCaptureForm";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
-import projectInterior from "@/assets/interior-m.webp";
-import iicrcBadge from "@/assets/interior-m.webp";
+import projectCtenent from "@/assets/ctenant/ctenent-hero.webp";
+import projectCtenentMain from "@/assets/ctenant/ctenent-main.webp";
+
+// TODO: replace with the actual IICRC certification badge asset — this currently
+// points at the same interior photo as `projectInterior`, so the "badge" renders a room photo.
+import iicrcBadge from "@/assets/iicrc-badge.avif";
+
+const SITE_URL = "https://mierandmurphybuilders.com";
+const PAGE_URL = `${SITE_URL}/services/commercial-tenant-improvement`;
+const OG_IMAGE = `${SITE_URL}/service-commercial-tenant-improvement.jpg`;
+
+const PAGE_TITLE = "Commercial Tenant Improvement Contractor in Thousand Oaks, CA | Mier & Murphy Builders";
+const PAGE_DESCRIPTION =
+  "Retail and office tenant improvement & build-out services in Thousand Oaks, Westlake Village & the Conejo Valley. Permits, framing, drywall, and finish work planned around your lease timeline. CA Lic. #1077044 — call (805) 998-9082.";
+const PAGE_KEYWORDS =
+  "commercial tenant improvement Thousand Oaks, retail build-out Westlake Village, office renovation contractor Ventura County, commercial drywall contractor Thousand Oaks, ADA updates commercial Thousand Oaks, commercial stucco repair Conejo Valley";
+
+const areasServed = [
+  "Thousand Oaks",
+  "Westlake Village",
+  "Simi Valley",
+  "Moorpark",
+  "Oak Park",
+  "Agoura Hills",
+  "Newbury Park",
+  "Camarillo",
+  "Ventura County",
+];
 
 const faqs = [
   {
@@ -59,40 +86,139 @@ const process = [
   },
 ];
 
+const finishes = [
+  {
+    title: "Retail Build-Out",
+    desc: "Interior build-outs for retail spaces, from framing to finish.",
+  },
+  {
+    title: "Office Renovation",
+    desc: "Renovations and reconfigurations for office spaces.",
+  },
+  {
+    title: "Interior Framing",
+    desc: "Metal and wood stud framing for commercial interiors.",
+  },
+  {
+    title: "Drywall & Finish",
+    desc: "Commercial drywall, taping, texture, and finish work.",
+  },
+  {
+    title: "Commercial Stucco",
+    desc: "Exterior stucco and repair for commercial properties.",
+  },
+  {
+    title: "ADA Updates",
+    desc: "Accessibility-related updates handled as part of your build-out.",
+  },
+];
+
+// JSON-LD: Service (name/description now match the page's actual subject matter)
+const serviceSchema = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "@id": `${PAGE_URL}/#service`,
+  name: "Commercial Tenant Improvement & Build-Out",
+  serviceType: "Commercial Tenant Improvement",
+  description: PAGE_DESCRIPTION,
+  url: PAGE_URL,
+  provider: {
+    "@type": "GeneralContractor",
+    "@id": `${SITE_URL}/#organization`,
+    name: "Mier & Murphy Builders",
+    telephone: "+18059989082",
+    url: SITE_URL,
+    address: {
+      "@type": "PostalAddress",
+      addressLocality: "Thousand Oaks",
+      addressRegion: "CA",
+      postalCode: "91360",
+      addressCountry: "US",
+    },
+  },
+  areaServed: areasServed.map((name) => ({ "@type": "City", name })),
+  hasOfferCatalog: {
+    "@type": "OfferCatalog",
+    name: "Commercial Tenant Improvement Services",
+    itemListElement: finishes.map((f) => ({
+      "@type": "Offer",
+      itemOffered: {
+        "@type": "Service",
+        name: f.title,
+        description: f.desc,
+      },
+    })),
+  },
+};
+
+// JSON-LD: FAQPage
+const faqJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: faqs.map((f) => ({
+    "@type": "Question",
+    name: f.q,
+    acceptedAnswer: { "@type": "Answer", text: f.a },
+  })),
+};
+
+// JSON-LD: BreadcrumbList
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    { "@type": "ListItem", position: 1, name: "Home", item: SITE_URL },
+    { "@type": "ListItem", position: 2, name: "Services", item: `${SITE_URL}/services` },
+    { "@type": "ListItem", position: 3, name: "Commercial Tenant Improvement", item: PAGE_URL },
+  ],
+};
 
 const CommercialTenantImprovement = () => {
-  const jsonLd = {
-    "@context": "https://schema.org",
-    "@type": "Service",
-    name: "Interior Plastering & Drywall Services – Thousand Oaks & Westlake Village",
-    provider: {
-      "@type": "LocalBusiness",
-      name: "Mier & Murphy Builders",
-      areaServed: ["Thousand Oaks", "Westlake Village", "Ventura County"],
-    },
-    description:
-      "Premium interior plaster, drywall installation, and decorative finishes for luxury homes in Thousand Oaks, Westlake Village, and Ventura County.",
-  };
-
-  const faqJsonLd = {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    mainEntity: faqs.map((f) => ({
-      "@type": "Question",
-      name: f.q,
-      acceptedAnswer: { "@type": "Answer", text: f.a },
-    })),
-  };
-
   return (
     <>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }} />
+      <Helmet>
+        {/* Primary meta tags */}
+        <title>{PAGE_TITLE}</title>
+        <meta name="title" content={PAGE_TITLE} />
+        <meta name="description" content={PAGE_DESCRIPTION} />
+        <meta name="keywords" content={PAGE_KEYWORDS} />
+        <meta name="author" content="Mier & Murphy Builders" />
+        <meta name="robots" content="index, follow" />
+        <link rel="canonical" href={PAGE_URL} />
+
+        {/* Geo tags */}
+        <meta name="geo.placename" content="Thousand Oaks" />
+        <meta name="geo.region" content="US-CA" />
+        <meta name="geo.position" content="34.1706;-118.8376" />
+        <meta name="ICBM" content="34.1706, -118.8376" />
+
+        {/* Open Graph */}
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content={PAGE_URL} />
+        <meta property="og:title" content={PAGE_TITLE} />
+        <meta property="og:description" content={PAGE_DESCRIPTION} />
+        <meta property="og:image" content={OG_IMAGE} />
+        <meta property="og:image:alt" content="Commercial tenant improvement build-out in Thousand Oaks, CA" />
+        <meta property="og:site_name" content="Mier & Murphy Builders" />
+        <meta property="og:locale" content="en_US" />
+
+        {/* Twitter Card */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:url" content={PAGE_URL} />
+        <meta name="twitter:title" content={PAGE_TITLE} />
+        <meta name="twitter:description" content={PAGE_DESCRIPTION} />
+        <meta name="twitter:image" content={OG_IMAGE} />
+
+        {/* Structured data */}
+        <script type="application/ld+json">{JSON.stringify(serviceSchema)}</script>
+        <script type="application/ld+json">{JSON.stringify(faqJsonLd)}</script>
+        <script type="application/ld+json">{JSON.stringify(breadcrumbSchema)}</script>
+      </Helmet>
 
       {/* HERO */}
       <section className="relative min-h-[85vh] flex items-center overflow-hidden">
         <div className="absolute inset-0">
-          <img src={projectInterior} alt="Luxury interior plaster finish in a Thousand Oaks estate" className="w-full h-full object-cover" />
+          <img src={projectCtenent} alt="Luxury interior plaster finish in a Thousand Oaks estate" className="w-full h-full object-cover" />
           <div className="absolute inset-0 bg-gradient-to-r from-[hsl(220,20%,12%)]/95 via-[hsl(220,20%,12%)]/80 to-[hsl(220,20%,12%)]/60" />
         </div>
         <div className="relative z-10 max-w-[90rem] mx-auto px-6 pt-40 pb-20 w-full grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
@@ -130,6 +256,9 @@ const CommercialTenantImprovement = () => {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
             <ScrollReveal direction="left">
               <div>
+              <div className="inline-flex items-center gap-2 bg-primary/15  px-4 py-1.5 mb-6">              
+              <span className="font-sans text-xs font-semibold text-primary tracking-[0.4em]">BUILT AROUND YOUR BUSINESS</span>
+            </div>
                 <h2 className="font-serif text-3xl md:text-4xl font-bold mb-6">
                 Build-Outs That Respect Your <span className="text-primary">Timeline and Budget</span>
                 </h2>
@@ -154,10 +283,6 @@ const CommercialTenantImprovement = () => {
                         "Commercial stucco and exterior repair",
                         "ADA-related updates",
                         "Coordination with landlords and property managers",
-                        
-                        
-                        
-                        
 
                   ].map((f) => (
                     <li key={f} className="flex items-center gap-3">
@@ -180,7 +305,7 @@ const CommercialTenantImprovement = () => {
             <ScrollReveal direction="right">
               <div className="luxury-card overflow-hidden">
                 <img
-                  src={projectInterior}
+                  src={projectCtenentMain}
                   alt="Premium Venetian plaster application in Westlake Village home"
                   className="w-full h-80 lg:h-[500px] object-cover"
                   loading="lazy"
@@ -207,8 +332,8 @@ const CommercialTenantImprovement = () => {
       <section className="section-padding" style={{ background: "hsl(220, 20%, 15%)" }}>
         <ProcessTimeline
           steps={process}
-          subheading="How We Run Your Build-Out"
-          heading={`Our \u00A0`}
+          subheading="OUR PROCESS"
+          heading={`How We Run Your Build-Out \u00A0`}
           headingHighlight="From Estimate to Opening"
           description="A commercial project stays on budget when it stays on schedule. Here is how we run yours from the first estimate to opening day. "
           variant="dark"
@@ -220,7 +345,7 @@ const CommercialTenantImprovement = () => {
         <div className="max-w-7xl mx-auto">
           <ScrollReveal>
             <div className="text-center mb-16">
-              <p className="font-sans text-xs tracking-[0.4em] text-primary uppercase mb-4">Why Choose Us</p>
+              <p className="font-sans text-xs tracking-[0.4em] text-primary uppercase mb-4">WHY BUSINESSES CHOOSE US</p>
               <h2 className="font-serif text-3xl md:text-4xl font-bold">
               Why Businesses Trust Our <span className="text-primary">Commercial Build-Out Team</span>
               </h2>
@@ -255,9 +380,9 @@ const CommercialTenantImprovement = () => {
         <div className="max-w-6xl mx-auto">
           <ScrollReveal>
             <div className="text-center mb-16">
-              <p className="font-sans text-xs tracking-[0.4em] text-primary uppercase mb-4">Finish Types</p>
+              <p className="font-sans text-xs tracking-[0.4em] text-primary uppercase mb-4">BUILD-OUT SERVICES</p>
 
-              
+
                <h2 className="font-serif text-3xl md:text-4xl font-bold mb-4 text-white">
                Commercial Build-Out <span className="text-primary">Services We Provide</span>
               </h2>
@@ -267,40 +392,7 @@ const CommercialTenantImprovement = () => {
             </div>
           </ScrollReveal>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {[
-              
-                {
-                  title: "Retail Build-Out",
-                  desc: "Interior build-outs for retail spaces, from framing to finish.",
-                  keywords: "retail build-out Thousand Oaks",
-                },
-                {
-                  title: "Office Renovation",
-                  desc: "Renovations and reconfigurations for office spaces.",
-                  keywords: "office renovation Thousand Oaks",
-                },
-                {
-                  title: "Interior Framing",
-                  desc: "Metal and wood stud framing for commercial interiors.",
-                  keywords: "commercial interior framing Thousand Oaks",
-                },
-                {
-                  title: "Drywall & Finish",
-                  desc: "Commercial drywall, taping, texture, and finish work.",
-                  keywords: "commercial drywall finish Thousand Oaks",
-                },
-                {
-                  title: "Commercial Stucco",
-                  desc: "Exterior stucco and repair for commercial properties.",
-                  keywords: "commercial stucco repair Thousand Oaks",
-                },
-                {
-                  title: "ADA Updates",
-                  desc: "Accessibility-related updates handled as part of your build-out.",
-                  keywords: "ADA commercial updates Thousand Oaks",
-                },
-              
-].map((finish) => (
+            {finishes.map((finish) => (
               <ScrollReveal key={finish.title}>
                  <div className="bg-white/[0.06] border border-white/10 rounded-2xl p-6 h-full hover:bg-white/[0.1] hover:border-primary/30 transition-all duration-300">
                    <h3 className="font-serif text-lg font-bold mb-3 text-white">{finish.title}</h3>
@@ -327,17 +419,7 @@ const CommercialTenantImprovement = () => {
             </div>
           </ScrollReveal>
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-            {[
-              "Thousand Oaks", 
-              "Westlake Village", 
-              "Simi Valley", 
-              "Moorpark ",
-              "Oak Park", 
-              "Agoura Hills ",
-              "Newbury Park", 
-              "Camarillo ",
-              "Ventura County",
-            ].map((area) => (
+            {areasServed.map((area) => (
               <div key={area} className="flex items-center gap-2 bg-background border border-border rounded-lg p-3">
                 <MapPin className="w-3.5 h-3.5 text-primary flex-shrink-0" />
                 <span className="font-sans text-xs text-foreground/80">{area}</span>

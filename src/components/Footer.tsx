@@ -18,8 +18,7 @@ const Footer = () => {
           <div>
             <img src={mml} alt="Company Logo" className=" w-auto mb-4" />
             <p className="text-sm font-sans text-white/60 leading-relaxed">
-              Master craftsmanship for discerning Thousand Oaks estates. 
-              Building beyond expectation since 2004.
+            Family-owned construction company in Thousand Oaks, with 20 years of building experience in remodeling, restoration, and repair. 
             </p>
           </div>
 
@@ -118,9 +117,9 @@ Terms Of Conditions              </a></span>
           <div className="flex items-center gap-2 text-xs font-sans text-white/40">
             <span>IICRC Certified</span>
             <span className="text-brand-yellow">•</span>
-            <span>Licensed & Insured</span>
+            <span>CA Lic. #1077044</span>
             <span className="text-brand-yellow">•</span>
-            <span>Thousand Oaks, CA</span>
+            <span>Licensed & Insured</span>
           </div>
         </div>
       </div>

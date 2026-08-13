@@ -1,12 +1,38 @@
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
+import { Helmet } from "react-helmet-async";
 import { ArrowRight, CheckCircle, Paintbrush, Award, Clock, Shield, Star, MapPin } from "lucide-react";
 import ScrollReveal from "@/components/ScrollReveal";
 import ProcessTimeline from "@/components/ProcessTimeline";
 import LeadCaptureForm from "@/components/LeadCaptureForm";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
-import projectInterior from "@/assets/interior-m.webp";
-import iicrcBadge from "@/assets/interior-m.webp";
+import projectBalcony from "@/assets/balcony/balcony-hero.webp";
+import projectBalconyMain from "@/assets/balcony/balcony-main.webp";
+// TODO: replace with the actual IICRC certification badge asset — this currently
+// points at the same interior photo as `projectInterior`, so the "badge" renders a room photo.
+import iicrcBadge from "@/assets/iicrc-badge.avif";
+
+const SITE_URL = "https://mierandmurphybuilders.com";
+const PAGE_URL = `${SITE_URL}/services/balcony-deck-repair`;
+const OG_IMAGE = `${SITE_URL}/service-balcony-deck-repair.jpg`;
+
+const PAGE_TITLE = "SB-326 & SB-721 Balcony & Deck Repair in Thousand Oaks, CA | Mier & Murphy Builders";
+const PAGE_DESCRIPTION =
+  "SB-326 & SB-721 compliant balcony and deck repair for HOAs, property managers, and homeowners in Thousand Oaks, Westlake Village & the Conejo Valley. Structural rebuilds, waterproofing, and inspection sign-off support. CA Lic. #1077044 — call (805) 998-9082.";
+const PAGE_KEYWORDS =
+  "SB-326 balcony repair Thousand Oaks, SB-721 balcony repair Ventura County, balcony inspection contractor Westlake Village, deck structural repair Thousand Oaks, HOA balcony compliance contractor, dry rot repair Conejo Valley";
+
+const areasServed = [
+  "Thousand Oaks",
+  "Westlake Village",
+  "Simi Valley",
+  "Moorpark",
+  "Oak Park",
+  "Agoura Hills",
+  "Newbury Park",
+  "Camarillo",
+  "Ventura County",
+];
 
 const faqs = [
   {
@@ -63,40 +89,143 @@ const process = [
   },
 ];
 
+const finishes = [
+  {
+    title: "SB-326 Repair",
+    desc: "Repair work for condominium and HOA-managed common interest developments.",
+  },
+  {
+    title: "SB-721 Repair",
+    desc: "Repair work for rental properties with three or more units.",
+  },
+  {
+    title: "Structural Rebuilds",
+    desc: "Full balcony and deck rebuilds where structural damage is found.",
+  },
+  {
+    title: "Waterproofing & Flashing",
+    desc: "Sealing and flashing to protect against future water intrusion.",
+  },
+  {
+    title: "Railing Replacement",
+    desc: "Repair and replacement of damaged or non-compliant railings.",
+  },
+  {
+    title: "Dry Rot Repair",
+    desc: "Removal and repair of dry-rotted framing and decking.",
+  },
+];
+
+// JSON-LD: Service (name/description now match the page's actual subject matter)
+const serviceSchema = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "@id": `${PAGE_URL}/#service`,
+  name: "SB-326 & SB-721 Balcony & Deck Repair",
+  serviceType: "Balcony and Deck Structural Repair",
+  description: PAGE_DESCRIPTION,
+  url: PAGE_URL,
+  provider: {
+    "@type": "GeneralContractor",
+    "@id": `${SITE_URL}/#organization`,
+    name: "Mier & Murphy Builders",
+    telephone: "+18059989082",
+    url: SITE_URL,
+    address: {
+      "@type": "PostalAddress",
+      addressLocality: "Thousand Oaks",
+      addressRegion: "CA",
+      postalCode: "91360",
+      addressCountry: "US",
+    },
+  },
+  areaServed: areasServed.map((name) => ({ "@type": "City", name })),
+  audience: {
+    "@type": "Audience",
+    audienceType: "Homeowners, HOAs, and Property Managers",
+  },
+  hasOfferCatalog: {
+    "@type": "OfferCatalog",
+    name: "Balcony & Deck Repair Services",
+    itemListElement: finishes.map((f) => ({
+      "@type": "Offer",
+      itemOffered: {
+        "@type": "Service",
+        name: f.title,
+        description: f.desc,
+      },
+    })),
+  },
+};
+
+// JSON-LD: FAQPage
+const faqJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: faqs.map((f) => ({
+    "@type": "Question",
+    name: f.q,
+    acceptedAnswer: { "@type": "Answer", text: f.a },
+  })),
+};
+
+// JSON-LD: BreadcrumbList
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    { "@type": "ListItem", position: 1, name: "Home", item: SITE_URL },
+    { "@type": "ListItem", position: 2, name: "Services", item: `${SITE_URL}/services` },
+    { "@type": "ListItem", position: 3, name: "Balcony & Deck Repair", item: PAGE_URL },
+  ],
+};
 
 const BalconyDeckRepair = () => {
-  const jsonLd = {
-    "@context": "https://schema.org",
-    "@type": "Service",
-    name: "Interior Plastering & Drywall Services – Thousand Oaks & Westlake Village",
-    provider: {
-      "@type": "LocalBusiness",
-      name: "Mier & Murphy Builders",
-      areaServed: ["Thousand Oaks", "Westlake Village", "Ventura County"],
-    },
-    description:
-      "Premium interior plaster, drywall installation, and decorative finishes for luxury homes in Thousand Oaks, Westlake Village, and Ventura County.",
-  };
-
-  const faqJsonLd = {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    mainEntity: faqs.map((f) => ({
-      "@type": "Question",
-      name: f.q,
-      acceptedAnswer: { "@type": "Answer", text: f.a },
-    })),
-  };
-
   return (
     <>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }} />
+      <Helmet>
+        {/* Primary meta tags */}
+        <title>{PAGE_TITLE}</title>
+        <meta name="title" content={PAGE_TITLE} />
+        <meta name="description" content={PAGE_DESCRIPTION} />
+        <meta name="keywords" content={PAGE_KEYWORDS} />
+        <meta name="author" content="Mier & Murphy Builders" />
+        <meta name="robots" content="index, follow" />
+        <link rel="canonical" href={PAGE_URL} />
+
+        {/* Geo tags */}
+        <meta name="geo.placename" content="Thousand Oaks" />
+        <meta name="geo.region" content="US-CA" />
+        <meta name="geo.position" content="34.1706;-118.8376" />
+        <meta name="ICBM" content="34.1706, -118.8376" />
+
+        {/* Open Graph */}
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content={PAGE_URL} />
+        <meta property="og:title" content={PAGE_TITLE} />
+        <meta property="og:description" content={PAGE_DESCRIPTION} />
+        <meta property="og:image" content={OG_IMAGE} />
+        <meta property="og:image:alt" content="SB-326 and SB-721 compliant balcony repair in Thousand Oaks, CA" />
+        <meta property="og:site_name" content="Mier & Murphy Builders" />
+        <meta property="og:locale" content="en_US" />
+
+        {/* Twitter Card */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:url" content={PAGE_URL} />
+        <meta name="twitter:title" content={PAGE_TITLE} />
+        <meta name="twitter:description" content={PAGE_DESCRIPTION} />
+        <meta name="twitter:image" content={OG_IMAGE} />
+
+        {/* Structured data */}
+        <script type="application/ld+json">{JSON.stringify(serviceSchema)}</script>
+        <script type="application/ld+json">{JSON.stringify(faqJsonLd)}</script>
+        <script type="application/ld+json">{JSON.stringify(breadcrumbSchema)}</script>
+      </Helmet>
 
       {/* HERO */}
       <section className="relative min-h-[85vh] flex items-center overflow-hidden">
         <div className="absolute inset-0">
-          <img src={projectInterior} alt="Luxury interior plaster finish in a Thousand Oaks estate" className="w-full h-full object-cover" />
+          <img src={projectBalcony} alt="Luxury interior plaster finish in a Thousand Oaks estate" className="w-full h-full object-cover" />
           <div className="absolute inset-0 bg-gradient-to-r from-[hsl(220,20%,12%)]/95 via-[hsl(220,20%,12%)]/80 to-[hsl(220,20%,12%)]/60" />
         </div>
         <div className="relative z-10 max-w-[90rem] mx-auto px-6 pt-40 pb-20 w-full grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
@@ -134,6 +263,9 @@ const BalconyDeckRepair = () => {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
             <ScrollReveal direction="left">
               <div>
+              <div className="inline-flex items-center gap-2 bg-primary/15  px-4 py-1.5 mb-6">              
+              <span className="font-sans text-xs font-semibold text-primary tracking-[0.4em]">KNOW THE LAW</span>
+            </div>
                 <h2 className="font-serif text-3xl md:text-4xl font-bold mb-6">
                 California Sets Hard Deadlines. <span className="text-primary">We Help You Comply.</span>
                 </h2>
@@ -148,6 +280,9 @@ const BalconyDeckRepair = () => {
                 <p className="font-sans text-sm text-muted-foreground leading-relaxed mb-8">
                 Almost no local competitor is talking about this work. We are, because we have done it, and because meeting these deadlines protects both your residents and your property.
                 </p>
+                <p className="font-sans text-xs text-muted-foreground/80 leading-relaxed mb-8 italic">
+                Inspection deadlines and thresholds vary by property type, unit count, and inspection cycle. Contact us or your local building department to confirm the exact requirement for your property.
+                </p>
 
                 <h3 className="font-serif text-xl font-bold mb-4 text-foreground">Our Balcony and Deck Repair Services:</h3>
                 <ul className="space-y-3 mb-8">
@@ -158,9 +293,6 @@ const BalconyDeckRepair = () => {
                         "Railing repair and replacement",
                         "Waterproofing and flashing repair",
                         "Dry rot and structural damage repair",
-                        
-                        
-                        
 
                   ].map((f) => (
                     <li key={f} className="flex items-center gap-3">
@@ -183,7 +315,7 @@ const BalconyDeckRepair = () => {
             <ScrollReveal direction="right">
               <div className="luxury-card overflow-hidden">
                 <img
-                  src={projectInterior}
+                  src={projectBalconyMain}
                   alt="Premium Venetian plaster application in Westlake Village home"
                   className="w-full h-80 lg:h-[500px] object-cover"
                   loading="lazy"
@@ -211,8 +343,8 @@ const BalconyDeckRepair = () => {
       <section className="section-padding" style={{ background: "hsl(220, 20%, 15%)" }}>
         <ProcessTimeline
           steps={process}
-          subheading="How We Take You From"
-          heading={`Our \u00A0`}
+          subheading="OUR PROCESS"
+          heading={`How We Take You From \u00A0`}
           headingHighlight="Inspection to Sign-Off"
           description="Compliance work involves more than the repair itself. Here is how we handle your project from the first assessment through final sign-off. "
           variant="dark"
@@ -224,7 +356,7 @@ const BalconyDeckRepair = () => {
         <div className="max-w-7xl mx-auto">
           <ScrollReveal>
             <div className="text-center mb-16">
-              <p className="font-sans text-xs tracking-[0.4em] text-primary uppercase mb-4">Why Choose Us</p>
+              <p className="font-sans text-xs tracking-[0.4em] text-primary uppercase mb-4">WHY OWNERS CHOOSE US</p>
               <h2 className="font-serif text-3xl md:text-4xl font-bold">
               Why HOAs and Owners <span className="text-primary">Trust Our Balcony Work</span>
               </h2>
@@ -259,9 +391,9 @@ const BalconyDeckRepair = () => {
         <div className="max-w-6xl mx-auto">
           <ScrollReveal>
             <div className="text-center mb-16">
-              <p className="font-sans text-xs tracking-[0.4em] text-primary uppercase mb-4">Finish Types</p>
+              <p className="font-sans text-xs tracking-[0.4em] text-primary uppercase mb-4">REPAIR SERVICES</p>
 
-              
+
                <h2 className="font-serif text-3xl md:text-4xl font-bold mb-4 text-white">
                Balcony and Deck Work <span className="text-primary">We Take On</span>
               </h2>
@@ -271,38 +403,7 @@ const BalconyDeckRepair = () => {
             </div>
           </ScrollReveal>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {[
-              {
-                title: "SB-326 Repair",
-                desc: "Repair work for condominium and HOA-managed common interest developments.",
-                keywords: "SB-326 balcony repair Thousand Oaks",
-              },
-              {
-                title: "SB-721 Repair",
-                desc: "Repair work for rental properties with three or more units.",
-                keywords: "SB-721 balcony repair Thousand Oaks",
-              },
-              {
-                title: "Structural Rebuilds",
-                desc: "Full balcony and deck rebuilds where structural damage is found.",
-                keywords: "balcony deck structural rebuild Thousand Oaks",
-              },
-              {
-                title: "Waterproofing & Flashing",
-                desc: "Sealing and flashing to protect against future water intrusion.",
-                keywords: "balcony waterproofing flashing Thousand Oaks",
-              },
-              {
-                title: "Railing Replacement",
-                desc: "Repair and replacement of damaged or non-compliant railings.",
-                keywords: "balcony railing replacement Thousand Oaks",
-              },
-              {
-                title: "Dry Rot Repair",
-                desc: "Removal and repair of dry-rotted framing and decking.",
-                keywords: "balcony dry rot repair Thousand Oaks",
-              },
-].map((finish) => (
+            {finishes.map((finish) => (
               <ScrollReveal key={finish.title}>
                  <div className="bg-white/[0.06] border border-white/10 rounded-2xl p-6 h-full hover:bg-white/[0.1] hover:border-primary/30 transition-all duration-300">
                    <h3 className="font-serif text-lg font-bold mb-3 text-white">{finish.title}</h3>
@@ -329,17 +430,7 @@ const BalconyDeckRepair = () => {
             </div>
           </ScrollReveal>
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-            {[
-              "Thousand Oaks", 
-              "Westlake Village", 
-              "Simi Valley", 
-              "Moorpark ",
-              "Oak Park", 
-              "Agoura Hills ",
-              "Newbury Park", 
-              "Camarillo ",
-              "Ventura County",
-            ].map((area) => (
+            {areasServed.map((area) => (
               <div key={area} className="flex items-center gap-2 bg-background border border-border rounded-lg p-3">
                 <MapPin className="w-3.5 h-3.5 text-primary flex-shrink-0" />
                 <span className="font-sans text-xs text-foreground/80">{area}</span>

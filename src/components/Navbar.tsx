@@ -42,15 +42,16 @@ const megaMenuAreas = {
 
 const navLinks = [
   { label: "Home", href: "/" },
-  {
-    label: "About",
-    href: "/about/legacy",
-    children: [
-      { label: "Our Legacy & Craftsmanship", href: "/about/legacy" },
-      { label: "The Team Behind Perfection", href: "/about/team" },
-      { label: "Voices of Excellence", href: "/about/testimonials" },
-    ],
-  },
+  // {
+  //   label: "About",
+  //   href: "/about/legacy",
+  //   children: [
+  //     { label: "Our Legacy & Craftsmanship", href: "/about/legacy" },
+  //     { label: "The Team Behind Perfection", href: "/about/team" },
+  //     { label: "Voices of Excellence", href: "/about/testimonials" },
+  //   ],
+  // },
+  { label: "About", href: "/about" },
   {
     label: "Services",
     href: "#",
@@ -117,6 +118,36 @@ const Navbar = () => {
   const navTextColor = isHome && !scrolled ? "text-white" : "text-foreground";
   const navHoverColor = "hover:text-primary";
 
+  // --- Active-state helpers -------------------------------------------------
+  // Checks whether a given href matches (or is a parent of) the current path.
+  const isPathActive = (href: string) => {
+    if (!href || href === "#") return false;
+    return (
+      location.pathname === href ||
+      location.pathname.startsWith(href.replace(/\/$/, "") + "/")
+    );
+  };
+
+  // Checks whether a top-level nav link should be highlighted — either
+  // because its own href matches, or because one of its dropdown /
+  // mega-menu children matches the current path.
+  const isLinkActive = (link: (typeof navLinks)[number]) => {
+    if (link.href !== "#" && isPathActive(link.href)) return true;
+
+    if ("children" in link && link.children) {
+      return link.children.some((child) => isPathActive(child.href));
+    }
+
+    if ("megaMenu" in link && link.megaMenu) {
+      return Object.values(megaMenuAreas).some((group) =>
+        group.items.some((area) => isPathActive(area.href))
+      );
+    }
+
+    return false;
+  };
+  // ---------------------------------------------------------------------------
+
   return (
     <motion.header
       initial={{ y: -100 }}
@@ -138,117 +169,138 @@ const Navbar = () => {
 
         {/* Desktop Nav */}
         <nav className="hidden lg:flex items-center gap-1">
-          {navLinks.map((link) => (
-            <div
-              key={link.label}
-              className={link.megaMenu ? "static" : "relative"}
-              onMouseEnter={() => (link.children || link.megaMenu) && setActiveDropdown(link.label)}
-              onMouseLeave={() => setActiveDropdown(null)}
-            >
-              {link.href === "#" ? (
-                <button
-                  className={`flex items-center gap-1 px-4 py-2 text-sm font-sans font-semibold tracking-wide transition-colors duration-300 ${
-                    scrolled || !isHome ? "text-foreground/80" : "text-foreground/80"
-                  } ${navHoverColor}`}
-                >
-                  {link.label}
-                  {(link.children || link.megaMenu) && <ChevronDown className="w-3 h-3" />}
-                </button>
-              ) : (
-                <Link
-                  to={link.href}
-                  className={`flex items-center gap-1 px-4 py-2 text-sm font-sans font-semibold tracking-wide transition-colors duration-300 ${
-                    location.pathname === link.href || location.pathname.startsWith(link.href.replace(/\/$/, '') + '/')
-                      ? "text-primary"
-                      : scrolled || !isHome ? "text-foreground/80" : "text-foreground/80"
-                  } ${navHoverColor}`}
-                >
-                  {link.label}
-                  {(link.children || link.megaMenu) && <ChevronDown className="w-3 h-3" />}
-                </Link>
-              )}
-
-              {/* Standard Dropdown */}
-              <AnimatePresence>
-                {link.children && !link.megaMenu && activeDropdown === link.label && (
-                  <motion.div
-                    initial={{ opacity: 0, y: 8 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: 8 }}
-                    transition={{ duration: 0.2 }}
-                    className="absolute top-full left-0 pt-2 min-w-[280px]"
+          {navLinks.map((link) => {
+            const active = isLinkActive(link);
+            return (
+              <div
+                key={link.label}
+                className={link.megaMenu ? "static" : "relative"}
+                onMouseEnter={() => (link.children || link.megaMenu) && setActiveDropdown(link.label)}
+                onMouseLeave={() => setActiveDropdown(null)}
+              >
+                {link.href === "#" ? (
+                  <button
+                    className={`flex items-center gap-1 px-4 py-2 text-sm font-sans font-semibold tracking-wide transition-colors duration-300 ${
+                      active ? "text-primary" : "text-foreground/80"
+                    } ${navHoverColor}`}
                   >
-                    <div className="bg-background rounded-xl p-2 shadow-xl border border-border">
-                      {link.children.map((child) => (
-                        <Link
-                          key={child.label}
-                          to={child.href}
-                          className="block px-4 py-3 text-sm font-sans text-foreground/70 hover:text-primary hover:bg-primary/5 rounded-lg transition-all duration-200"
-                        >
-                          {child.label}
-                        </Link>
-                      ))}
-                    </div>
-                  </motion.div>
+                    {link.label}
+                    {(link.children || link.megaMenu) && <ChevronDown className="w-3 h-3" />}
+                  </button>
+                ) : (
+                  <Link
+                    to={link.href}
+                    className={`flex items-center gap-1 px-4 py-2 text-sm font-sans font-semibold tracking-wide transition-colors duration-300 ${
+                      active ? "text-primary" : "text-foreground/80"
+                    } ${navHoverColor}`}
+                  >
+                    {link.label}
+                    {(link.children || link.megaMenu) && <ChevronDown className="w-3 h-3" />}
+                  </Link>
                 )}
-              </AnimatePresence>
 
-              {/* Mega Menu */}
-              <AnimatePresence>
-                {link.megaMenu && activeDropdown === link.label && (
-                  <motion.div
-                    initial={{ opacity: 0, y: 8 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: 8 }}
-                    transition={{ duration: 0.25 }}
-                    className="fixed left-0 right-0 pt-2"
-                    style={{ top: scrolled ? '56px' : '72px' }}
-                  >
-                    <div className="max-w-5xl mx-auto px-6">
-                      <div className="bg-background rounded-2xl p-6 shadow-2xl border border-border">
-                        <div className="grid grid-cols-3 gap-8">
-                          {Object.entries(megaMenuAreas).map(([key, group]) => (
-                            <div key={key}>
-                              <p className="font-sans text-[10px] tracking-[0.3em] text-primary uppercase mb-4 font-bold">
-                                {group.label}
-                              </p>
-                              <div className="space-y-1">
-                                {group.items.map((area) => (
-                                  <Link
-                                    key={area.zip}
-                                    to={area.href}
-                                    className="flex items-center justify-between px-3 py-2.5 rounded-lg text-sm font-sans text-foreground/70 hover:text-primary hover:bg-primary/5 transition-all duration-200 group/item"
-                                  >
-                                    <span className="flex items-center gap-2.5">
-                                      <MapPin className="w-3.5 h-3.5 text-primary/50 group-hover/item:text-primary transition-colors" />
-                                      {area.label}
-                                    </span>
-                                    <span className="text-xs text-muted-foreground font-mono">{area.zip}</span>
-                                  </Link>
-                                ))}
+                {/* Standard Dropdown */}
+                <AnimatePresence>
+                  {link.children && !link.megaMenu && activeDropdown === link.label && (
+                    <motion.div
+                      initial={{ opacity: 0, y: 8 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: 8 }}
+                      transition={{ duration: 0.2 }}
+                      className="absolute top-full left-0 pt-2 min-w-[280px]"
+                    >
+                      <div className="bg-background rounded-xl p-2 shadow-xl border border-border">
+                        {link.children.map((child) => {
+                          const childActive = isPathActive(child.href);
+                          return (
+                            <Link
+                              key={child.label}
+                              to={child.href}
+                              className={`block px-4 py-3 text-sm font-sans rounded-lg transition-all duration-200 hover:text-primary hover:bg-primary/5 ${
+                                childActive
+                                  ? "text-primary font-semibold bg-primary/5"
+                                  : "text-foreground/70"
+                              }`}
+                            >
+                              {child.label}
+                            </Link>
+                          );
+                        })}
+                      </div>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+
+                {/* Mega Menu */}
+                <AnimatePresence>
+                  {link.megaMenu && activeDropdown === link.label && (
+                    <motion.div
+                      initial={{ opacity: 0, y: 8 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: 8 }}
+                      transition={{ duration: 0.25 }}
+                      className="fixed left-0 right-0 pt-2"
+                      style={{ top: scrolled ? '56px' : '72px' }}
+                    >
+                      <div className="max-w-5xl mx-auto px-6">
+                        <div className="bg-background rounded-2xl p-6 shadow-2xl border border-border">
+                          <div className="grid grid-cols-3 gap-8">
+                            {Object.entries(megaMenuAreas).map(([key, group]) => (
+                              <div key={key}>
+                                <p className="font-sans text-[10px] tracking-[0.3em] text-primary uppercase mb-4 font-bold">
+                                  {group.label}
+                                </p>
+                                <div className="space-y-1">
+                                  {group.items.map((area) => {
+                                    const areaActive = isPathActive(area.href);
+                                    return (
+                                      <Link
+                                        key={area.zip}
+                                        to={area.href}
+                                        className={`flex items-center justify-between px-3 py-2.5 rounded-lg text-sm font-sans transition-all duration-200 group/item hover:text-primary hover:bg-primary/5 ${
+                                          areaActive
+                                            ? "text-primary font-semibold bg-primary/5"
+                                            : "text-foreground/70"
+                                        }`}
+                                      >
+                                        <span className="flex items-center gap-2.5">
+                                          <MapPin
+                                            className={`w-3.5 h-3.5 transition-colors ${
+                                              areaActive
+                                                ? "text-primary"
+                                                : "text-primary/50 group-hover/item:text-primary"
+                                            }`}
+                                          />
+                                          {area.label}
+                                        </span>
+                                        <span className="text-xs text-muted-foreground font-mono">{area.zip}</span>
+                                      </Link>
+                                    );
+                                  })}
+                                </div>
                               </div>
-                            </div>
-                          ))}
-                        </div>
-                        <div className="mt-6 pt-4 border-t border-border flex items-center justify-between">
-                          <p className="font-sans text-xs text-muted-foreground">
-                            Serving the Conejo Valley, San Fernando Valley & Malibu Coast
-                          </p>
-                          <Link
-                            to="/areas"
-                            className="inline-flex items-center gap-1.5 text-xs font-sans font-bold text-primary hover:text-primary/80 transition-colors group/all"
-                          >
-                            View All Areas
-                            <ArrowRight className="w-3 h-3 group-hover/all:translate-x-0.5 transition-transform" />
-                          </Link>
+                            ))}
+                          </div>
+                          <div className="mt-6 pt-4 border-t border-border flex items-center justify-between">
+                            <p className="font-sans text-xs text-muted-foreground">
+                              Serving the Conejo Valley, San Fernando Valley & Malibu Coast
+                            </p>
+                            <Link
+                              to="/areas"
+                              className="inline-flex items-center gap-1.5 text-xs font-sans font-bold text-primary hover:text-primary/80 transition-colors group/all"
+                            >
+                              View All Areas
+                              <ArrowRight className="w-3 h-3 group-hover/all:translate-x-0.5 transition-transform" />
+                            </Link>
+                          </div>
                         </div>
                       </div>
-                    </div>
-                  </motion.div>
-                )}
-              </AnimatePresence>
-            </div>
-          ))}
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </div>
+            );
+          })}
         </nav>
 
         {/* Desktop CTA */}
@@ -311,48 +363,67 @@ const Navbar = () => {
               style={{ maxHeight: scrolled ? "calc(100vh - 72px)" : "calc(100vh - 88px)" }}
             >
               <div className="flex-1 min-h-0 overflow-y-auto overscroll-contain px-6 py-4 space-y-1">
-                {navLinks.map((link) => (
-                  <div key={link.label}>
-                    <Link
-                      to={link.href}
-                      className="block py-3 text-lg font-serif text-foreground hover:text-primary transition-colors"
-                    >
-                      {link.label}
-                    </Link>
-                    {link.children && (
-                      <div className="pl-4 space-y-1">
-                        {link.children.map((child) => (
-                          <Link
-                            key={child.label}
-                            to={child.href}
-                            className="block py-2 text-sm font-sans text-muted-foreground hover:text-primary transition-colors"
-                          >
-                            {child.label}
-                          </Link>
-                        ))}
-                      </div>
-                    )}
-                    {link.megaMenu && (
-                      <div className="pl-4 space-y-3 pb-2">
-                        {Object.entries(megaMenuAreas).map(([key, group]) => (
-                          <div key={key}>
-                            <p className="text-[10px] tracking-[0.2em] text-primary uppercase font-bold font-sans py-1">{group.label}</p>
-                            {group.items.map((area) => (
+                {navLinks.map((link) => {
+                  const active = isLinkActive(link);
+                  return (
+                    <div key={link.label}>
+                      <Link
+                        to={link.href}
+                        className={`block py-3 text-lg font-serif transition-colors hover:text-primary ${
+                          active ? "text-primary" : "text-foreground"
+                        }`}
+                      >
+                        {link.label}
+                      </Link>
+                      {link.children && (
+                        <div className="pl-4 space-y-1">
+                          {link.children.map((child) => {
+                            const childActive = isPathActive(child.href);
+                            return (
                               <Link
-                                key={area.zip}
-                                to={area.href}
-                                className="flex items-center justify-between py-2 text-sm font-sans text-muted-foreground hover:text-primary transition-colors"
+                                key={child.label}
+                                to={child.href}
+                                className={`block py-2 text-sm font-sans transition-colors hover:text-primary ${
+                                  childActive
+                                    ? "text-primary font-semibold"
+                                    : "text-muted-foreground"
+                                }`}
                               >
-                                <span>{area.label}</span>
-                                <span className="text-xs font-mono text-muted-foreground/60">{area.zip}</span>
+                                {child.label}
                               </Link>
-                            ))}
-                          </div>
-                        ))}
-                      </div>
-                    )}
-                  </div>
-                ))}
+                            );
+                          })}
+                        </div>
+                      )}
+                      {link.megaMenu && (
+                        <div className="pl-4 space-y-3 pb-2">
+                          {Object.entries(megaMenuAreas).map(([key, group]) => (
+                            <div key={key}>
+                              <p className="text-[10px] tracking-[0.2em] text-primary uppercase font-bold font-sans py-1">{group.label}</p>
+                              {group.items.map((area) => {
+                                const areaActive = isPathActive(area.href);
+                                return (
+                                  <Link
+                                    key={area.zip}
+                                    to={area.href}
+                                    className={`flex items-center justify-between py-2 text-sm font-sans transition-colors hover:text-primary ${
+                                      areaActive
+                                        ? "text-primary font-semibold"
+                                        : "text-muted-foreground"
+                                    }`}
+                                  >
+                                    <span>{area.label}</span>
+                                    <span className="text-xs font-mono text-muted-foreground/60">{area.zip}</span>
+                                  </Link>
+                                );
+                              })}
+                            </div>
+                          ))}
+                        </div>
+                      )}
+                    </div>
+                  );
+                })}
               </div>
 
               {/* CTA — always reserved/visible space, never pushed off-screen */}

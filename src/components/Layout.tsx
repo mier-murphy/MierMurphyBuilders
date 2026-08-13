@@ -2,7 +2,7 @@ import { ReactNode, useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import Navbar from "./Navbar";
 import Footer from "./Footer";
-import ClientsBar from "./ClientsBar";
+// import ClientsBar from "./ClientsBar";
 import ScrollToTopButton from "./Scrolltotopbutton";
 
 interface LayoutProps {
@@ -75,7 +75,7 @@ const Layout = ({ children }: LayoutProps) => {
     <div className="min-h-screen bg-background">
       <Navbar />
       <main>{children}</main>
-      {!isHome && <ClientsBar />}
+      {/* {!isHome && <ClientsBar />} */}
       <Footer />
       <ScrollToTopButton />
     </div>

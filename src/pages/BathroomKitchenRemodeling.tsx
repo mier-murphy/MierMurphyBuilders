@@ -1,12 +1,38 @@
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
+import { Helmet } from "react-helmet-async";
 import { ArrowRight, CheckCircle, Paintbrush, Award, Clock, Shield, Star, MapPin } from "lucide-react";
 import ScrollReveal from "@/components/ScrollReveal";
 import ProcessTimeline from "@/components/ProcessTimeline";
 import LeadCaptureForm from "@/components/LeadCaptureForm";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
-import projectInterior from "@/assets/interior-m.webp";
-import iicrcBadge from "@/assets/interior-m.webp";
+import projectKC from "@/assets/btkc/kc-hero.webp";
+import projectKcmain from "@/assets/btkc/kc-main-1.webp";
+// TODO: replace with the actual IICRC certification badge asset — this currently
+// points at the same interior photo as `projectInterior`, so the "badge" renders a room photo.
+import iicrcBadge from "@/assets/iicrc-badge.avif";
+
+const SITE_URL = "https://mierandmurphybuilders.com";
+const PAGE_URL = `${SITE_URL}/services/bathroom-kitchen-remodeling`;
+const OG_IMAGE = `${SITE_URL}/service-bathroom-kitchen-remodeling.jpg`;
+
+const PAGE_TITLE = "Bathroom & Kitchen Remodeling in Thousand Oaks, CA | Mier & Murphy Builders";
+const PAGE_DESCRIPTION =
+  "Full bathroom and kitchen remodels in Thousand Oaks, Westlake Village & the Conejo Valley. Permits handled, honest timelines, family-owned crew with 20 years' experience. CA Lic. #1077044. Free estimates — call (805) 998-9082.";
+const PAGE_KEYWORDS =
+  "bathroom remodel Thousand Oaks, kitchen remodel Westlake Village, walk-in shower conversion Ventura County, cabinet and countertop replacement Thousand Oaks, kitchen renovation Conejo Valley, licensed remodeling contractor 91360, bathroom remodel Simi Valley";
+
+const areasServed = [
+  "Thousand Oaks",
+  "Westlake Village",
+  "Simi Valley",
+  "Moorpark",
+  "Oak Park",
+  "Agoura Hills",
+  "Newbury Park",
+  "Camarillo",
+  "Ventura County",
+];
 
 const faqs = [
     {
@@ -47,40 +73,121 @@ const process = [
   { step: "05", title: "Final Walkthrough", desc: "We go through the finished space together before we call the job done." },
 ];
 
+const finishes = [
+  { title: "Full Bathroom Remodel", desc: "Complete tear-out and rebuild, from tile and fixtures to plumbing and layout." },
+  { title: "Full Kitchen Remodel", desc: "Cabinetry, countertops, flooring, lighting, and layout changes handled as one coordinated project." },
+  { title: "Walk-In Shower Conversion", desc: "Convert a dated tub or shower into a modern, accessible walk-in shower." },
+  { title: "Cabinet & Countertop Replacement", desc: "Update the look and function of your space without a full gut remodel." },
+  { title: "Tile & Flooring", desc: "New tile, flooring, and finish work matched to the rest of your home." },
+  { title: "Aging-in-Place Updates", desc: "Grab bars, curbless showers, and accessibility-focused updates done cleanly." },
+];
 
-const ServicServiceInterioreInterior = () => {
-  const jsonLd = {
-    "@context": "https://schema.org",
-    "@type": "Service",
-    name: "Interior Plastering & Drywall Services – Thousand Oaks & Westlake Village",
-    provider: {
-      "@type": "LocalBusiness",
-      name: "Mier & Murphy Builders",
-      areaServed: ["Thousand Oaks", "Westlake Village", "Ventura County"],
+// JSON-LD: Service (name/description now match the page's actual subject matter)
+const serviceSchema = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  "@id": `${PAGE_URL}/#service`,
+  name: "Bathroom & Kitchen Remodeling",
+  serviceType: "Bathroom and Kitchen Remodeling",
+  description: PAGE_DESCRIPTION,
+  url: PAGE_URL,
+  provider: {
+    "@type": "GeneralContractor",
+    "@id": `${SITE_URL}/#organization`,
+    name: "Mier & Murphy Builders",
+    telephone: "+18059989082",
+    url: SITE_URL,
+    address: {
+      "@type": "PostalAddress",
+      addressLocality: "Thousand Oaks",
+      addressRegion: "CA",
+      postalCode: "91360",
+      addressCountry: "US",
     },
-    description:
-      "Premium interior plaster, drywall installation, and decorative finishes for luxury homes in Thousand Oaks, Westlake Village, and Ventura County.",
-  };
-
-  const faqJsonLd = {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    mainEntity: faqs.map((f) => ({
-      "@type": "Question",
-      name: f.q,
-      acceptedAnswer: { "@type": "Answer", text: f.a },
+  },
+  areaServed: areasServed.map((name) => ({ "@type": "City", name })),
+  hasOfferCatalog: {
+    "@type": "OfferCatalog",
+    name: "Bathroom & Kitchen Remodeling Services",
+    itemListElement: finishes.map((f) => ({
+      "@type": "Offer",
+      itemOffered: {
+        "@type": "Service",
+        name: f.title,
+        description: f.desc,
+      },
     })),
-  };
+  },
+};
 
+// JSON-LD: FAQPage
+const faqJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: faqs.map((f) => ({
+    "@type": "Question",
+    name: f.q,
+    acceptedAnswer: { "@type": "Answer", text: f.a },
+  })),
+};
+
+// JSON-LD: BreadcrumbList
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    { "@type": "ListItem", position: 1, name: "Home", item: SITE_URL },
+    { "@type": "ListItem", position: 2, name: "Services", item: `${SITE_URL}/services` },
+    { "@type": "ListItem", position: 3, name: "Bathroom & Kitchen Remodeling", item: PAGE_URL },
+  ],
+};
+
+const ServiceBathroomKitchenRemodeling = () => {
   return (
     <>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }} />
+      <Helmet>
+        {/* Primary meta tags */}
+        <title>{PAGE_TITLE}</title>
+        <meta name="title" content={PAGE_TITLE} />
+        <meta name="description" content={PAGE_DESCRIPTION} />
+        <meta name="keywords" content={PAGE_KEYWORDS} />
+        <meta name="author" content="Mier & Murphy Builders" />
+        <meta name="robots" content="index, follow" />
+        <link rel="canonical" href={PAGE_URL} />
+
+        {/* Geo tags */}
+        <meta name="geo.placename" content="Thousand Oaks" />
+        <meta name="geo.region" content="US-CA" />
+        <meta name="geo.position" content="34.1706;-118.8376" />
+        <meta name="ICBM" content="34.1706, -118.8376" />
+
+        {/* Open Graph */}
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content={PAGE_URL} />
+        <meta property="og:title" content={PAGE_TITLE} />
+        <meta property="og:description" content={PAGE_DESCRIPTION} />
+        <meta property="og:image" content={OG_IMAGE} />
+        <meta property="og:image:alt" content="Bathroom and kitchen remodeling project in Thousand Oaks, CA" />
+        <meta property="og:site_name" content="Mier & Murphy Builders" />
+        <meta property="og:locale" content="en_US" />
+
+        {/* Twitter Card */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:url" content={PAGE_URL} />
+        <meta name="twitter:title" content={PAGE_TITLE} />
+        <meta name="twitter:description" content={PAGE_DESCRIPTION} />
+        <meta name="twitter:image" content={OG_IMAGE} />
+
+        {/* Structured data */}
+        <script type="application/ld+json">{JSON.stringify(serviceSchema)}</script>
+        <script type="application/ld+json">{JSON.stringify(faqJsonLd)}</script>
+        <script type="application/ld+json">{JSON.stringify(breadcrumbSchema)}</script>
+      </Helmet>
 
       {/* HERO */}
       <section className="relative min-h-[85vh] flex items-center overflow-hidden">
         <div className="absolute inset-0">
-          <img src={projectInterior} alt="Luxury interior plaster finish in a Thousand Oaks estate" className="w-full h-full object-cover" />
+          <img src={projectKC} alt="Luxury interior plaster finish in a Thousand Oaks estate" className="w-full h-full object-cover" />
           <div className="absolute inset-0 bg-gradient-to-r from-[hsl(220,20%,12%)]/95 via-[hsl(220,20%,12%)]/80 to-[hsl(220,20%,12%)]/60" />
         </div>
         <div className="relative z-10 max-w-[90rem] mx-auto px-6 pt-40 pb-20 w-full grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
@@ -90,7 +197,7 @@ const ServicServiceInterioreInterior = () => {
               <span className="font-sans text-xs font-semibold text-primary tracking-wide">FAMILY-OWNED REMODELING</span>
             </div>
             <h1 className="font-serif text-4xl md:text-5xl lg:text-[3.5rem] font-bold mb-6 leading-[1.15] text-white">
-            Expert <span className="text-primary">Bathroom and Kitchen Remodeling</span>in Thousand Oaks
+            Expert <span className="text-primary">Bathroom and Kitchen Remodeling</span> in Thousand Oaks
             </h1>
             <p className="font-sans text-[15px] text-white/75 leading-relaxed max-w-lg">
             Full bathroom and kitchen remodels for homeowners across Thousand Oaks, Westlake Village, and Simi Valley, with clear timelines, 
@@ -118,6 +225,10 @@ const ServicServiceInterioreInterior = () => {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
             <ScrollReveal direction="left">
               <div>
+              <div className="inline-flex items-center gap-2 bg-primary/15  px-4 py-1.5 mb-6">
+              
+              <span className="font-sans text-xs font-semibold text-primary tracking-[0.4em]">BUILT FOR YOUR HOME</span>
+            </div>
                 <h2 className="font-serif text-3xl md:text-4xl font-bold mb-6">
                 Remodels Built Around <span className="text-primary">Your Home and Your Budget</span>
                 </h2>
@@ -165,7 +276,7 @@ const ServicServiceInterioreInterior = () => {
             <ScrollReveal direction="right">
               <div className="luxury-card overflow-hidden">
                 <img
-                  src={projectInterior}
+                  src={projectKcmain}
                   alt="Premium Venetian plaster application in Westlake Village home"
                   className="w-full h-80 lg:h-[500px] object-cover"
                   loading="lazy"
@@ -193,8 +304,8 @@ const ServicServiceInterioreInterior = () => {
       <section className="section-padding" style={{ background: "hsl(220, 20%, 15%)" }}>
         <ProcessTimeline
           steps={process}
-          subheading="How Your Remodel"
-          heading={`Our \u00A0`}
+          subheading=" OUR PROCESS"
+          heading={` How Your Remode \u00A0`}
           headingHighlight="Comes Together, Step by Step"
           description="No surprises and no guessing. Every remodel follows the same clear five-step process, from your first free estimate to the final walkthrough together."
           variant="dark"
@@ -206,7 +317,7 @@ const ServicServiceInterioreInterior = () => {
         <div className="max-w-7xl mx-auto">
           <ScrollReveal>
             <div className="text-center mb-16">
-              <p className="font-sans text-xs tracking-[0.4em] text-primary uppercase mb-4">Why Choose Us</p>
+              <p className="font-sans text-xs tracking-[0.4em] text-primary uppercase mb-4">WHY HOMEOWNERS CHOOSE US</p>
               <h2 className="font-serif text-3xl md:text-4xl font-bold">
               Why Thousand Oaks Homeowners <span className="text-primary">Trust Our Remodels</span>
               </h2>
@@ -241,12 +352,7 @@ const ServicServiceInterioreInterior = () => {
         <div className="max-w-6xl mx-auto">
           <ScrollReveal>
             <div className="text-center mb-16">
-              <p className="font-sans text-xs tracking-[0.4em] text-primary uppercase mb-4">Finish Types</p>
-
-
-
-
-              
+              <p className="font-sans text-xs tracking-[0.4em] text-primary uppercase mb-4">REMODEL OPTIONS</p>
                <h2 className="font-serif text-3xl md:text-4xl font-bold mb-4 text-white">
                Remodeling Projects We <span className="text-primary">Take On Every Day</span>
               </h2>
@@ -256,14 +362,7 @@ const ServicServiceInterioreInterior = () => {
             </div>
           </ScrollReveal>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {[
-              { title: "Full Bathroom Remodel ", desc: "Complete tear-out and rebuild, from tile and fixtures to plumbing and layout.", keywords: "Full Bathroom Remodel" },
-              { title: "Full Kitchen Remodel", desc: "Cabinetry, countertops, flooring, lighting, and layout changes handled as one coordinated project.", keywords: "level 5 drywall finish westlake village" },
-              { title: "Walk-In Shower Conversion", desc: "Convert a dated tub or shower into a modern, accessible walk-in shower.", keywords: "skip trowel texture ventura county" },
-              { title: "Cabinet & Countertop Replacement", desc: "Update the look and function of your space without a full gut remodel.", keywords: "knockdown texture thousand oaks" },
-              { title: "Tile & Flooring", desc: "New tile, flooring, and finish work matched to the rest of your home.", keywords: "sand float plaster westlake village" },
-              { title: "Aging-in-Place Updates", desc: "Grab bars, curbless showers, and accessibility-focused updates done cleanly.", keywords: "crown molding installation thousand oaks" },
-            ].map((finish) => (
+            {finishes.map((finish) => (
               <ScrollReveal key={finish.title}>
                  <div className="bg-white/[0.06] border border-white/10 rounded-2xl p-6 h-full hover:bg-white/[0.1] hover:border-primary/30 transition-all duration-300">
                    <h3 className="font-serif text-lg font-bold mb-3 text-white">{finish.title}</h3>
@@ -290,17 +389,7 @@ const ServicServiceInterioreInterior = () => {
             </div>
           </ScrollReveal>
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-            {[
-              "Thousand Oaks",
-              "Westlake Village", 
-              "Simi Valley ",
-              "Moorpark", 
-              "Oak Park ",
-              "Agoura Hills ",
-              "Newbury Park ",
-              "Camarillo ",
-              "Ventura County",
-            ].map((area) => (
+            {areasServed.map((area) => (
               <div key={area} className="flex items-center gap-2 bg-background border border-border rounded-lg p-3">
                 <MapPin className="w-3.5 h-3.5 text-primary flex-shrink-0" />
                 <span className="font-sans text-xs text-foreground/80">{area}</span>
@@ -349,7 +438,7 @@ const ServicServiceInterioreInterior = () => {
               Bathroom & Kitchen Remodeling <span className="text-primary">FAQ</span>
               </h2>
               <p className="font-sans text-sm text-muted-foreground max-w-xl mx-auto leading-relaxed mt-4">
-                Answers to the most common questions from Thousand Oaks and Westlake Village homeowners about our interior plaster and drywall services.
+                Answers to the most common questions from Thousand Oaks and Westlake Village homeowners about our bathroom and kitchen remodeling services.
               </p>
             </div>
           </ScrollReveal>
@@ -371,4 +460,4 @@ const ServicServiceInterioreInterior = () => {
   );
 };
 
-export default ServicServiceInterioreInterior;
+export default ServiceBathroomKitchenRemodeling;

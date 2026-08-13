@@ -6,7 +6,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { HelmetProvider } from "react-helmet-async";
 import Layout from "@/components/Layout";
 import Index from "./pages/Index";
-import AboutLegacy from "./pages/AboutLegacy";
+import About from "./pages/About";
 import AboutTeam from "./pages/AboutTeam";
 import AboutTestimonials from "./pages/AboutTestimonials";
 import  BathroomKitchenRemodeling  from "./pages/BathroomKitchenRemodeling";
@@ -77,6 +77,7 @@ const App = () => (
             <Route path="/projects/condo-retreat" element={<CondoRetreat />} />
             <Route path="/projects/commercial-cell-store" element={<CommercialCellStore />} />
             <Route path="/projects/ranch" element={<Ranch />} />
+            <Route path="/about" element={<About />} />
             <Route path="/blog" element={<Blog />} />
             <Route path="/blog/:slug" element={<BlogPost />} />
             <Route path="/contact" element={<Contact />} />

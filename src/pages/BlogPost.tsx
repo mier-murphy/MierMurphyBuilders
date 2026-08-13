@@ -314,7 +314,7 @@ const BlogPost = () => {
         )}
 
         {/* COMMENTS (preview only — not yet connected to a backend) */}
-        <ScrollReveal>
+        {/* <ScrollReveal>
           <div className="mt-16 pt-10 border-t border-border">
             <h2 className="font-serif text-xl font-bold mb-4">Comments</h2>
             <textarea
@@ -336,7 +336,7 @@ const BlogPost = () => {
               </button>
             </div>
           </div>
-        </ScrollReveal>
+        </ScrollReveal> */}
       </div>
     </div>
   );
