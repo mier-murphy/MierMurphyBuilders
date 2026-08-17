@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
-import { ArrowRight, Shield, Award, Clock, Star, Droplets, Home, Paintbrush, Bug, MapPin, Phone, CheckCircle, HelpCircle } from "lucide-react";
+import { Helmet } from "react-helmet-async";
+import { ArrowRight, Shield, Award, Clock, Star, Droplets, Home, Paintbrush, Bug, MapPin, Phone, Building2, CheckCircle, HelpCircle } from "lucide-react";
 import { useState } from "react";
 import LeadCaptureForm from "@/components/LeadCaptureForm";
 import ScrollReveal from "@/components/ScrollReveal";
@@ -20,6 +21,28 @@ import projectCtenent from "@/assets/ctenant/ctenent-hero.webp";
 import whyChoose from "@/assets/home-why-choose.webp";
 import iicrcBadge from "@/assets/iicrc-badge.avif";
 import OurStorySection from "@/components/OurStorySection";
+
+const SITE_URL = "https://mierandmurphybuilders.com";
+const OG_IMAGE = `${SITE_URL}/hero-craftsmanship.jpg`;
+
+const PAGE_TITLE = "Thousand Oaks General Contractor | Remodeling, Restoration & Repair | Mier & Murphy Builders";
+const PAGE_DESCRIPTION =
+  "Family-owned general contractor in Thousand Oaks, CA with 20 years' experience. Bathroom & kitchen remodeling, IICRC certified water damage & mold remediation, drywall/stucco repair, SB-326/SB-721 balcony repair, and commercial build-outs. CA Lic. #1077044 — call (805) 998-9082.";
+const PAGE_KEYWORDS =
+  "general contractor Thousand Oaks, remodeling contractor Westlake Village, water damage restoration Conejo Valley, mold remediation Thousand Oaks, stucco repair Ventura County, balcony repair SB-326 SB-721, licensed contractor 91360";
+
+const areasServed = [
+  "Thousand Oaks",
+  "Westlake Village",
+  "Simi Valley",
+  "Moorpark",
+  "Oak Park",
+  "Agoura Hills",
+  "Newbury Park",
+  "Camarillo",
+  "Calabasas",
+  "Ventura County",
+];
 
 const stats = [
   { value: "20+", label: "Years Serving Thousand Oaks", icon: Clock },
@@ -60,7 +83,7 @@ const services = [
   {
     title: "Commercial Tenant Improvement Contractor in Thousand Oaks",
     description: "Build-out and renovation work for retail and office spaces in Thousand Oaks, Westlake Village, and the surrounding Conejo Valley, planned around your lease timeline from day one.",
-    icon: Bug,
+    icon: Building2,
     image: projectCtenent,
     href: "/services/commercial-tenant-improvement",
   },
@@ -158,6 +181,88 @@ const faqs = [
   },
 ];
 
+// JSON-LD: Organization — the canonical definition. Service pages reference
+// this same @id instead of repeating the full address/phone/credential block.
+const organizationSchema = {
+  "@context": "https://schema.org",
+  "@type": "GeneralContractor",
+  "@id": `${SITE_URL}/#organization`,
+  name: "Mier & Murphy Builders",
+  alternateName: "Mier & Murphy Builders Inc.",
+  url: SITE_URL,
+  logo: `${SITE_URL}/logo.png`,
+  image: OG_IMAGE,
+  telephone: "+18059989082",
+  priceRange: "$$",
+  description:
+    "Family-owned, IICRC certified general contractor serving Thousand Oaks and the Conejo Valley. Remodeling, water damage restoration, mold remediation, drywall/stucco repair, balcony compliance repair, and commercial tenant improvement.",
+  address: {
+    "@type": "PostalAddress",
+    addressLocality: "Thousand Oaks",
+    addressRegion: "CA",
+    postalCode: "91360",
+    addressCountry: "US",
+  },
+  geo: {
+    "@type": "GeoCoordinates",
+    latitude: 34.1706,
+    longitude: -118.8376,
+  },
+  areaServed: areasServed.map((name) => ({ "@type": "City", name })),
+  founder: {
+    "@type": "Person",
+    name: "Francisco Mier",
+    jobTitle: "Founder",
+  },
+  foundingDate: "2020",
+  hasCredential: [
+    {
+      "@type": "EducationalOccupationalCredential",
+      credentialCategory: "License",
+      name: "California Contractors State License Board License #1077044",
+    },
+    {
+      "@type": "EducationalOccupationalCredential",
+      credentialCategory: "Certification",
+      name: "IICRC S500 (Water Damage) & S520 (Mold Remediation) Certified Firm",
+    },
+  ],
+  sameAs: [
+    "https://www.yelp.com/biz/mier-and-murphy-builders-thousand-oaks",
+    "https://nextdoor.com/pages/mier-construction-thousand-oaks-ca/",
+    "https://www.bbb.org/us/ca/thousand-oaks/profile/construction/mier-murphy-builders-inc-1236-92082104",
+    "https://www.facebook.com/100066322910414/",
+  ],
+};
+
+// JSON-LD: WebSite
+const websiteSchema = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "@id": `${SITE_URL}/#website`,
+  url: SITE_URL,
+  name: "Mier & Murphy Builders",
+  publisher: { "@id": `${SITE_URL}/#organization` },
+};
+
+// JSON-LD: FAQPage (matches the visible homepage FAQ content)
+const faqJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: faqs.map((f) => ({
+    "@type": "Question",
+    name: f.question,
+    acceptedAnswer: { "@type": "Answer", text: f.answer },
+  })),
+};
+
+// JSON-LD: BreadcrumbList
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [{ "@type": "ListItem", position: 1, name: "Home", item: SITE_URL }],
+};
+
 const AnimatePresenceWrapper = ({ isOpen, children }: { isOpen: boolean; children: React.ReactNode }) => (
   <AnimatePresence>
     {isOpen && (
@@ -179,6 +284,46 @@ const Index = () => {
 
   return (
     <>
+      <Helmet>
+        {/* Primary meta tags */}
+        <title>{PAGE_TITLE}</title>
+        <meta name="title" content={PAGE_TITLE} />
+        <meta name="description" content={PAGE_DESCRIPTION} />
+        <meta name="keywords" content={PAGE_KEYWORDS} />
+        <meta name="author" content="Mier & Murphy Builders" />
+        <meta name="robots" content="index, follow" />
+        <link rel="canonical" href={SITE_URL} />
+
+        {/* Geo tags */}
+        <meta name="geo.placename" content="Thousand Oaks" />
+        <meta name="geo.region" content="US-CA" />
+        <meta name="geo.position" content="34.1706;-118.8376" />
+        <meta name="ICBM" content="34.1706, -118.8376" />
+
+        {/* Open Graph */}
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content={SITE_URL} />
+        <meta property="og:title" content={PAGE_TITLE} />
+        <meta property="og:description" content={PAGE_DESCRIPTION} />
+        <meta property="og:image" content={OG_IMAGE} />
+        <meta property="og:image:alt" content="Luxury home renovation by Mier & Murphy Builders in Thousand Oaks, California" />
+        <meta property="og:site_name" content="Mier & Murphy Builders" />
+        <meta property="og:locale" content="en_US" />
+
+        {/* Twitter Card */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:url" content={SITE_URL} />
+        <meta name="twitter:title" content={PAGE_TITLE} />
+        <meta name="twitter:description" content={PAGE_DESCRIPTION} />
+        <meta name="twitter:image" content={OG_IMAGE} />
+
+        {/* Structured data */}
+        <script type="application/ld+json">{JSON.stringify(organizationSchema)}</script>
+        <script type="application/ld+json">{JSON.stringify(websiteSchema)}</script>
+        <script type="application/ld+json">{JSON.stringify(faqJsonLd)}</script>
+        <script type="application/ld+json">{JSON.stringify(breadcrumbSchema)}</script>
+      </Helmet>
+
       {/* ── HERO ── Dark overlay, bold white text, like JGC */}
       <section className="relative min-h-screen flex items-center overflow-hidden">
         <div className="absolute inset-0">
@@ -368,7 +513,7 @@ const Index = () => {
               <div className="flex-shrink-0 bg-primary/5 p-3 rounded-3xl ">
                 <img
                   src={whyChoose}
-                  alt="IICRC Certified Firm badge"
+                  alt="Mier and Murphy Builders team member reviewing project plans with a Thousand Oaks homeowner"
                   className=" object-contain"
                   loading="lazy"
                 />

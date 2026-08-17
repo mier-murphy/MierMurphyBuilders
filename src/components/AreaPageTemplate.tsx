@@ -162,7 +162,7 @@ const AreaPageTemplate = ({ data }: { data: AreaPageData }) => {
           <Accordion type="single" collapsible className="space-y-3">
             {data.faqs.map((faq, i) => (
               <AccordionItem key={i} value={`faq-${i}`} className="bg-background border border-border rounded-2xl px-6">
-                <AccordionTrigger className="font-serif text-sm font-medium text-left py-5">{faq.question}</AccordionTrigger>
+                <AccordionTrigger className="font-sans text-sm font-medium text-left py-5">{faq.question}</AccordionTrigger>
                 <AccordionContent className="font-sans text-sm text-muted-foreground leading-relaxed pb-5">{faq.answer}</AccordionContent>
               </AccordionItem>
             ))}

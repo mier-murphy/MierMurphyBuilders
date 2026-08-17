@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useLayoutEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, Phone, ChevronDown, MapPin, ArrowRight } from "lucide-react";
@@ -86,25 +86,23 @@ const Navbar = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  // Safety net: if the menu is ever still open/locked after a route change
+  // (e.g. back/forward navigation, or a click that didn't go through
+  // handleMobileNavClick below), clean it up here too.
   useEffect(() => {
     setIsOpen(false);
     setActiveDropdown(null);
-    // IMPORTANT: unlock body scroll synchronously here, not just via the
-    // isOpen-cleanup effect below. If the mobile menu was open, the body is
-    // still `overflow: hidden` at this exact moment (the cleanup for that
-    // only fires on the NEXT render, once `isOpen` has actually flipped to
-    // false). Layout.tsx's own scroll-reset effect also runs on this same
-    // `location` change, and if it runs while the body is still locked,
-    // `window.scrollTo(0, 0)` is a no-op — the page then "unlocks" a beat
-    // later still sitting at the old scroll position, which is what made
-    // navigation land on the footer/mid-page on mobile only (desktop never
-    // locks body scroll, so it never hit this race).
     document.body.style.overflow = "";
   }, [location]);
 
   // Lock body scroll while the mobile menu is open so the page behind
   // it doesn't scroll along with (or instead of) the menu's own list.
-  useEffect(() => {
+  // useLayoutEffect (not useEffect) so the overflow change is applied
+  // synchronously before the browser paints — with a plain useEffect,
+  // mobile Safari/Chrome can paint a frame where overflow is still
+  // "hidden" while our own scroll-reset code is trying to run, and the
+  // browser's own scroll-position bookkeeping wins that race.
+  useLayoutEffect(() => {
     if (isOpen) {
       const original = document.body.style.overflow;
       document.body.style.overflow = "hidden";
@@ -113,6 +111,27 @@ const Navbar = () => {
       };
     }
   }, [isOpen]);
+
+  // IMPORTANT FIX: closing the menu and unlocking scroll used to happen
+  // only in the `location`-effect above, which fires AFTER React Router
+  // has already swapped the page in. But the mobile menu is wrapped in
+  // <AnimatePresence>, so setting isOpen(false) doesn't remove it
+  // instantly — it plays an exit animation. During that animation window,
+  // Layout.tsx's scroll-to-top effect (which fires on the same route
+  // change) can run while body scroll is still effectively locked/
+  // animating, so `window.scrollTo(0, 0)` gets silently overridden by the
+  // browser a frame later. This only ever affected the mobile header menu
+  // — desktop links and the footer never lock body scroll, which is why
+  // they always worked fine.
+  //
+  // Fix: close the menu and unlock scroll SYNCHRONOUSLY in the click
+  // handler itself, before navigation even happens, instead of reacting
+  // to the route change after the fact. This removes the race entirely.
+  const handleMobileNavClick = () => {
+    document.body.style.overflow = "";
+    setIsOpen(false);
+    setActiveDropdown(null);
+  };
 
   const isHome = location.pathname === "/";
   const navTextColor = isHome && !scrolled ? "text-white" : "text-foreground";
@@ -369,6 +388,7 @@ const Navbar = () => {
                     <div key={link.label}>
                       <Link
                         to={link.href}
+                        onClick={handleMobileNavClick}
                         className={`block py-3 text-lg font-serif transition-colors hover:text-primary ${
                           active ? "text-primary" : "text-foreground"
                         }`}
@@ -383,6 +403,7 @@ const Navbar = () => {
                               <Link
                                 key={child.label}
                                 to={child.href}
+                                onClick={handleMobileNavClick}
                                 className={`block py-2 text-sm font-sans transition-colors hover:text-primary ${
                                   childActive
                                     ? "text-primary font-semibold"
@@ -406,6 +427,7 @@ const Navbar = () => {
                                   <Link
                                     key={area.zip}
                                     to={area.href}
+                                    onClick={handleMobileNavClick}
                                     className={`flex items-center justify-between py-2 text-sm font-sans transition-colors hover:text-primary ${
                                       areaActive
                                         ? "text-primary font-semibold"
@@ -430,6 +452,7 @@ const Navbar = () => {
               <div className="flex-shrink-0 px-6 py-4 border-t border-border bg-background">
                 <Link
                   to="/contact"
+                  onClick={handleMobileNavClick}
                   className="block w-full text-center bg-primary text-primary-foreground px-6 py-3 rounded-xl text-sm font-sans font-semibold"
                 >
                   Get Free Quote
