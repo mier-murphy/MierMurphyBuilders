@@ -108,7 +108,7 @@ const data: AreaPageData = {
       postalCode: "93021",
     },
     telephone: "+1-805-998-9082",
-    url: "https://mierandmurphy.com/areas/93021",
+    url: "https://mierandmurphybuilders.com/areas/93021",
   },
 };
 

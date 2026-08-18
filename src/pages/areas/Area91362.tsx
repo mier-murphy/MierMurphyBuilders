@@ -157,7 +157,7 @@ const data: AreaPageData = {
 
     telephone: "+1-805-998-9082",
 
-    url: "https://mierandmurphy.com/areas/91362",
+    url: "https://mierandmurphybuilders.com/areas/91362",
   },
 };
 

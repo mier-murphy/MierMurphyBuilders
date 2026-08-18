@@ -172,9 +172,19 @@ export const routes: RouteRecord[] = [
             async getStaticPaths() {
               const { getAllPosts } = await import("@/lib/sanity");
 
-              const posts = await getAllPosts();
-
-              return posts.map((post) => `/blog/${post.slug}`);
+              try {
+                const posts = await getAllPosts();
+                return posts.map((post) => `/blog/${post.slug}`);
+              } catch (err) {
+                // Don't let a Sanity outage/misconfig at build time take down
+                // the entire site's static generation. Log it so it's visible
+                // in the Vercel build output, but let the build continue.
+                console.error(
+                  "[getStaticPaths] Failed to fetch blog posts from Sanity — skipping blog post pages for this build:",
+                  err
+                );
+                return [];
+              }
             },
           },
 

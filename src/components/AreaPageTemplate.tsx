@@ -1,12 +1,29 @@
 import { motion } from "framer-motion";
-import { MapPin, Phone, ArrowRight, Shield, Clock, Award, Star, CheckCircle } from "lucide-react";
+import {
+  MapPin,
+  Phone,
+  ArrowRight,
+  Shield,
+  CheckCircle,
+} from "lucide-react";
 import { Link } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
 import ScrollReveal from "@/components/ScrollReveal";
 import LeadCaptureForm from "@/components/LeadCaptureForm";
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
 
 export interface AreaPageData {
+  // SEO
+  metaTitle?: string;
+  metaDescription?: string;
+  metaKeywords?: string;
+
+  // Area Information
   zipCode: string;
   cityName: string;
   tagline: string;
@@ -14,55 +31,197 @@ export interface AreaPageData {
   heroDescription: string;
   heroImage: string;
   tier: "primary" | "secondary" | "premium";
-  services: { title: string; description: string; icon: React.ReactNode }[];
+
+  // Services
+  services: {
+    title: string;
+    description: string;
+    icon: React.ReactNode;
+  }[];
+
+  // Local Content
   localContent: {
     heading: string;
     paragraphs: string[];
   };
+
+  // Neighborhoods
   neighborhoodHighlights: string[];
-  faqs: { question: string; answer: string }[];
-  nearbyAreas: { name: string; zip: string; href: string }[];
+
+  // FAQs
+  faqs: {
+    question: string;
+    answer: string;
+  }[];
+
+  // Nearby Areas
+  nearbyAreas: {
+    name: string;
+    zip: string;
+    href: string;
+  }[];
+
+  // Structured Data
   jsonLd: object;
 }
 
 const AreaPageTemplate = ({ data }: { data: AreaPageData }) => {
-  const tierLabel = data.tier === "primary" ? "Core Service Area" : data.tier === "secondary" ? "Extended Service Area" : "Premium Service Zone";
+  const tierLabel =
+    data.tier === "primary"
+      ? "Core Service Area"
+      : data.tier === "secondary"
+        ? "Extended Service Area"
+        : "Premium Service Zone";
+
+  const canonicalUrl = `https://mierandmurphybuilders.com/areas/${data.zipCode}`;
+
+  const defaultMetaTitle = `Luxury Builders & Restoration in ${data.cityName} ${data.zipCode} | Mier & Murphy`;
+
+  const defaultMetaDescription = `Premium interior & exterior painting, stucco, water damage restoration & mold remediation in ${data.cityName} (${data.zipCode}). Licensed, IICRC certified. 20+ years serving luxury homes. Call today.`;
 
   return (
     <>
       <Helmet>
-        <title>{`Luxury Builders & Restoration in ${data.cityName} ${data.zipCode} | Mier & Murphy`}</title>
-        <meta name="description" content={`Premium interior & exterior painting, stucco, water damage restoration & mold remediation in ${data.cityName} (${data.zipCode}). Licensed, IICRC certified. 20+ years serving luxury homes. Call today.`} />
-        <script type="application/ld+json">{JSON.stringify(data.jsonLd)}</script>
+        {/* Primary SEO */}
+        <title>{data.metaTitle || defaultMetaTitle}</title>
+
+        <meta
+          name="description"
+          content={data.metaDescription || defaultMetaDescription}
+        />
+
+        {data.metaKeywords && (
+          <meta name="keywords" content={data.metaKeywords} />
+        )}
+
+        {/* Canonical URL */}
+        <link rel="canonical" href={canonicalUrl} />
+
+        {/* Open Graph */}
+        <meta
+          property="og:title"
+          content={data.metaTitle || defaultMetaTitle}
+        />
+
+        <meta
+          property="og:description"
+          content={data.metaDescription || defaultMetaDescription}
+        />
+
+        <meta property="og:type" content="website" />
+
+        <meta property="og:url" content={canonicalUrl} />
+
+        <meta
+          property="og:image"
+          content={data.heroImage}
+        />
+
+        <meta
+          property="og:image:alt"
+          content={`${data.cityName} remodeling and restoration services`}
+        />
+
+        {/* Twitter / X */}
+        <meta
+          name="twitter:card"
+          content="summary_large_image"
+        />
+
+        <meta
+          name="twitter:title"
+          content={data.metaTitle || defaultMetaTitle}
+        />
+
+        <meta
+          name="twitter:description"
+          content={
+            data.metaDescription || defaultMetaDescription
+          }
+        />
+
+        <meta
+          name="twitter:image"
+          content={data.heroImage}
+        />
+
+        {/* Structured Data */}
+        <script type="application/ld+json">
+          {JSON.stringify(data.jsonLd)}
+        </script>
       </Helmet>
 
       {/* Hero */}
       <section className="relative min-h-[85vh] flex items-center overflow-hidden">
         <div className="absolute inset-0">
-          <img src={data.heroImage} alt={`${data.cityName} painting and restoration services`} className="w-full h-full object-cover" loading="eager" />
+          <img
+            src={data.heroImage}
+            alt={`${data.cityName} painting and restoration services`}
+            className="w-full h-full object-cover"
+            loading="eager"
+          />
+
           <div className="absolute inset-0 bg-gradient-to-r from-[hsl(220,20%,12%)]/95 via-[hsl(220,20%,12%)]/80 to-[hsl(220,20%,12%)]/60" />
         </div>
+
         <div className="relative z-10 max-w-[90rem] mx-auto px-6 pt-40 pb-20 w-full grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-          <motion.div initial={{ opacity: 0, x: -30 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.8 }}>
+          <motion.div
+            initial={{ opacity: 0, x: -30 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8 }}
+          >
             <div className="inline-flex items-center gap-2 bg-primary/15 border border-primary/25 rounded-full px-4 py-1.5 mb-6">
               <MapPin className="w-3.5 h-3.5 text-primary" />
-              <span className="font-sans text-xs font-semibold text-primary tracking-wide">{tierLabel.toUpperCase()} · ZIP {data.zipCode}</span>
+
+              <span className="font-sans text-xs font-semibold text-primary tracking-wide">
+                {tierLabel.toUpperCase()} · ZIP {data.zipCode}
+              </span>
             </div>
+
             <h1 className="font-serif text-4xl md:text-5xl lg:text-[3.5rem] font-bold mb-4 leading-[1.15] text-white">
               {data.heroHeadline ? (
-                <>{data.heroHeadline} <span className="text-primary">{data.cityName}</span></>
+                <>
+                  {data.heroHeadline}{" "}
+                  <span className="text-primary">
+                    {data.cityName}
+                  </span>
+                </>
               ) : (
-                <>Luxury Builders & Restoration Experts in <span className="text-primary">{data.cityName}</span></>
+                <>
+                  Luxury Builders & Restoration Experts in{" "}
+                  <span className="text-primary">
+                    {data.cityName}
+                  </span>
+                </>
               )}
             </h1>
-            <p className="font-sans text-xs tracking-[0.2em] text-primary/70 uppercase mb-4">Interior · Exterior · Water Damage · Mold Remediation · Custom Renovations</p>
-            <p className="font-sans text-[15px] text-white/75 leading-relaxed max-w-lg mb-8">{data.heroDescription}</p>
+
+            <p className="font-sans text-xs tracking-[0.2em] text-primary/70 uppercase mb-4">
+              Interior · Exterior · Water Damage · Mold Remediation ·
+              Custom Renovations
+            </p>
+
+            <p className="font-sans text-[15px] text-white/75 leading-relaxed max-w-lg mb-8">
+              {data.heroDescription}
+            </p>
+
             <div className="flex flex-wrap gap-4">
-              <Link to="/contact" className="inline-flex items-center gap-2 bg-primary text-primary-foreground px-8 py-3 rounded-xl font-sans text-sm font-semibold hover:bg-primary/90 transition-all group">
-                Get a Free Estimate <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+              <Link
+                to="/contact"
+                className="inline-flex items-center gap-2 bg-primary text-primary-foreground px-8 py-3 rounded-xl font-sans text-sm font-semibold hover:bg-primary/90 transition-all group"
+              >
+                Get a Free Estimate
+
+                <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
               </Link>
-              <a href="tel:+18059989082" className="inline-flex items-center gap-2 border-2 border-white/20 text-white px-8 py-3 rounded-xl font-sans text-sm font-medium hover:bg-white/10 transition-all">
-                <Phone className="w-4 h-4" /> (805) 998-9082
+
+              <a
+                href="tel:+18059989082"
+                className="inline-flex items-center gap-2 border-2 border-white/20 text-white px-8 py-3 rounded-xl font-sans text-sm font-medium hover:bg-white/10 transition-all"
+              >
+                <Phone className="w-4 h-4" />
+
+                (805) 998-9082
               </a>
             </div>
           </motion.div>
@@ -75,10 +234,25 @@ const AreaPageTemplate = ({ data }: { data: AreaPageData }) => {
       <section className="py-6 bg-background">
         <div className="max-w-6xl mx-auto px-6">
           <div className="flex flex-wrap items-center justify-center gap-3">
-            <span className="trust-badge"><CheckCircle className="w-4 h-4" /> 20 Years of Building Experience</span>
-            <span className="trust-badge"><CheckCircle className="w-4 h-4" /> Family Owned & Operated</span>
-            <span className="trust-badge"><CheckCircle className="w-4 h-4" /> IICRC S500 & S520 Certified</span>
-            <span className="trust-badge"><CheckCircle className="w-4 h-4" /> CA Lic. #1077044</span>
+            <span className="trust-badge">
+              <CheckCircle className="w-4 h-4" />
+              20 Years of Building Experience
+            </span>
+
+            <span className="trust-badge">
+              <CheckCircle className="w-4 h-4" />
+              Family Owned & Operated
+            </span>
+
+            <span className="trust-badge">
+              <CheckCircle className="w-4 h-4" />
+              IICRC S500 & S520 Certified
+            </span>
+
+            <span className="trust-badge">
+              <CheckCircle className="w-4 h-4" />
+              CA Lic. #1077044
+            </span>
           </div>
         </div>
       </section>
@@ -88,21 +262,37 @@ const AreaPageTemplate = ({ data }: { data: AreaPageData }) => {
         <div className="max-w-7xl mx-auto">
           <ScrollReveal>
             <div className="text-center mb-12">
-              <p className="font-sans text-xs tracking-[0.4em] text-primary uppercase mb-3 font-semibold">Our Services in {data.cityName}</p>
+              <p className="font-sans text-xs tracking-[0.4em] text-primary uppercase mb-3 font-semibold">
+                Our Services in {data.cityName}
+              </p>
+
               <h2 className="font-serif text-3xl md:text-4xl font-bold">
-                Complete Home Solutions for <span className="text-primary">{data.cityName}</span>
+                Complete Home Solutions for{" "}
+                <span className="text-primary">
+                  {data.cityName}
+                </span>
               </h2>
             </div>
           </ScrollReveal>
+
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {data.services.map((service, i) => (
-              <ScrollReveal key={service.title} delay={i * 0.1}>
+              <ScrollReveal
+                key={service.title}
+                delay={i * 0.1}
+              >
                 <div className="bg-background border border-border rounded-2xl p-8 h-full group hover:shadow-md hover:border-primary/20 transition-all duration-300">
                   <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center mb-5 group-hover:bg-primary/20 transition-colors">
                     {service.icon}
                   </div>
-                  <h3 className="font-serif text-lg font-bold mb-3 text-foreground">{service.title}</h3>
-                  <p className="font-sans text-sm text-muted-foreground leading-relaxed">{service.description}</p>
+
+                  <h3 className="font-serif text-lg font-bold mb-3 text-foreground">
+                    {service.title}
+                  </h3>
+
+                  <p className="font-sans text-sm text-muted-foreground leading-relaxed">
+                    {service.description}
+                  </p>
                 </div>
               </ScrollReveal>
             ))}
@@ -111,34 +301,70 @@ const AreaPageTemplate = ({ data }: { data: AreaPageData }) => {
       </section>
 
       {/* Local Content / Why Us */}
-      <section className="section-padding" style={{ background: "hsl(220, 20%, 15%)" }}>
+      <section
+        className="section-padding"
+        style={{
+          background: "hsl(220, 20%, 15%)",
+        }}
+      >
         <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
           <ScrollReveal direction="left">
             <div>
-              <p className="font-sans text-xs tracking-[0.4em] text-primary uppercase mb-3 font-semibold">Local Expertise</p>
-              <h2 className="font-serif text-3xl md:text-4xl font-bold mb-6 text-white">{data.localContent.heading}</h2>
+              <p className="font-sans text-xs tracking-[0.4em] text-primary uppercase mb-3 font-semibold">
+                Local Expertise
+              </p>
+
+              <h2 className="font-serif text-3xl md:text-4xl font-bold mb-6 text-white">
+                {data.localContent.heading}
+              </h2>
+
               {data.localContent.paragraphs.map((p, i) => (
-                <p key={i} className="font-sans text-sm text-white/60 leading-relaxed mb-4">{p}</p>
+                <p
+                  key={i}
+                  className="font-sans text-sm text-white/60 leading-relaxed mb-4"
+                >
+                  {p}
+                </p>
               ))}
             </div>
           </ScrollReveal>
+
           <ScrollReveal direction="right">
             <div>
-              <h3 className="font-serif text-xl font-bold mb-6 text-white">Neighborhoods We Serve in {data.cityName}</h3>
+              <h3 className="font-serif text-xl font-bold mb-6 text-white">
+                Neighborhoods We Serve in {data.cityName}
+              </h3>
+
               <div className="grid grid-cols-2 gap-3">
                 {data.neighborhoodHighlights.map((n) => (
-                  <div key={n} className="flex items-center gap-2">
+                  <div
+                    key={n}
+                    className="flex items-center gap-2"
+                  >
                     <CheckCircle className="w-4 h-4 text-primary flex-shrink-0" />
-                    <span className="font-sans text-sm text-white/70">{n}</span>
+
+                    <span className="font-sans text-sm text-white/70">
+                      {n}
+                    </span>
                   </div>
                 ))}
               </div>
+
               <div className="mt-8 bg-white/[0.06] border border-white/10 rounded-2xl p-6">
                 <div className="flex items-center gap-3 mb-3">
                   <Shield className="w-5 h-5 text-primary" />
-                  <h4 className="font-serif text-base font-bold text-white">Licensed & Insured</h4>
+
+                  <h4 className="font-serif text-base font-bold text-white">
+                    Licensed & Insured
+                  </h4>
                 </div>
-                <p className="font-sans text-sm text-white/60 leading-relaxed">Every remodel is handled by a fully licensed, family-owned contractor with 20 years of building experience, so your project is built right and backed by our name.</p>
+
+                <p className="font-sans text-sm text-white/60 leading-relaxed">
+                  Every remodel is handled by a fully licensed,
+                  family-owned contractor with 20 years of building
+                  experience, so your project is built right and
+                  backed by our name.
+                </p>
               </div>
             </div>
           </ScrollReveal>
@@ -150,17 +376,37 @@ const AreaPageTemplate = ({ data }: { data: AreaPageData }) => {
         <div className="max-w-3xl mx-auto">
           <ScrollReveal>
             <div className="text-center mb-12">
-              <p className="font-sans text-xs tracking-[0.4em] text-primary uppercase mb-3 font-semibold">FAQ</p>
+              <p className="font-sans text-xs tracking-[0.4em] text-primary uppercase mb-3 font-semibold">
+                FAQ
+              </p>
+
               <h2 className="font-serif text-3xl md:text-4xl font-bold">
-                Common Questions in <span className="text-primary">{data.cityName}</span>
+                Common Questions in{" "}
+                <span className="text-primary">
+                  {data.cityName}
+                </span>
               </h2>
             </div>
           </ScrollReveal>
-          <Accordion type="single" collapsible className="space-y-3">
+
+          <Accordion
+            type="single"
+            collapsible
+            className="space-y-3"
+          >
             {data.faqs.map((faq, i) => (
-              <AccordionItem key={i} value={`faq-${i}`} className="bg-background border border-border rounded-2xl px-6">
-                <AccordionTrigger className="font-sans text-sm font-medium text-left py-5">{faq.question}</AccordionTrigger>
-                <AccordionContent className="font-sans text-sm text-muted-foreground leading-relaxed pb-5">{faq.answer}</AccordionContent>
+              <AccordionItem
+                key={i}
+                value={`faq-${i}`}
+                className="bg-background border border-border rounded-2xl px-6"
+              >
+                <AccordionTrigger className="font-sans text-sm font-medium text-left py-5">
+                  {faq.question}
+                </AccordionTrigger>
+
+                <AccordionContent className="font-sans text-sm text-muted-foreground leading-relaxed pb-5">
+                  {faq.answer}
+                </AccordionContent>
               </AccordionItem>
             ))}
           </Accordion>
@@ -168,15 +414,33 @@ const AreaPageTemplate = ({ data }: { data: AreaPageData }) => {
       </section>
 
       {/* Nearby Areas */}
-      <section className="section-padding" style={{ background: "hsl(220, 20%, 15%)" }}>
+      <section
+        className="section-padding"
+        style={{
+          background: "hsl(220, 20%, 15%)",
+        }}
+      >
         <div className="max-w-5xl mx-auto text-center">
           <ScrollReveal>
-            <p className="font-sans text-xs tracking-[0.4em] text-primary uppercase mb-3 font-semibold">Nearby Service Areas</p>
-            <h2 className="font-serif text-3xl font-bold mb-8 text-white">Also Serving These Communities</h2>
+            <p className="font-sans text-xs tracking-[0.4em] text-primary uppercase mb-3 font-semibold">
+              Nearby Service Areas
+            </p>
+
+            <h2 className="font-serif text-3xl font-bold mb-8 text-white">
+              Also Serving These Communities
+            </h2>
+
             <div className="flex flex-wrap justify-center gap-3">
               {data.nearbyAreas.map((area) => (
-                <Link key={area.zip} to={area.href} className="bg-white/[0.06] border border-white/10 px-5 py-3 rounded-xl font-sans text-sm text-white/70 hover:bg-white/[0.1] hover:border-primary/30 hover:text-primary transition-all">
-                  {area.name} <span className="text-white/40">({area.zip})</span>
+                <Link
+                  key={area.zip}
+                  to={area.href}
+                  className="bg-white/[0.06] border border-white/10 px-5 py-3 rounded-xl font-sans text-sm text-white/70 hover:bg-white/[0.1] hover:border-primary/30 hover:text-primary transition-all"
+                >
+                  {area.name}{" "}
+                  <span className="text-white/40">
+                    ({area.zip})
+                  </span>
                 </Link>
               ))}
             </div>
@@ -187,22 +451,57 @@ const AreaPageTemplate = ({ data }: { data: AreaPageData }) => {
       {/* CTA */}
       <section className="section-padding relative overflow-hidden bg-muted/50">
         <div className="absolute inset-0">
-          <div className="absolute top-[-20%] left-[-10%] w-[500px] h-[500px] rounded-full blur-3xl" style={{ background: "hsl(145, 55%, 35% / 0.06)" }} />
-          <div className="absolute bottom-[-30%] right-[-5%] w-[600px] h-[600px] rounded-full blur-3xl" style={{ background: "hsl(145, 55%, 35% / 0.04)" }} />
+          <div
+            className="absolute top-[-20%] left-[-10%] w-[500px] h-[500px] rounded-full blur-3xl"
+            style={{
+              background: "hsl(145, 55%, 35% / 0.06)",
+            }}
+          />
+
+          <div
+            className="absolute bottom-[-30%] right-[-5%] w-[600px] h-[600px] rounded-full blur-3xl"
+            style={{
+              background: "hsl(145, 55%, 35% / 0.04)",
+            }}
+          />
         </div>
+
         <div className="max-w-3xl mx-auto text-center relative">
           <ScrollReveal>
             <div className="gold-divider mb-8" />
+
             <h2 className="font-serif text-3xl md:text-4xl font-bold mb-4">
-              Ready to Transform Your <span className="text-primary">{data.cityName}</span> Home?
+              Ready to Transform Your{" "}
+              <span className="text-primary">
+                {data.cityName}
+              </span>{" "}
+              Home?
             </h2>
-            <p className="font-sans text-sm text-muted-foreground mb-8 max-w-xl mx-auto leading-relaxed">Schedule a free on-site consultation with our expert team. We'll assess your project, provide a detailed estimate, and show you why {data.cityName} homeowners trust Mier & Murphy.</p>
+
+            <p className="font-sans text-sm text-muted-foreground mb-8 max-w-xl mx-auto leading-relaxed">
+              Schedule a free on-site consultation with our expert
+              team. We'll assess your project, provide a detailed
+              estimate, and show you why {data.cityName} homeowners
+              trust Mier & Murphy.
+            </p>
+
             <div className="flex flex-wrap justify-center gap-4">
-              <Link to="/contact" className="inline-flex items-center gap-2 bg-primary text-primary-foreground px-8 py-4 rounded-xl font-sans text-sm font-bold hover:bg-primary/90 transition-all shadow-lg group">
-                Schedule Consultation <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+              <Link
+                to="/contact"
+                className="inline-flex items-center gap-2 bg-primary text-primary-foreground px-8 py-4 rounded-xl font-sans text-sm font-bold hover:bg-primary/90 transition-all shadow-lg group"
+              >
+                Schedule Consultation
+
+                <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
               </Link>
-              <a href="tel:+18059989082" className="inline-flex items-center gap-2 border-2 border-border text-foreground px-8 py-4 rounded-xl font-sans text-sm font-semibold hover:bg-muted transition-all">
-                <Phone className="w-4 h-4" /> Call (805) 998-9082
+
+              <a
+                href="tel:+18059989082"
+                className="inline-flex items-center gap-2 border-2 border-border text-foreground px-8 py-4 rounded-xl font-sans text-sm font-semibold hover:bg-muted transition-all"
+              >
+                <Phone className="w-4 h-4" />
+
+                Call (805) 998-9082
               </a>
             </div>
           </ScrollReveal>
