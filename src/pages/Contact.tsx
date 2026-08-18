@@ -103,7 +103,7 @@ const Contact = () => {
               <div className="space-y-6">
                 {[
                   { icon: Phone, label: "Phone", value: "(805) 998-9082", href: "tel:+18059989082" },
-                  { icon: Mail, label: "Email", value: "frank@miercomstruction.com", href: "mailto:frank@miercomstruction.com" },
+                  { icon: Mail, label: "Email", value: "frank@mierconstruction.com", href: "mailto:frank@mierconstruction.com" },
                   { icon: MapPin, label: "Location", value: "Thousand Oaks, California" },
                   { icon: Clock, label: "Hours", value: "Mon–Fri: 7AM–6PM | Sat: 8AM–2PM" },
                 ].map((item) => (

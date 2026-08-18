@@ -48,9 +48,9 @@ const PrivacyPolicy = () => {
               <li><strong className="text-foreground">Message Frequency:</strong> Message frequency may vary based on your interactions with us.</li>
               <li><strong className="text-foreground">Message and Data Rates:</strong> Message and data rates may apply, depending on your mobile carrier and plan.</li>
               <li><strong className="text-foreground">Opt-Out:</strong> You may opt out of receiving text messages at any time by replying STOP to any message. You will receive one final message confirming your opt-out, and no further messages will be sent.</li>
-              <li><strong className="text-foreground">Help:</strong> Reply HELP to any message for assistance, or contact us directly at <a  href="mailto:frank@miercomstruction.com"
+              <li><strong className="text-foreground">Help:</strong> Reply HELP to any message for assistance, or contact us directly at <a  href="mailto:frank@mierconstruction.com"
                 className="text-primary underline hover:text-primary/80"
-              >frank@miercomstruction.com
+              >frank@mierconstruction.com
               </a>
               <br />
               </li>
@@ -76,9 +76,9 @@ const PrivacyPolicy = () => {
             <ul className="list-disc pl-6 space-y-2">
               <li>Opt out of SMS communications at any time by replying STOP</li>
               <li>Request access to, correction of, or deletion of your personal information by contacting us at               <a
-                href="mailto:frank@miercomstruction.com"
+                href="mailto:frank@mierconstruction.com"
                 className="text-primary underline hover:text-primary/80"
-              >frank@miercomstruction.com
+              >frank@mierconstruction.com
               </a></li>
               <li>Unsubscribe from marketing emails using the unsubscribe link in any email</li>
             </ul>
@@ -97,9 +97,9 @@ const PrivacyPolicy = () => {
               Thousand Oaks, California
               <br />
               <a
-                href="mailto:frank@miercomstruction.com"
+                href="mailto:frank@mierconstruction.com"
                 className="text-primary underline hover:text-primary/80"
-              >frank@miercomstruction.com
+              >frank@mierconstruction.com
               </a>
               <br />
               <a
