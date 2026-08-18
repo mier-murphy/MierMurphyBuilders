@@ -10,12 +10,7 @@ const data: AreaPageData = {
   tier: "secondary",
   heroImage: projectInterior,
   heroDescription: "Oak Park is one of the Conejo Valley's best-kept secrets — a tight-knit community with high household incomes and beautifully maintained homes. Mier & Murphy is proud to bring our premium services to Oak Park, where quality matters and homeowners invest in excellence.",
-  stats: [
-    { label: "Local Projects", value: "90+" },
-    { label: "Avg. Household Income", value: "Top 5%" },
-    { label: "Referral Rate", value: "75%" },
-    { label: "Quality Guarantee", value: "10yr" },
-  ],
+
   services: [
     { title: "Interior Painting", description: "Premium interior painting for Oak Park's well-appointed homes. We deliver designer-quality finishes with meticulous prep work and clean, professional execution.", icon: <Paintbrush className="w-6 h-6 text-primary" /> },
     { title: "Exterior Painting & Stucco", description: "Enhance your Oak Park home's curb appeal with our expert exterior services. We match HOA requirements and deliver lasting finishes that stand up to the valley heat.", icon: <Home className="w-6 h-6 text-primary" /> },

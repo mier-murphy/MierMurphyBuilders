@@ -25,11 +25,11 @@ import OurStorySection from "@/components/OurStorySection";
 const SITE_URL = "https://mierandmurphybuilders.com";
 const OG_IMAGE = `${SITE_URL}/hero-craftsmanship.jpg`;
 
-const PAGE_TITLE = "Thousand Oaks General Contractor | Remodeling, Restoration & Repair | Mier & Murphy Builders";
+const PAGE_TITLE = "Mier & Murphy Builders | Custom Home Builders & Contractors";
 const PAGE_DESCRIPTION =
-  "Family-owned general contractor in Thousand Oaks, CA with 20 years' experience. Bathroom & kitchen remodeling, IICRC certified water damage & mold remediation, drywall/stucco repair, SB-326/SB-721 balcony repair, and commercial build-outs. CA Lic. #1077044 — call (805) 998-9082.";
+  "Mier & Murphy Builders provides custom home construction, remodeling, stucco repair, and restoration in Thousand Oaks, CA and Ventura County.";
 const PAGE_KEYWORDS =
-  "general contractor Thousand Oaks, remodeling contractor Westlake Village, water damage restoration Conejo Valley, mold remediation Thousand Oaks, stucco repair Ventura County, balcony repair SB-326 SB-721, licensed contractor 91360";
+  "custom home builders thousand oaks; general contractor thousand oaks; luxury home builders; home remodeling contractor; water damage restoration";
 
 const areasServed = [
   "Thousand Oaks",

@@ -16,11 +16,11 @@ const SITE_URL = "https://mierandmurphybuilders.com";
 const PAGE_URL = `${SITE_URL}/services/bathroom-kitchen-remodeling`;
 const OG_IMAGE = `${SITE_URL}/service-bathroom-kitchen-remodeling.jpg`;
 
-const PAGE_TITLE = "Bathroom & Kitchen Remodeling in Thousand Oaks, CA | Mier & Murphy Builders";
+const PAGE_TITLE = "Kitchen & Bathroom Remodeling | Mier & Murphy Builders";
 const PAGE_DESCRIPTION =
-  "Full bathroom and kitchen remodels in Thousand Oaks, Westlake Village & the Conejo Valley. Permits handled, honest timelines, family-owned crew with 20 years' experience. CA Lic. #1077044. Free estimates — call (805) 998-9082.";
+  "Transform your kitchen and bathroom with Mier & Murphy Builders. Premier remodeling contractors serving Thousand Oaks and Ventura County.";
 const PAGE_KEYWORDS =
-  "bathroom remodel Thousand Oaks, kitchen remodel Westlake Village, walk-in shower conversion Ventura County, cabinet and countertop replacement Thousand Oaks, kitchen renovation Conejo Valley, licensed remodeling contractor 91360, bathroom remodel Simi Valley";
+  "kitchen and bathroom remodeling thousand oaks; bathroom remodel contractor; kitchen renovation ventura county; custom home remodelers";
 
 const areasServed = [
   "Thousand Oaks",
@@ -148,8 +148,8 @@ const ServiceBathroomKitchenRemodeling = () => {
       <Helmet>
         {/* Primary meta tags */}
         <title>{PAGE_TITLE}</title>
-        <meta name="title" content={PAGE_TITLE} />
-        <meta name="description" content={PAGE_DESCRIPTION} />
+        <meta name="title" content="Kitchen & Bathroom Remodeling | Mier & Murphy Builders" />
+        <meta name="description" content="Transform your kitchen and bathroom with Mier & Murphy Builders. Premier remodeling contractors serving Thousand Oaks and Ventura County." />
         <meta name="keywords" content={PAGE_KEYWORDS} />
         <meta name="author" content="Mier & Murphy Builders" />
         <meta name="robots" content="index, follow" />

@@ -10,12 +10,7 @@ const data: AreaPageData = {
   tier: "secondary",
   heroImage: projectExterior,
   heroDescription: "Agoura Hills combines hillside beauty with suburban convenience — and its homes reflect that premium positioning. Mier & Murphy provides the expert painting, restoration, and renovation services that Agoura Hills properties require, from canyon estates to gated community homes.",
-  stats: [
-    { label: "Local Projects", value: "120+" },
-    { label: "Canyon Properties", value: "40+" },
-    { label: "Client Retention", value: "70%" },
-    { label: "Emergency Response", value: "24/7" },
-  ],
+
   services: [
     { title: "Interior Painting", description: "Sophisticated interior finishes for Agoura Hills' upscale homes. From open-concept great rooms to intimate wine cellars, we deliver finishes that complement every space.", icon: <Paintbrush className="w-6 h-6 text-primary" /> },
     { title: "Exterior & Stucco", description: "Durable, beautiful exterior coatings for hillside and canyon homes. We specialize in finishes that resist the Santa Ana winds and intense sun exposure common in 91301.", icon: <Home className="w-6 h-6 text-primary" /> },

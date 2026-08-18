@@ -14,7 +14,6 @@ export interface AreaPageData {
   heroDescription: string;
   heroImage: string;
   tier: "primary" | "secondary" | "premium";
-  stats: { label: string; value: string }[];
   services: { title: string; description: string; icon: React.ReactNode }[];
   localContent: {
     heading: string;
@@ -72,17 +71,15 @@ const AreaPageTemplate = ({ data }: { data: AreaPageData }) => {
         </div>
       </section>
 
-      {/* Stats */}
-      <section className="py-12" style={{ background: "hsl(220, 20%, 15%)" }}>
-        <div className="max-w-6xl mx-auto px-6 grid grid-cols-2 md:grid-cols-4 gap-8">
-          {data.stats.map((stat) => (
-            <ScrollReveal key={stat.label}>
-              <div className="text-center">
-                <p className="font-serif text-2xl md:text-3xl font-bold text-primary">{stat.value}</p>
-                <p className="font-sans text-xs text-white/50 uppercase tracking-wider mt-1">{stat.label}</p>
-              </div>
-            </ScrollReveal>
-          ))}
+      {/* Trust section */}
+      <section className="py-6 bg-background">
+        <div className="max-w-6xl mx-auto px-6">
+          <div className="flex flex-wrap items-center justify-center gap-3">
+            <span className="trust-badge"><CheckCircle className="w-4 h-4" /> 20 Years of Building Experience</span>
+            <span className="trust-badge"><CheckCircle className="w-4 h-4" /> Family Owned & Operated</span>
+            <span className="trust-badge"><CheckCircle className="w-4 h-4" /> IICRC S500 & S520 Certified</span>
+            <span className="trust-badge"><CheckCircle className="w-4 h-4" /> CA Lic. #1077044</span>
+          </div>
         </div>
       </section>
 
@@ -141,7 +138,7 @@ const AreaPageTemplate = ({ data }: { data: AreaPageData }) => {
                   <Shield className="w-5 h-5 text-primary" />
                   <h4 className="font-serif text-base font-bold text-white">Licensed & Insured</h4>
                 </div>
-                <p className="font-sans text-sm text-white/60 leading-relaxed">Fully licensed California contractor with comprehensive liability insurance and workers' compensation coverage for your peace of mind.</p>
+                <p className="font-sans text-sm text-white/60 leading-relaxed">Every remodel is handled by a fully licensed, family-owned contractor with 20 years of building experience, so your project is built right and backed by our name.</p>
               </div>
             </div>
           </ScrollReveal>

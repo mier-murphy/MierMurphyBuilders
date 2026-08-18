@@ -16,11 +16,11 @@ const SITE_URL = "https://mierandmurphybuilders.com";
 const PAGE_URL = `${SITE_URL}/services/balcony-deck-repair`;
 const OG_IMAGE = `${SITE_URL}/service-balcony-deck-repair.jpg`;
 
-const PAGE_TITLE = "SB-326 & SB-721 Balcony & Deck Repair in Thousand Oaks, CA | Mier & Murphy Builders";
+const PAGE_TITLE = "Balcony & Deck Repair Services | Mier & Murphy Builders";
 const PAGE_DESCRIPTION =
-  "SB-326 & SB-721 compliant balcony and deck repair for HOAs, property managers, and homeowners in Thousand Oaks, Westlake Village & the Conejo Valley. Structural rebuilds, waterproofing, and inspection sign-off support. CA Lic. #1077044 — call (805) 998-9082.";
+  "Restore and repair your balcony or deck with Mier & Murphy Builders. Reliable deck contractors serving Thousand Oaks and Ventura County homeowners.";
 const PAGE_KEYWORDS =
-  "SB-326 balcony repair Thousand Oaks, SB-721 balcony repair Ventura County, balcony inspection contractor Westlake Village, deck structural repair Thousand Oaks, HOA balcony compliance contractor, dry rot repair Conejo Valley";
+  "deck repair thousand oaks; balcony repair contractor; exterior deck restoration; waterproofing contractor ventura county";
 
 const areasServed = [
   "Thousand Oaks",

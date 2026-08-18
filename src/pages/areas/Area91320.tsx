@@ -10,12 +10,7 @@ const data: AreaPageData = {
   tier: "secondary",
   heroImage: projectInterior,
   heroDescription: "Newbury Park's family-oriented neighborhoods deserve reliable, high-quality home improvement services. Mier & Murphy brings the same luxury-grade craftsmanship we're known for in Thousand Oaks directly to Newbury Park — at competitive prices that respect your investment.",
-  stats: [
-    { label: "Local Projects", value: "180+" },
-    { label: "Family Homes Served", value: "150+" },
-    { label: "On-Time Completion", value: "99%" },
-    { label: "Avg. Review Score", value: "4.9★" },
-  ],
+
   services: [
     { title: "Interior Painting", description: "Family-friendly, low-VOC interior painting for Newbury Park homes. Durable finishes that withstand active households while maintaining a beautiful, professional appearance.", icon: <Paintbrush className="w-6 h-6 text-primary" /> },
     { title: "Exterior Painting & Stucco", description: "Curb-appeal transformations for Newbury Park's tract and custom homes. We work with HOA color palettes and deliver weather-resistant finishes that last.", icon: <Home className="w-6 h-6 text-primary" /> },

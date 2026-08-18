@@ -10,12 +10,7 @@ const data: AreaPageData = {
   tier: "premium",
   heroImage: projectExterior,
   heroDescription: "Malibu's iconic coastal properties demand contractors who understand the unique challenges of oceanfront and canyon living. Mier & Murphy extends our luxury expertise to Malibu, providing specialized painting, restoration, and renovation services engineered for the salt air, coastal moisture, and discerning clientele.",
-  stats: [
-    { label: "Coastal Projects", value: "40+" },
-    { label: "Avg. Project Value", value: "$30K+" },
-    { label: "Salt-Air Expertise", value: "15yr" },
-    { label: "Confidential Service", value: "NDA" },
-  ],
+
   services: [
     { title: "Coastal Interior Finishes", description: "Humidity-resistant interior painting and plaster applications designed for Malibu's coastal environment. Low-moisture primers, breathable finishes, and salt-air-resistant coatings.", icon: <Paintbrush className="w-6 h-6 text-primary" /> },
     { title: "Oceanfront Exterior Protection", description: "Marine-grade exterior coatings that resist salt spray, UV degradation, and coastal wind erosion. Specialized stucco systems for beachfront and bluff-top properties.", icon: <Home className="w-6 h-6 text-primary" /> },

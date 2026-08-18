@@ -17,11 +17,11 @@ const SITE_URL = "https://mierandmurphybuilders.com";
 const PAGE_URL = `${SITE_URL}/services/water-damage-mold-remediation`;
 const OG_IMAGE = `${SITE_URL}/service-water-damage-mold-remediation.jpg`;
 
-const PAGE_TITLE = "Water Damage Restoration & Mold Remediation in Thousand Oaks, CA | Mier & Murphy Builders";
+const PAGE_TITLE = "Water Damage & Mold Remediation | Mier & Murphy Builders";
 const PAGE_DESCRIPTION =
-  "IICRC S500 & S520 certified water damage restoration and mold remediation in Thousand Oaks, Westlake Village & the Conejo Valley. Extraction, drying, remediation, and full reconstruction under one roof. CA Lic. #1077044 — call (805) 998-9082.";
+  "Fast, IICRC-certified water damage restoration and mold remediation in Thousand Oaks, CA. Mier & Murphy Builders restores your home safely.";
 const PAGE_KEYWORDS =
-  "water damage restoration Thousand Oaks, mold remediation Westlake Village, IICRC certified restoration Ventura County, water extraction Thousand Oaks, structural drying Conejo Valley, mold inspection Thousand Oaks";
+  "water damage restoration thousand oaks; mold remediation thousand oaks; emergency restoration contractor; mold removal ventura county";
 
 const areasServed = [
   "Thousand Oaks",
@@ -153,9 +153,14 @@ const WaterDamageMoldRemediation = () => {
     <>
       <Helmet>
         {/* Primary meta tags */}
-        <title>{PAGE_TITLE}</title>
+        <title>
+    Water Damage & Mold Remediation | Mier & Murphy Builders
+  </title>
         <meta name="title" content={PAGE_TITLE} />
-        <meta name="description" content={PAGE_DESCRIPTION} />
+        <meta
+    name="description"
+    content="Fast, IICRC-certified water damage restoration and mold remediation in Thousand Oaks, CA. Mier & Murphy Builders restores your home safely."
+  />
         <meta name="keywords" content={PAGE_KEYWORDS} />
         <meta name="author" content="Mier & Murphy Builders" />
         <meta name="robots" content="index, follow" />

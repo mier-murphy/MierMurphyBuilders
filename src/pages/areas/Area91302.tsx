@@ -10,12 +10,7 @@ const data: AreaPageData = {
   tier: "premium",
   heroImage: projectExterior,
   heroDescription: "The 91302 ZIP code encompasses some of Southern California's most prestigious addresses — from Calabasas gated communities to the western reaches of Westlake Village. Mier & Murphy provides the white-glove painting, restoration, and renovation services these extraordinary properties demand.",
-  stats: [
-    { label: "Luxury Projects", value: "150+" },
-    { label: "Avg. Project Value", value: "$25K+" },
-    { label: "Celebrity Homes", value: "Discreet" },
-    { label: "NDA Available", value: "Yes" },
-  ],
+
   services: [
     { title: "Luxury Interior Design Execution", description: "We work with the region's top designers to execute complex interior finishes — Venetian plaster, hand-painted murals, metallic leaf applications, and custom textures for Calabasas estates.", icon: <Paintbrush className="w-6 h-6 text-primary" /> },
     { title: "Estate Exterior Systems", description: "Comprehensive exterior coating systems for large-scale properties. EIFS, traditional stucco, stone veneer integration, and custom color matching for multi-structure estates.", icon: <Home className="w-6 h-6 text-primary" /> },

@@ -32,6 +32,17 @@ import gallery19 from '@/assets/ranch/ranch-m-7.avif';
 import gallery20 from '@/assets/ranch/ranch-m-8.avif';
 
 
+import { Helmet } from "react-helmet-async";
+const SITE_URL = "https://mierandmurphybuilders.com";
+const PAGE_URL = `${SITE_URL}/services/bathroom-kitchen-remodeling`;
+const OG_IMAGE = `${SITE_URL}/service-bathroom-kitchen-remodeling.jpg`;
+
+const PAGE_TITLE = "Custom Ranch Home Construction | Mier & Murphy Builders";
+const PAGE_DESCRIPTION =
+  "Discover our custom ranch property construction project delivered with precision engineering and luxury finish by Mier & Murphy Builders.";
+const PAGE_KEYWORDS =
+  "custom ranch construction; ranch home remodeling; estate builder california; custom residential contractor";
+
 // 2. Top row (3 large images) and bottom row (5 smaller images)
 const topGallery = [gallery1, gallery2, gallery3, gallery4,gallery5,gallery6,gallery7,gallery8,gallery9,gallery10,gallery11,gallery12];
 const bottomGallery = [gallery13, gallery14, gallery15, gallery16,gallery17,gallery18,gallery19,gallery20];
@@ -66,50 +77,82 @@ const GalleryCarousel = ({
 
 export default function App() {
   return (
-    <div className="min-h-screen bg-white font-sans text-stone-800">
-      <style>{`
+    <><Helmet>
+      {/* Primary meta tags */}
+      <title>{PAGE_TITLE}</title>
+      <meta name="title" content={PAGE_TITLE} />
+      <meta name="description" content={PAGE_DESCRIPTION} />
+      <meta name="keywords" content={PAGE_KEYWORDS} />
+      <meta name="author" content="Mier & Murphy Builders" />
+      <meta name="robots" content="index, follow" />
+      <link rel="canonical" href={PAGE_URL} />
+
+      {/* Geo tags */}
+      <meta name="geo.placename" content="Thousand Oaks" />
+      <meta name="geo.region" content="US-CA" />
+      <meta name="geo.position" content="34.1706;-118.8376" />
+      <meta name="ICBM" content="34.1706, -118.8376" />
+
+      {/* Open Graph */}
+      <meta property="og:type" content="website" />
+      <meta property="og:url" content={PAGE_URL} />
+      <meta property="og:title" content={PAGE_TITLE} />
+      <meta property="og:description" content={PAGE_DESCRIPTION} />
+      <meta property="og:image" content={OG_IMAGE} />
+      <meta property="og:image:alt" content="Bathroom and kitchen remodeling project in Thousand Oaks, CA" />
+      <meta property="og:site_name" content="Mier & Murphy Builders" />
+      <meta property="og:locale" content="en_US" />
+
+      {/* Twitter Card */}
+      <meta name="twitter:card" content="summary_large_image" />
+      <meta name="twitter:url" content={PAGE_URL} />
+      <meta name="twitter:title" content={PAGE_TITLE} />
+      <meta name="twitter:description" content={PAGE_DESCRIPTION} />
+      <meta name="twitter:image" content={OG_IMAGE} />
+
+    </Helmet><div className="min-h-screen bg-white font-sans text-stone-800">
+        <style>{`
         @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap');
         
         body { font-family: 'Montserrat', sans-serif; }
         h1, h2, h3, h4 { font-family: 'Playfair Display', serif; }
       `}</style>
 
-      {/* Hero Section */}
-      <section className="grid md:grid-cols-2 gap-8 items-center max-w-7xl mx-auto pt-40 pb-16 px-6">
-        <div>
-          <p className="text-[#587b37] uppercase tracking-widest text-sm font-semibold mb-4">PORTER RANCH HOME RENOVATION</p>
-          <h1 className="text-5xl md:text-6xl mb-6">Crafting a serene and clean home with modern finishes and timeless feel</h1>
-          <p className="text-stone-600 leading-relaxed">This complete interior renovation transformed a dated house into a refined suburban home. All walls were refinished to a smooth texture and freshly painted, with new bathrooms and a remodeled kitchen bringing modern comfort and style.</p>
-        </div>
-        <div className="bg-stone-200 h-96 w-full rounded-lg overflow-hidden shadow-xl">
-          <img
-            src={heroImage}
-            alt="Big Bear ranch remodel hero"
-            className="w-full h-full object-cover"
-            loading="eager"
-          />
-        </div>
-      </section>
+        {/* Hero Section */}
+        <section className="grid md:grid-cols-2 gap-8 items-center max-w-7xl mx-auto pt-40 pb-16 px-6">
+          <div>
+            <p className="text-[#587b37] uppercase tracking-widest text-sm font-semibold mb-4">PORTER RANCH HOME RENOVATION</p>
+            <h1 className="text-5xl md:text-6xl mb-6">Crafting a serene and clean home with modern finishes and timeless feel</h1>
+            <p className="text-stone-600 leading-relaxed">This complete interior renovation transformed a dated house into a refined suburban home. All walls were refinished to a smooth texture and freshly painted, with new bathrooms and a remodeled kitchen bringing modern comfort and style.</p>
+          </div>
+          <div className="bg-stone-200 h-96 w-full rounded-lg overflow-hidden shadow-xl">
+            <img
+              src={heroImage}
+              alt="Big Bear ranch remodel hero"
+              className="w-full h-full object-cover"
+              loading="eager" />
+          </div>
+        </section>
 
-      {/* Project Description */}
-      <section className="max-w-3xl mx-auto py-16 px-6 text-center">
-        <p className="text-[#587b37] uppercase tracking-widest text-xs mb-6">More on the project</p>
-        <p className="text-lg leading-relaxed text-stone-700">
-        Working closely with the homeowner, our team reconfigured the layout to include a custom walk-in closet and rebuilt the existing staircase to incorporate a new storage area. The result is a cohesive, elegant space that blends functionality with a clean, contemporary design.
-        </p>
-      </section>
+        {/* Project Description */}
+        <section className="max-w-3xl mx-auto py-16 px-6 text-center">
+          <p className="text-[#587b37] uppercase tracking-widest text-xs mb-6">More on the project</p>
+          <p className="text-lg leading-relaxed text-stone-700">
+            Working closely with the homeowner, our team reconfigured the layout to include a custom walk-in closet and rebuilt the existing staircase to incorporate a new storage area. The result is a cohesive, elegant space that blends functionality with a clean, contemporary design.
+          </p>
+        </section>
 
-      {/* Gallery Section */}
-      <section className="py-12 bg-stone-50">
-        <h2 className="text-4xl text-center mb-12">Gallery</h2>
+        {/* Gallery Section */}
+        <section className="py-12 bg-stone-50">
+          <h2 className="text-4xl text-center mb-12">Gallery</h2>
 
-        <h4 className="text-2xl text-center mb-6 text-[#587b37]">After</h4>
-        <GalleryCarousel images={topGallery} labelPrefix="ranch remodel after" />
+          <h4 className="text-2xl text-center mb-6 text-[#587b37]">After</h4>
+          <GalleryCarousel images={topGallery} labelPrefix="ranch remodel after" />
 
-        <h4 className="text-2xl text-center mb-6 text-[#587b37]">Before</h4>
-        <GalleryCarousel images={bottomGallery} labelPrefix="ranch remodel before" />
-      </section>
+          <h4 className="text-2xl text-center mb-6 text-[#587b37]">Before</h4>
+          <GalleryCarousel images={bottomGallery} labelPrefix="ranch remodel before" />
+        </section>
 
-    </div>
+      </div></>
   );
 }

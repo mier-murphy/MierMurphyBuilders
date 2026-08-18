@@ -10,12 +10,7 @@ const data: AreaPageData = {
   tier: "primary",
   heroImage: projectExterior,
   heroDescription: "Moorpark homeowners take pride in well-maintained homes, quiet neighborhoods, and lasting quality. At Mier & Murphy, we bring over two decades of craftsmanship to every project, helping homeowners protect, restore, and improve their properties with dependable service and attention to detail.",
-  stats: [
-    { label: "Projects Completed", value: "120+" },
-    { label: "Years Experience", value: "20+" },
-    { label: "Emergency Response", value: "24/7" },
-    { label: "Licensed", value: "& Fully Insured" },
-  ],
+
   services: [
     { title: "Interior Painting", description: "Whether you're updating a single room or refreshing your entire home, our interior painting services deliver clean finishes and lasting results. We protect your furniture, respect your home, and leave every space spotless.", icon: <Paintbrush className="w-6 h-6 text-primary" /> },
     { title: "Exterior Painting & Stucco", description: "California sun can be tough on exterior finishes. We use premium coatings and proper preparation techniques that help Moorpark homes stay protected and looking great for years.", icon: <Home className="w-6 h-6 text-primary" /> },

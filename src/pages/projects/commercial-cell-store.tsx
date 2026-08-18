@@ -12,76 +12,118 @@ import gallery6 from '@/assets/commercial-cell-store/commercial-cell-store-6.avi
 import gallery7 from '@/assets/commercial-cell-store/commercial-cell-store-7.avif';
 import gallery8 from '@/assets/commercial-cell-store/commercial-cell-store-8.avif';
 
+
+import { Helmet } from "react-helmet-async";
+const SITE_URL = "https://mierandmurphybuilders.com";
+const PAGE_URL = `${SITE_URL}/services/bathroom-kitchen-remodeling`;
+const OG_IMAGE = `${SITE_URL}/service-bathroom-kitchen-remodeling.jpg`;
+
+const PAGE_TITLE = "Commercial Cell Store Build-Out | Mier & Murphy Builders";
+const PAGE_DESCRIPTION =
+  "Case study of a retail commercial cell store build-out completed with quality craftsmanship and on-time execution by Mier & Murphy Builders.";
+const PAGE_KEYWORDS =
+  "commercial retail buildout, tenant improvement case study; commercial contractor buildout; retail construction";
+
 // 2. Top row (3 large images) and bottom row (5 smaller images)
 const topGallery = [gallery1, gallery2, gallery3, gallery4];
 const bottomGallery = [ gallery5, gallery6, gallery7, gallery8];
 
 export default function App() {
   return (
-    <div className="min-h-screen bg-white font-sans text-stone-800">
-      <style>{`
+    <><Helmet>
+      {/* Primary meta tags */}
+      <title>{PAGE_TITLE}</title>
+      <meta name="title" content={PAGE_TITLE} />
+      <meta name="description" content={PAGE_DESCRIPTION} />
+      <meta name="keywords" content={PAGE_KEYWORDS} />
+      <meta name="author" content="Mier & Murphy Builders" />
+      <meta name="robots" content="index, follow" />
+      <link rel="canonical" href={PAGE_URL} />
+
+      {/* Geo tags */}
+      <meta name="geo.placename" content="Thousand Oaks" />
+      <meta name="geo.region" content="US-CA" />
+      <meta name="geo.position" content="34.1706;-118.8376" />
+      <meta name="ICBM" content="34.1706, -118.8376" />
+
+      {/* Open Graph */}
+      <meta property="og:type" content="website" />
+      <meta property="og:url" content={PAGE_URL} />
+      <meta property="og:title" content={PAGE_TITLE} />
+      <meta property="og:description" content={PAGE_DESCRIPTION} />
+      <meta property="og:image" content={OG_IMAGE} />
+      <meta property="og:image:alt" content="Bathroom and kitchen remodeling project in Thousand Oaks, CA" />
+      <meta property="og:site_name" content="Mier & Murphy Builders" />
+      <meta property="og:locale" content="en_US" />
+
+      {/* Twitter Card */}
+      <meta name="twitter:card" content="summary_large_image" />
+      <meta name="twitter:url" content={PAGE_URL} />
+      <meta name="twitter:title" content={PAGE_TITLE} />
+      <meta name="twitter:description" content={PAGE_DESCRIPTION} />
+      <meta name="twitter:image" content={OG_IMAGE} />
+
+    </Helmet><div className="min-h-screen bg-white font-sans text-stone-800">
+        <style>{`
         @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap');
         
         body { font-family: 'Montserrat', sans-serif; }
         h1, h2, h3, h4 { font-family: 'Playfair Display', serif; }
       `}</style>
 
-      {/* Hero Section */}
-      <section className="grid md:grid-cols-2 gap-8 items-center max-w-7xl mx-auto pt-40 pb-16 px-6">
-        <div>
-          <p className="text-[#587b37] uppercase tracking-widest text-sm font-semibold mb-4">BUSINESS BOOST</p>
-          <h1 className="text-5xl md:text-6xl mb-6">Cellphone & Electronics Repair Store – Commercial Build-Out</h1>
-          <p className="text-stone-600 leading-relaxed">Our team provided full support throughout this commercial tenant improvement project—from architectural planning and city submittals to construction and final finishes.</p>
-        </div>
-        <div className="bg-stone-200 h-96 w-full rounded-lg overflow-hidden shadow-xl">
-          <img
-            src={heroImage}
-            alt="Big Bear commercial-cell-store remodel hero"
-            className="w-full h-full object-cover"
-            loading="eager"
-          />
-        </div>
-      </section>
+        {/* Hero Section */}
+        <section className="grid md:grid-cols-2 gap-8 items-center max-w-7xl mx-auto pt-40 pb-16 px-6">
+          <div>
+            <p className="text-[#587b37] uppercase tracking-widest text-sm font-semibold mb-4">BUSINESS BOOST</p>
+            <h1 className="text-5xl md:text-6xl mb-6">Cellphone & Electronics Repair Store – Commercial Build-Out</h1>
+            <p className="text-stone-600 leading-relaxed">Our team provided full support throughout this commercial tenant improvement project—from architectural planning and city submittals to construction and final finishes.</p>
+          </div>
+          <div className="bg-stone-200 h-96 w-full rounded-lg overflow-hidden shadow-xl">
+            <img
+              src={heroImage}
+              alt="Big Bear commercial-cell-store remodel hero"
+              className="w-full h-full object-cover"
+              loading="eager" />
+          </div>
+        </section>
 
-      {/* Project Description */}
-      <section className="max-w-3xl mx-auto py-16 px-6 text-center">
-        <p className="text-[#587b37] uppercase tracking-widest text-xs mb-6">More on the project</p>
-        <p className="text-lg leading-relaxed text-stone-700">
-        The scope included new framing and electrical work, installation of a suspended acoustic ceiling system with integrated lighting, and upgraded power distribution to meet commercial equipment needs. We also installed new interior privacy glazing, a modern storefront system, and custom display cabinets to enhance both functionality and presentation. The result is a clean, efficient retail space designed for high-traffic use and long-term durability.
-        </p>
-      </section>
+        {/* Project Description */}
+        <section className="max-w-3xl mx-auto py-16 px-6 text-center">
+          <p className="text-[#587b37] uppercase tracking-widest text-xs mb-6">More on the project</p>
+          <p className="text-lg leading-relaxed text-stone-700">
+            The scope included new framing and electrical work, installation of a suspended acoustic ceiling system with integrated lighting, and upgraded power distribution to meet commercial equipment needs. We also installed new interior privacy glazing, a modern storefront system, and custom display cabinets to enhance both functionality and presentation. The result is a clean, efficient retail space designed for high-traffic use and long-term durability.
+          </p>
+        </section>
 
-      {/* Gallery Section */}
-      <section className="py-12 bg-stone-50">
-        <h2 className="text-4xl text-center mb-12">Gallery</h2>
-        <h4 className="text-2xl text-center mb-12 text-[#2afa3b]">After</h4>
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-4 px-6 mb-12">
-          {topGallery.map((img, i) => (
-            <div key={i} className="h-84 bg-stone-200 rounded overflow-hidden">
-              <img
-                src={img}
-                alt={`commercial-cell-store remodel gallery image ${i + 1}`}
-                className="w-full h-full object-cover"
-                loading="lazy"
-              />
-            </div>
-          ))}
-        </div>
-        <h4 className="text-2xl text-center mb-12 text-[#2afa3b]">Before</h4>
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 px-6">
-          {bottomGallery.map((img, i) => (
-            <div key={i} className="h-60 bg-stone-200 rounded overflow-hidden">
-              <img
-                src={img}
-                alt={`commercial-cell-store remodel gallery image ${i + 4}`}
-                className="w-full h-full object-cover"
-                loading="lazy"
-              />
-            </div>
-          ))}
-        </div>
-      </section>
+        {/* Gallery Section */}
+        <section className="py-12 bg-stone-50">
+          <h2 className="text-4xl text-center mb-12">Gallery</h2>
+          <h4 className="text-2xl text-center mb-12 text-[#2afa3b]">After</h4>
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-4 px-6 mb-12">
+            {topGallery.map((img, i) => (
+              <div key={i} className="h-84 bg-stone-200 rounded overflow-hidden">
+                <img
+                  src={img}
+                  alt={`commercial-cell-store remodel gallery image ${i + 1}`}
+                  className="w-full h-full object-cover"
+                  loading="lazy" />
+              </div>
+            ))}
+          </div>
+          <h4 className="text-2xl text-center mb-12 text-[#2afa3b]">Before</h4>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 px-6">
+            {bottomGallery.map((img, i) => (
+              <div key={i} className="h-60 bg-stone-200 rounded overflow-hidden">
+                <img
+                  src={img}
+                  alt={`commercial-cell-store remodel gallery image ${i + 4}`}
+                  className="w-full h-full object-cover"
+                  loading="lazy" />
+              </div>
+            ))}
+          </div>
+        </section>
 
-    </div>
+      </div></>
   );
 }

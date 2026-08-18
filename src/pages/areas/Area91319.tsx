@@ -10,12 +10,7 @@ const data: AreaPageData = {
   tier: "primary",
   heroImage: projectExterior,
   heroDescription: "Ventura county homeowners take pride in well-maintained homes, quiet neighborhoods, and lasting quality. At Mier & Murphy, we bring over two decades of craftsmanship to every project, helping homeowners protect, restore, and improve their properties with dependable service and attention to detail.",
-  stats: [
-    { label: "Projects Completed", value: "120+" },
-    { label: "Years Experience", value: "20+" },
-    { label: "Emergency Response", value: "24/7" },
-    { label: "Licensed", value: "& Fully Insured" },
-  ],
+
   services: [
     { title: "Interior Painting", description: "Professional interior painting designed to refresh your living spaces while protecting your home throughout every stage of the project.", icon: <Paintbrush className="w-6 h-6 text-primary" /> },
     { title: "Exterior Painting & Protective Coatings", description: "From coastal moisture to inland heat, Ventura County homes face different environmental conditions. We recommend the right products for each location to maximize durability and appearance.", icon: <Home className="w-6 h-6 text-primary" /> },

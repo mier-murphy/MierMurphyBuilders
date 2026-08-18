@@ -3,6 +3,21 @@ import { motion } from "framer-motion";
 import { Phone, Mail, MapPin, Clock } from "lucide-react";
 import ScrollReveal from "@/components/ScrollReveal";
 import heroImage from "@/assets/hero-craftsmanship.jpg";
+import { Helmet } from "react-helmet-async";
+
+
+
+const SITE_URL = "https://mierandmurphybuilders.com";
+const PAGE_URL = `${SITE_URL}/services/bathroom-kitchen-remodeling`;
+const OG_IMAGE = `${SITE_URL}/service-bathroom-kitchen-remodeling.jpg`;
+
+const PAGE_TITLE = "Contact Mier & Murphy Builders | Thousand Oaks, CA";
+const PAGE_DESCRIPTION =
+  "Contact Mier & Murphy Builders for project estimates and consultations. Serving Thousand Oaks, Westlake Village, and Ventura County.";
+const PAGE_KEYWORDS =
+  "contractor estimate thousand oaks; contact general contractor; general contractor consultation; home builder quote";
+
+
 
 const Contact = () => {
   useEffect(() => {
@@ -20,6 +35,43 @@ const Contact = () => {
 
   return (
     <>
+<Helmet>
+        {/* Primary meta tags */}
+        <title>{PAGE_TITLE}</title>
+        <meta name="title" content={PAGE_TITLE} />
+        <meta name="description" content={PAGE_DESCRIPTION} />
+        <meta name="keywords" content={PAGE_KEYWORDS} />
+        <meta name="author" content="Mier & Murphy Builders" />
+        <meta name="robots" content="index, follow" />
+        <link rel="canonical" href={PAGE_URL} />
+
+        {/* Geo tags */}
+        <meta name="geo.placename" content="Thousand Oaks" />
+        <meta name="geo.region" content="US-CA" />
+        <meta name="geo.position" content="34.1706;-118.8376" />
+        <meta name="ICBM" content="34.1706, -118.8376" />
+
+        {/* Open Graph */}
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content={PAGE_URL} />
+        <meta property="og:title" content={PAGE_TITLE} />
+        <meta property="og:description" content={PAGE_DESCRIPTION} />
+        <meta property="og:image" content={OG_IMAGE} />
+        <meta property="og:image:alt" content="Bathroom and kitchen remodeling project in Thousand Oaks, CA" />
+        <meta property="og:site_name" content="Mier & Murphy Builders" />
+        <meta property="og:locale" content="en_US" />
+
+        {/* Twitter Card */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:url" content={PAGE_URL} />
+        <meta name="twitter:title" content={PAGE_TITLE} />
+        <meta name="twitter:description" content={PAGE_DESCRIPTION} />
+        <meta name="twitter:image" content={OG_IMAGE} />
+
+     
+      </Helmet>
+
+
       {/* HERO */}
       <section className="relative min-h-[40vh] flex items-center overflow-hidden pt-10">
         <div className="absolute inset-0">

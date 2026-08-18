@@ -10,12 +10,7 @@ const data: AreaPageData = {
   tier: "secondary",
   heroImage: projectInterior,
   heroDescription: "Chatsworth's diverse residential landscape — from historic horse properties to modern planned communities — benefits from Mier & Murphy's versatile expertise. We extend our Conejo Valley quality standards to Chatsworth, bringing professional painting, restoration, and renovation to this growing community.",
-  stats: [
-    { label: "Local Projects", value: "60+" },
-    { label: "Years of Experience", value: "20+" },
-    { label: "Licensed & Insured", value: "Yes" },
-    { label: "Free Estimates", value: "Always" },
-  ],
+
   services: [
     { title: "Interior Painting", description: "Professional interior painting for Chatsworth homes — from cozy ranch-style properties to spacious newer builds. Quality prep work and premium paints for lasting results.", icon: <Paintbrush className="w-6 h-6 text-primary" /> },
     { title: "Exterior Painting & Stucco", description: "Heat-resistant exterior coatings designed for the San Fernando Valley climate. We repair cracked stucco, apply elastomeric finishes, and restore weather-damaged exteriors.", icon: <Home className="w-6 h-6 text-primary" /> },

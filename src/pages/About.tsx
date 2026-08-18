@@ -13,11 +13,11 @@ const SITE_URL = "https://mierandmurphybuilders.com";
 const PAGE_URL = `${SITE_URL}/about`;
 const OG_IMAGE = `${SITE_URL}/about-frank-and-crew.jpg`;
 
-const PAGE_TITLE = "About Us | Mier & Murphy Builders – Family-Owned Contractor, Thousand Oaks CA";
+const PAGE_TITLE = "About Us | Mier & Murphy Builders | Thousand Oaks Contractors";
 const PAGE_DESCRIPTION =
-  "Meet the family behind Mier & Murphy Builders. 20 years of construction experience, IICRC S500 & S520 certified, licensed contractor #1077044 serving Thousand Oaks, Westlake Village & the Conejo Valley. Call (805) 998-9082.";
+  "Learn about Mier & Murphy Builders, a family-owned general contractor serving Thousand Oaks and Ventura County with custom building and restoration services.";
 const PAGE_KEYWORDS =
-  "about Mier and Murphy Builders, family owned contractor Thousand Oaks, IICRC certified contractor Conejo Valley, licensed general contractor 91360, local contractor Westlake Village, Francisco Mier contractor";
+  "general contractor thousand oaks ca, family owned general contractor; licensed contractor ventura county; trusted custom builders";
 
 // JSON-LD: LocalBusiness / GeneralContractor
 const localBusinessSchema = {

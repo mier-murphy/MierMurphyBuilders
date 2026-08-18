@@ -10,12 +10,7 @@ const data: AreaPageData = {
   tier: "secondary",
   heroImage: projectInterior,
   heroDescription: "Southern Woodland Hills offers a unique blend of hillside luxury and established residential charm. Mier & Murphy provides comprehensive painting, restoration, and renovation services to Woodland Hills South homeowners who appreciate quality craftsmanship and reliable professional service.",
-  stats: [
-    { label: "Local Projects", value: "55+" },
-    { label: "Years Active", value: "20+" },
-    { label: "On-Time Rate", value: "99%" },
-    { label: "Free Estimates", value: "Always" },
-  ],
+
   services: [
     { title: "Interior Painting", description: "Professional interior painting tailored to the diverse home styles in southern Woodland Hills. From classic ranch updates to modern contemporary refreshes.", icon: <Paintbrush className="w-6 h-6 text-primary" /> },
     { title: "Exterior & Stucco", description: "Durable exterior coatings that protect against the valley's intense sun and seasonal temperature swings. Expert stucco repair and refinishing.", icon: <Home className="w-6 h-6 text-primary" /> },

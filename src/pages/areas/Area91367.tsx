@@ -10,12 +10,7 @@ const data: AreaPageData = {
   tier: "secondary",
   heroImage: projectExterior,
   heroDescription: "Woodland Hills represents the best of the western San Fernando Valley — tree-lined streets, executive homes, and a community that values quality. Mier & Murphy extends our Conejo Valley expertise to Woodland Hills, delivering luxury-tier painting and restoration to this vibrant neighborhood.",
-  stats: [
-    { label: "Local Projects", value: "85+" },
-    { label: "Executive Homes", value: "50+" },
-    { label: "Client Satisfaction", value: "97%" },
-    { label: "Warranty Coverage", value: "10yr" },
-  ],
+
   services: [
     { title: "Interior Painting", description: "Elegant interior painting for Woodland Hills' executive homes. We specialize in the open floor plans, vaulted ceilings, and architectural details common in this upscale community.", icon: <Paintbrush className="w-6 h-6 text-primary" /> },
     { title: "Exterior Painting & Stucco", description: "Weather-adaptive exterior coatings for Woodland Hills properties. Our finishes resist the valley's heat extremes and maintain a premium appearance year-round.", icon: <Home className="w-6 h-6 text-primary" /> },

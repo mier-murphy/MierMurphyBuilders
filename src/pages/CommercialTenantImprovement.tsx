@@ -17,11 +17,11 @@ const SITE_URL = "https://mierandmurphybuilders.com";
 const PAGE_URL = `${SITE_URL}/services/commercial-tenant-improvement`;
 const OG_IMAGE = `${SITE_URL}/service-commercial-tenant-improvement.jpg`;
 
-const PAGE_TITLE = "Commercial Tenant Improvement Contractor in Thousand Oaks, CA | Mier & Murphy Builders";
+const PAGE_TITLE = "Commercial Tenant Improvements | Mier & Murphy Builders";
 const PAGE_DESCRIPTION =
-  "Retail and office tenant improvement & build-out services in Thousand Oaks, Westlake Village & the Conejo Valley. Permits, framing, drywall, and finish work planned around your lease timeline. CA Lic. #1077044 — call (805) 998-9082.";
+  "Professional commercial tenant improvement contractor for offices, retail, and commercial spaces in Thousand Oaks and greater Los Angeles.";
 const PAGE_KEYWORDS =
-  "commercial tenant improvement Thousand Oaks, retail build-out Westlake Village, office renovation contractor Ventura County, commercial drywall contractor Thousand Oaks, ADA updates commercial Thousand Oaks, commercial stucco repair Conejo Valley";
+  "commercial tenant improvement contractor; commercial remodeling thousand oaks; office buildout contractor; commercial renovation los angeles";
 
 const areasServed = [
   "Thousand Oaks",

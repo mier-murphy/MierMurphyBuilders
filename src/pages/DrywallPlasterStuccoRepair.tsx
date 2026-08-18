@@ -16,11 +16,11 @@ const SITE_URL = "https://mierandmurphybuilders.com";
 const PAGE_URL = `${SITE_URL}/services/drywall-plaster-stucco-repair`;
 const OG_IMAGE = `${SITE_URL}/service-drywall-plaster-stucco-repair.jpg`;
 
-const PAGE_TITLE = "Drywall, Plaster & Stucco Repair in Thousand Oaks, CA | Mier & Murphy Builders";
+const PAGE_TITLE = "Drywall, Plaster & Stucco Repair | Mier & Murphy Builders";
 const PAGE_DESCRIPTION =
-  "Seamless drywall, plaster, and stucco repair in Thousand Oaks, Westlake Village & the Conejo Valley. Texture and color matching so the repair disappears into your wall. Family-owned, CA Lic. #1077044 — call (805) 998-9082.";
+  "Expert drywall, Venetian plaster, and stucco repair in Thousand Oaks and Westlake Village. Quality finish and restoration by Mier & Murphy Builders.";
 const PAGE_KEYWORDS =
-  "stucco repair Thousand Oaks, drywall repair Westlake Village, stucco crack repair Ventura County, texture matching contractor Thousand Oaks, Venetian plaster repair Conejo Valley, color matching stucco Thousand Oaks";
+  "stucco repair thousand oaks; plaster repair contractor; drywall repair westlake village; venetian plaster specialist";
 
 const areasServed = [
   "Thousand Oaks",

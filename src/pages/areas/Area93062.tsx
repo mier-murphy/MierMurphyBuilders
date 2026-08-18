@@ -10,12 +10,7 @@ const data: AreaPageData = {
   tier: "primary",
   heroImage: projectExterior,
   heroDescription: "Simi Valley is known for its family neighborhoods, hillside homes, and well-kept properties. Whether you're updating an older home, repairing unexpected damage, or planning a full renovation, Mier & Murphy brings experienced craftsmanship and dependable service to every project.",
-  stats: [
-    { label: "Local Projects", value: "250+" },
-    { label: "Years Experience", value: "20+" },
-    { label: "Emergency Response", value: "24/7" },
-    { label: "Licensed", value: "California Contractor" },
-  ],
+
   services: [
     { title: "Interior Painting", description: "From contemporary homes to established neighborhoods, we provide clean, professional interior painting with careful preparation and premium finishes that hold up to everyday living.", icon: <Paintbrush className="w-6 h-6 text-primary" /> },
     { title: "Exterior Painting & Stucco", description: "Simi Valley's warm summers and constant sun can wear down exterior finishes over time. Our coating systems help protect your home while improving curb appeal for years to come.", icon: <Home className="w-6 h-6 text-primary" /> },
