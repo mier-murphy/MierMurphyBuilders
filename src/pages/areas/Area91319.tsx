@@ -11,7 +11,11 @@ import projectExterior from "@/assets/areas/VENTURA COUNTY (91319).webp";
 const data: AreaPageData = {
   zipCode: "91319",
   cityName: "Ventura County",
-
+  metaTitle: "General Contractor Newbury Park CA 91319 | Mier & Murphy",
+  metaDescription:
+    "Reliable construction and remodeling services in Newbury Park CA 91319. Trust Mier & Murphy Builders for custom building and restoration.",
+  metaKeywords:
+    "general contractor newbury park 91319, remodeling contractor newbury park, stucco repair 91319, mold remediation 91319",
   tagline: "CORE SERVICE AREA · ZIP 91319",
 
   heroHeadline:

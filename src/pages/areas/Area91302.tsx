@@ -5,6 +5,11 @@ import projectExterior from "@/assets/areas/CALABASAS (91302).webp";
 const data: AreaPageData = {
   zipCode: "91302",
   cityName: "Calabasas",
+  metaTitle: "General Contractor Calabasas CA 91302 | Mier & Murphy",
+  metaDescription:
+    "Luxury custom home construction, kitchen remodeling, and restoration services in Calabasas CA 91302 with Mier & Murphy Builders.",
+  metaKeywords:
+    "general contractor calabasas 91302, luxury builders calabasas, home remodeling 91302, custom homes calabasas",
   tagline: "PREMIUM & EXTENDED · ZIP 91302",
   heroHeadline: "Remodeling and Repair Contractor Serving",
   tier: "premium",

@@ -1,26 +1,15 @@
-import { Shield, Paintbrush, Droplets, Bug, Home, Hammer } from "lucide-react";
+import { Shield, Paintbrush, Droplets, Home, Hammer } from "lucide-react";
 import AreaPageTemplate, { AreaPageData } from "@/components/AreaPageTemplate";
 import projectExterior from "@/assets/areas/MALIBU (90265).webp";
-
-import { Helmet } from "react-helmet-async";
-
-
-const SITE_URL = "https://mierandmurphybuilders.com";
-const PAGE_URL = `${SITE_URL}/areas/90001`;
-const OG_IMAGE = `${SITE_URL}/service-painting-restoration-los-angeles.jpg`;
-
-const PAGE_TITLE =
-  "dksnfgjkndfjkgnkdfngksdfngksdfngk(90001) | Mier & Murphy Builders";
-
-const PAGE_DESCRIPTION =
-  "ftjgjghjghjdghjghjge restoration, mold remediation, and custom home renovation services in Los Angeles, CA. Trusted contractor serving the 90001 area.";
-
-const PAGE_KEYWORDS =
-  "jhkljlkjhljklj conhjkhjktractor los angeles; water damage restoration los angeles; mold remediation los angeles; home renovation 90001; custom home renovations los angeles";
 
 const data: AreaPageData = {
   zipCode: "90265",
   cityName: "Malibu",
+  metaTitle: "General Contractor Malibu CA 90265 | Mier & Murphy",
+  metaDescription:
+    "High-end custom construction, deck repair, and restoration in Malibu CA 90265 by Mier & Murphy Builders. Request a consultation.",
+  metaKeywords:
+    "general contractor malibu 90265, luxury builders malibu, deck repair malibu, water damage restoration malibu",
   tagline: "Premium & Extended Service Area",
   heroHeadline: "Stucco, Repair, and Restoration Contractor Serving",
   tier: "premium",
@@ -106,21 +95,9 @@ const data: AreaPageData = {
   ],
 
   nearbyAreas: [
-    {
-      name: "Calabasas",
-      zip: "91302",
-      href: "/areas/91302",
-    },
-    {
-      name: "Westlake Village",
-      zip: "91361",
-      href: "/areas/91361",
-    },
-    {
-      name: "Agoura Hills",
-      zip: "91301",
-      href: "/areas/91301",
-    },
+    { name: "Calabasas", zip: "91302", href: "/areas/91302" },
+    { name: "Westlake Village", zip: "91361", href: "/areas/91361" },
+    { name: "Agoura Hills", zip: "91301", href: "/areas/91301" },
   ],
 
   jsonLd: {
@@ -136,49 +113,10 @@ const data: AreaPageData = {
       postalCode: "90265",
     },
     telephone: "+1-805-998-9082",
+    url: "https://mierandmurphybuilders.com/areas/90265",
   },
 };
 
 const Area90265 = () => <AreaPageTemplate data={data} />;
 
-      <Helmet prioritizeSeoTags>
-        <title>{PAGE_TITLE}</title>
-        <meta name="title" content={PAGE_TITLE} />
-        <meta name="description" content={PAGE_DESCRIPTION} />
-        <meta name="keywords" content={PAGE_KEYWORDS} />
-        <meta name="author" content="Mier & Murphy Builders" />
-        <meta name="robots" content="index, follow" />
-        <link rel="canonical" href={PAGE_URL} />
-
-        <meta name="geo.placename" content="Los Angeles" />
-        <meta name="geo.region" content="US-CA" />
-        <meta name="geo.position" content="33.9731;-118.2479" />
-        <meta name="ICBM" content="33.9731, -118.2479" />
-
-        <meta property="og:type" content="website" />
-        <meta property="og:url" content={PAGE_URL} />
-        <meta property="og:title" content={PAGE_TITLE} />
-        <meta property="og:description" content={PAGE_DESCRIPTION} />
-        <meta property="og:image" content={OG_IMAGE} />
-        <meta
-          property="og:image:alt"
-          content="Painting and restoration project in Los Angeles, California"
-        />
-        <meta property="og:site_name" content="Mier & Murphy Builders" />
-        <meta property="og:locale" content="en_US" />
-
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:url" content={PAGE_URL} />
-        <meta name="twitter:title" content={PAGE_TITLE} />
-        <meta name="twitter:description" content={PAGE_DESCRIPTION} />
-        <meta name="twitter:image" content={OG_IMAGE} />
-        <meta
-          name="twitter:image:alt"
-          content="Painting and restoration project in Los Angeles, California"
-        />
-
-        <script type="application/ld+json">
-          {JSON.stringify(data.jsonLd)}
-        </script>
-      </Helmet>
 export default Area90265;

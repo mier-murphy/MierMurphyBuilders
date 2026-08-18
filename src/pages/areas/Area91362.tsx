@@ -11,7 +11,11 @@ import projectInterior from "@/assets/areas/NEWBURY PARK  WESTLAKE (91362).webp"
 const data: AreaPageData = {
   zipCode: "91362",
   cityName: "Newbury Park / Westlake",
-
+  metaTitle: "General Contractor Thousand Oaks CA 91362 | Mier & Murphy",
+  metaDescription:
+    "Custom home construction, remodeling, and stucco repair in Thousand Oaks CA 91362 by Mier & Murphy Builders. Contact us for a consultation.",
+  metaKeywords:
+    "general contractor thousand oaks 91362, kitchen remodeling 91362, restoration contractor thousand oaks, home builder 91362",
   tagline: "CORE SERVICE AREA · ZIP 91362",
 
   heroHeadline:

@@ -11,7 +11,11 @@ import projectExterior from "@/assets/areas/WESTLAKE VILLAGE (91361).webp";
 const data: AreaPageData = {
   zipCode: "91361",
   cityName: "Westlake Village",
-
+  metaTitle: "General Contractor Thousand Oaks CA 91361 | Mier & Murphy",
+  metaDescription:
+    "Mier & Murphy Builders provides luxury home building, remodeling, and mold remediation in Thousand Oaks CA 91361. Schedule your estimate today.",
+  metaKeywords:
+    "general contractor thousand oaks 91361, luxury builders 91361, home renovation 91361, water damage repair 91361",
   tagline: "CORE SERVICE AREA · ZIP 91361",
 
   heroHeadline:

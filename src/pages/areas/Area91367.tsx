@@ -5,6 +5,11 @@ import projectExterior from "@/assets/areas/WOODLAND HILLS (91367).webp";
 const data: AreaPageData = {
   zipCode: "91367",
   cityName: "Woodland Hills",
+  metaTitle: "General Contractor Woodland Hills CA 91367 | Mier & Murphy",
+  metaDescription:
+    "Comprehensive construction, remodeling, and water damage restoration in Woodland Hills CA 91367 by Mier & Murphy Builders.",
+  metaKeywords:
+    "general contractor woodland hills 91367, home renovation woodland hills, kitchen remodel 91367, restoration contractor woodland hills",
   tagline: "Premium & Extended Service Area",
   heroHeadline: "Remodeling and Repair Contractor Serving",
   tier: "secondary",

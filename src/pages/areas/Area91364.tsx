@@ -5,6 +5,11 @@ import projectInterior from "@/assets/areas/WOODLAND HILLS SOUTH (91364).webp";
 const data: AreaPageData = {
   zipCode: "91364",
   cityName: "Woodland Hills South",
+  metaTitle: "General Contractor Woodland Hills CA 91364 | Mier & Murphy",
+  metaDescription:
+    "Custom building, home remodeling, and mold remediation in Woodland Hills CA 91364 from Mier & Murphy Builders.",
+  metaKeywords:
+    "general contractor woodland hills 91364, remodeling contractor woodland hills, stucco repair 91364, luxury home builder 91364",
   tagline: "Premium & Extended Service Area",
   heroHeadline: "Remodeling and Repair Contractor Serving",
   tier: "premium",

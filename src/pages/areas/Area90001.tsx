@@ -1,24 +1,15 @@
 import { Shield, Paintbrush, Droplets, Bug, Home, Hammer } from "lucide-react";
-import { Helmet } from "react-helmet-async";
-import AreaPageTemplate, { type AreaPageData } from "@/components/AreaPageTemplate";
+import AreaPageTemplate, { AreaPageData } from "@/components/AreaPageTemplate";
 import projectExterior from "@/assets/areas/LOS ANGELES (90001).webp";
-
-const SITE_URL = "https://mierandmurphybuilders.com";
-const PAGE_URL = `${SITE_URL}/areas/90001`;
-const OG_IMAGE = `${SITE_URL}/service-painting-restoration-los-angeles.jpg`;
-
-const PAGE_TITLE =
-  "Painting, Restoration & Renovation in Los Angeles (90001) | Mier & Murphy Builders";
-
-const PAGE_DESCRIPTION =
-  "Premium painting, water damage restoration, mold remediation, and custom home renovation services in Los Angeles, CA. Trusted contractor serving the 90001 area.";
-
-const PAGE_KEYWORDS =
-  "painting contractor los angeles; water damage restoration los angeles; mold remediation los angeles; home renovation 90001; custom home renovations los angeles";
 
 const data: AreaPageData = {
   zipCode: "90001",
   cityName: "Los Angeles",
+  metaTitle: "General Contractor Los Angeles CA 90001 | Mier & Murphy",
+  metaDescription:
+    "General contracting, commercial improvements, and restoration services in Los Angeles CA 90001 by Mier & Murphy Builders.",
+  metaKeywords:
+    "general contractor los angeles 90001, commercial contractor los angeles, home remodelers 90001, restoration contractor 90001",
   tagline: "Los Angeles' Most Trusted Contractor",
   heroHeadline: "Premium Painting, Restoration & Renovation Services in",
   tier: "primary",
@@ -114,76 +105,20 @@ const data: AreaPageData = {
   jsonLd: {
     "@context": "https://schema.org",
     "@type": "LocalBusiness",
-    "@id": `${PAGE_URL}/#localbusiness`,
     name: "Mier & Murphy Builders – Los Angeles 90001",
-    description: PAGE_DESCRIPTION,
-    url: PAGE_URL,
-    telephone: "+1-805-998-9082",
-    image: OG_IMAGE,
-    address: {
-      "@type": "PostalAddress",
-      addressLocality: "Los Angeles",
-      addressRegion: "CA",
-      postalCode: "90001",
-      addressCountry: "US",
-    },
+    description:
+      "General contracting, commercial improvements, and restoration services in Los Angeles CA 90001.",
     areaServed: {
       "@type": "PostalAddress",
       addressLocality: "Los Angeles",
       addressRegion: "CA",
       postalCode: "90001",
-      addressCountry: "US",
     },
+    telephone: "+1-805-998-9082",
+    url: "https://mierandmurphybuilders.com/areas/90001",
   },
 };
 
-const Area90001 = () => {
-  return (
-    <>
-      <Helmet prioritizeSeoTags>
-        <title>{PAGE_TITLE}</title>
-        <meta name="title" content={PAGE_TITLE} />
-        <meta name="description" content={PAGE_DESCRIPTION} />
-        <meta name="keywords" content={PAGE_KEYWORDS} />
-        <meta name="author" content="Mier & Murphy Builders" />
-        <meta name="robots" content="index, follow" />
-        <link rel="canonical" href={PAGE_URL} />
-
-        <meta name="geo.placename" content="Los Angeles" />
-        <meta name="geo.region" content="US-CA" />
-        <meta name="geo.position" content="33.9731;-118.2479" />
-        <meta name="ICBM" content="33.9731, -118.2479" />
-
-        <meta property="og:type" content="website" />
-        <meta property="og:url" content={PAGE_URL} />
-        <meta property="og:title" content={PAGE_TITLE} />
-        <meta property="og:description" content={PAGE_DESCRIPTION} />
-        <meta property="og:image" content={OG_IMAGE} />
-        <meta
-          property="og:image:alt"
-          content="Painting and restoration project in Los Angeles, California"
-        />
-        <meta property="og:site_name" content="Mier & Murphy Builders" />
-        <meta property="og:locale" content="en_US" />
-
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:url" content={PAGE_URL} />
-        <meta name="twitter:title" content={PAGE_TITLE} />
-        <meta name="twitter:description" content={PAGE_DESCRIPTION} />
-        <meta name="twitter:image" content={OG_IMAGE} />
-        <meta
-          name="twitter:image:alt"
-          content="Painting and restoration project in Los Angeles, California"
-        />
-
-        <script type="application/ld+json">
-          {JSON.stringify(data.jsonLd)}
-        </script>
-      </Helmet>
-
-      <AreaPageTemplate data={data} />
-    </>
-  );
-};
+const Area90001 = () => <AreaPageTemplate data={data} />;
 
 export default Area90001;

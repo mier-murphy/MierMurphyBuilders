@@ -11,7 +11,11 @@ import projectInterior from "@/assets/areas/NEWBURY PARK (91320).webp";
 const data: AreaPageData = {
   zipCode: "91320",
   cityName: "Newbury Park",
-
+  metaTitle: "General Contractor Newbury Park CA 91320 | Mier & Murphy",
+  metaDescription:
+    "Expert home remodeling, water damage repair, and stucco restoration in Newbury Park CA 91320 from Mier & Murphy Builders. Call today.",
+  metaKeywords:
+    "general contractor newbury park 91320, home renovation 91320, bathroom remodel newbury park, restoration contractor 91320",
   tagline: "CORE SERVICE AREA · ZIP 91320",
 
   heroHeadline:
