@@ -1,64 +1,118 @@
 import { Shield, Paintbrush, Droplets, Bug, Home, Hammer } from "lucide-react";
 import AreaPageTemplate, { AreaPageData } from "@/components/AreaPageTemplate";
-import projectExterior from "@/assets/project-exterior.jpg";
+import projectExterior from "@/assets/areas/CALABASAS (91302).webp";
 
 const data: AreaPageData = {
   zipCode: "91302",
-  cityName: "Calabasas / Westlake Village",
-  tagline: "Luxury, High Lifetime-Value Clients",
-  heroHeadline: "White-Glove Builders, Interior Artisans & Restoration Masters in",
+  cityName: "Calabasas",
+  tagline: "PREMIUM & EXTENDED · ZIP 91302",
+  heroHeadline: "Remodeling and Repair Contractor Serving",
   tier: "premium",
   heroImage: projectExterior,
-  heroDescription: "The 91302 ZIP code encompasses some of Southern California's most prestigious addresses — from Calabasas gated communities to the western reaches of Westlake Village. Mier & Murphy provides the white-glove painting, restoration, and renovation services these extraordinary properties demand.",
+  heroDescription:
+    "Calabasas' hillside and canyon lots call for a contractor comfortable working on more complex terrain. We bring 20 years of building experience to every Calabasas project, planning around access, custom finishes, and HOA requirements from the very first estimate.",
+
 
   services: [
-    { title: "Luxury Interior Design Execution", description: "We work with the region's top designers to execute complex interior finishes — Venetian plaster, hand-painted murals, metallic leaf applications, and custom textures for Calabasas estates.", icon: <Paintbrush className="w-6 h-6 text-primary" /> },
-    { title: "Estate Exterior Systems", description: "Comprehensive exterior coating systems for large-scale properties. EIFS, traditional stucco, stone veneer integration, and custom color matching for multi-structure estates.", icon: <Home className="w-6 h-6 text-primary" /> },
-    { title: "Emergency Restoration", description: "Priority 24/7 emergency response for high-value 91302 properties. Our team understands the urgency of protecting irreplaceable custom finishes and luxury materials.", icon: <Droplets className="w-6 h-6 text-primary" /> },
-    { title: "Mold Remediation", description: "Confidential mold assessment and remediation for luxury homes. We work discreetly, efficiently, and thoroughly to protect both the property and the owner's privacy.", icon: <Bug className="w-6 h-6 text-primary" /> },
-    { title: "Full-Scale Renovations", description: "Complete home transformations for 91302's most distinguished properties. From concept through completion, we manage every detail of large-scale residential renovations.", icon: <Hammer className="w-6 h-6 text-primary" /> },
-    { title: "Privacy-First Service", description: "NDA-protected service for high-profile clients. Our team is vetted, professional, and experienced in working within exclusive gated communities and private estates.", icon: <Shield className="w-6 h-6 text-primary" /> },
+    {
+      title: "Bathroom & Kitchen Remodeling",
+      description:
+        "Hillside lots around Calabasas sometimes mean tighter access for materials and equipment, which we plan for before the first day of demolition.",
+      icon: <Paintbrush className="w-6 h-6 text-primary" />,
+    },
+    {
+      title: "Water Damage & Mold Remediation",
+      description:
+        "Calabasas properties near canyon terrain can be more prone to slow, hidden leaks, and our inspection process is built to catch what a quick look would miss.",
+      icon: <Droplets className="w-6 h-6 text-primary" />,
+    },
+    {
+      title: "Drywall & Stucco Repair",
+      description:
+        "The custom finishes found on many Calabasas homes take extra time to match correctly, and we treat that matching step as part of the job, not an afterthought.",
+      icon: <Home className="w-6 h-6 text-primary" />,
+    },
+    {
+      title: "Balcony & Deck Repair",
+      description:
+        "Calabasas has no shortage of HOA-managed condo communities, and SB-326 compliance is a recurring part of our work there.",
+      icon: <Hammer className="w-6 h-6 text-primary" />,
+    },
+    {
+      title: "Commercial Tenant Improvement",
+      description:
+        "The commercial center near Calabasas Road has been the site of several of our retail and office build-outs.",
+      icon: <Shield className="w-6 h-6 text-primary" />,
+    },
   ],
+
   localContent: {
-    heading: "The Preferred Contractor for Calabasas' Elite Properties",
+    heading: "Why Calabasas Property Owners Choose Mier & Murphy",
     paragraphs: [
-      "The Calabasas and western Westlake Village area represents the pinnacle of Southern California luxury living. Properties here feature custom architecture, imported materials, and finishes that require a contractor with genuine expertise — not just standard residential experience.",
-      "Mier & Murphy has earned the trust of homeowners, property managers, and real estate professionals throughout Calabasas and western Westlake Village. Our portfolio includes work on some of the area's most recognizable estates, all completed under strict confidentiality agreements.",
-      "We understand that servicing luxury properties extends beyond technical skill. Our team operates with the professionalism, discretion, and attention to detail that 91302's most discerning clients expect. Every crew member is background-checked, uniformed, and trained in luxury residential protocols.",
+      "Calabasas properties often sit on hillside or canyon lots, which changes how we approach access, equipment staging, and even the order of construction tasks.",
+      "We treat every Calabasas estimate as its own project, since custom finishes and unique layouts are common here.",
+      "Twenty years of building experience means we do not treat a more complex property as a reason to cut corners on process.",
     ],
   },
+
   neighborhoodHighlights: [
-    "The Oaks of Calabasas",
-    "Calabasas Park Estates",
-    "Monte Nido",
-    "Hidden Hills Adjacent",
-    "Mulholland Corridor",
-    "Las Virgenes Canyon",
-    "West Hills Estates",
-    "Malibu Canyon Road",
+    "Calabasas Road area",
+    "The Oaks area",
+    "Mureau Road corridor",
+    "Old Town Calabasas",
   ],
+
   faqs: [
-    { question: "Do you sign NDAs for high-profile properties?", answer: "Yes, we routinely work under non-disclosure agreements and can execute your NDA or provide our standard confidentiality agreement. Discretion is fundamental to our luxury service model." },
-    { question: "Can you work within gated community security protocols?", answer: "Absolutely. We're experienced with the security procedures of The Oaks, Calabasas Park Estates, and other gated communities. We coordinate with guard gates, maintain proper vehicle identification, and follow all community-specific protocols." },
-    { question: "What imported or specialty finishes can you apply?", answer: "Our artisans are trained in Italian Venetian plaster, Japanese plaster, French washes, gold and silver leaf application, and custom faux finishes. We source materials directly from European suppliers when specified." },
-    { question: "How do you handle large estate projects with multiple structures?", answer: "We assign a senior project manager who coordinates phased schedules across main residences, guest houses, pool structures, and outbuildings. Weekly reporting and budget tracking are standard." },
+    {
+      question: "Do you work on hillside properties in Calabasas?",
+      answer:
+        "Yes, and we plan access and equipment staging around hillside lots before demolition starts.",
+    },
+    {
+      question: "What causes hidden leaks in Calabasas homes?",
+      answer:
+        "Canyon-adjacent terrain can lead to slow, hidden leaks, which is why our inspection process looks beyond what is immediately visible.",
+    },
+    {
+      question: "Do you handle SB-326 for Calabasas condo communities?",
+      answer:
+        "Yes, this is a recurring part of our work given how many HOA-managed communities are in Calabasas.",
+    },
+    {
+      question: "Are you licensed to work in Calabasas?",
+      answer:
+        "Yes. We are a licensed California contractor, CA Lic. #1077044.",
+    },
+    {
+      question: "Do you take commercial projects near Calabasas Road?",
+      answer:
+        "Yes, we have completed several retail and office build-outs in that commercial center.",
+    },
   ],
+
   nearbyAreas: [
     { name: "Westlake Village", zip: "91361", href: "/areas/91361" },
     { name: "Agoura Hills", zip: "91301", href: "/areas/91301" },
-    { name: "Woodland Hills", zip: "91367", href: "/areas/91367" },
     { name: "Malibu", zip: "90265", href: "/areas/90265" },
-    { name: "Thousand Oaks", zip: "91360", href: "/areas/91360" },
   ],
+
   jsonLd: {
     "@context": "https://schema.org",
     "@type": "LocalBusiness",
-    name: "Mier & Murphy Builders – Calabasas / Westlake Village 91302",
-    description: "Luxury painting, restoration and renovation in Calabasas and Westlake Village 91302.",
-    areaServed: { "@type": "PostalAddress", addressLocality: "Calabasas", addressRegion: "CA", postalCode: "91302" },
+    name: "Mier & Murphy Builders – Calabasas 91302",
+    description:
+      "Remodeling, repair, water damage restoration, mold remediation, stucco repair, balcony repair and commercial tenant improvements in Calabasas, CA 91302.",
+    areaServed: {
+      "@type": "PostalAddress",
+      addressLocality: "Calabasas",
+      addressRegion: "CA",
+      postalCode: "91302",
+    },
     telephone: "+1-805-998-9082",
+    url: "https://mierandmurphy.com/areas/91302",
   },
 };
 
 const Area91302 = () => <AreaPageTemplate data={data} />;
+
 export default Area91302;

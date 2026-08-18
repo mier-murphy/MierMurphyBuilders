@@ -1,64 +1,117 @@
 import { Shield, Paintbrush, Droplets, Bug, Home, Hammer } from "lucide-react";
 import AreaPageTemplate, { AreaPageData } from "@/components/AreaPageTemplate";
-import projectExterior from "@/assets/project-exterior.jpg";
+import projectExterior from "@/assets/areas/MOORPARK (93021).webp";
 
 const data: AreaPageData = {
   zipCode: "93021",
   cityName: "Moorpark",
-  tagline: "Moorpark' Most Trusted Contractor",
-  heroHeadline: "Trusted Painters, Builders & Restoration Experts in",
+  tagline: "SURROUNDING AREA · ZIP 93021",
+  heroHeadline: "Remodeling and Repair Contractor in",
   tier: "primary",
   heroImage: projectExterior,
-  heroDescription: "Moorpark homeowners take pride in well-maintained homes, quiet neighborhoods, and lasting quality. At Mier & Murphy, we bring over two decades of craftsmanship to every project, helping homeowners protect, restore, and improve their properties with dependable service and attention to detail.",
+  heroDescription:
+    "Moorpark's growing neighborhoods keep our remodeling and repair crews active across the city. We bring the same honest, estimate-to-walkthrough process here that we use everywhere else in the Conejo Valley, regardless of how new or established a neighborhood is.",
 
   services: [
-    { title: "Interior Painting", description: "Whether you're updating a single room or refreshing your entire home, our interior painting services deliver clean finishes and lasting results. We protect your furniture, respect your home, and leave every space spotless.", icon: <Paintbrush className="w-6 h-6 text-primary" /> },
-    { title: "Exterior Painting & Stucco", description: "California sun can be tough on exterior finishes. We use premium coatings and proper preparation techniques that help Moorpark homes stay protected and looking great for years.", icon: <Home className="w-6 h-6 text-primary" /> },
-    { title: "Water Damage Restoration", description: "From leaking pipes to unexpected flooding, our certified restoration team responds quickly to minimize damage and restore your home safely and efficiently.", icon: <Droplets className="w-6 h-6 text-primary" /> },
-    { title: "Mold Remediation", description: "Hidden moisture can quickly lead to mold problems. We locate the source, remove contaminated materials, and restore healthy indoor conditions while preventing future growth.", icon: <Bug className="w-6 h-6 text-primary" /> },
-    { title: "Home Renovations", description: "From kitchens and bathrooms to complete home remodels, we manage renovations with careful planning, quality craftsmanship, and clear communication from start to finish.", icon: <Hammer className="w-6 h-6 text-primary" /> },
-    { title: "Cabinet Refinishing & Specialty Finishes", description: "Give your kitchen or built-ins a fresh new look without replacing them. We provide professional cabinet refinishing along with decorative textures and specialty finishes that fit your home's style.", icon: <Shield className="w-6 h-6 text-primary" /> },
+    {
+      title: "Bathroom & Kitchen Remodeling",
+      description:
+        "Many Moorpark homes are newer builds, so remodels here tend to focus on upgrading finishes and fixtures rather than reworking plumbing layouts.",
+      icon: <Paintbrush className="w-6 h-6 text-primary" />,
+    },
+    {
+      title: "Water Damage & Mold Remediation",
+      description:
+        "Appliance failures and water heater leaks are among the more common calls we get from Moorpark homeowners, and we treat the moisture source, not just the visible damage.",
+      icon: <Droplets className="w-6 h-6 text-primary" />,
+    },
+    {
+      title: "Drywall & Stucco Repair",
+      description:
+        "Newer stucco finishes in Moorpark's developing neighborhoods are usually a more straightforward match than older, weathered surfaces.",
+      icon: <Home className="w-6 h-6 text-primary" />,
+    },
+    {
+      title: "Balcony & Deck Repair",
+      description:
+        "Moorpark's growing number of townhome communities has meant a steady flow of SB-326 and SB-721 compliance work for us.",
+      icon: <Hammer className="w-6 h-6 text-primary" />,
+    },
+    {
+      title: "Commercial Tenant Improvement",
+      description:
+        "Los Angeles Avenue's retail corridor is where most of our Moorpark commercial projects take shape.",
+      icon: <Shield className="w-6 h-6 text-primary" />,
+    },
   ],
+
   localContent: {
-    heading: "Moorpark's Reliable Home Improvement Professionals",
+    heading: "Why Moorpark Homeowners Choose Mier & Murphy",
     paragraphs: [
-      "Moorpark offers a unique blend of established neighborhoods, newer communities, and rural properties. Homes throughout the area experience year-round sun exposure, seasonal winds, and changing temperatures that can affect paint, stucco, roofing systems, and exterior finishes over time.",
-      "Our team understands these local conditions and recommends products and techniques that perform well in Ventura County's climate. Whether we're restoring water damage, repainting an exterior, or completing a major renovation, every project is completed with long-term durability in mind.",
-      "We've earned the trust of homeowners throughout Moorpark by showing up on time, communicating clearly, and delivering workmanship that speaks for itself. Many of our projects come from referrals because clients know they'll receive honest recommendations and dependable results.",
+      "Moorpark has grown quickly, and a lot of our work here involves newer homes where the goal is upgrading finishes rather than fixing structural issues.",
+      "Because so much of Moorpark's housing stock is newer, stucco matching tends to be more predictable here than in older Conejo Valley neighborhoods, which keeps repair timelines shorter.",
+      "We bring the same estimate-to-final-walkthrough process to Moorpark that we use everywhere else, no shortcuts because a neighborhood is newer.",
     ],
   },
+
   neighborhoodHighlights: [
-    "Campus Park",
-    "Peach Hill",
-    "Buttercreek Estates",
-    "Home Acres",
-    "Country Club Estates",
-    "Moorpark Highlands",
-    "Serenata",
-    "Happy Camp Canyon Area",
+    "Los Angeles Avenue corridor",
+    "Mountain Meadows",
+    "Peach Hill area",
+    "Campus Park area",
   ],
+
   faqs: [
-    { question: "Do you work on both newer and older homes?", answer: "Yes. Moorpark has a mix of older neighborhoods and newer developments, and we adjust prep and materials based on the home's age and condition." },
-    { question: "Can you match existing exterior paint colors?", answer: " Yes, we color-match on-site so touch-ups and partial repaints blend seamlessly with the rest of the home." },
-    { question: "Do you provide emergency water damage services in Moorpark?", answer: "Yes, we offer 24/7 emergency response across Moorpark, including rural properties near Happy Camp Canyon." },
- ],
+    {
+      question: "Do you work on newer construction in Moorpark?",
+      answer:
+        "Yes, a large share of our Moorpark projects are on newer homes, usually focused on upgrading finishes and fixtures.",
+    },
+    {
+      question: "What are common water damage causes in Moorpark?",
+      answer:
+        "Appliance failures and water heater leaks are among the most common calls we get here.",
+    },
+    {
+      question: "Do you handle SB-326 work for Moorpark townhomes?",
+      answer:
+        "Yes. Moorpark's growing number of townhome communities has kept this a steady part of our workload.",
+    },
+    {
+      question: "Are you licensed to work in Moorpark?",
+      answer:
+        "Yes. We are a licensed California contractor, CA Lic. #1077044.",
+    },
+    {
+      question: "Is stucco matching easier on newer Moorpark homes?",
+      answer:
+        "Generally yes, since newer finishes tend to be more consistent than older, weathered stucco, which can shorten the repair timeline.",
+    },
+  ],
+
   nearbyAreas: [
     { name: "Simi Valley", zip: "93062", href: "/areas/93062" },
     { name: "Thousand Oaks", zip: "91360", href: "/areas/91360" },
-    { name: "Camarillo", zip: "", href: "/areas/" },
-    { name: "Santa Rosa Valley", zip: "", href: "/areas/" },
     { name: "Ventura County", zip: "91319", href: "/areas/91319" },
   ],
+
   jsonLd: {
     "@context": "https://schema.org",
     "@type": "LocalBusiness",
     name: "Mier & Murphy Builders – Moorpark 93021",
-    description: "Premium painting, stucco, water damage restoration and mold remediation in Moorpark 93021.",
-    areaServed: { "@type": "PostalAddress", addressLocality: "Moorpark", addressRegion: "CA", postalCode: "93021" },
+    description:
+      "Remodeling, repair, water damage restoration, mold remediation, stucco repair and commercial tenant improvements in Moorpark, CA 93021.",
+    areaServed: {
+      "@type": "PostalAddress",
+      addressLocality: "Moorpark",
+      addressRegion: "CA",
+      postalCode: "93021",
+    },
     telephone: "+1-805-998-9082",
     url: "https://mierandmurphy.com/areas/93021",
   },
 };
 
 const Area93021 = () => <AreaPageTemplate data={data} />;
+
 export default Area93021;

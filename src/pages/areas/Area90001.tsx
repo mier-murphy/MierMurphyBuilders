@@ -1,7 +1,7 @@
 import { Shield, Paintbrush, Droplets, Bug, Home, Hammer } from "lucide-react";
 import { Helmet } from "react-helmet-async";
 import AreaPageTemplate, { type AreaPageData } from "@/components/AreaPageTemplate";
-import projectExterior from "@/assets/area91.jpeg";
+import projectExterior from "@/assets/areas/LOS ANGELES (90001).webp";
 
 const SITE_URL = "https://mierandmurphybuilders.com";
 const PAGE_URL = `${SITE_URL}/areas/90001`;

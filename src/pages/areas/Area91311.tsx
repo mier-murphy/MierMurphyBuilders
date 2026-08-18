@@ -1,63 +1,123 @@
 import { Shield, Paintbrush, Droplets, Bug, Home, Hammer } from "lucide-react";
 import AreaPageTemplate, { AreaPageData } from "@/components/AreaPageTemplate";
-import projectInterior from "@/assets/project-interior.jpg";
+import projectInterior from "@/assets/areas/CHATSWORTH (91311).webp";
 
 const data: AreaPageData = {
   zipCode: "91311",
   cityName: "Chatsworth",
-  tagline: "Extended Reach Service Area",
-  heroHeadline: "Professional Builders, Painters & Damage Restoration in",
+  tagline: "Premium & Extended Service Area",
+  heroHeadline: "Remodeling and Repair Contractor Serving",
   tier: "secondary",
   heroImage: projectInterior,
-  heroDescription: "Chatsworth's diverse residential landscape — from historic horse properties to modern planned communities — benefits from Mier & Murphy's versatile expertise. We extend our Conejo Valley quality standards to Chatsworth, bringing professional painting, restoration, and renovation to this growing community.",
+  heroDescription:
+    "Chatsworth's mix of rocky terrain and established neighborhoods rounds out our western service area. We extend our 20 years of building experience into Chatsworth for the right project, bringing the same estimate-to-walkthrough process we use closer to home.",
 
   services: [
-    { title: "Interior Painting", description: "Professional interior painting for Chatsworth homes — from cozy ranch-style properties to spacious newer builds. Quality prep work and premium paints for lasting results.", icon: <Paintbrush className="w-6 h-6 text-primary" /> },
-    { title: "Exterior Painting & Stucco", description: "Heat-resistant exterior coatings designed for the San Fernando Valley climate. We repair cracked stucco, apply elastomeric finishes, and restore weather-damaged exteriors.", icon: <Home className="w-6 h-6 text-primary" /> },
-    { title: "Water Damage Restoration", description: "Responsive water damage restoration for Chatsworth residences. From pipe bursts to seasonal flooding, we provide complete extraction, drying, and repair services.", icon: <Droplets className="w-6 h-6 text-primary" /> },
-    { title: "Mold Remediation", description: "Professional mold testing and removal for homes in the 91311 area. We eliminate mold at its source and implement prevention strategies for long-term protection.", icon: <Bug className="w-6 h-6 text-primary" /> },
-    { title: "Property Renovations", description: "Modernize your Chatsworth property with our renovation services. We specialize in updates that increase property value and improve daily living.", icon: <Hammer className="w-6 h-6 text-primary" /> },
-    { title: "Commercial Services", description: "We also serve Chatsworth's light commercial and retail spaces with professional painting and maintenance services.", icon: <Shield className="w-6 h-6 text-primary" /> },
+    {
+      title: "Bathroom & Kitchen Remodeling",
+      description:
+        "Older Chatsworth homes often have layout quirks from past additions, and we work around those rather than forcing a generic floor plan.",
+      icon: <Paintbrush className="w-6 h-6 text-primary" />,
+    },
+    {
+      title: "Water Damage & Mold Remediation",
+      description:
+        "We look closely at attic and crawlspace ventilation on Chatsworth mold calls, since poor airflow is a common contributor in this area.",
+      icon: <Droplets className="w-6 h-6 text-primary" />,
+    },
+    {
+      title: "Drywall & Stucco Repair",
+      description:
+        "The rocky, hillside lots around Chatsworth can put extra stress on stucco over time, and we check for structural movement before doing a cosmetic repair.",
+      icon: <Home className="w-6 h-6 text-primary" />,
+    },
+    {
+      title: "Balcony & Deck Repair",
+      description:
+        "Several Chatsworth apartment communities have brought us in for balcony repair work tied to their SB-721 inspection findings.",
+      icon: <Hammer className="w-6 h-6 text-primary" />,
+    },
+    {
+      title: "Commercial Tenant Improvement",
+      description:
+        "Chatsworth's industrial and commercial corridors have given us a steady stream of office and light-retail build-out projects.",
+      icon: <Shield className="w-6 h-6 text-primary" />,
+    },
   ],
+
   localContent: {
-    heading: "Quality Craftsmanship Extended to Chatsworth",
+    heading: "Why Chatsworth Property Owners Choose Mier & Murphy",
     paragraphs: [
-      "Chatsworth sits at the northwestern edge of the San Fernando Valley, known for its rocky terrain, equestrian properties, and growing residential communities. Our team brings the premium standards we've built in the Conejo Valley directly to this diverse market.",
-      "The San Fernando Valley's extreme summer heat creates specific challenges for exterior coatings and stucco. We apply UV-resistant, heat-stable finishes that maintain their appearance and protective qualities through Chatsworth's temperature extremes.",
-      "Whether you own a classic Chatsworth ranch property or a newer home in one of the area's planned developments, Mier & Murphy delivers consistent quality and professional service that sets us apart from typical valley contractors.",
+      "Chatsworth's rocky, hillside terrain and mix of older and newer construction mean we approach every estimate here with fresh eyes rather than assumptions from other neighborhoods.",
+      "Attic and crawlspace ventilation issues come up often enough in Chatsworth mold calls that we check them as a standard part of our inspection.",
+      "We extend our service area into Chatsworth for the right project, bringing the same estimate-to-walkthrough process we use closer to home.",
     ],
   },
+
   neighborhoodHighlights: [
-    "Chatsworth Lake Manor",
-    "Brown's Canyon",
-    "Oakwood Estates",
-    "Santa Susana Pass",
-    "Devonshire Corridor",
-    "Topanga Canyon Blvd",
-    "Lassen Street Area",
-    "Mason Avenue Corridor",
+    "Chatsworth Park area",
+    "Old Town Chatsworth",
+    "Devonshire corridor",
+    "Rocky Peak area",
   ],
+
   faqs: [
-    { question: "Do you travel to Chatsworth from Thousand Oaks?", answer: "Yes, Chatsworth is within our extended service radius. We maintain efficient scheduling for 91311 projects and don't charge travel premiums for this area." },
-    { question: "Can you work on equestrian properties in Chatsworth?", answer: "Absolutely. We have experience with barns, stables, and large-lot properties common in Chatsworth. We understand the unique requirements of equestrian properties." },
-    { question: "What exterior coatings do you recommend for the valley heat?", answer: "We recommend heat-reflective elastomeric coatings that reduce thermal absorption and prevent cracking. These coatings are specifically formulated for the extreme temperature swings in the San Fernando Valley." },
+    {
+      question: "Do you work on older homes with additions in Chatsworth?",
+      answer:
+        "Yes, we work around layout quirks from past additions rather than forcing a generic remodel plan.",
+    },
+    {
+      question: "What causes mold in Chatsworth homes?",
+      answer:
+        "Poor attic and crawlspace ventilation is a common contributor here, so we check that as part of every mold inspection.",
+    },
+    {
+      question: "Do you handle SB-721 work for Chatsworth apartments?",
+      answer:
+        "Yes, several apartment communities in Chatsworth have brought us in for repair work tied to SB-721 findings.",
+    },
+    {
+      question: "Are you licensed to work in Chatsworth?",
+      answer:
+        "Yes. We are a licensed California contractor, CA Lic. #1077044.",
+    },
+    {
+      question: "Do you take commercial projects in Chatsworth?",
+      answer:
+        "Yes, the industrial and commercial corridors here have given us regular office and light-retail build-out work.",
+    },
   ],
+
   nearbyAreas: [
-    { name: "Woodland Hills", zip: "91367", href: "/areas/91367" },
-    { name: "Woodland Hills South", zip: "91364", href: "/areas/91364" },
-    { name: "Agoura Hills", zip: "91301", href: "/areas/91301" },
-    { name: "Thousand Oaks", zip: "91360", href: "/areas/91360" },
-    { name: "Oak Park", zip: "91377", href: "/areas/91377" },
+    {
+      name: "Woodland Hills",
+      zip: "91367",
+      href: "/areas/91367",
+    },
+    {
+      name: "Simi Valley",
+      zip: "93062",
+      href: "/areas/93062",
+    },
   ],
+
   jsonLd: {
     "@context": "https://schema.org",
     "@type": "LocalBusiness",
     name: "Mier & Murphy Builders – Chatsworth 91311",
-    description: "Professional painting, restoration and renovation in Chatsworth 91311.",
-    areaServed: { "@type": "PostalAddress", addressLocality: "Chatsworth", addressRegion: "CA", postalCode: "91311" },
+    description:
+      "Remodeling, repair, water damage restoration, mold remediation, stucco repair, and commercial tenant improvement services in Chatsworth 91311.",
+    areaServed: {
+      "@type": "PostalAddress",
+      addressLocality: "Chatsworth",
+      addressRegion: "CA",
+      postalCode: "91311",
+    },
     telephone: "+1-805-998-9082",
   },
 };
 
 const Area91311 = () => <AreaPageTemplate data={data} />;
+
 export default Area91311;

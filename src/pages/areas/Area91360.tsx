@@ -6,7 +6,7 @@ import {
   Hammer,
 } from "lucide-react";
 import AreaPageTemplate, { AreaPageData } from "@/components/AreaPageTemplate";
-import projectExterior from "@/assets/area91.jpeg";
+import projectExterior from "@/assets/areas/THOUSAND OAKS (91360).webp";
 
 const data: AreaPageData = {
   zipCode: "91360",

@@ -1,63 +1,117 @@
 import { Shield, Paintbrush, Droplets, Bug, Home, Hammer } from "lucide-react";
 import AreaPageTemplate, { AreaPageData } from "@/components/AreaPageTemplate";
-import projectInterior from "@/assets/project-interior.jpg";
+import projectInterior from "@/assets/areas/WOODLAND HILLS SOUTH (91364).webp";
 
 const data: AreaPageData = {
   zipCode: "91364",
   cityName: "Woodland Hills South",
-  tagline: "Southern Woodland Hills Service Area",
-  heroHeadline: "Full-Service Home Builders & Restoration Contractors in",
-  tier: "secondary",
+  tagline: "Premium & Extended Service Area",
+  heroHeadline: "Remodeling and Repair Contractor Serving",
+  tier: "premium",
   heroImage: projectInterior,
-  heroDescription: "Southern Woodland Hills offers a unique blend of hillside luxury and established residential charm. Mier & Murphy provides comprehensive painting, restoration, and renovation services to Woodland Hills South homeowners who appreciate quality craftsmanship and reliable professional service.",
+  heroDescription:
+    "The 91364 side of Woodland Hills leans toward hillside and custom homes, and we take on select projects here with 20 years of building experience behind us. From slope-affected decks to custom stucco finishes, we bring the same careful, estimate-to-walkthrough process we use throughout the Conejo Valley.",
 
   services: [
-    { title: "Interior Painting", description: "Professional interior painting tailored to the diverse home styles in southern Woodland Hills. From classic ranch updates to modern contemporary refreshes.", icon: <Paintbrush className="w-6 h-6 text-primary" /> },
-    { title: "Exterior & Stucco", description: "Durable exterior coatings that protect against the valley's intense sun and seasonal temperature swings. Expert stucco repair and refinishing.", icon: <Home className="w-6 h-6 text-primary" /> },
-    { title: "Water Damage Restoration", description: "Rapid-response water damage services for Woodland Hills South properties. Complete extraction, structural drying, and restoration to pre-loss condition.", icon: <Droplets className="w-6 h-6 text-primary" /> },
-    { title: "Mold Remediation", description: "Safe, effective mold removal for homes in southern Woodland Hills. We address the moisture source, remove all affected materials, and prevent recurrence.", icon: <Bug className="w-6 h-6 text-primary" /> },
-    { title: "Bathroom & Kitchen Updates", description: "Strategic renovations that add value and modernize your home. We focus on the updates that deliver the best return on investment.", icon: <Hammer className="w-6 h-6 text-primary" /> },
-    { title: "Maintenance Programs", description: "Ongoing maintenance plans to keep your Woodland Hills South home in peak condition year-round. Preventive care saves money long-term.", icon: <Shield className="w-6 h-6 text-primary" /> },
+    {
+      title: "Bathroom & Kitchen Remodeling",
+      description:
+        "The 91364 hillside sections of southern Woodland Hills often feature older custom homes, so our remodels here start with understanding what is behind the existing finishes.",
+      icon: <Paintbrush className="w-6 h-6 text-primary" />,
+    },
+    {
+      title: "Water Damage & Mold Remediation",
+      description:
+        "Southern Woodland Hills homes tucked into the hills can hide slow leaks, and our certified process is built to find the source, not just the stain.",
+      icon: <Droplets className="w-6 h-6 text-primary" />,
+    },
+    {
+      title: "Drywall & Stucco Repair",
+      description:
+        "The custom and semi-custom homes across southern Woodland Hills use a wide range of finishes, and we match each one individually.",
+      icon: <Home className="w-6 h-6 text-primary" />,
+    },
+    {
+      title: "Balcony & Deck Repair",
+      description:
+        "Hillside decks in the 91364 area take real weather and slope stress, so we focus on structural integrity and waterproofing on every repair.",
+      icon: <Hammer className="w-6 h-6 text-primary" />,
+    },
+    {
+      title: "Commercial Tenant Improvement",
+      description:
+        "Select commercial spaces in the southern Woodland Hills area round out the build-out work we take on here.",
+      icon: <Shield className="w-6 h-6 text-primary" />,
+    },
   ],
+
   localContent: {
-    heading: "Serving Southern Woodland Hills with Excellence",
+    heading: "Why Woodland Hills South Homeowners Choose Mier & Murphy",
     paragraphs: [
-      "Southern Woodland Hills covers desirable neighborhoods along the Mulholland corridor and the hillside areas approaching Topanga Canyon. These properties often feature stunning views, unique topography, and architectural character worth preserving.",
-      "Homes in this area face slope-related drainage challenges and increased wildfire exposure. Our restoration team applies specialized waterproofing, fire-resistant coatings, and structural repair techniques developed for exactly these conditions.",
-      "We've built strong relationships with local homeowners through consistent quality and honest communication. Our transparent pricing, detailed project timelines, and clean-site guarantee make us the preferred choice for southern Woodland Hills residents.",
+      "The 91364 side of Woodland Hills leans toward hillside and custom homes, which call for more careful assessment than a standard tract neighborhood.",
+      "Hillside slope and older custom construction both affect how we approach repair and restoration in southern Woodland Hills, and we plan for that from the first visit.",
+      "We take on select projects in this area, bringing the same estimate-to-walkthrough process we use throughout the Conejo Valley.",
     ],
   },
+
   neighborhoodHighlights: [
-    "Mulholland Drive Homes",
-    "Topanga Canyon Adjacent",
-    "Wells Drive Area",
-    "Dumetz Road",
-    "Serrania Park",
-    "Corbin Avenue Corridor",
-    "Valmar Road Area",
-    "Canoga Park Adjacent",
+    "Southern Woodland Hills hillside",
+    "Mulholland corridor",
+    "Woodland Hills Country Club vicinity",
+    "Valley Circle area",
   ],
+
   faqs: [
-    { question: "Do you handle hillside properties in southern Woodland Hills?", answer: "Yes, we're experienced with the hillside and canyon-adjacent properties common in southern Woodland Hills. Our crews are equipped for challenging access and steep-grade work." },
-    { question: "What fire-resistant options are available?", answer: "We offer Class A fire-rated stucco, intumescent coatings, and fire-resistant sealants recommended for properties in the wildfire interface zones of southern Woodland Hills." },
-    { question: "How do I get started with a project?", answer: "Call us at (805) 998-9082 or fill out our online form. We'll schedule a free on-site consultation within 48 hours to discuss your project and provide a detailed estimate." },
+    {
+      question: "What area does 91364 cover?",
+      answer:
+        "91364 covers the southern, more hillside side of Woodland Hills, where custom and semi-custom homes are common.",
+    },
+    {
+      question: "Do hillside homes need special repair considerations?",
+      answer:
+        "Yes, slope and weather exposure affect decks and stucco, so we focus on structural integrity and waterproofing here.",
+    },
+    {
+      question: "Do you handle custom home finishes in this area?",
+      answer:
+        "Yes, southern Woodland Hills uses a wide range of finishes, and we match each individually rather than assuming one approach.",
+    },
+    {
+      question: "Are you licensed to work in Woodland Hills South?",
+      answer:
+        "Yes. We are a licensed California contractor, CA Lic. #1077044.",
+    },
+    {
+      question: "Do you take commercial work in this area?",
+      answer:
+        "Yes, we take on select commercial build-outs in the southern Woodland Hills area.",
+    },
   ],
+
   nearbyAreas: [
     { name: "Woodland Hills", zip: "91367", href: "/areas/91367" },
-    { name: "Calabasas / Westlake Village", zip: "91302", href: "/areas/91302" },
-    { name: "Agoura Hills", zip: "91301", href: "/areas/91301" },
-    { name: "Chatsworth", zip: "91311", href: "/areas/91311" },
-    { name: "Malibu", zip: "90265", href: "/areas/90265" },
+    { name: "Calabasas", zip: "91302", href: "/areas/91302" },
+    { name: "Los Angeles", zip: "90001", href: "/areas/90001" },
   ],
+
   jsonLd: {
     "@context": "https://schema.org",
     "@type": "LocalBusiness",
     name: "Mier & Murphy Builders – Woodland Hills South 91364",
-    description: "Professional painting, restoration and renovation in Woodland Hills South 91364.",
-    areaServed: { "@type": "PostalAddress", addressLocality: "Woodland Hills", addressRegion: "CA", postalCode: "91364" },
+    description:
+      "Remodeling, repair, stucco, restoration and renovation services in Woodland Hills South 91364.",
+    areaServed: {
+      "@type": "PostalAddress",
+      addressLocality: "Woodland Hills",
+      addressRegion: "CA",
+      postalCode: "91364",
+    },
     telephone: "+1-805-998-9082",
+    url: "https://mierandmurphy.com/areas/91364",
   },
 };
 
 const Area91364 = () => <AreaPageTemplate data={data} />;
+
 export default Area91364;

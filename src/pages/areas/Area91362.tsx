@@ -6,7 +6,7 @@ import {
   Hammer,
 } from "lucide-react";
 import AreaPageTemplate, { AreaPageData } from "@/components/AreaPageTemplate";
-import projectInterior from "@/assets/project-interior.jpg";
+import projectInterior from "@/assets/areas/NEWBURY PARK  WESTLAKE (91362).webp";
 
 const data: AreaPageData = {
   zipCode: "91362",
