@@ -115,22 +115,20 @@ const projects = [
 
 const testimonials = [
   {
-    quote: "Mier & Murphy transformed our Westlake Village estate beyond anything we imagined. Their attention to detail is unmatched by any contractor in the Conejo Valley.",
-    author: "Robert & Catherine M.",
-    location: "Westlake Village, CA 91361",
-    service: "Interior Renovation",
+    quote: "We needed work done as part of our backyard renovation - which included adding a cement pad for seating, re-stuccoing our block wall and adding a 3 ft vinyl privacy fence in top. Frank provided us with a quote and schedule. Project was started within a day of giving notice to proceed and finished a day early. He and his crew were on time and professional. Definitely would hire again.",
+      author: "Mathew M.",
+      location: "Thousand Oaks, CA",
+    
   },
   {
-    quote: "After water damage threatened our Thousand Oaks home, Frank and his team responded within hours. The restoration was flawless—you'd never know anything happened.",
-    author: "David & Lisa T.",
-    location: "Thousand Oaks, CA 91360",
-    service: "Water Damage Restoration",
+    quote: "We just finished having work done at our house from this team. I cannot say enough good things about both the company and the work that they did. They were professional, prompt, and their work was exceptional. My family is looking forward to the next time we need work done around the house so that we can call Meier Construction and know that it will be done correctly and add a great value.",
+      author: "Chris W.",
+      location: "Culver City, CA",
   },
   {
-    quote: "We hired three other contractors before finding Mier & Murphy. The difference in quality is night and day. Their work is absolutely impeccable.",
-    author: "Jennifer P.",
-    location: "Thousand Oaks, CA 91362",
-    service: "Exterior Stucco",
+    quote: "We had water damaged drywalls that needed to be repaired in two areas (downstairs hallway and upstairs bathroom), and also some flooring work in the bathroom. We decided to choose Mier Construction because they can do both drywall and flooring. The best thing they could offer was to start the repairing right away. They did high quality job and always kept the area clean. They finished the job quickly as they promised. We are very satisfied.",
+      author: "Yi W.",
+      location: "Thousand Oaks, CA",
   },
 ];
 
@@ -705,12 +703,26 @@ const Index = () => {
                     <div className="mt-6 pt-6 border-t border-white/10">
                       <p className="font-sans text-sm font-semibold text-white">{t.author}</p>
                       <p className="font-sans text-xs text-white/50">{t.location}</p>
-                      <p className="font-sans text-xs text-brand-yellow mt-1 font-medium">{t.service}</p>
+                      
                     </div>
                   </div>
+                  
                 </ScrollReveal>
               ))}
+
+              
             </div>
+            <ScrollReveal>
+            <div className="text-center mt-12">
+              <Link
+                to="/about/testimonials"
+                className="inline-flex items-center gap-2 bg-primary text-primary-foreground px-8 py-4 rounded-xl font-sans text-sm font-semibold hover:bg-primary/90 transition-all duration-300 group shadow-lg"
+              >
+                See All Reviews
+                <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+              </Link>
+            </div>
+          </ScrollReveal>
           </div>
         </div>
 

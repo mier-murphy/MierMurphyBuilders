@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
 import ScrollReveal from "@/components/ScrollReveal";
 import LeadCaptureForm from "@/components/LeadCaptureForm";
-import heroImage from "@/assets/hero-craftsmanship.jpg";
+import heroImage from "@/assets/Areas We Serve Hero.webp";
 
 const areas = [
   { zip: "91360", name: "Thousand Oaks", tier: "Primary", description: "Central Thousand Oaks – very high residential density and the heart of our operations.", href: "/areas/91360" },

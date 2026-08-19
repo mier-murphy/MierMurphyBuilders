@@ -1,54 +1,97 @@
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { ArrowRight, Star, Quote, CheckCircle, MapPin, Calendar } from "lucide-react";
+import { Helmet } from "react-helmet-async";
 import ScrollReveal from "@/components/ScrollReveal";
 import LeadCaptureForm from "@/components/LeadCaptureForm";
 import heroImage from "@/assets/hero-craftsmanship.jpg";
 
-const testimonials = [
-  {
-    quote: "Mier & Murphy transformed our Westlake Village estate beyond anything we imagined. Their Venetian plaster work and attention to detail is unmatched by any contractor in the Conejo Valley. Frank personally oversaw every phase of the renovation.",
-    author: "Robert & Catherine M.",
-    location: "Westlake Village, CA 91361",
-    service: "Interior Renovation & Venetian Plaster",
-    rating: 5,
-  },
-  {
-    quote: "After water damage threatened our Thousand Oaks home, Frank and his team responded within hours. The restoration was flawless—you'd never know anything happened. Truly the best restoration company in the 91360 area.",
-    author: "David & Lisa T.",
-    location: "Thousand Oaks, CA 91360",
-    service: "Water Damage Restoration",
-    rating: 5,
-  },
-  {
-    quote: "We hired three other stucco contractors in Thousand Oaks before finding Mier & Murphy. The difference in quality is night and day. Their exterior stucco work on our 91362 home is absolutely impeccable — our neighbors constantly ask who did it.",
-    author: "Jennifer P.",
-    location: "Thousand Oaks, CA 91362",
-    service: "Exterior Stucco Restoration",
-    rating: 5,
-  },
-  {
-    quote: "When we discovered mold in our Westlake Village home, Mier & Murphy's IICRC-certified team handled everything professionally from testing through remediation. They coordinated directly with our insurance company, making a stressful situation seamless.",
-    author: "Michael & Sandra K.",
-    location: "Westlake Village, CA 91361",
-    service: "Mold Remediation",
-    rating: 5,
-  },
-  {
-    quote: "Frank and his team completed a full interior renovation of our Newbury Park home — drywall, texturing, crown molding, and custom painting. The craftsmanship is museum-quality. We've since recommended Mier & Murphy to everyone in the Conejo Valley.",
-    author: "Thomas & Rebecca W.",
-    location: "Newbury Park, CA 91320",
-    service: "Full Interior Renovation",
-    rating: 5,
-  },
-  {
-    quote: "A burst pipe flooded our Thousand Oaks kitchen at 2 AM. Mier & Murphy's 24/7 emergency team was at our door within 45 minutes. They extracted the water, dried the structure, and rebuilt everything — better than original. Absolutely world-class service.",
-    author: "Steven & Maria L.",
-    location: "Thousand Oaks, CA 91360",
-    service: "Emergency Water Damage & Rebuild",
-    rating: 5,
-  },
-];
+const SITE_URL = "https://mierandmurphybuilders.com";
+const PAGE_URL = `${SITE_URL}/about/testimonials`;
+
+const PAGE_TITLE = "Client Reviews & Testimonials | Mier & Murphy Builders";
+
+const PAGE_DESCRIPTION =
+  "Read reviews and testimonials from homeowners across Thousand Oaks and Ventura County who trusted Mier & Murphy Builders with their custom homes.";
+
+  const testimonials = [
+    {
+      quote: "Mier and Murphy were the best! From the beginning, they understood and explained the situation what was happening when no one else could. They explained what needed to remedy the problem. Frank was sympathetic and supportive. His team of workers and himself were 100% professional and respectful at all times. The complex the work in a timely manner and exceeded my expectations. I am very happy for the help and work they did and it seems to have remedied my situation. Frank had some suggestions for improvements along the way and was very conscious of using low VOC chemicals so not to cause any harm. Frank is very knowledgeable and competent and he's reasonable and worked with me on some of the costs. I had to do some footwork to find the same finishes I had but mostly because I wanted to keep the project moving along without any delays. Overall I am very pleased with the results and highly recommend Mier and Murphy for any projects you might have. I wouldn't hesitate to have them help me again, if ever needed.",
+      author: "Jennifer B.",
+      location: "Los Angeles, CA",    
+      rating: 5,
+    },
+    {
+      quote: "Frank is knowledgeable, nice, good prices, great work, timely, & cleaned the area well.",
+      author: "Cathy S.",
+      location: "Los Angeles, CA",
+      
+      rating: 5,
+    },
+    {
+      quote: "Our experience with Frank and his crew was fantastic. We converted a detached, dusty garage that was used for storage into a finished bonus room with attic storage. Frank talked us through each step, from initial quote through every stage of construction, to finishes. He was patient, informative, and attentive to both the biggest elements and the smallest details. It was great to have the project in the hands of a team that was experienced and who we could trust to deliver the best result. We know we will enjoy this space for years to come! Now we are talking with Frank about future projects because we are so thrilled with the way this first one turned out.",
+      author: "J. V.",
+      location: "North Hollywood, CA",
+      
+      rating: 5,
+    },
+    {
+      quote: "Mier construction did a great job on our new driveway. Very easy to work with attention to detail and fast. They were done in a few days. Getting so many compliments from our neighbors about our new driveway. They also beat all the other bids on the driveway project. We highly recommend them.",
+      author: "Tim M.",
+      location: "Los Angeles, CA",
+     
+      rating: 5,
+    },
+    {
+      quote: "Frank worked on building out our newest storefront (Asurion Tech Repair & Solutions). It was a blank canvas as the unit we are renting was freshly divided from an old bank space. Frank and team worked really efficiently to build out the new layout with drywall, electrical, drop ceiling, and resurfacing the concrete floors. They were extremely communicative about the progress and any delays we faced (due to city permits).",
+      author: "Corinne B.",
+      location: "Los Angeles, CA",
+      
+      rating: 5,
+    },
+    {
+      quote: "Mier Construction was great to deal with during our home remodel. They were very considerate and clean. They were very knowledgeable about offering advice on materials to use and the overall aesthetic of what would look best. They did a complete gutting of our home and put up new drywall throughout the house. They also helped us turn an old closet space into a functional laundry and storage room. Their attention to detail was really great that we continue to get compliments every time someone walks into the house for the first time. They were fair with their pricing and the high quality of work reflected that. You get what you pay for! I highly recommend them. They will be our first call for any future home projects.",
+      author: "Christopher M.",
+      location: "Sylmar, CA",
+      
+      rating: 5,
+    },
+    {
+      quote: "Frank and his team were great to work with - very conscientious of keeping the renovation space clean and tidy at end of each day and also had good communication when working through the city permits and delays. We had a partial kitchen remodel along with two bathroom renovations and added a partition wall to bedroom. Frank did an excellent job of submitting all the necessary paperwork required from the HOA and working in a condo building. His bid was fair and the final cost was within the expected amount. We would definitely recommend this company!",
+      author: "Debbie F.",
+      location: "Washington", // ⚠ no state/city listed in source data — verify this entry
+      
+      rating: 5,
+    },
+    {
+      quote: "We needed work done as part of our backyard renovation - which included adding a cement pad for seating, re-stuccoing our block wall and adding a 3 ft vinyl privacy fence in top. Frank provided us with a quote and schedule. Project was started within a day of giving notice to proceed and finished a day early. He and his crew were on time and professional. Definitely would hire again.",
+      author: "Mathew M.",
+      location: "Thousand Oaks, CA",
+      
+      rating: 5,
+    },
+    {
+      quote: "Frank replaced 3 old door knobs in my home and installed a utility shelf in the wash room. Even though these were smaller projects it still made a huge difference and I'm so thankful for Frank's attention to detail and quick work. I highly recommend Frank and will definitely continue to hire him for home repairs and upgrades. Thanks again, Frank!",
+      author: "Jennifer N.",
+      location: "Los Angeles, CA",
+      
+      rating: 5,
+    },
+    {
+      quote: "We just finished having work done at our house from this team. I cannot say enough good things about both the company and the work that they did. They were professional, prompt, and their work was exceptional. My family is looking forward to the next time we need work done around the house so that we can call Meier Construction and know that it will be done correctly and add a great value.",
+      author: "Chris W.",
+      location: "Culver City, CA",
+      
+      rating: 5,
+    },
+    {
+      quote: "We had water damaged drywalls that needed to be repaired in two areas (downstairs hallway and upstairs bathroom), and also some flooring work in the bathroom. We decided to choose Mier Construction because they can do both drywall and flooring. The best thing they could offer was to start the repairing right away. They did high quality job and always kept the area clean. They finished the job quickly as they promised. We are very satisfied.",
+      author: "Yi W.",
+      location: "Thousand Oaks, CA",
+     
+      rating: 5,
+    },
+  ];
 
 const stats = [
   { value: "500+", label: "Projects Completed" },
@@ -58,8 +101,28 @@ const stats = [
 ];
 
 const AboutTestimonials = () => {
+  
   return (
     <>
+      <Helmet prioritizeSeoTags>
+        <title>{PAGE_TITLE}</title>
+        <meta name="title" content={PAGE_TITLE} />
+        <meta name="description" content={PAGE_DESCRIPTION} />
+        <link rel="canonical" href={PAGE_URL} />
+
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content={PAGE_URL} />
+        <meta property="og:title" content={PAGE_TITLE} />
+        <meta property="og:description" content={PAGE_DESCRIPTION} />
+        <meta property="og:image" content={heroImage} />
+        <meta property="og:site_name" content="Mier & Murphy Builders" />
+
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content={PAGE_TITLE} />
+        <meta name="twitter:description" content={PAGE_DESCRIPTION} />
+        <meta name="twitter:image" content={heroImage} />
+      </Helmet>
+
       {/* ── HERO with Lead Form ── */}
       <section className="relative min-h-[85vh] flex items-center overflow-hidden">
         <div className="absolute inset-0">
@@ -74,34 +137,35 @@ const AboutTestimonials = () => {
             </div>
             <h1 className="font-serif text-4xl md:text-5xl lg:text-[3.5rem] font-bold mb-6 leading-[1.15] text-white">
               Voices of{" "}
-              <span className="text-primary">Excellence</span>
+              <span className="text-primary">Real Homeowners</span>
             </h1>
             <p className="font-sans text-[15px] text-white/75 leading-relaxed max-w-lg mb-8">
-              Don't take our word for it. Hear from Thousand Oaks, Westlake Village, and Conejo Valley 
-              homeowners who have experienced the Mier & Murphy difference.
+            Do not take our word for it. Hear from Thousand Oaks, Westlake Village, and Conejo Valley homeowners who have worked with Mier & Murphy Builders firsthand.
             </p>
-            {/* Stats row */}
-            <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
-              {stats.map((stat) => (
-                <div key={stat.label} className="text-center">
-                  <p className="font-serif text-2xl font-bold text-primary">{stat.value}</p>
-                  <p className="font-sans text-[11px] text-white/50 uppercase tracking-wider mt-1">{stat.label}</p>
-                </div>
-              ))}
-            </div>
+        
           </motion.div>
 
           <LeadCaptureForm variant="full" />
         </div>
       </section>
-
+      {/* Trust section */}
+      <section className="py-6 bg-background">
+        <div className="max-w-6xl mx-auto px-6">
+          <div className="flex flex-wrap items-center justify-center gap-3">
+            <span className="trust-badge"><CheckCircle className="w-4 h-4" /> 20 Years of Building Experience</span>
+            <span className="trust-badge"><CheckCircle className="w-4 h-4" /> Family Owned & Operated</span>
+            <span className="trust-badge"><CheckCircle className="w-4 h-4" /> IICRC S500 & S520 Certified</span>
+            <span className="trust-badge"><CheckCircle className="w-4 h-4" /> CA Lic. #1077044</span>
+          </div>
+        </div>
+      </section>
       {/* ── TESTIMONIALS GRID — Dark Section ── */}
       <section className="section-padding" style={{ background: "hsl(220, 20%, 15%)" }}>
         <div className="max-w-6xl mx-auto">
           <ScrollReveal>
             <p className="font-sans text-xs tracking-[0.4em] text-primary uppercase text-center mb-3 font-semibold">Real Reviews from Real Homeowners</p>
             <h2 className="font-serif text-3xl md:text-4xl text-center font-bold mb-4 text-white">
-              Trusted by Thousand Oaks' <span className="text-primary">Finest Homes</span>
+              Trusted by <span className="text-primary">Conejo Valley Homeowners</span>
             </h2>
             <p className="font-sans text-sm text-white/50 text-center max-w-xl mx-auto mb-14">
               Every review represents a family whose home we've transformed with care, precision, and dedication.
@@ -127,10 +191,7 @@ const AboutTestimonials = () => {
                       <MapPin className="w-3 h-3 text-primary" />
                       <span className="font-sans text-xs text-white/50">{testimonial.location}</span>
                     </div>
-                    <span className="inline-block mt-2 bg-primary/10 border border-primary/15 px-3 py-1 rounded text-xs font-sans text-primary">
-                      {testimonial.service}
-
-                    </span>
+                  
                   </div>
                 </div>
               </ScrollReveal>
@@ -159,14 +220,15 @@ const AboutTestimonials = () => {
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             {[
-              "Family-owned Thousand Oaks business since 2004",
-              "IICRC S500 & S520 dual certified",
-              "500+ completed projects in the Conejo Valley",
-              "24/7 emergency water damage response",
+              "Family-owned and family-operated in Thousand Oaks",
+              "20 years of building experience",
+              "IICRC S500 and S520 dual certified",
+              "Direct insurance claim documentation support",
               "Free in-home estimates for all services",
-              "Licensed, bonded & insured in Ventura County",
-              "Direct insurance claim coordination",
-              "Master Venetian plaster & stucco artisans",
+              "Licensed California contractor, CA Lic. #1077044",
+              "One team from remediation through rebuild",
+              "HOA-experienced on balcony and deck projects,"
+              
             ].map((item, i) => (
               <ScrollReveal key={item} delay={i * 0.05}>
                 <div className="flex items-center gap-3 p-4 bg-background border border-border rounded-2xl hover:shadow-md hover:border-primary/20 transition-all duration-300">
@@ -185,11 +247,10 @@ const AboutTestimonials = () => {
           <ScrollReveal>
             <div className="gold-divider mb-8" />
             <h2 className="font-serif text-3xl md:text-4xl font-bold mb-4 text-white">
-              Join 500+ Satisfied <span className="text-primary">Conejo Valley Homeowners</span>
+            Work With a <span className="text-primary">Family-Owned Contracto</span> You Can Trust
             </h2>
             <p className="font-sans text-[15px] text-white/60 mb-10 max-w-xl mx-auto leading-relaxed">
-              Experience the craftsmanship, professionalism, and dedication that has made Mier & Murphy Builders 
-              the most trusted luxury contractor in Thousand Oaks and Westlake Village for over 20 years.
+            Experience the honest work, real certifications, and family name that have made Mier & Murphy Builders a trusted contractor in Thousand Oaks and the Conejo Valley for two decades of building experience.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link
@@ -199,7 +260,7 @@ const AboutTestimonials = () => {
                 Get a Free Estimate
               </Link>
               <Link
-                to="/about/legacy"
+                to="/about"
                 className="border-2 border-white/20 text-white px-8 py-4 rounded-xl font-sans text-sm font-semibold hover:bg-white/10 transition-all duration-300 flex items-center gap-2 group"
               >
                 Learn Our Story

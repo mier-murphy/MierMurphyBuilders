@@ -103,13 +103,13 @@ const Footer = () => {
           </p>
           <div className="flex items-center gap-2 text-xs font-sans text-white/40">
             <span>              <a
-                href="/PrivacyPolicy"
+                href="/privacy-policy"
                 className=" text-white/40 hover:text-brand-yellow"
               >
 Privacy Policy              </a></span>
             <span className="text-brand-yellow">•</span>
             <span><a
-                href="/TermsAndConditions"
+                href="/terms-and-conditions"
                 className="text-white/40   hover:text-brand-yellow"
               >
 Terms Of Conditions              </a></span>

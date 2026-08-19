@@ -31,6 +31,8 @@ import Contact from "./pages/Contact";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
 import TermsAndConditions from "./pages/TermsAndConditions";
 
+import BookOnline from "./pages/BookOnline";
+
 import Areas from "./pages/Areas";
 import Area91360 from "./pages/areas/Area91360";
 import Area91362 from "./pages/areas/Area91362";
@@ -193,13 +195,21 @@ export const routes: RouteRecord[] = [
             element: <Contact />,
           },
           {
-            path: "PrivacyPolicy",
+            path: "privacy-policy",
             element: <PrivacyPolicy />,
           },
           {
-            path: "TermsAndConditions",
+            path: "terms-and-conditions",
             element: <TermsAndConditions />,
           },
+
+
+          {
+            path: "book-online",
+            element: <BookOnline />,
+          },
+
+
 
           {
             path: "areas",

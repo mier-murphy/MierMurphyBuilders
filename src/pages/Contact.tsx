@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { motion } from "framer-motion";
 import { Phone, Mail, MapPin, Clock } from "lucide-react";
 import ScrollReveal from "@/components/ScrollReveal";
-import heroImage from "@/assets/hero-craftsmanship.jpg";
+import heroImage from "@/assets/Contact Hero.webp";
 import { Helmet } from "react-helmet-async";
 
 

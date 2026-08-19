@@ -9,7 +9,7 @@ import projectExterior from "@/assets/project-exterior.jpg";
 import projectRestoration from "@/assets/project-restoration.jpg";
 import projectBathroom from "@/assets/project-bathroom.jpg";
 import projectMold from "@/assets/project-mold.jpg";
-import heroCraftsmanship from "@/assets/hero-craftsmanship.jpg";
+import heroCraftsmanship from "@/assets/Projects Hero.webp";
 import CabinRemodel from "@/assets/cabin/cabin-hero.avif";
 import CondoRemodel from "@/assets/condo-retreat/condo-retreat-hero.avif";
 import CommercialStore from "@/assets/commercial-cell-store/commercial-cell-store-hero.avif";

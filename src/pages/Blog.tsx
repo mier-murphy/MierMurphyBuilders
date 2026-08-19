@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
 import ScrollReveal from "@/components/ScrollReveal";
 import { getAllPosts, sanityImageUrl, type BlogPostSummary } from "@/lib/sanity";
-import heroCraftsmanship from "@/assets/hero-craftsmanship.jpg";
+import heroCraftsmanship from "@/assets/Blog Hero.webp";
 
 const SITE_URL = "https://mierandmurphybuilders.com";
 const PAGE_URL = `${SITE_URL}/blog`;
