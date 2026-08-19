@@ -35,7 +35,7 @@ const data: AreaPageData = {
       title: "Drywall & Stucco Repair",
       description:
         "Los Angeles covers an enormous range of architectural styles, so drywall and stucco repair here starts with a careful look at the existing finish before any work begins.",
-      icon: <Home className="w-6 h-6 text-primary" />,
+      icon: <Home className="w-6 h-6 text-primary" />, 
     },
     {
       title: "Balcony & Deck Repair",
