@@ -8,8 +8,8 @@ import { Helmet } from "react-helmet-async";
 
 
 const SITE_URL = "https://mierandmurphybuilders.com";
-const PAGE_URL = `${SITE_URL}/services/bathroom-kitchen-remodeling`;
-const OG_IMAGE = `${SITE_URL}/service-bathroom-kitchen-remodeling.jpg`;
+const PAGE_URL = `${SITE_URL}/contact`;
+const OG_IMAGE = `${SITE_URL}/contact-og-image.jpg`; // or whatever the actual contact hero/OG image should be
 
 const PAGE_TITLE = "Contact Mier & Murphy Builders | Thousand Oaks, CA";
 const PAGE_DESCRIPTION =
@@ -57,7 +57,7 @@ const Contact = () => {
         <meta property="og:title" content={PAGE_TITLE} />
         <meta property="og:description" content={PAGE_DESCRIPTION} />
         <meta property="og:image" content={OG_IMAGE} />
-        <meta property="og:image:alt" content="Bathroom and kitchen remodeling project in Thousand Oaks, CA" />
+        <meta property="og:image:alt" content="Contact Mier & Murphy Builders for project estimates and consultations. Serving Thousand Oaks, Westlake Village, and Ventura County." />
         <meta property="og:site_name" content="Mier & Murphy Builders" />
         <meta property="og:locale" content="en_US" />
 

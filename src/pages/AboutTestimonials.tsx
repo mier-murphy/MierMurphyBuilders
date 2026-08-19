@@ -129,6 +129,7 @@ const AboutTestimonials = () => {
                     </div>
                     <span className="inline-block mt-2 bg-primary/10 border border-primary/15 px-3 py-1 rounded text-xs font-sans text-primary">
                       {testimonial.service}
+
                     </span>
                   </div>
                 </div>
@@ -150,7 +151,9 @@ const AboutTestimonials = () => {
             <p className="font-sans text-xs tracking-[0.4em] text-primary uppercase text-center mb-3 font-semibold">The Mier & Murphy Difference</p>
             <h2 className="font-serif text-3xl md:text-4xl text-center font-bold mb-4 text-foreground">
               Why Conejo Valley Homeowners <span className="text-primary">Choose Us</span>
+
             </h2>
+            
             <div className="gold-divider mb-12" />
           </ScrollReveal>
 

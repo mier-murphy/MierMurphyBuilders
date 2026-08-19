@@ -50,8 +50,8 @@ const Footer = () => {
             <h4 className="font-serif text-lg text-white mb-6">Quick Links</h4>
             <ul className="space-y-3">
               {[
-              { label: "Our Legacy", href: "/about/legacy" },
-              { label: "Our Team", href: "/about/team" },
+              { label: "About", href: "/about" },
+              
               { label: "Testimonials", href: "/about/testimonials" },
               { label: "Our Projects", href: "/projects" },
               { label: "Areas We Serve", href: "/areas" },
