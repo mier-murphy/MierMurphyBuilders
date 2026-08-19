@@ -5,101 +5,99 @@ import projectExterior from "@/assets/areas/LOS ANGELES (90001).webp";
 const data: AreaPageData = {
   zipCode: "90001",
   cityName: "Los Angeles",
-  metaTitle: "General Contractor Los Angeles CA 90001 | Mier & Murphy",
+  metaTitle:
+    "Remodeling & Repair Contractor Los Angeles CA 90001 | Mier & Murphy",
   metaDescription:
-    "General contracting, commercial improvements, and restoration services in Los Angeles CA 90001 by Mier & Murphy Builders.",
+    "Remodeling, water damage restoration, mold remediation, stucco repair, balcony repair, and commercial services in Los Angeles, CA 90001. Mier & Murphy Builders.",
   metaKeywords:
-    "general contractor los angeles 90001, commercial contractor los angeles, home remodelers 90001, restoration contractor 90001",
-  tagline: "Los Angeles' Most Trusted Contractor",
-  heroHeadline: "Premium Painting, Restoration & Renovation Services in",
+    "remodeling contractor los angeles 90001; repair contractor los angeles; water damage restoration los angeles; mold remediation los angeles; stucco repair los angeles; balcony repair los angeles; commercial contractor los angeles",
+  tagline: "PREMIUM & EXTENDED · ZIP 90001",
+  heroHeadline: "Remodeling and Repair Contractor Serving Los Angeles",
   tier: "primary",
   heroImage: projectExterior,
   heroDescription:
-    "Los Angeles is home to everything from historic residences and luxury estates to modern homes and investment properties. Mier & Murphy provides dependable painting, restoration, and renovation services across Los Angeles with the craftsmanship, professionalism, and responsiveness homeowners expect.",
+    "For the right project, our team travels from Thousand Oaks into greater Los Angeles. We are selective about which Los Angeles-area projects we take on, choosing ones where our IICRC certified process and communication style are genuinely a good fit.",
 
   services: [
     {
-      title: "Interior Painting",
+      title: "Bathroom & Kitchen Remodeling",
       description:
-        "Beautiful interior finishes for homes throughout Los Angeles. Whether you're refreshing a condo, updating a family home, or preparing a luxury property for sale, we deliver clean results with minimal disruption.",
+        "We take select bathroom and kitchen remodel projects in the Los Angeles area, with the same in-person estimate and honest timeline we use closer to home.",
       icon: <Paintbrush className="w-6 h-6 text-primary" />,
     },
     {
-      title: "Exterior Painting",
+      title: "Water Damage & Mold Remediation",
       description:
-        "Los Angeles homes face constant exposure to sun, pollution, and changing weather. Our exterior painting systems are designed to protect surfaces while maintaining lasting curb appeal.",
-      icon: <Home className="w-6 h-6 text-primary" />,
-    },
-    {
-      title: "Water Damage Restoration",
-      description:
-        "Water emergencies require immediate action. Our certified restoration team responds quickly to minimize damage and begin the recovery process before problems become more expensive.",
+        "IICRC certified restoration is available for select Los Angeles properties, particularly where a homeowner wants a team with a personal understanding of what mold does to a home.",
       icon: <Droplets className="w-6 h-6 text-primary" />,
     },
     {
-      title: "Mold Remediation",
+      title: "Drywall & Stucco Repair",
       description:
-        "We provide complete mold inspection, containment, removal, and restoration services to safely return your home to healthy living conditions.",
-      icon: <Bug className="w-6 h-6 text-primary" />,
+        "Los Angeles covers an enormous range of architectural styles, so drywall and stucco repair here starts with a careful look at the existing finish before any work begins.",
+      icon: <Home className="w-6 h-6 text-primary" />,
     },
     {
-      title: "Custom Home Renovations",
+      title: "Balcony & Deck Repair",
       description:
-        "Whether you're modernizing a single room or remodeling an entire home, we bring experienced project management and skilled craftsmanship to every renovation.",
-      icon: <Hammer className="w-6 h-6 text-primary" />,
-    },
-    {
-      title: "Specialty Finishes",
-      description:
-        "From decorative wall textures to custom plaster and premium architectural coatings, we create finishes that complement Los Angeles' diverse home styles.",
+        "HOAs and property managers in the Los Angeles area reach out to us for SB-326 and SB-721 compliance work when local contractors are booked out.",
       icon: <Shield className="w-6 h-6 text-primary" />,
+    },
+    {
+      title: "Commercial Tenant Improvement",
+      description:
+        "We take on select commercial build-outs in greater Los Angeles, usually where timeline and communication matter as much as the construction itself.",
+      icon: <Hammer className="w-6 h-6 text-primary" />,
     },
   ],
 
   localContent: {
-    heading: "Experienced Across Los Angeles Homes",
+    heading: "Why Los Angeles Property Owners Choose Mier & Murphy",
     paragraphs: [
-      "No two neighborhoods in Los Angeles are alike. Historic homes, hillside properties, modern construction, and luxury residences all require different materials, techniques, and planning.",
-      "Our team has experience working on a wide range of residential properties throughout Southern California. We understand local permitting requirements, varying architectural styles, and the importance of maintaining both craftsmanship and schedules.",
-      "Whether your project is a simple repaint or a complete renovation, we approach every home with the same attention to detail, respect, and commitment to quality.",
+      "We are based in Thousand Oaks, not Los Angeles, so we take on select Los Angeles-area projects where our process and communication are a good fit, not every job that comes in.",
+      "Los Angeles' range of architecture means we treat every estimate here as its own assessment rather than assuming a standard approach will work.",
+      "Homeowners and property managers in the Los Angeles area often reach out to us specifically for our restoration background and our certified process.",
     ],
   },
 
   neighborhoodHighlights: [
-    "Brentwood",
-    "Pacific Palisades",
-    "Bel Air",
-    "Sherman Oaks",
-    "Studio City",
-    "Encino",
-    "Hollywood Hills",
-    "West Los Angeles",
+    "West San Fernando Valley",
+    "Greater Los Angeles metro",
   ],
 
   faqs: [
     {
-      question: "Do you work on older and historic homes?",
+      question: "Do you serve all of Los Angeles?",
       answer:
-        "Yes, we regularly work on historic residences and use materials and techniques suited to preserving original details.",
+        "We take select projects throughout the greater Los Angeles area, based out of our Thousand Oaks office.",
     },
     {
-      question: "Can you complete projects while the home is occupied?",
+      question:
+        "Why would a Los Angeles homeowner hire a Thousand Oaks contractor?",
       answer:
-        "Yes. We phase our work and use containment methods so daily life is disrupted as little as possible.",
+        "Some homeowners specifically want our IICRC certified restoration background and the estimate-to-walkthrough process we bring to every job.",
     },
     {
-      question: "Do you coordinate with designers and property managers?",
+      question: "Do you handle SB-326 compliance work in Los Angeles?",
       answer:
-        "Yes, we're comfortable working from designer specs and coordinating with third-party project managers.",
+        "Yes, for select HOA and property manager clients in the Los Angeles area.",
+    },
+    {
+      question: "Are you licensed to work in Los Angeles?",
+      answer:
+        "Yes. We are a licensed California contractor, CA Lic. #1077044.",
+    },
+    {
+      question:
+        "How do you handle Los Angeles' range of architectural styles?",
+      answer:
+        "We start every project with a careful look at the existing finish and layout before doing any repair or remodeling work.",
     },
   ],
 
   nearbyAreas: [
-    { name: "Calabasas", zip: "91302", href: "/areas/91302" },
     { name: "Woodland Hills", zip: "91367", href: "/areas/91367" },
-    { name: "Beverly Hills", zip: "", href: "/areas/" },
-    { name: "Santa Monica", zip: "", href: "/areas/" },
-    { name: "Ventura County", zip: "91319", href: "/areas/91319" },
+    { name: "Calabasas", zip: "91302", href: "/areas/91302" },
   ],
 
   jsonLd: {
@@ -107,7 +105,7 @@ const data: AreaPageData = {
     "@type": "LocalBusiness",
     name: "Mier & Murphy Builders – Los Angeles 90001",
     description:
-      "General contracting, commercial improvements, and restoration services in Los Angeles CA 90001.",
+      "Remodeling, repair, restoration, and commercial services in Los Angeles, CA 90001.",
     areaServed: {
       "@type": "PostalAddress",
       addressLocality: "Los Angeles",

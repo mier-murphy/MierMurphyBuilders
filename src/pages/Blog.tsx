@@ -2,9 +2,21 @@ import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { ArrowRight, Calendar } from "lucide-react";
 import { Link } from "react-router-dom";
+import { Helmet } from "react-helmet-async";
 import ScrollReveal from "@/components/ScrollReveal";
 import { getAllPosts, sanityImageUrl, type BlogPostSummary } from "@/lib/sanity";
 import heroCraftsmanship from "@/assets/hero-craftsmanship.jpg";
+
+const SITE_URL = "https://mierandmurphybuilders.com";
+const PAGE_URL = `${SITE_URL}/blog`;
+
+const PAGE_TITLE = "Construction & Remodeling Blog | Mier & Murphy Builders";
+
+const PAGE_DESCRIPTION =
+  "Get practical home renovation tips, water damage restoration advice, and mold remediation insights from Mier & Murphy Builders.";
+
+const PAGE_KEYWORDS =
+  "home renovation blog, construction insights, mold remediation tips, water damage repair advice";
 
 const formatDate = (dateString?: string) => {
   if (!dateString) return "";
@@ -42,6 +54,26 @@ const Blog = () => {
 
   return (
     <>
+      <Helmet prioritizeSeoTags>
+        <title>{PAGE_TITLE}</title>
+        <meta name="title" content={PAGE_TITLE} />
+        <meta name="description" content={PAGE_DESCRIPTION} />
+        <meta name="keywords" content={PAGE_KEYWORDS} />
+        <link rel="canonical" href={PAGE_URL} />
+
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content={PAGE_URL} />
+        <meta property="og:title" content={PAGE_TITLE} />
+        <meta property="og:description" content={PAGE_DESCRIPTION} />
+        <meta property="og:image" content={heroCraftsmanship} />
+        <meta property="og:site_name" content="Mier & Murphy Builders" />
+
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content={PAGE_TITLE} />
+        <meta name="twitter:description" content={PAGE_DESCRIPTION} />
+        <meta name="twitter:image" content={heroCraftsmanship} />
+      </Helmet>
+
       {/* HERO */}
       <section className="relative min-h-[60vh] flex items-center overflow-hidden">
         <div className="absolute inset-0">

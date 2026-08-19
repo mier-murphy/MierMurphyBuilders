@@ -196,10 +196,7 @@ const AreaPageTemplate = ({ data }: { data: AreaPageData }) => {
               )}
             </h1>
 
-            <p className="font-sans text-xs tracking-[0.2em] text-primary/70 uppercase mb-4">
-              Interior · Exterior · Water Damage · Mold Remediation ·
-              Custom Renovations
-            </p>
+
 
             <p className="font-sans text-[15px] text-white/75 leading-relaxed max-w-lg mb-8">
               {data.heroDescription}
