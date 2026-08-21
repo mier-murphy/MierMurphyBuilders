@@ -182,7 +182,7 @@ const Contact = () => {
       </section>
 
        {/* ── IICRC CERTIFICATION ── */}
-       <section className="section-padding bg-background bg-[#F9F9F6]">
+       <section className="section-padding  bg-[#fcfcf8]">
         <div className="max-w-6xl mx-auto">
           <ScrollReveal>
             <div className="text-center mb-14">

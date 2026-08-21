@@ -297,6 +297,7 @@ const WaterDamageMoldRemediation = () => {
                   loading="lazy"
                 />
               </div>
+
               <div className="mt-8 glass ">
               <div className="bg-[#f9f9f6] border border-gray-200 rounded-2xl p-4 mb-2 shadow-sm flex flex-col sm:flex-row items-center gap-6 text-center sm:text-left">
             <img 
@@ -328,6 +329,7 @@ const WaterDamageMoldRemediation = () => {
             </div>
           </div>
               </div>
+              
             </ScrollReveal>
           </div>
         </div>

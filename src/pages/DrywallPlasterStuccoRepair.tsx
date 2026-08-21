@@ -216,7 +216,7 @@ const DrywallPlasterStuccoRepair = () => {
               <span className="font-sans text-xs font-semibold text-primary tracking-wide">REPAIRS THAT BLEND IN</span>
             </div>
             <h1 className="font-serif text-4xl md:text-5xl lg:text-[3.5rem] font-bold mb-6 leading-[1.15] text-white">
-            Seamless  <span className="text-primary">Drywall and Stucco Repair</span>in Thousand Oaks
+            Seamless  <span className="text-primary">Drywall and Stucco Repair</span> in Thousand Oaks
             </h1>
             <p className="font-sans text-[15px] text-white/75 leading-relaxed max-w-lg">
             Drywall, plaster, and stucco repair for homeowners in Thousand Oaks, Westlake Village, and Simi Valley,
