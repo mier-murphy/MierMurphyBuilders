@@ -9,6 +9,10 @@ import projectAboutTeam from "@/assets/about/about-meet-team.webp";
 import projectAboutStory from "@/assets/about/about-our-story.webp";
 import projectAboutRoots from "@/assets/about/about-roots.webp";
 import iicrcBadge from "@/assets/iicrc-badge.avif";
+
+import iicrcFirmBadge from "@/assets/iicrc-firm-badge.png";
+import iicrcMoldBadge from "@/assets/iicrc-mold-badge.png";
+
 const SITE_URL = "https://mierandmurphybuilders.com";
 const PAGE_URL = `${SITE_URL}/about`;
 const OG_IMAGE = `${SITE_URL}/about-frank-and-crew.jpg`;
@@ -307,18 +311,33 @@ export function AboutPage() {
           <div className="w-16 h-1 bg-[#587b37] mx-auto rounded-full" />
         </div>
 
-        <div className="max-w-2xl mx-auto">
+        <div className="max-w-2xl mx-auto space-y-6">
           <div className="bg-[#f9f9f6] border border-gray-200 rounded-2xl p-8 shadow-sm flex flex-col sm:flex-row items-center gap-6 text-center sm:text-left">
             <img 
-              src={iicrcBadge}
-              alt="IICRC certified firm" 
+              src={iicrcFirmBadge}
+              alt="IICRC Certified Firm badge" 
               className="w-24 h-24 object-contain shrink-0" 
             />
             <div className="space-y-2">
-              <span className="text-xs font-bold text-[#587b37] tracking-wider uppercase block">Water Damage and Mold Standard</span>
-              <h3 className="font-playfair text-2xl font-bold text-gray-900">IICRC S500 & S520 Certified</h3>
+             
+              <h3 className="font-playfair text-2xl font-bold text-gray-900">IICRC Firm</h3>
               <p className="text-sm text-gray-600 leading-relaxed">
-                Our restoration work meets IICRC S500 and S520 standards, the industry benchmark for water damage and mold, earned after our own family faced mold at home.
+                A professional cleaning, restoration, or inspection company that is certified by the IICRC. Technicians who work for the firm have completed IICRC training and certification courses.
+              </p>
+            </div>
+          </div>
+
+          <div className="bg-[#f9f9f6] border border-gray-200 rounded-2xl p-8 shadow-sm flex flex-col sm:flex-row items-center gap-6 text-center sm:text-left">
+            <img 
+              src={iicrcMoldBadge}
+              alt="IICRC Mold Certified badge" 
+              className="w-24 h-24 object-contain shrink-0" 
+            />
+            <div className="space-y-2">
+              
+              <h3 className="font-playfair text-2xl font-bold text-gray-900">IICRC Mold</h3>
+              <p className="text-sm text-gray-600 leading-relaxed">
+                A technician or firm that is certified in mold remediation by IICRC.
               </p>
             </div>
           </div>

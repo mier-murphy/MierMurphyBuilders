@@ -22,6 +22,11 @@ import whyChoose from "@/assets/home-why-choose.webp";
 import iicrcBadge from "@/assets/iicrc-badge.avif";
 import OurStorySection from "@/components/OurStorySection";
 
+
+import iicrcFirmBadge from "@/assets/iicrc-firm-badge.png";
+import iicrcMoldBadge from "@/assets/iicrc-mold-badge.png";
+
+
 const SITE_URL = "https://mierandmurphybuilders.com";
 const OG_IMAGE = `${SITE_URL}/hero-craftsmanship.jpg`;
 
@@ -525,40 +530,83 @@ const Index = () => {
 
       </section>
 
-      {/* ── IICRC CERTIFICATION ── */}
-      <section className="section-padding bg-background">
+            {/* ── IICRC CERTIFICATION ── */}
+            <section className="section-padding bg-background">
         <div className="max-w-6xl mx-auto">
-          <div className="flex flex-col md:flex-row items-center gap-10 md:gap-16">
+          <ScrollReveal>
+            <div className="text-center mb-14">
+              <p className="font-sans text-xs tracking-[0.4em] text-primary uppercase mb-3 font-semibold">
+                Industry-Leading Certification
+              </p>
+              <h2 className="font-serif text-3xl md:text-4xl lg:text-5xl font-bold mb-4 text-foreground">
+                IICRC <span className="text-primary">Certified</span>
+              </h2>
+              <p className="font-sans text-sm md:text-base text-muted-foreground leading-relaxed max-w-2xl mx-auto">
+                We hold both certifications that matter most for restoration work, ensuring
+                every remediation project meets the highest industry standards for safety,
+                quality, and long-term protection.
+              </p>
+              <div className="gold-divider mt-6" />
+            </div>
+          </ScrollReveal>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             <ScrollReveal direction="left">
-              <div className="flex-shrink-0 bg-primary/5 p-8 rounded-3xl border border-primary/10">
-                <img
-                  src={iicrcBadge}
-                  alt="IICRC Certified Firm badge"
-                  className="w-36 h-36 md:w-44 md:h-44 object-contain"
-                  loading="lazy"
-                />
+              <div className="luxury-card p-8 h-full flex items-start gap-6">
+                <div className="flex-shrink-0 bg-primary/5 p-4 rounded-2xl border border-primary/10">
+                  <img
+                    src={iicrcFirmBadge}
+                    alt="IICRC Certified Firm badge"
+                    className="w-20 h-20 md:w-24 md:h-24 object-contain"
+                    loading="lazy"
+                  />
+                </div>
+                <div>
+                  <h3 className="font-serif text-xl md:text-2xl font-bold mb-2 text-foreground">
+                    IICRC <span className="text-primary">Firm</span>
+                  </h3>
+                  <p className="font-sans text-sm text-muted-foreground leading-relaxed">
+                    A professional cleaning, restoration, or inspection company that is
+                    certified by the IICRC. Technicians who work for the firm have completed
+                    IICRC training and certification courses.
+                  </p>
+                </div>
               </div>
             </ScrollReveal>
+
             <ScrollReveal direction="right">
-              <div className="text-center md:text-left">
-                <p className="font-sans text-xs tracking-[0.4em] text-primary uppercase mb-3 font-semibold">Industry-Leading Certification</p>
-                <h3 className="font-serif text-2xl md:text-3xl font-bold mb-4 text-foreground">
-                  IICRC <span className="text-primary">Certified Firm</span>
-                </h3>
-                <p className="font-sans text-sm md:text-base text-muted-foreground leading-relaxed mb-6 max-w-lg">
-                  We are IICRC certified, ensuring every remediation project meets the highest 
-                  industry standards for safety, quality, and long-term protection.
-                </p>
-                <Link
-                  to="/about/legacy#certifications"
-                  className="inline-flex items-center gap-2 bg-primary text-primary-foreground px-6 py-3 rounded-xl font-sans text-sm font-semibold hover:bg-primary/90 transition-all duration-300 group"
-                >
-                  Why It Matters
-                  <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-                </Link>
+              <div className="luxury-card p-8 h-full flex items-start gap-6">
+                <div className="flex-shrink-0 bg-primary/5 p-4 rounded-2xl border border-primary/10">
+                  <img
+                    src={iicrcMoldBadge}
+                    alt="IICRC Mold Certified badge"
+                    className="w-20 h-20 md:w-24 md:h-24 object-contain"
+                    loading="lazy"
+                  />
+                </div>
+                <div>
+                  <h3 className="font-serif text-xl md:text-2xl font-bold mb-2 text-foreground">
+                    IICRC <span className="text-primary">Mold</span>
+                  </h3>
+                  <p className="font-sans text-sm text-muted-foreground leading-relaxed">
+                    A technician or firm that is certified in mold remediation by the IICRC.
+                  </p>
+                </div>
               </div>
             </ScrollReveal>
           </div>
+
+          <ScrollReveal>
+            <div className="text-center mt-10">
+              <Link
+                to="/about"
+                className="inline-flex items-center gap-2 bg-primary text-primary-foreground px-6 py-3 rounded-xl font-sans text-sm font-semibold hover:bg-primary/90 transition-all duration-300 group"
+              >
+                Why It Matters
+                <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+              </Link>
+            </div>
+          </ScrollReveal>
         </div>
       </section>
 

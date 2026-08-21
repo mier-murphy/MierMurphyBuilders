@@ -9,6 +9,9 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/
 import projectWater from "@/assets/water/water-hero.webp";
 import projectWaterMain from "@/assets/water/water-hero-main.webp";
 
+import iicrcFirmBadge from "@/assets/iicrc-firm-badge.png";
+import iicrcMoldBadge from "@/assets/iicrc-mold-badge.png";
+
 // TODO: replace with the actual IICRC certification badge asset — this currently
 // points at the same interior photo as `projectInterior`, so the "badge" renders a room photo.
 import iicrcBadge from "@/assets/iicrc-badge.avif";
@@ -294,18 +297,36 @@ const WaterDamageMoldRemediation = () => {
                   loading="lazy"
                 />
               </div>
-              <div className="mt-8 glass rounded-lg p-6">
-                <div className="flex items-center gap-4 mb-4">
-                  <img src={iicrcBadge} alt="IICRC Certified" className="w-16 h-16 object-contain" />
-                  <div>
-                    <p className="font-serif text-lg font-bold text-foreground">IICRC S500 & S520 Certified</p>
-                    <p className="font-sans text-xs text-muted-foreground">Water Damage and Mold Standard</p>
-                  </div>
-                </div>
-                <p className="font-sans text-sm text-muted-foreground leading-relaxed">
-                Our restoration work meets IICRC S500 and S520 standards, the industry benchmark for water damage
-                 and mold, because we became certified after our own family faced mold at home.
-                </p>
+              <div className="mt-8 glass ">
+              <div className="bg-[#f9f9f6] border border-gray-200 rounded-2xl p-4 mb-2 shadow-sm flex flex-col sm:flex-row items-center gap-6 text-center sm:text-left">
+            <img 
+              src={iicrcFirmBadge}
+              alt="IICRC Certified Firm badge" 
+              className="w-24 h-24 object-contain shrink-0" 
+            />
+            <div className="space-y-2">
+             
+              <h3 className="font-playfair text-2xl font-bold text-gray-900">IICRC Firm</h3>
+              <p className="text-sm text-gray-600 leading-relaxed">
+                A professional cleaning, restoration, or inspection company that is certified by the IICRC. Technicians who work for the firm have completed IICRC training and certification courses.
+              </p>
+            </div>
+          </div>
+
+          <div className="bg-[#f9f9f6] border border-gray-200 rounded-2xl p-4 shadow-sm flex flex-col sm:flex-row items-center gap-6 text-center sm:text-left">
+            <img 
+              src={iicrcMoldBadge}
+              alt="IICRC Mold Certified badge" 
+              className="w-24 h-24 object-contain shrink-0" 
+            />
+            <div className="space-y-2">
+              
+              <h3 className="font-playfair text-2xl font-bold text-gray-900">IICRC Mold</h3>
+              <p className="text-sm text-gray-600 leading-relaxed">
+                A technician or firm that is certified in mold remediation by IICRC.
+              </p>
+            </div>
+          </div>
               </div>
             </ScrollReveal>
           </div>

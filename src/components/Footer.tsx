@@ -118,9 +118,12 @@ Terms Of Conditions              </a></span>
           <div className="flex items-center gap-2 text-xs font-sans text-white/40">
             <span>IICRC Certified</span>
             <span className="text-brand-yellow">•</span>
-            <span>CA Lic. #1077044</span>
-            <span className="text-brand-yellow">•</span>
-            <span>Licensed & Insured</span>
+            <div className="text-center sm:text-right">
+            <p className="text-primary-foreground/50 text-xs sm:text-sm">
+            Made with 🔥 by <a href="https://advanceedgellc.com/" target="_blank" rel="noopener noreferrer" className="text-accent font-medium hover:underline">AdvanceEdge</a>
+           
+            </p>
+          </div>
           </div>
         </div>
       </div>

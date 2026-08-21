@@ -12,6 +12,10 @@ import projectKcmain from "@/assets/btkc/kc-main-1.webp";
 // points at the same interior photo as `projectInterior`, so the "badge" renders a room photo.
 import iicrcBadge from "@/assets/iicrc-badge.avif";
 
+
+import iicrcFirmBadge from "@/assets/iicrc-firm-badge.png";
+import iicrcMoldBadge from "@/assets/iicrc-mold-badge.png";
+
 const SITE_URL = "https://mierandmurphybuilders.com";
 const PAGE_URL = `${SITE_URL}/services/bathroom-kitchen-remodeling`;
 const OG_IMAGE = `${SITE_URL}/service-bathroom-kitchen-remodeling.jpg`;
@@ -282,18 +286,36 @@ const ServiceBathroomKitchenRemodeling = () => {
                   loading="lazy"
                 />
               </div>
-              <div className="mt-8 glass rounded-lg p-6">
-                <div className="flex items-center gap-4 mb-4">
-                  <img src={iicrcBadge} alt="IICRC Certified" className="w-16 h-16 object-contain" />
-                  <div>
-                    <p className="font-serif text-lg font-bold text-foreground">Licensed Remodeling Contractor</p>
-                    <p className="font-sans text-xs text-muted-foreground">CA Lic. #1077044</p>
-                  </div>
-                </div>
-                <p className="font-sans text-sm text-muted-foreground leading-relaxed">
-                Every remodel is handled by a fully licensed, family-owned contractor with 20 years of building experience,
-                 so your project is built right and backed by our name.
-                </p>
+              <div className="mt-8 glass ">
+              <div className="bg-[#f9f9f6] border border-gray-200 rounded-2xl p-4 mb-2 shadow-sm flex flex-col sm:flex-row items-center gap-6 text-center sm:text-left">
+            <img 
+              src={iicrcFirmBadge}
+              alt="IICRC Certified Firm badge" 
+              className="w-24 h-24 object-contain shrink-0" 
+            />
+            <div className="space-y-2">
+             
+              <h3 className="font-playfair text-2xl font-bold text-gray-900">IICRC Firm</h3>
+              <p className="text-sm text-gray-600 leading-relaxed">
+                A professional cleaning, restoration, or inspection company that is certified by the IICRC. Technicians who work for the firm have completed IICRC training and certification courses.
+              </p>
+            </div>
+          </div>
+
+          <div className="bg-[#f9f9f6] border border-gray-200 rounded-2xl p-4 shadow-sm flex flex-col sm:flex-row items-center gap-6 text-center sm:text-left">
+            <img 
+              src={iicrcMoldBadge}
+              alt="IICRC Mold Certified badge" 
+              className="w-24 h-24 object-contain shrink-0" 
+            />
+            <div className="space-y-2">
+              
+              <h3 className="font-playfair text-2xl font-bold text-gray-900">IICRC Mold</h3>
+              <p className="text-sm text-gray-600 leading-relaxed">
+                A technician or firm that is certified in mold remediation by IICRC.
+              </p>
+            </div>
+          </div>
               </div>
             </ScrollReveal>
           </div>
