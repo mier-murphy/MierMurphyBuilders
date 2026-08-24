@@ -15,15 +15,13 @@ import iicrcMoldBadge from "@/assets/iicrc-mold-badge.png";
 // points at the same interior photo as `projectInterior`, so the "badge" renders a room photo.
 import iicrcBadge from "@/assets/iicrc-badge.avif";
 
-const SITE_URL = "https://mierandmurphybuilders.com";
+const SITE_URL = "https://www.mierandmurphybuilders.com";
 const PAGE_URL = `${SITE_URL}/services/drywall-plaster-stucco-repair`;
 const OG_IMAGE = `${SITE_URL}/service-drywall-plaster-stucco-repair.jpg`;
 
 const PAGE_TITLE = "Drywall, Plaster & Stucco Repair | Mier & Murphy Builders";
 const PAGE_DESCRIPTION =
   "Expert drywall, Venetian plaster, and stucco repair in Thousand Oaks and Westlake Village. Quality finish and restoration by Mier & Murphy Builders.";
-const PAGE_KEYWORDS =
-  "stucco repair thousand oaks; plaster repair contractor; drywall repair westlake village; venetian plaster specialist";
 
 const areasServed = [
   "Thousand Oaks",
@@ -169,7 +167,7 @@ const DrywallPlasterStuccoRepair = () => {
         <title>{PAGE_TITLE}</title>
         <meta name="title" content={PAGE_TITLE} />
         <meta name="description" content={PAGE_DESCRIPTION} />
-        <meta name="keywords" content={PAGE_KEYWORDS} />
+        
         <meta name="author" content="Mier & Murphy Builders" />
         <meta name="robots" content="index, follow" />
         <link rel="canonical" href={PAGE_URL} />

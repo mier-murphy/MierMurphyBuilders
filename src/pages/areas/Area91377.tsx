@@ -14,8 +14,6 @@ const data: AreaPageData = {
   metaTitle: "General Contractor Oak Park CA 91377 | Mier & Murphy",
   metaDescription:
     "Quality custom building, remodeling, and stucco repair in Oak Park CA 91377. Mier & Murphy Builders brings craftsmanship to every project.",
-  metaKeywords:
-    "general contractor oak park 91377, home renovation oak park, kitchen remodeling 91377, restoration services oak park",
   tagline: "SURROUNDING AREA · ZIP 91377",
 
   heroHeadline:

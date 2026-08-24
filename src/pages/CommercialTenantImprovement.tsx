@@ -17,15 +17,13 @@ import iicrcMoldBadge from "@/assets/iicrc-mold-badge.png";
 // points at the same interior photo as `projectInterior`, so the "badge" renders a room photo.
 import iicrcBadge from "@/assets/iicrc-badge.avif";
 
-const SITE_URL = "https://mierandmurphybuilders.com";
+const SITE_URL = "https://www.mierandmurphybuilders.com";
 const PAGE_URL = `${SITE_URL}/services/commercial-tenant-improvement`;
 const OG_IMAGE = `${SITE_URL}/service-commercial-tenant-improvement.jpg`;
 
 const PAGE_TITLE = "Commercial Tenant Improvements | Mier & Murphy Builders";
 const PAGE_DESCRIPTION =
   "Professional commercial tenant improvement contractor for offices, retail, and commercial spaces in Thousand Oaks and greater Los Angeles.";
-const PAGE_KEYWORDS =
-  "commercial tenant improvement contractor; commercial remodeling thousand oaks; office buildout contractor; commercial renovation los angeles";
 
 const areasServed = [
   "Thousand Oaks",
@@ -185,7 +183,7 @@ const CommercialTenantImprovement = () => {
         <title>{PAGE_TITLE}</title>
         <meta name="title" content={PAGE_TITLE} />
         <meta name="description" content={PAGE_DESCRIPTION} />
-        <meta name="keywords" content={PAGE_KEYWORDS} />
+        
         <meta name="author" content="Mier & Murphy Builders" />
         <meta name="robots" content="index, follow" />
         <link rel="canonical" href={PAGE_URL} />

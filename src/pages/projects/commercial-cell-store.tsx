@@ -14,15 +14,13 @@ import gallery8 from '@/assets/commercial-cell-store/commercial-cell-store-8.avi
 
 
 import { Helmet } from "react-helmet-async";
-const SITE_URL = "https://mierandmurphybuilders.com";
+const SITE_URL = "https://www.mierandmurphybuilders.com";
 const PAGE_URL = `${SITE_URL}/services/bathroom-kitchen-remodeling`;
 const OG_IMAGE = `${SITE_URL}/service-bathroom-kitchen-remodeling.jpg`;
 
 const PAGE_TITLE = "Commercial Cell Store Build-Out | Mier & Murphy Builders";
 const PAGE_DESCRIPTION =
   "Case study of a retail commercial cell store build-out completed with quality craftsmanship and on-time execution by Mier & Murphy Builders.";
-const PAGE_KEYWORDS =
-  "commercial retail buildout, tenant improvement case study; commercial contractor buildout; retail construction";
 
 // 2. Top row (3 large images) and bottom row (5 smaller images)
 const topGallery = [gallery1, gallery2, gallery3, gallery4];
@@ -35,7 +33,7 @@ export default function App() {
       <title>{PAGE_TITLE}</title>
       <meta name="title" content={PAGE_TITLE} />
       <meta name="description" content={PAGE_DESCRIPTION} />
-      <meta name="keywords" content={PAGE_KEYWORDS} />
+    
       <meta name="author" content="Mier & Murphy Builders" />
       <meta name="robots" content="index, follow" />
       <link rel="canonical" href={PAGE_URL} />

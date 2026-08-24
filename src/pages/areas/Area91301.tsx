@@ -14,9 +14,7 @@ const data: AreaPageData = {
   metaTitle: "General Contractor Agoura Hills CA 91301 | Mier & Murphy",
   metaDescription:
     "Premier custom construction, remodeling, and mold remediation in Agoura Hills CA 91301 by Mier & Murphy Builders. Request a consultation.",
-  metaKeywords:
-    "general contractor agoura hills 91301, home remodelers agoura hills, deck repair 91301, water damage restoration agoura hills",
-  tagline: "SURROUNDING AREA · ZIP 91301",
+ tagline: "SURROUNDING AREA · ZIP 91301",
 
   heroHeadline:
     "Remodeling and Repair Contractor in",

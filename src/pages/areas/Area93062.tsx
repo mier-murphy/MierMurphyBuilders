@@ -8,9 +8,7 @@ const data: AreaPageData = {
   metaTitle: "General Contractor Simi Valley CA 93062 | Mier & Murphy",
   metaDescription:
     "Custom home construction, remodeling, and restoration services in Simi Valley CA 93062 by Mier & Murphy Builders. Contact us today.",
-  metaKeywords:
-    "general contractor simi valley 93062, home remodelers simi valley, stucco repair 93062, water damage restoration simi valley",
-  tagline: "SURROUNDING AREA · ZIP 93062",
+ tagline: "SURROUNDING AREA · ZIP 93062",
   heroHeadline: "Remodeling and Repair Contractor in",
   tier: "primary",
   heroImage: projectExterior,

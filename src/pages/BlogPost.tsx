@@ -27,7 +27,7 @@ import {
   AvatarImage,
 } from "@/components/ui/avatar";
 
-const SITE_URL = "https://mierandmurphybuilders.com";
+const SITE_URL = "https://www.mierandmurphybuilders.com";
 
 type BlogPostLoaderData = {
   post: BlogPostType;

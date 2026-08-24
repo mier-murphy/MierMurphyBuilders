@@ -27,14 +27,12 @@ import iicrcFirmBadge from "@/assets/iicrc-firm-badge.png";
 import iicrcMoldBadge from "@/assets/iicrc-mold-badge.png";
 
 
-const SITE_URL = "https://mierandmurphybuilders.com";
+const SITE_URL = "https://www.mierandmurphybuilders.com";
 const OG_IMAGE = `${SITE_URL}/hero-craftsmanship.jpg`;
 
-const PAGE_TITLE = "Mier & Murphy Builders | Custom Home Builders & Contractors";
+const PAGE_TITLE = "Custom Home Builders & General Contractor in Thousand Oaks, CA | Mier & Murphy";
 const PAGE_DESCRIPTION =
   "Mier & Murphy Builders provides custom home construction, remodeling, stucco repair, and restoration in Thousand Oaks, CA and Ventura County.";
-const PAGE_KEYWORDS =
-  "custom home builders thousand oaks; general contractor thousand oaks; luxury home builders; home remodeling contractor; water damage restoration";
 
 const areasServed = [
   "Thousand Oaks",
@@ -292,7 +290,7 @@ const Index = () => {
         <title>{PAGE_TITLE}</title>
         <meta name="title" content={PAGE_TITLE} />
         <meta name="description" content={PAGE_DESCRIPTION} />
-        <meta name="keywords" content={PAGE_KEYWORDS} />
+        
         <meta name="author" content="Mier & Murphy Builders" />
         <meta name="robots" content="index, follow" />
         <link rel="canonical" href={SITE_URL} />

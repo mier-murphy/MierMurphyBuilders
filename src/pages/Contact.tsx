@@ -16,15 +16,13 @@ import { useState } from "react";
 import iicrcFirmBadge from "@/assets/iicrc-firm-badge.png";
 import iicrcMoldBadge from "@/assets/iicrc-mold-badge.png";
 
-const SITE_URL = "https://mierandmurphybuilders.com";
+const SITE_URL = "https://www.mierandmurphybuilders.com";
 const PAGE_URL = `${SITE_URL}/contact`;
 const OG_IMAGE = `${SITE_URL}/contact-og-image.jpg`; // or whatever the actual contact hero/OG image should be
 
 const PAGE_TITLE = "Contact Mier & Murphy Builders | Thousand Oaks, CA";
 const PAGE_DESCRIPTION =
   "Contact Mier & Murphy Builders for project estimates and consultations. Serving Thousand Oaks, Westlake Village, and Ventura County.";
-const PAGE_KEYWORDS =
-  "contractor estimate thousand oaks; contact general contractor; general contractor consultation; home builder quote";
 
 
 
@@ -49,7 +47,7 @@ const Contact = () => {
         <title>{PAGE_TITLE}</title>
         <meta name="title" content={PAGE_TITLE} />
         <meta name="description" content={PAGE_DESCRIPTION} />
-        <meta name="keywords" content={PAGE_KEYWORDS} />
+        
         <meta name="author" content="Mier & Murphy Builders" />
         <meta name="robots" content="index, follow" />
         <link rel="canonical" href={PAGE_URL} />

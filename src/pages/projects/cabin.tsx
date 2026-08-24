@@ -14,15 +14,13 @@ import gallery8 from '@/assets/cabin/cabin-8.avif';
 
 
 import { Helmet } from "react-helmet-async";
-const SITE_URL = "https://mierandmurphybuilders.com";
+const SITE_URL = "https://www.mierandmurphybuilders.com";
 const PAGE_URL = `${SITE_URL}/services/bathroom-kitchen-remodeling`;
 const OG_IMAGE = `${SITE_URL}/service-bathroom-kitchen-remodeling.jpg`;
 
 const PAGE_TITLE = "Custom Cabin Build Case Study | Mier & Murphy Builders";
 const PAGE_DESCRIPTION =
   "See how Mier & Murphy Builders delivered a custom cabin project featuring quality craftsmanship and timber construction in California.";
-const PAGE_KEYWORDS =
-  "custom cabin construction, cabin remodeling; custom home case study; general contractor cabin build";
 
 // 2. Top row (3 large images) and bottom row (5 smaller images)
 const topGallery = [gallery1, gallery2, gallery3];
@@ -36,7 +34,7 @@ export default function App() {
       <title>{PAGE_TITLE}</title>
       <meta name="title" content={PAGE_TITLE} />
       <meta name="description" content={PAGE_DESCRIPTION} />
-      <meta name="keywords" content={PAGE_KEYWORDS} />
+ 
       <meta name="author" content="Mier & Murphy Builders" />
       <meta name="robots" content="index, follow" />
       <link rel="canonical" href={PAGE_URL} />

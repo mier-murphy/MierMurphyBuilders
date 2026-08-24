@@ -73,7 +73,7 @@ const AreaPageTemplate = ({ data }: { data: AreaPageData }) => {
         ? "Extended Service Area"
         : "Premium Service Zone";
 
-  const canonicalUrl = `https://mierandmurphybuilders.com/areas/${data.zipCode}`;
+  const canonicalUrl = `https://www.mierandmurphybuilders.com/areas/${data.zipCode}`;
 
   const defaultMetaTitle = `Luxury Builders & Restoration in ${data.cityName} ${data.zipCode} | Mier & Murphy`;
 

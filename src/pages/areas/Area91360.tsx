@@ -14,9 +14,7 @@ const data: AreaPageData = {
   metaTitle: "General Contractor Thousand Oaks CA 91360 | Mier & Murphy",
   metaDescription:
     "Looking for top-rated contractors in Thousand Oaks CA 91360? Mier & Murphy Builders offers custom construction, remodeling, and restoration.",
-  metaKeywords:
-    "general contractor thousand oaks 91360, home remodelers 91360, water damage restoration thousand oaks, custom builders 91360",
-  tagline: "CORE SERVICE AREA · ZIP 91360",
+ tagline: "CORE SERVICE AREA · ZIP 91360",
 
   heroHeadline:
     "Family-Owned Remodeling and Restoration in",

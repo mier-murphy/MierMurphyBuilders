@@ -33,15 +33,13 @@ import gallery20 from '@/assets/ranch/ranch-m-8.avif';
 
 
 import { Helmet } from "react-helmet-async";
-const SITE_URL = "https://mierandmurphybuilders.com";
+const SITE_URL = "https://www.mierandmurphybuilders.com";
 const PAGE_URL = `${SITE_URL}/services/bathroom-kitchen-remodeling`;
 const OG_IMAGE = `${SITE_URL}/service-bathroom-kitchen-remodeling.jpg`;
 
 const PAGE_TITLE = "Custom Ranch Home Construction | Mier & Murphy Builders";
 const PAGE_DESCRIPTION =
   "Discover our custom ranch property construction project delivered with precision engineering and luxury finish by Mier & Murphy Builders.";
-const PAGE_KEYWORDS =
-  "custom ranch construction; ranch home remodeling; estate builder california; custom residential contractor";
 
 // 2. Top row (3 large images) and bottom row (5 smaller images)
 const topGallery = [gallery1, gallery2, gallery3, gallery4,gallery5,gallery6,gallery7,gallery8,gallery9,gallery10,gallery11,gallery12];
@@ -82,7 +80,7 @@ export default function App() {
       <title>{PAGE_TITLE}</title>
       <meta name="title" content={PAGE_TITLE} />
       <meta name="description" content={PAGE_DESCRIPTION} />
-      <meta name="keywords" content={PAGE_KEYWORDS} />
+
       <meta name="author" content="Mier & Murphy Builders" />
       <meta name="robots" content="index, follow" />
       <link rel="canonical" href={PAGE_URL} />

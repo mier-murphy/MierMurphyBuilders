@@ -8,9 +8,7 @@ const data: AreaPageData = {
   metaTitle: "General Contractor Moorpark CA 93021 | Mier & Murphy",
   metaDescription:
     "Trusted general contracting, home remodeling, and water damage repair in Moorpark CA 93021 from Mier & Murphy Builders.",
-  metaKeywords:
-    "general contractor moorpark 93021, remodeling contractor moorpark, mold remediation 93021, custom home builder moorpark",
-  tagline: "SURROUNDING AREA · ZIP 93021",
+tagline: "SURROUNDING AREA · ZIP 93021",
   heroHeadline: "Remodeling and Repair Contractor in",
   tier: "primary",
   heroImage: projectExterior,

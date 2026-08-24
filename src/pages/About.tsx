@@ -13,15 +13,13 @@ import iicrcBadge from "@/assets/iicrc-badge.avif";
 import iicrcFirmBadge from "@/assets/iicrc-firm-badge.png";
 import iicrcMoldBadge from "@/assets/iicrc-mold-badge.png";
 
-const SITE_URL = "https://mierandmurphybuilders.com";
+const SITE_URL = "https://www.mierandmurphybuilders.com";
 const PAGE_URL = `${SITE_URL}/about`;
 const OG_IMAGE = `${SITE_URL}/about-frank-and-crew.jpg`;
 
 const PAGE_TITLE = "About Us | Mier & Murphy Builders | Thousand Oaks Contractors";
 const PAGE_DESCRIPTION =
   "Learn about Mier & Murphy Builders, a family-owned general contractor serving Thousand Oaks and Ventura County with custom building and restoration services.";
-const PAGE_KEYWORDS =
-  "general contractor thousand oaks ca, family owned general contractor; licensed contractor ventura county; trusted custom builders";
 
 // JSON-LD: LocalBusiness / GeneralContractor
 const localBusinessSchema = {
@@ -124,7 +122,7 @@ export function AboutPage() {
         <title>{PAGE_TITLE}</title>
         <meta name="title" content={PAGE_TITLE} />
         <meta name="description" content={PAGE_DESCRIPTION} />
-        <meta name="keywords" content={PAGE_KEYWORDS} />
+      
         <meta name="author" content="Mier & Murphy Builders" />
         <meta name="robots" content="index, follow" />
         <link rel="canonical" href={PAGE_URL} />

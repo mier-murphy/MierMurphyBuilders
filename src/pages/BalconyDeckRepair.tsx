@@ -24,8 +24,6 @@ const OG_IMAGE = `${SITE_URL}/service-balcony-deck-repair.jpg`;
 const PAGE_TITLE = "Balcony & Deck Repair Services | Mier & Murphy Builders";
 const PAGE_DESCRIPTION =
   "Restore and repair your balcony or deck with Mier & Murphy Builders. Reliable deck contractors serving Thousand Oaks and Ventura County homeowners.";
-const PAGE_KEYWORDS =
-  "deck repair thousand oaks; balcony repair contractor; exterior deck restoration; waterproofing contractor ventura county";
 
 const areasServed = [
   "Thousand Oaks",
@@ -193,7 +191,7 @@ const BalconyDeckRepair = () => {
         <title>{PAGE_TITLE}</title>
         <meta name="title" content={PAGE_TITLE} />
         <meta name="description" content={PAGE_DESCRIPTION} />
-        <meta name="keywords" content={PAGE_KEYWORDS} />
+  
         <meta name="author" content="Mier & Murphy Builders" />
         <meta name="robots" content="index, follow" />
         <link rel="canonical" href={PAGE_URL} />

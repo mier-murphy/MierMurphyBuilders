@@ -8,9 +8,7 @@ const data: AreaPageData = {
   metaTitle: "General Contractor Chatsworth CA 91311 | Mier & Murphy",
   metaDescription:
     "Professional general contracting, kitchen remodeling, and stucco repair in Chatsworth CA 91311 from Mier & Murphy Builders.",
-  metaKeywords:
-    "general contractor chatsworth 91311, home remodelers chatsworth, mold remediation 91311, commercial contractors chatsworth",
-  tagline: "Premium & Extended Service Area",
+ tagline: "Premium & Extended Service Area",
   heroHeadline: "Remodeling and Repair Contractor Serving",
   tier: "secondary",
   heroImage: projectInterior,

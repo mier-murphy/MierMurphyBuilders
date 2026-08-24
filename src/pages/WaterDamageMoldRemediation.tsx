@@ -16,15 +16,13 @@ import iicrcMoldBadge from "@/assets/iicrc-mold-badge.png";
 // points at the same interior photo as `projectInterior`, so the "badge" renders a room photo.
 import iicrcBadge from "@/assets/iicrc-badge.avif";
 
-const SITE_URL = "https://mierandmurphybuilders.com";
+const SITE_URL = "https://www.mierandmurphybuilders.com";
 const PAGE_URL = `${SITE_URL}/services/water-damage-mold-remediation`;
 const OG_IMAGE = `${SITE_URL}/service-water-damage-mold-remediation.jpg`;
 
 const PAGE_TITLE = "Water Damage & Mold Remediation | Mier & Murphy Builders";
 const PAGE_DESCRIPTION =
   "Fast, IICRC-certified water damage restoration and mold remediation in Thousand Oaks, CA. Mier & Murphy Builders restores your home safely.";
-const PAGE_KEYWORDS =
-  "water damage restoration thousand oaks; mold remediation thousand oaks; emergency restoration contractor; mold removal ventura county";
 
 const areasServed = [
   "Thousand Oaks",
@@ -164,7 +162,7 @@ const WaterDamageMoldRemediation = () => {
     name="description"
     content="Fast, IICRC-certified water damage restoration and mold remediation in Thousand Oaks, CA. Mier & Murphy Builders restores your home safely."
   />
-        <meta name="keywords" content={PAGE_KEYWORDS} />
+        
         <meta name="author" content="Mier & Murphy Builders" />
         <meta name="robots" content="index, follow" />
         <link rel="canonical" href={PAGE_URL} />

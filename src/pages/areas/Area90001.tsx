@@ -9,9 +9,7 @@ const data: AreaPageData = {
     "Remodeling & Repair Contractor Los Angeles CA 90001 | Mier & Murphy",
   metaDescription:
     "Remodeling, water damage restoration, mold remediation, stucco repair, balcony repair, and commercial services in Los Angeles, CA 90001. Mier & Murphy Builders.",
-  metaKeywords:
-    "remodeling contractor los angeles 90001; repair contractor los angeles; water damage restoration los angeles; mold remediation los angeles; stucco repair los angeles; balcony repair los angeles; commercial contractor los angeles",
-  tagline: "PREMIUM & EXTENDED · ZIP 90001",
+   tagline: "PREMIUM & EXTENDED · ZIP 90001",
   heroHeadline: "Remodeling and Repair Contractor Serving Los Angeles",
   tier: "primary",
   heroImage: projectExterior,

@@ -16,15 +16,13 @@ import iicrcBadge from "@/assets/iicrc-badge.avif";
 import iicrcFirmBadge from "@/assets/iicrc-firm-badge.png";
 import iicrcMoldBadge from "@/assets/iicrc-mold-badge.png";
 
-const SITE_URL = "https://mierandmurphybuilders.com";
+const SITE_URL = "https://www.mierandmurphybuilders.com";
 const PAGE_URL = `${SITE_URL}/services/bathroom-kitchen-remodeling`;
 const OG_IMAGE = `${SITE_URL}/service-bathroom-kitchen-remodeling.jpg`;
 
 const PAGE_TITLE = "Kitchen & Bathroom Remodeling | Mier & Murphy Builders";
 const PAGE_DESCRIPTION =
   "Transform your kitchen and bathroom with Mier & Murphy Builders. Premier remodeling contractors serving Thousand Oaks and Ventura County.";
-const PAGE_KEYWORDS =
-  "kitchen and bathroom remodeling thousand oaks; bathroom remodel contractor; kitchen renovation ventura county; custom home remodelers";
 
 const areasServed = [
   "Thousand Oaks",
@@ -154,7 +152,7 @@ const ServiceBathroomKitchenRemodeling = () => {
         <title>{PAGE_TITLE}</title>
         <meta name="title" content="Kitchen & Bathroom Remodeling | Mier & Murphy Builders" />
         <meta name="description" content="Transform your kitchen and bathroom with Mier & Murphy Builders. Premier remodeling contractors serving Thousand Oaks and Ventura County." />
-        <meta name="keywords" content={PAGE_KEYWORDS} />
+        
         <meta name="author" content="Mier & Murphy Builders" />
         <meta name="robots" content="index, follow" />
         <link rel="canonical" href={PAGE_URL} />

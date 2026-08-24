@@ -8,9 +8,7 @@ const data: AreaPageData = {
   metaTitle: "General Contractor Malibu CA 90265 | Mier & Murphy",
   metaDescription:
     "High-end custom construction, deck repair, and restoration in Malibu CA 90265 by Mier & Murphy Builders. Request a consultation.",
-  metaKeywords:
-    "general contractor malibu 90265, luxury builders malibu, deck repair malibu, water damage restoration malibu",
-  tagline: "Premium & Extended Service Area",
+tagline: "Premium & Extended Service Area",
   heroHeadline: "Stucco, Repair, and Restoration Contractor Serving",
   tier: "premium",
   heroImage: projectExterior,

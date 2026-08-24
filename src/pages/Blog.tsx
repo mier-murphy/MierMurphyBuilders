@@ -7,7 +7,7 @@ import ScrollReveal from "@/components/ScrollReveal";
 import { getAllPosts, sanityImageUrl, type BlogPostSummary } from "@/lib/sanity";
 import heroCraftsmanship from "@/assets/Blog Hero.webp";
 
-const SITE_URL = "https://mierandmurphybuilders.com";
+const SITE_URL = "https://www.mierandmurphybuilders.com";
 const PAGE_URL = `${SITE_URL}/blog`;
 
 const PAGE_TITLE = "Construction & Remodeling Blog | Mier & Murphy Builders";
@@ -15,8 +15,6 @@ const PAGE_TITLE = "Construction & Remodeling Blog | Mier & Murphy Builders";
 const PAGE_DESCRIPTION =
   "Get practical home renovation tips, water damage restoration advice, and mold remediation insights from Mier & Murphy Builders.";
 
-const PAGE_KEYWORDS =
-  "home renovation blog, construction insights, mold remediation tips, water damage repair advice";
 
 const formatDate = (dateString?: string) => {
   if (!dateString) return "";
@@ -58,7 +56,7 @@ const Blog = () => {
         <title>{PAGE_TITLE}</title>
         <meta name="title" content={PAGE_TITLE} />
         <meta name="description" content={PAGE_DESCRIPTION} />
-        <meta name="keywords" content={PAGE_KEYWORDS} />
+       
         <link rel="canonical" href={PAGE_URL} />
 
         <meta property="og:type" content="website" />
