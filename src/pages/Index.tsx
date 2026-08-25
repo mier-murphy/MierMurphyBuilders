@@ -307,7 +307,7 @@ const Index = () => {
         <meta property="og:title" content={PAGE_TITLE} />
         <meta property="og:description" content={PAGE_DESCRIPTION} />
         <meta property="og:image" content={OG_IMAGE} />
-        <meta property="og:image:alt" content="Luxury home renovation by Mier & Murphy Builders in Thousand Oaks, California" />
+        <meta property="og:image:alt" content="Custom Home Builders & General Contractor in Thousand Oaks, CA | Mier & Murphy" />
         <meta property="og:site_name" content="Mier & Murphy Builders" />
         <meta property="og:locale" content="en_US" />
 
@@ -415,8 +415,7 @@ const Index = () => {
                 Our <span className="text-primary">Services</span>
               </h2>
               <p className="font-sans text-base text-muted-foreground max-w-2xl mx-auto">
-                From custom Venetian plaster and stucco work to certified water damage restoration and mold remediation — 
-                unmatched craftsmanship across the Conejo Valley.
+              From bathroom and kitchen remodels to certified water damage and mold remediation, we handle the work Thousand Oaks homeowners actually need, backed by 20 years of building experience.
               </p>
               <div className="gold-divider mt-6" />
             </div>
@@ -618,7 +617,7 @@ const Index = () => {
                 Signature <span className="text-primary">Projects</span>
               </h2>
               <p className="font-sans text-base text-muted-foreground max-w-2xl mx-auto">
-                Explore our recent luxury renovations, stucco restorations, and water damage recoveries.
+              A look at recent remodels, restorations, and repairs from across Thousand Oaks and the Conejo Valley.
               </p>
               <div className="gold-divider mt-6" />
             </div>
@@ -644,7 +643,7 @@ const Index = () => {
                         {project.title}
                       </h3>
                       <p className="font-sans text-xs text-white/70 mt-1 flex items-center gap-1">
-                        <MapPin className="w-3 h-3" /> {project.location}
+                       
                       </p>
                     </div>
                   </div>
@@ -829,12 +828,11 @@ const Index = () => {
         <div className="max-w-3xl mx-auto text-center">
           <ScrollReveal>
             <h2 className="font-serif text-3xl md:text-4xl lg:text-5xl font-bold mb-6 text-foreground">
-              Ready to Transform Your{" "}
-              <span className="text-primary">Home</span>?
+            Ready to Start Your {" "}
+              <span className="text-primary">Project</span>?
             </h2>
             <p className="font-sans text-base text-muted-foreground mb-10 max-w-xl mx-auto leading-relaxed">
-              Schedule a free in-home consultation. Whether you need Venetian plaster, 
-              stucco repair, water damage restoration, or mold remediation — we're ready to exceed your expectations.
+            Schedule a free in-home estimate. Whether it is a remodel, a repair, or a water damage emergency, we will give you an honest timeline and a clear scope, from a family that treats your home like our own.
             </p>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
               <Link

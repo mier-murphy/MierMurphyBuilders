@@ -160,7 +160,7 @@ export function AboutPage() {
       {/* HERO */}
       <section className="relative min-h-[85vh] flex items-center overflow-hidden">
         <div className="absolute inset-0">
-          <img src={projectAboutHero} alt="Luxury interior plaster finish in a Thousand Oaks estate" className="w-full h-full object-cover" />
+          <img src={projectAboutHero} alt="Frank and the Mier and Murphy Builders crew on a jobsite in Thousand Oaks" className="w-full h-full object-cover" />
           <div className="absolute inset-0 bg-gradient-to-r from-[hsl(220,20%,12%)]/95 via-[hsl(220,20%,12%)]/80 to-[hsl(220,20%,12%)]/60" />
         </div>
         <div className="relative z-10 max-w-[90rem] mx-auto px-6 pt-40 pb-20 w-full grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">

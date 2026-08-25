@@ -4,11 +4,7 @@ import { ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
 import ScrollReveal from "@/components/ScrollReveal";
 import LeadCaptureForm from "@/components/LeadCaptureForm";
-import projectInterior from "@/assets/project-interior.jpg";
-import projectExterior from "@/assets/project-exterior.jpg";
-import projectRestoration from "@/assets/project-restoration.jpg";
-import projectBathroom from "@/assets/project-bathroom.jpg";
-import projectMold from "@/assets/project-mold.jpg";
+
 import heroCraftsmanship from "@/assets/Projects Hero.webp";
 import CabinRemodel from "@/assets/cabin/cabin-hero.avif";
 import CondoRemodel from "@/assets/condo-retreat/condo-retreat-hero.avif";
@@ -17,8 +13,8 @@ import CommercialStore from "@/assets/commercial-cell-store/commercial-cell-stor
 
 
 const SITE_URL = "https://www.mierandmurphybuilders.com";
-const PAGE_URL = `${SITE_URL}/services/bathroom-kitchen-remodeling`;
-const OG_IMAGE = `${SITE_URL}/service-bathroom-kitchen-remodeling.jpg`;
+const PAGE_URL = `${SITE_URL}/projects`;
+const OG_IMAGE = `${SITE_URL}/Projects Hero.webp`;
 
 const PAGE_TITLE = "Our Portfolio & Featured Projects | Mier & Murphy Builders";
 const PAGE_DESCRIPTION =
@@ -74,7 +70,7 @@ const Projects = () => {
         <meta property="og:title" content={PAGE_TITLE} />
         <meta property="og:description" content={PAGE_DESCRIPTION} />
         <meta property="og:image" content={OG_IMAGE} />
-        <meta property="og:image:alt" content="Bathroom and kitchen remodeling project in Thousand Oaks, CA" />
+        <meta property="og:image:alt" content="Our Portfolio & Featured Projects | Mier & Murphy Builders" />
         <meta property="og:site_name" content="Mier & Murphy Builders" />
         <meta property="og:locale" content="en_US" />
 
