@@ -1,5 +1,5 @@
 import React from 'react';
-import projectStory from "@/assets/our-story-about.webp";
+import projectStory from "@/assets/our-story-about-op.webp";
 export function OurStorySection() {
   return (
     <section className="py-20 lg:py-28 px-4 sm:px-6 lg:px-12 bg-[#f9f9f6] text-gray-800 relative overflow-hidden">
@@ -29,6 +29,10 @@ export function OurStorySection() {
             <div className="relative z-10 rounded-2xl overflow-hidden shadow-2xl border border-gray-200/50">
               <img 
                 src={projectStory}
+                width="378"
+                height="353"
+                loading="lazy"
+                decoding="async"
                 alt="Mier & Murphy Builders Quality Craftsmanship" 
                 className="w-full h-80 sm:h-[420px] object-cover"
               />

@@ -170,7 +170,7 @@ export function AboutPage() {
               <span className="font-sans text-xs font-semibold text-primary tracking-wide">OUR STORY</span>
             </div>
             <h1 className="font-serif text-4xl md:text-5xl lg:text-[3.4rem] font-bold mb-6 leading-[1.15] text-white">
-            Meet the Family Behind<span className="text-primary">Mier and Murphy Builders</span> 
+            Meet the Family Behind <span className="text-primary">Mier and Murphy Builders</span> 
             </h1>
             <p className="font-sans text-[15px] text-white/75 leading-relaxed max-w-lg">
             Twenty years of building experience, one family name, and a simple belief: your home deserves a 

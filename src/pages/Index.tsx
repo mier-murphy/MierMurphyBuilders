@@ -347,41 +347,30 @@ const Index = () => {
 </div>
 
         <div className="relative z-10 max-w-[80rem] mx-auto py-32 px-2 w-full grid grid-cols-1 lg:grid-cols-7 gap-5 items-center">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1, delay: 0.3 }}
-            className="lg:col-span-3"
-          >
-            <p className="font-sans text-sm tracking-[0.3em] text-brand-green-light uppercase mb-6 font-medium">
-            IICRC Certified
-            </p>
+        <div className="lg:col-span-3">
+  <p className="font-sans text-sm tracking-[0.3em] text-brand-green-light uppercase mb-6 font-medium">
+    IICRC Certified
+  </p>
 
-            <h1 className="font-serif text-4xl md:text-5xl lg:text-[3.5rem] font-bold leading-[1.1] mb-8 text-white text-shadow-luxury">
-            Thousand Oaks General Contractor for{" "}
-              <span className="text-brand-yellow">Remodeling, Restoration, and Repair</span>
-            </h1>
+  <h1 className="font-serif text-4xl md:text-5xl lg:text-[3.5rem] font-bold leading-[1.1] mb-8 text-white text-shadow-luxury">
+    Thousand Oaks General Contractor for{" "}
+    <span className="text-brand-yellow">Remodeling, Restoration, and Repair</span>
+  </h1>
 
-            <p className="font-sans text-lg text-white/75 max-w-xl mb-10 font-light leading-relaxed">
-            Mier & Murphy Builders is a family-owned and family-operated construction company in Thousand Oaks, with 20 years of building experience.
-            </p>
+  <p className="font-sans text-lg text-white/75 max-w-xl mb-10 font-light leading-relaxed">
+    Mier & Murphy Builders is a family-owned and family-operated construction company in Thousand Oaks, with 20 years of building experience.
+  </p>
 
-            <div className="flex flex-col sm:flex-row items-start gap-4">
-              <Link
-                to="/contact"
-                className="bg-primary text-primary-foreground px-8 py-4 rounded-xl font-sans text-sm font-semibold hover:bg-primary/90 transition-all duration-300 flex items-center gap-2 group shadow-lg"
-              >
-                Get a Free Estimate
-                <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-              </Link>
-              <a
-                href="tel:+18059989082"
-                className="inline-flex items-center gap-2 px-8 py-4 rounded-xl font-sans text-sm font-medium text-white border border-white/25 hover:bg-white/10 transition-all"
-              >
-                <Phone className="w-4 h-4" /> (805) 998-9082
-              </a>
-            </div>
-          </motion.div>
+  <div className="flex flex-col sm:flex-row items-start gap-4">
+    <Link to="/contact" className="bg-primary text-primary-foreground px-8 py-4 rounded-xl font-sans text-sm font-semibold hover:bg-primary/90 transition-all duration-300 flex items-center gap-2 group shadow-lg">
+      Get a Free Estimate
+      <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+    </Link>
+    <a href="tel:+18059989082" className="inline-flex items-center gap-2 px-8 py-4 rounded-xl font-sans text-sm font-medium text-white border border-white/25 hover:bg-white/10 transition-all">
+      <Phone className="w-4 h-4" /> (805) 998-9082
+    </a>
+  </div>
+</div>
           <div className="lg:col-span-4 min-h-[500px] sm:min-h-[600px] lg:min-h-[700px]">
   <LeadCaptureForm variant="full" />
 </div>

@@ -62,12 +62,7 @@ export default function App() {
       <meta name="twitter:image" content={OG_IMAGE} />
 
     </Helmet><div className="min-h-screen bg-white font-sans text-stone-800">
-        <style>{`
-        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap');
-        
-        body { font-family: 'Montserrat', sans-serif; }
-        h1, h2, h3, h4 { font-family: 'Playfair Display', serif; }
-      `}</style>
+     
 
         {/* Hero Section */}
         <section className="grid md:grid-cols-2 gap-8 items-center max-w-7xl mx-auto pt-40 pb-16 px-6">
