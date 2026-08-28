@@ -6,7 +6,8 @@ import { useState } from "react";
 import LeadCaptureForm from "@/components/LeadCaptureForm";
 import ScrollReveal from "@/components/ScrollReveal";
 
-import heroImage from "@/assets/hero-craftsmanship.jpg";
+import heroImage from "@/assets/home-hero.webp";
+import heroImageMobile from "@/assets/home-hero-mobile.webp";
 import projectExterior from "@/assets/cabin/cabin-hero.avif";
 import projectInterior from "@/assets/condo-retreat/condo-retreat-hero.avif";
 import projectComercial from "@/assets/commercial-cell-store/commercial-cell-store-hero.avif";
@@ -327,16 +328,23 @@ const Index = () => {
 
       {/* ── HERO ── Dark overlay, bold white text, like JGC */}
       <section className="relative min-h-screen flex items-center overflow-hidden">
-        <div className="absolute inset-0">
-          <img
-            src={heroImage}
-            alt="Luxury home renovation by Mier & Murphy Builders in Thousand Oaks, California"
-            className="w-full h-full object-cover"
-            loading="eager"
-          />
-          <div className="absolute inset-0 bg-gradient-to-r from-[hsl(220,20%,12%)]/90 via-[hsl(220,20%,12%)]/60 to-transparent" />
-          <div className="absolute inset-0 bg-gradient-to-t from-[hsl(220,20%,12%)]/70 via-transparent to-[hsl(220,20%,12%)]/30" />
-        </div>
+      <div className="absolute inset-0">
+  <picture>
+    {/* Mobile: served only below 768px, ~47KB vs the desktop image's much larger size */}
+    <source media="(max-width: 767px)" srcSet={heroImageMobile} />
+    <img
+      src={heroImage}
+      alt="Luxury home renovation by Mier & Murphy Builders in Thousand Oaks, California"
+      className="w-full h-full object-cover"
+      loading="eager"
+      fetchPriority="high"
+      width="1920"
+      height="1080"
+    />
+  </picture>
+  <div className="absolute inset-0 bg-gradient-to-r from-[hsl(220,20%,12%)]/90 via-[hsl(220,20%,12%)]/60 to-transparent" />
+  <div className="absolute inset-0 bg-gradient-to-t from-[hsl(220,20%,12%)]/70 via-transparent to-[hsl(220,20%,12%)]/30" />
+</div>
 
         <div className="relative z-10 max-w-[80rem] mx-auto py-32 px-2 w-full grid grid-cols-1 lg:grid-cols-7 gap-5 items-center">
           <motion.div
@@ -374,9 +382,9 @@ const Index = () => {
               </a>
             </div>
           </motion.div>
-          <div className="lg:col-span-4 ">
-          <LeadCaptureForm variant="full" />
-          </div>
+          <div className="lg:col-span-4 min-h-[500px] sm:min-h-[600px] lg:min-h-[700px]">
+  <LeadCaptureForm variant="full" />
+</div>
         </div>
 
         {/* Curved bottom edge */}

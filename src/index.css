@@ -215,3 +215,19 @@ html {
 .hover\:bg-primary\/90:hover {
   background-color: #749950 !important;
 }
+/* Fallback font-face overrides — sits alongside your other global styles */
+@font-face {
+  font-family: 'Playfair Display Fallback';
+  src: local('Georgia');
+  ascent-override: 90%;
+  descent-override: 22%;
+  line-gap-override: 0%;
+}
+
+@font-face {
+  font-family: 'Montserrat Fallback';
+  src: local('Arial');
+  ascent-override: 95%;
+  descent-override: 25%;
+  line-gap-override: 0%;
+}

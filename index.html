@@ -29,25 +29,53 @@
       used as the default metadata on every route.
     -->
 
-    <!-- Google Fonts -->
+    <!--
+      Preconnects: kept to the origins actually used early in the load.
+      fonts.gstatic.com needs crossorigin since font files are fetched
+      with CORS; fonts.googleapis.com does not (it only serves CSS).
+      Added connect.facebook.net since fbevents.js loads on this site
+      and Lighthouse flagged it as a preconnect candidate (~300ms LCP
+      savings). Removed anything not requested this early (GHL/Sanity
+      origins are fetched later, well after first paint, so a preconnect
+      for them just wastes a connection slot).
+    -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link
       rel="preconnect"
       href="https://fonts.gstatic.com"
       crossorigin
     />
+    <link rel="preconnect" href="https://connect.facebook.net" />
 
+    <!--
+      Non-blocking font load: the browser fetches this stylesheet at high
+      priority but does NOT block first paint on it. Once it loads, onload
+      flips rel to "stylesheet" so the fonts apply. The <noscript> fallback
+      covers browsers/crawlers with JS disabled. display=swap (already in
+      the URL) makes text render in a fallback font immediately instead of
+      staying invisible while the webfont downloads.
+    -->
     <link
+      rel="preload"
+      as="style"
       href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Montserrat:wght@300;400;500;600;700&display=swap"
-      rel="stylesheet"
+      onload="this.onload=null;this.rel='stylesheet'"
     />
+    <noscript>
+      <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Montserrat:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet"
+      />
+    </noscript>
 
-    <!-- Google Analytics -->
-    <script
-      async
-      src="https://www.googletagmanager.com/gtag/js?id=G-4Q4X77WNJ2"
-    ></script>
-
+    <!--
+      Google Analytics / GTM: deferred until the browser is idle instead
+      of loading immediately. gtag()'s job is only to queue events into
+      dataLayer, so this is safe — any gtag() calls made by page code
+      before the real script arrives just sit in the queue and get
+      processed once GTM loads. Falls back to setTimeout for Safari,
+      which doesn't support requestIdleCallback.
+    -->
     <script>
       window.dataLayer = window.dataLayer || [];
 
@@ -57,6 +85,20 @@
 
       gtag("js", new Date());
       gtag("config", "G-4Q4X77WNJ2");
+
+      function loadGTM() {
+        var script = document.createElement("script");
+        script.async = true;
+        script.src =
+          "https://www.googletagmanager.com/gtag/js?id=G-4Q4X77WNJ2";
+        document.head.appendChild(script);
+      }
+
+      if ("requestIdleCallback" in window) {
+        requestIdleCallback(loadGTM, { timeout: 3000 });
+      } else {
+        setTimeout(loadGTM, 2000);
+      }
     </script>
   </head>
 

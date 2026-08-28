@@ -16,7 +16,7 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
           {/* Brand */}
           <div>
-            <img src={mml} alt="Company Logo" className=" w-auto mb-4" />
+            <img src={mml} alt="Company Logo" width={160} height={64} className=" w-auto mb-4" />
             <p className="text-sm font-sans text-white/60 leading-relaxed">
             Family-owned construction company in Thousand Oaks, with 20 years of building experience in remodeling, restoration, and repair. 
             </p>
@@ -98,24 +98,24 @@ const Footer = () => {
         {/* Bottom bar */}
         <div className="gold-divider mb-8" />
         <div className="flex flex-col md:flex-row items-center justify-between gap-4">
-          <p className="text-xs font-sans text-white/40">
+          <p className="text-xs font-sans text-white/70">
             © {new Date().getFullYear()} Mier & Murphy Builders. All rights reserved.
           </p>
-          <div className="flex items-center gap-2 text-xs font-sans text-white/40">
+          <div className="flex items-center gap-2 text-xs font-sans text-white/70">
             <span>              <a
                 href="/privacy-policy"
-                className=" text-white/40 hover:text-brand-yellow"
+                className=" text-white/70 hover:text-brand-yellow"
               >
 Privacy Policy              </a></span>
             <span className="text-brand-yellow">•</span>
             <span><a
                 href="/terms-and-conditions"
-                className="text-white/40   hover:text-brand-yellow"
+                className="text-white/70   hover:text-brand-yellow"
               >
 Terms Of Conditions              </a></span>
           
           </div>
-          <div className="flex items-center gap-2 text-xs font-sans text-white/40">
+          <div className="flex items-center gap-2 text-xs font-sans text-white/70">
             <span>IICRC Certified</span>
             <span className="text-brand-yellow">•</span>
             <div className="text-center sm:text-right">

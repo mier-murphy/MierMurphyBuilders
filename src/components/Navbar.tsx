@@ -183,7 +183,7 @@ const Navbar = () => {
       <div className="max-w-7xl mx-auto px-6 flex items-center justify-between">
         {/* Logo */}
         <Link to="/" className="flex items-center gap-3 group">
-          <img src={mml} alt="Company Logo" className="h-16 md:h-20 w-auto" />
+          <img src={mml} alt="Company Logo" width={160} height={64} className="h-16 md:h-20 w-auto" />
         </Link>
 
         {/* Desktop Nav */}

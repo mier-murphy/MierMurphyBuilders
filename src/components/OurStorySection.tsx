@@ -1,5 +1,5 @@
 import React from 'react';
-import projectStory from "@/assets/home-our-story.webp";
+import projectStory from "@/assets/our-story-about.webp";
 export function OurStorySection() {
   return (
     <section className="py-20 lg:py-28 px-4 sm:px-6 lg:px-12 bg-[#f9f9f6] text-gray-800 relative overflow-hidden">

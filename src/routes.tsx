@@ -6,49 +6,7 @@ import { Outlet } from "react-router-dom";
 import type { RouteRecord } from "vite-react-ssg";
 
 import Layout from "@/components/Layout";
-
 import Index from "./pages/Index";
-import About from "./pages/About";
-import AboutTeam from "./pages/AboutTeam";
-import AboutTestimonials from "./pages/AboutTestimonials";
-
-import BathroomKitchenRemodeling from "./pages/BathroomKitchenRemodeling";
-import WaterDamageMoldRemediation from "./pages/WaterDamageMoldRemediation";
-import DrywallPlasterStuccoRepair from "./pages/DrywallPlasterStuccoRepair";
-import BalconyDeckRepair from "./pages/BalconyDeckRepair";
-import CommercialTenantImprovement from "./pages/CommercialTenantImprovement";
-
-import Projects from "./pages/Projects";
-import Cabin from "./pages/projects/cabin";
-import CondoRetreat from "./pages/projects/condo-retreat";
-import CommercialCellStore from "./pages/projects/commercial-cell-store";
-import Ranch from "./pages/projects/ranch";
-
-import Blog from "./pages/Blog";
-import BlogPost from "./pages/BlogPost";
-import Contact from "./pages/Contact";
-
-import PrivacyPolicy from "./pages/PrivacyPolicy";
-import TermsAndConditions from "./pages/TermsAndConditions";
-
-import Areas from "./pages/Areas";
-import Area91360 from "./pages/areas/Area91360";
-import Area91362 from "./pages/areas/Area91362";
-import Area91361 from "./pages/areas/Area91361";
-import Area91320 from "./pages/areas/Area91320";
-import Area91301 from "./pages/areas/Area91301";
-import Area91377 from "./pages/areas/Area91377";
-import Area91302 from "./pages/areas/Area91302";
-import Area91311 from "./pages/areas/Area91311";
-import Area91367 from "./pages/areas/Area91367";
-import Area91364 from "./pages/areas/Area91364";
-import Area90265 from "./pages/areas/Area90265";
-import Area93021 from "./pages/areas/Area93021";
-import Area93062 from "./pages/areas/Area93062";
-import Area90001 from "./pages/areas/Area90001";
-import Area91319 from "./pages/areas/Area91319";
-
-import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
 
@@ -75,190 +33,307 @@ export const routes: RouteRecord[] = [
         element: <Layout />,
         children: [
           {
+            // Kept eager: it's the most-visited page, and this avoids an
+            // extra chunk fetch/fallback flash on first load.
             index: true,
             element: <Index />,
           },
 
           {
             path: "about",
-            element: <About />,
+            lazy: () =>
+              import("./pages/About").then((m) => ({ Component: m.default })),
           },
           {
             path: "about/team",
-            element: <AboutTeam />,
+            lazy: () =>
+              import("./pages/AboutTeam").then((m) => ({
+                Component: m.default,
+              })),
           },
           {
             path: "about/testimonials",
-            element: <AboutTestimonials />,
+            lazy: () =>
+              import("./pages/AboutTestimonials").then((m) => ({
+                Component: m.default,
+              })),
           },
 
           {
             path: "services/bathroom-kitchen-remodeling",
-            element: <BathroomKitchenRemodeling />,
+            lazy: () =>
+              import("./pages/BathroomKitchenRemodeling").then((m) => ({
+                Component: m.default,
+              })),
           },
           {
             path: "services/water-damage-mold-remediation",
-            element: <WaterDamageMoldRemediation />,
+            lazy: () =>
+              import("./pages/WaterDamageMoldRemediation").then((m) => ({
+                Component: m.default,
+              })),
           },
           {
             path: "services/drywall-plaster-stucco-repair",
-            element: <DrywallPlasterStuccoRepair />,
+            lazy: () =>
+              import("./pages/DrywallPlasterStuccoRepair").then((m) => ({
+                Component: m.default,
+              })),
           },
           {
             path: "services/balcony-deck-repair",
-            element: <BalconyDeckRepair />,
+            lazy: () =>
+              import("./pages/BalconyDeckRepair").then((m) => ({
+                Component: m.default,
+              })),
           },
           {
             path: "services/commercial-tenant-improvement",
-            element: <CommercialTenantImprovement />,
+            lazy: () =>
+              import("./pages/CommercialTenantImprovement").then((m) => ({
+                Component: m.default,
+              })),
           },
 
           {
             path: "projects",
-            element: <Projects />,
+            lazy: () =>
+              import("./pages/Projects").then((m) => ({
+                Component: m.default,
+              })),
           },
           {
             path: "projects/cabin",
-            element: <Cabin />,
+            lazy: () =>
+              import("./pages/projects/cabin").then((m) => ({
+                Component: m.default,
+              })),
           },
           {
             path: "projects/condo-retreat",
-            element: <CondoRetreat />,
+            lazy: () =>
+              import("./pages/projects/condo-retreat").then((m) => ({
+                Component: m.default,
+              })),
           },
           {
             path: "projects/commercial-cell-store",
-            element: <CommercialCellStore />,
+            lazy: () =>
+              import("./pages/projects/commercial-cell-store").then((m) => ({
+                Component: m.default,
+              })),
           },
           {
             path: "projects/ranch",
-            element: <Ranch />,
+            lazy: () =>
+              import("./pages/projects/ranch").then((m) => ({
+                Component: m.default,
+              })),
           },
 
           {
             path: "blog",
-            element: <Blog />,
+            lazy: () =>
+              import("./pages/Blog").then((m) => ({ Component: m.default })),
           },
           {
             path: "blog/:slug",
-            element: <BlogPost />,
-
-            async loader({ params }) {
-              if (!params.slug) {
-                throw new Response("Not Found", {
-                  status: 404,
-                });
-              }
-
-              const { getPostBySlug, getRelatedPosts } = await import(
-                "@/lib/sanity"
+            lazy: async () => {
+              const { default: Component } = await import(
+                "./pages/BlogPost"
               );
 
-              const post = await getPostBySlug(params.slug);
-
-              if (!post) {
-                throw new Response("Not Found", {
-                  status: 404,
-                });
-              }
-
-              const relatedPosts = await getRelatedPosts(post._id, 3);
-
               return {
-                post,
-                relatedPosts,
+                Component,
+
+                async loader({ params }: { params: { slug?: string } }) {
+                  if (!params.slug) {
+                    throw new Response("Not Found", { status: 404 });
+                  }
+
+                  const { getPostBySlug, getRelatedPosts } = await import(
+                    "@/lib/sanity"
+                  );
+
+                  const post = await getPostBySlug(params.slug);
+
+                  if (!post) {
+                    throw new Response("Not Found", { status: 404 });
+                  }
+
+                  const relatedPosts = await getRelatedPosts(post._id, 3);
+
+                  return { post, relatedPosts };
+                },
               };
             },
 
+            // getStaticPaths must stay a sibling of `lazy`, not inside it —
+            // vite-react-ssg needs this at build time to know which slugs
+            // to prerender, before any route-level code runs.
             async getStaticPaths() {
               const { getAllPosts } = await import("@/lib/sanity");
 
-              const posts = await getAllPosts();
-
-              return posts.map((post) => `/blog/${post.slug}`);
+              try {
+                const posts = await getAllPosts();
+                return posts.map((post) => `/blog/${post.slug}`);
+              } catch (err) {
+                console.error(
+                  "[getStaticPaths] Failed to fetch blog posts from Sanity — skipping blog post pages for this build:",
+                  err
+                );
+                return [];
+              }
             },
           },
 
           {
             path: "contact",
-            element: <Contact />,
+            lazy: () =>
+              import("./pages/Contact").then((m) => ({
+                Component: m.default,
+              })),
           },
           {
-            path: "PrivacyPolicy",
-            element: <PrivacyPolicy />,
+            path: "privacy-policy",
+            lazy: () =>
+              import("./pages/PrivacyPolicy").then((m) => ({
+                Component: m.default,
+              })),
           },
           {
-            path: "TermsAndConditions",
-            element: <TermsAndConditions />,
+            path: "terms-and-conditions",
+            lazy: () =>
+              import("./pages/TermsAndConditions").then((m) => ({
+                Component: m.default,
+              })),
+          },
+
+          {
+            path: "book-online",
+            lazy: () =>
+              import("./pages/BookOnline").then((m) => ({
+                Component: m.default,
+              })),
           },
 
           {
             path: "areas",
-            element: <Areas />,
+            lazy: () =>
+              import("./pages/Areas").then((m) => ({ Component: m.default })),
           },
           {
             path: "areas/91360",
-            element: <Area91360 />,
+            lazy: () =>
+              import("./pages/areas/Area91360").then((m) => ({
+                Component: m.default,
+              })),
           },
           {
             path: "areas/91362",
-            element: <Area91362 />,
+            lazy: () =>
+              import("./pages/areas/Area91362").then((m) => ({
+                Component: m.default,
+              })),
           },
           {
             path: "areas/91361",
-            element: <Area91361 />,
+            lazy: () =>
+              import("./pages/areas/Area91361").then((m) => ({
+                Component: m.default,
+              })),
           },
           {
             path: "areas/91320",
-            element: <Area91320 />,
+            lazy: () =>
+              import("./pages/areas/Area91320").then((m) => ({
+                Component: m.default,
+              })),
           },
           {
             path: "areas/91301",
-            element: <Area91301 />,
+            lazy: () =>
+              import("./pages/areas/Area91301").then((m) => ({
+                Component: m.default,
+              })),
           },
           {
             path: "areas/91377",
-            element: <Area91377 />,
+            lazy: () =>
+              import("./pages/areas/Area91377").then((m) => ({
+                Component: m.default,
+              })),
           },
           {
             path: "areas/91302",
-            element: <Area91302 />,
+            lazy: () =>
+              import("./pages/areas/Area91302").then((m) => ({
+                Component: m.default,
+              })),
           },
           {
             path: "areas/91311",
-            element: <Area91311 />,
+            lazy: () =>
+              import("./pages/areas/Area91311").then((m) => ({
+                Component: m.default,
+              })),
           },
           {
             path: "areas/91367",
-            element: <Area91367 />,
+            lazy: () =>
+              import("./pages/areas/Area91367").then((m) => ({
+                Component: m.default,
+              })),
           },
           {
             path: "areas/91364",
-            element: <Area91364 />,
+            lazy: () =>
+              import("./pages/areas/Area91364").then((m) => ({
+                Component: m.default,
+              })),
           },
           {
             path: "areas/90265",
-            element: <Area90265 />,
+            lazy: () =>
+              import("./pages/areas/Area90265").then((m) => ({
+                Component: m.default,
+              })),
           },
           {
             path: "areas/93021",
-            element: <Area93021 />,
+            lazy: () =>
+              import("./pages/areas/Area93021").then((m) => ({
+                Component: m.default,
+              })),
           },
           {
             path: "areas/93062",
-            element: <Area93062 />,
+            lazy: () =>
+              import("./pages/areas/Area93062").then((m) => ({
+                Component: m.default,
+              })),
           },
           {
             path: "areas/90001",
-            element: <Area90001 />,
+            lazy: () =>
+              import("./pages/areas/Area90001").then((m) => ({
+                Component: m.default,
+              })),
           },
           {
             path: "areas/91319",
-            element: <Area91319 />,
+            lazy: () =>
+              import("./pages/areas/Area91319").then((m) => ({
+                Component: m.default,
+              })),
           },
 
           {
             path: "*",
-            element: <NotFound />,
+            lazy: () =>
+              import("./pages/NotFound").then((m) => ({
+                Component: m.default,
+              })),
           },
         ],
       },
