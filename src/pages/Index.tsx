@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 import { Helmet } from "react-helmet-async";
 import { ArrowRight, Shield, Award, Clock, Star, Droplets, Home, Paintbrush, Bug, MapPin, Phone, Building2, CheckCircle, HelpCircle } from "lucide-react";
 import { useState } from "react";
@@ -57,21 +57,21 @@ const stats = [
 
 const services = [
   {
-    title: "Expert Bathroom and Kitchen Remodelingin Thousand Oaks",
+    title: "Expert Bathroom and Kitchen Remodeling in Thousand Oaks",
     description: "Full bathroom and kitchen remodels for homeowners across Thousand Oaks, Westlake Village, and Simi Valley, with clear timelines, permits handled for you, and a family-owned crew behind every job.",
     icon: Paintbrush,
     image: projectBathroom,
     href: "/services/bathroom-kitchen-remodeling",
   },
   {
-    title: "Trusted Water Damage and Mold RemediationExperts",
+    title: "Trusted Water Damage and Mold Remediation Experts",
     description: "IICRC certified water damage and mold remediation for homeowners in Thousand Oaks, Westlake Village, and Simi Valley. We know what water damage does to a home, because it happened to ours.",
     icon: Home,
     image: projectWater,
     href: "/services/water-damage-mold-remediation",
   },
   {
-    title: "Seamless Drywall and Stucco Repairin Thousand Oaks",
+    title: "Seamless Drywall and Stucco Repair in Thousand Oaks",
     description: "Drywall, plaster, and stucco repair for homeowners in Thousand Oaks, Westlake Village, and Simi Valley, matched to your existing finish so the repair disappears into the wall.",
     icon: Droplets,
     image: projectDrywall,
@@ -102,7 +102,7 @@ const projects = [
     link: "/projects/cabin",
   },
   {
-    title: "Urban Condo Remodel Los Angeles, CA",
+    title: "Urban Condo Remodel in Thousand Oaks, CA",
     category: "Interior",
     location: "Thousand Oaks, CA 91360",
     image: projectInterior,
@@ -247,17 +247,6 @@ const websiteSchema = {
   publisher: { "@id": `${SITE_URL}/#organization` },
 };
 
-// JSON-LD: FAQPage (matches the visible homepage FAQ content)
-const faqJsonLd = {
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  mainEntity: faqs.map((f) => ({
-    "@type": "Question",
-    name: f.question,
-    acceptedAnswer: { "@type": "Answer", text: f.answer },
-  })),
-};
-
 // JSON-LD: BreadcrumbList
 const breadcrumbSchema = {
   "@context": "https://schema.org",
@@ -265,20 +254,28 @@ const breadcrumbSchema = {
   itemListElement: [{ "@type": "ListItem", position: 1, name: "Home", item: SITE_URL }],
 };
 
-const AnimatePresenceWrapper = ({ isOpen, children }: { isOpen: boolean; children: React.ReactNode }) => (
-  <AnimatePresence>
-    {isOpen && (
-      <motion.div
-        initial={{ height: 0, opacity: 0 }}
-        animate={{ height: "auto", opacity: 1 }}
-        exit={{ height: 0, opacity: 0 }}
-        transition={{ duration: 0.3 }}
-        className="overflow-hidden"
-      >
-        {children}
-      </motion.div>
-    )}
-  </AnimatePresence>
+const AnimatePresenceWrapper = ({
+  isOpen,
+  children,
+  id,
+}: {
+  isOpen: boolean;
+  children: React.ReactNode;
+  id: string;
+}) => (
+  <motion.div
+    id={id}
+    initial={false}
+    animate={{
+      height: isOpen ? "auto" : 0,
+      opacity: isOpen ? 1 : 0,
+    }}
+    transition={{ duration: 0.3 }}
+    className="overflow-hidden"
+    aria-hidden={!isOpen}
+  >
+    {children}
+  </motion.div>
 );
 
 const Index = () => {
@@ -289,18 +286,11 @@ const Index = () => {
       <Helmet>
         {/* Primary meta tags */}
         <title>{PAGE_TITLE}</title>
-        <meta name="title" content={PAGE_TITLE} />
         <meta name="description" content={PAGE_DESCRIPTION} />
         
         <meta name="author" content="Mier & Murphy Builders" />
         <meta name="robots" content="index, follow" />
         <link rel="canonical" href={SITE_URL} />
-
-        {/* Geo tags */}
-        <meta name="geo.placename" content="Thousand Oaks" />
-        <meta name="geo.region" content="US-CA" />
-        <meta name="geo.position" content="34.1706;-118.8376" />
-        <meta name="ICBM" content="34.1706, -118.8376" />
 
         {/* Open Graph */}
         <meta property="og:type" content="website" />
@@ -322,7 +312,6 @@ const Index = () => {
         {/* Structured data */}
         <script type="application/ld+json">{JSON.stringify(organizationSchema)}</script>
         <script type="application/ld+json">{JSON.stringify(websiteSchema)}</script>
-        <script type="application/ld+json">{JSON.stringify(faqJsonLd)}</script>
         <script type="application/ld+json">{JSON.stringify(breadcrumbSchema)}</script>
       </Helmet>
 
@@ -366,7 +355,11 @@ const Index = () => {
       Get a Free Estimate
       <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
     </Link>
-    <a href="tel:+18059989082" className="inline-flex items-center gap-2 px-8 py-4 rounded-xl font-sans text-sm font-medium text-white border border-white/25 hover:bg-white/10 transition-all">
+    <a
+      href="tel:+18059989082"
+      aria-label="Call Mier and Murphy Builders at (805) 998-9082"
+      className="inline-flex items-center gap-2 px-8 py-4 rounded-xl font-sans text-sm font-medium text-white border border-white/25 hover:bg-white/10 transition-all"
+    >
       <Phone className="w-4 h-4" /> (805) 998-9082
     </a>
   </div>
@@ -672,6 +665,10 @@ const Index = () => {
               <h2 className="font-serif text-3xl md:text-4xl lg:text-5xl font-bold mb-4 text-foreground">
                 Areas <span className="text-primary">We Serve</span>
               </h2>
+              <p className="font-sans text-base text-muted-foreground max-w-2xl mx-auto leading-relaxed">
+                Mier & Murphy Builders serves homeowners, HOAs, and property owners throughout
+                Thousand Oaks and the surrounding Conejo Valley communities.
+              </p>
               <div className="gold-divider mt-6" />
             </div>
           </ScrollReveal>
@@ -793,7 +790,10 @@ const Index = () => {
               <ScrollReveal key={i} delay={i * 0.05}>
                 <div className="luxury-card overflow-hidden">
                   <button
+                    type="button"
                     onClick={() => setOpenFaq(openFaq === i ? null : i)}
+                    aria-expanded={openFaq === i}
+                    aria-controls={`faq-answer-${i}`}
                     className="w-full text-left px-6 py-5 flex items-start gap-4 hover:bg-primary/5 transition-colors"
                   >
                     <HelpCircle className="w-5 h-5 text-primary mt-0.5 flex-shrink-0" />
@@ -806,7 +806,10 @@ const Index = () => {
                       <span className="text-xl font-light">+</span>
                     </motion.div>
                   </button>
-                  <AnimatePresenceWrapper isOpen={openFaq === i}>
+                  <AnimatePresenceWrapper
+                    isOpen={openFaq === i}
+                    id={`faq-answer-${i}`}
+                  >
                     <div className="px-6 pb-5">
                       <p className="font-sans text-sm text-muted-foreground leading-relaxed pl-9">
                         {faq.answer}
