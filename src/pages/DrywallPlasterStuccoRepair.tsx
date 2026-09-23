@@ -46,7 +46,7 @@ const faqs = [
   },
   {
     q: "Do you handle small repairs, or only large jobs?",
-    a: "We handle repairs of all sizes, from small drywall patches to larger stucco sections.",
+    a: "We handle repairs of all sizes, from small  patches to larger stucco sections.",
   },
   {
     q: "How long does a typical stucco repair take?",
@@ -81,7 +81,7 @@ const process = [
   {
     step: "04",
     title: "Repair & Matching",
-    desc: "We complete the drywall or stucco repair and match it to the surrounding wall.",
+    desc: "We complete the  or stucco repair and match it to the surrounding wall.",
   },
   {
     step: "05",
@@ -104,8 +104,8 @@ const serviceSchema = {
   "@context": "https://schema.org",
   "@type": "Service",
   "@id": `${PAGE_URL}/#service`,
-  name: "Drywall, Plaster & Stucco Repair",
-  serviceType: "Drywall, Plaster, and Stucco Repair",
+  name: ", Plaster & Stucco Repair",
+  serviceType: ", Plaster, and Stucco Repair",
   description: PAGE_DESCRIPTION,
   url: PAGE_URL,
   provider: {
@@ -125,7 +125,7 @@ const serviceSchema = {
   areaServed: areasServed.map((name) => ({ "@type": "City", name })),
   hasOfferCatalog: {
     "@type": "OfferCatalog",
-    name: "Drywall, Plaster & Stucco Repair Services",
+    name: ", Plaster & Stucco Repair Services",
     itemListElement: finishes.map((f) => ({
       "@type": "Offer",
       itemOffered: {
@@ -155,11 +155,11 @@ const breadcrumbSchema = {
   itemListElement: [
     { "@type": "ListItem", position: 1, name: "Home", item: SITE_URL },
     { "@type": "ListItem", position: 2, name: "Services", item: `${SITE_URL}/services` },
-    { "@type": "ListItem", position: 3, name: "Drywall, Plaster & Stucco Repair", item: PAGE_URL },
+    { "@type": "ListItem", position: 3, name: ", Plaster & Stucco Repair", item: PAGE_URL },
   ],
 };
 
-const DrywallPlasterStuccoRepair = () => {
+const PlasterStuccoRepair = () => {
   return (
     <>
       <Helmet>
@@ -214,7 +214,7 @@ const DrywallPlasterStuccoRepair = () => {
               <span className="font-sans text-xs font-semibold text-primary tracking-wide">REPAIRS THAT BLEND IN</span>
             </div>
             <h1 className="font-serif text-4xl md:text-5xl lg:text-[3.5rem] font-bold mb-6 leading-[1.15] text-white">
-            Seamless  <span className="text-primary">Drywall and Stucco Repair</span> in Thousand Oaks
+            Seamless  <span className="text-primary">Drywall, plaster and Stucco Repair</span> in Thousand Oaks
             </h1>
             <p className="font-sans text-[15px] text-white/75 leading-relaxed max-w-lg">
             Drywall, plaster, and stucco repair for homeowners in Thousand Oaks, Westlake Village, and Simi Valley,
