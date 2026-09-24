@@ -1,7 +1,8 @@
 import { Link } from "react-router-dom";
-import { Phone, Mail, MapPin } from "lucide-react";
+import { Phone, Mail, MapPin, Facebook, Instagram, Youtube } from "lucide-react";
 import jgcLogo from "@/assets/jgc-logo.avif";
 import mml from "@/assets/mier-logo.webp";
+
 const Footer = () => {
   return (
     <footer className="section-dark">
@@ -18,8 +19,21 @@ const Footer = () => {
           <div>
             <img src={mml} alt="Company Logo" width={160} height={64} className=" w-auto mb-4" />
             <p className="text-sm font-sans text-white/60 leading-relaxed">
-            Family-owned construction company in Thousand Oaks, with 20 years of building experience in remodeling, restoration, and repair. 
+              Family-owned construction company in Thousand Oaks, with 20 years of building experience in remodeling, restoration, and repair.
             </p>
+
+            {/* Social Icons */}
+            <div className="flex items-center gap-4 mt-5">
+              <a href="https://www.facebook.com/mierandmurphy" target="_blank" rel="noopener noreferrer" aria-label="Facebook" className="text-[#597C38] hover:text-white transition-colors duration-200">
+                <Facebook className="w-5 h-5" />
+              </a>
+              <a href="http://instagram.com/mier.and.murphy.builders" target="_blank" rel="noopener noreferrer" aria-label="Instagram" className="text-[#597C38] hover:text-white transition-colors duration-200">
+                <Instagram className="w-5 h-5" />
+              </a>
+              {/* <a href="https://youtube.com" target="_blank" rel="noopener noreferrer" aria-label="Youtube" className="text-[#597C38] hover:text-white transition-colors duration-200">
+                <Youtube className="w-5 h-5" />
+              </a> */}
+            </div>
           </div>
 
           {/* Services */}
@@ -27,21 +41,18 @@ const Footer = () => {
             <h4 className="font-serif text-lg text-white mb-6">Our Services</h4>
             <ul className="space-y-3">
               {[
-              { label: "Bathroom & kitchen remodeling", href: "/services/bathroom-kitchen-remodeling" },
-              { label: "Water damage & mold remediation", href: "/services/water-damage-mold-remediation" },
-              { label: "Drywall, plaster & stucco repair", href: "/services/drywall-plaster-stucco-repair" },
-              { label: "Balcony & deck repair", href: "/services/balcony-deck-repair" },
-              { label: "Commercial tenant improvement", href: "/services/commercial-tenant-improvement" }].
-              map((item) =>
-              <li key={item.label}>
-                  <Link
-                  to={item.href}
-                  className="text-sm font-sans text-white/50 hover:text-brand-yellow transition-colors duration-300">
-
+                { label: "Bathroom & kitchen remodeling", href: "/services/bathroom-kitchen-remodeling" },
+                { label: "Water damage & mold remediation", href: "/services/water-damage-mold-remediation" },
+                { label: "Drywall, plaster & stucco repair", href: "/services/drywall-plaster-stucco-repair" },
+                { label: "Balcony & deck repair", href: "/services/balcony-deck-repair" },
+                { label: "Commercial tenant improvement", href: "/services/commercial-tenant-improvement" },
+              ].map((item) => (
+                <li key={item.label}>
+                  <Link to={item.href} className="text-sm font-sans text-white/50 hover:text-brand-yellow transition-colors duration-300">
                     {item.label}
                   </Link>
                 </li>
-              )}
+              ))}
             </ul>
           </div>
 
@@ -50,22 +61,18 @@ const Footer = () => {
             <h4 className="font-serif text-lg text-white mb-6">Quick Links</h4>
             <ul className="space-y-3">
               {[
-              { label: "About", href: "/about" },
-              
-              { label: "Testimonials", href: "/about/testimonials" },
-              { label: "Our Projects", href: "/projects" },
-              { label: "Areas We Serve", href: "/areas" },
-              { label: "Contact Us", href: "/contact" }].
-              map((item) =>
-              <li key={item.label}>
-                  <Link
-                  to={item.href}
-                  className="text-sm font-sans text-white/50 hover:text-brand-yellow transition-colors duration-300">
-
+                { label: "About", href: "/about" },
+                { label: "Testimonials", href: "/about/testimonials" },
+                { label: "Our Projects", href: "/projects" },
+                { label: "Areas We Serve", href: "/areas" },
+                { label: "Contact Us", href: "/contact" },
+              ].map((item) => (
+                <li key={item.label}>
+                  <Link to={item.href} className="text-sm font-sans text-white/50 hover:text-brand-yellow transition-colors duration-300">
                     {item.label}
                   </Link>
                 </li>
-              )}
+              ))}
             </ul>
           </div>
 
@@ -102,37 +109,38 @@ const Footer = () => {
             © {new Date().getFullYear()} Mier & Murphy Builders. All rights reserved.
           </p>
           <div className="flex items-center gap-2 text-xs font-sans text-white/70">
-            <span>              <a
-                href="/privacy-policy"
-                className=" text-white/70 hover:text-brand-yellow"
-              >
-Privacy Policy              </a></span>
+            <span>
+              <a href="/privacy-policy" className="text-white/70 hover:text-brand-yellow">
+                Privacy Policy
+              </a>
+            </span>
             <span className="text-brand-yellow">•</span>
-            <span><a
-                href="/terms-and-conditions"
-                className="text-white/70   hover:text-brand-yellow"
-              >
-Terms Of Conditions              </a></span>
-          
+            <span>
+              <a href="/terms-and-conditions" className="text-white/70 hover:text-brand-yellow">
+                Terms Of Conditions
+              </a>
+            </span>
           </div>
           <div className="flex items-center gap-2 text-xs font-sans text-white/70">
-            <span><a
-                href="/contact#iirc"
-                className="text-white/70   hover:text-brand-yellow"
-              >
-IICRC Certified </a></span>
+            <span>
+              <a href="/contact#iirc" className="text-white/70 hover:text-brand-yellow">
+                IICRC Certified
+              </a>
+            </span>
             <span className="text-brand-yellow">•</span>
             <div className="text-center sm:text-right">
-            <p className="text-primary-foreground/50 text-xs sm:text-sm">
-            Made with 🔥 by <a href="https://advanceedgellc.com/" target="_blank" rel="noopener noreferrer" className="text-accent font-medium hover:underline">AdvanceEdge</a>
-           
-            </p>
-          </div>
+              <p className="text-primary-foreground/50 text-xs sm:text-sm">
+                Made with 🔥 by{" "}
+                <a href="https://advanceedgellc.com/" target="_blank" rel="noopener noreferrer" className="text-accent font-medium hover:underline">
+                  AdvanceEdge
+                </a>
+              </p>
+            </div>
           </div>
         </div>
       </div>
-    </footer>);
-
+    </footer>
+  );
 };
 
 export default Footer;
