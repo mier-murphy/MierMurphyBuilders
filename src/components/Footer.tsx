@@ -116,7 +116,11 @@ Terms Of Conditions              </a></span>
           
           </div>
           <div className="flex items-center gap-2 text-xs font-sans text-white/70">
-            <span>IICRC Certified</span>
+            <span><a
+                href="/contact#iirc"
+                className="text-white/70   hover:text-brand-yellow"
+              >
+IICRC Certified </a></span>
             <span className="text-brand-yellow">•</span>
             <div className="text-center sm:text-right">
             <p className="text-primary-foreground/50 text-xs sm:text-sm">

@@ -40,6 +40,25 @@ const Contact = () => {
     }
   }, []);
 
+  // Scroll to IICRC section when URL contains #iirc
+  useEffect(() => {
+    const scrollToHash = () => {
+      if (window.location.hash === "#iirc") {
+        const element = document.getElementById("iirc");
+
+        if (element) {
+          element.scrollIntoView({
+            behavior: "smooth",
+            block: "start",
+          });
+        }
+      }
+    };
+
+    setTimeout(scrollToHash, 100);
+  }, []);
+
+
   return (
     <>
 <Helmet>
@@ -180,7 +199,7 @@ const Contact = () => {
       </section>
 
        {/* ── IICRC CERTIFICATION ── */}
-       <section className="section-padding  bg-[#fcfcf8]">
+       <section className="section-padding  bg-[#fcfcf8] scroll-mt-24" id="iirc">
         <div className="max-w-6xl mx-auto">
           <ScrollReveal>
             <div className="text-center mb-14">

@@ -1,5 +1,6 @@
 import React from 'react';
 import { Phone, Award, Paintbrush } from 'lucide-react';
+import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { Helmet } from 'react-helmet-async';
 
@@ -12,6 +13,7 @@ import iicrcBadge from "@/assets/iicrc-badge.avif";
 
 import iicrcFirmBadge from "@/assets/iicrc-firm-badge.png";
 import iicrcMoldBadge from "@/assets/iicrc-mold-badge.png";
+import ScrollReveal from '@/components/ScrollReveal';
 
 const SITE_URL = "https://www.mierandmurphybuilders.com";
 const PAGE_URL = `${SITE_URL}/about`;
@@ -185,7 +187,7 @@ export function AboutPage() {
 
 
       {/* 3. OUR ORIGIN STORY SECTION */}
-      <section className="py-20 px-4 sm:px-6 lg:px-12 bg-white border-y border-gray-100">
+      <section className="py-20 px-4 sm:px-6 lg:px-12 bg-[#f9f9f6] border-y border-gray-100">
         <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
           <div className="lg:col-span-5 order-2 lg:order-1">
             <div className="relative rounded-2xl overflow-hidden shadow-xl border border-gray-200 min-h-[380px]">
@@ -215,7 +217,7 @@ export function AboutPage() {
       </section>
 
       {/* 4. MEET THE TEAM SECTION */}
-      <section className="py-20 px-4 sm:px-6 lg:px-12 bg-[#f9f9f6]">
+      <section className="py-20 px-4 sm:px-6 lg:px-12 bg-white">
         <div className="max-w-6xl mx-auto space-y-12">
           <div className="text-center max-w-3xl mx-auto space-y-4">
             <h2 className="font-playfair text-3xl sm:text-4xl font-bold text-gray-900 leading-tight">
@@ -248,7 +250,7 @@ export function AboutPage() {
       </section>
 
       {/* 5. OUR PROMISE SECTION */}
-      <section className="py-20 px-4 sm:px-6 lg:px-12 bg-white">
+      <section className="py-20 px-4 sm:px-6 lg:px-12 bg-[#f9f9f6]">
         <div className="max-w-4xl mx-auto text-center space-y-6">
           <h2 className="font-playfair text-3xl sm:text-4xl font-bold text-gray-900 leading-tight">
             What You Can Expect <span className="text-[#587b37]">When You Hire Us</span>
@@ -270,7 +272,7 @@ export function AboutPage() {
       </section>
 
       {/* 6. LOCAL ROOTS SECTION */}
-      <section className="py-20 px-4 sm:px-6 lg:px-12 bg-[#f9f9f6] border-t border-gray-200">
+      <section className="py-20 px-4 sm:px-6 lg:px-12 bg-white border-t border-gray-200">
         <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
           <div className="lg:col-span-7 space-y-6">
             <h2 className="font-playfair text-3xl sm:text-4xl font-bold text-gray-900 leading-tight">
@@ -298,7 +300,7 @@ export function AboutPage() {
       </section>
 
       {/* 7. CREDENTIALS SECTION */}
-      <section className="py-20 px-4 sm:px-6 lg:px-12 bg-white">
+      <section className="py-20 px-4 sm:px-6 lg:px-12 bg-[#f9f9f6]">
         <div className="max-w-4xl mx-auto text-center space-y-4 mb-12">
           <h2 className="font-playfair text-3xl sm:text-4xl font-bold text-gray-900 leading-tight">
             The Proof Behind <span className="text-[#587b37]">the Work We Promise</span>
@@ -310,7 +312,7 @@ export function AboutPage() {
         </div>
 
         <div className="max-w-2xl mx-auto space-y-6">
-          <div className="bg-[#f9f9f6] border border-gray-200 rounded-2xl p-8 shadow-sm flex flex-col sm:flex-row items-center gap-6 text-center sm:text-left">
+          <div className="bg-white border border-gray-200 rounded-2xl p-8 shadow-sm flex flex-col sm:flex-row items-center gap-6 text-center sm:text-left">
             <img 
               src={iicrcFirmBadge}
               alt="IICRC Certified Firm badge" 
@@ -325,7 +327,7 @@ export function AboutPage() {
             </div>
           </div>
 
-          <div className="bg-[#f9f9f6] border border-gray-200 rounded-2xl p-8 shadow-sm flex flex-col sm:flex-row items-center gap-6 text-center sm:text-left">
+          <div className="bg-white border border-gray-200 rounded-2xl p-8 shadow-sm flex flex-col sm:flex-row items-center gap-6 text-center sm:text-left">
             <img 
               src={iicrcMoldBadge}
               alt="IICRC Mold Certified badge" 
@@ -343,36 +345,31 @@ export function AboutPage() {
       </section>
 
       {/* 8. CTA BANNER */}
-      <section className="relative py-24 px-4 sm:px-6 lg:px-12 bg-slate-900 text-white overflow-hidden text-center">
-        <div 
-          className="absolute inset-0 z-0 opacity-25 bg-cover bg-center" 
-          style={{ backgroundImage: "url('/about-cta-background.jpg')" }}
-        />
-        <div className="absolute inset-0 bg-gradient-to-t from-slate-900 via-slate-900/90 to-slate-900/80 z-0" />
-
-        <div className="max-w-3xl mx-auto relative z-10 space-y-6">
-          <h2 className="font-playfair text-3xl sm:text-5xl font-bold text-white leading-tight">
-            Let's Talk About <span className="text-[#587b37]">Your Next Project</span>
-          </h2>
-          <p className="text-base sm:text-lg text-gray-300 font-light max-w-2xl mx-auto leading-relaxed">
+            <section className="section-padding bg-background">
+        <div className="max-w-3xl mx-auto text-center">
+          <ScrollReveal>
+            <h2 className="font-serif text-3xl md:text-4xl lg:text-5xl font-bold mb-6 text-foreground">
+            Let's Talk About {" "}
+              <span className="text-primary">Your Next Project</span>?
+            </h2>
+            <p className="font-sans text-base text-muted-foreground mb-10 max-w-xl mx-auto leading-relaxed">
             Whether it is a remodel, a repair, or a water damage emergency, get a free estimate from a family that treats your home like our own.
           </p>
-
-          <div className="pt-4 flex flex-wrap items-center justify-center gap-4">
-            <a 
-              href="/contact" 
-              className="bg-[#587b37] hover:bg-[#45622b] text-white px-8 py-4 rounded-xl font-bold text-sm tracking-wide transition-all shadow-lg hover:shadow-emerald-900/20 flex items-center gap-2"
-            >
-              Get Your Free Estimate
-            </a>
-            <a 
-              href="tel:8059989082" 
-              className="bg-white/10 hover:bg-white/20 text-white border border-white/20 px-8 py-4 rounded-xl font-bold text-sm tracking-wide transition-all flex items-center gap-2"
-            >
-              <Phone className="w-4 h-4 text-[#587b37]" />
-              Call (805) 998-9082
-            </a>
-          </div>
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+              <Link
+                to="/contact"
+                className="bg-primary text-primary-foreground px-10 py-4 rounded-xl font-sans text-sm font-semibold hover:bg-primary/90 transition-all duration-300 shadow-lg"
+              >
+                Get Your Free Estimate
+              </Link>
+              <a
+                href="tel:+18059989082"
+                className="inline-flex items-center gap-2 px-8 py-4 rounded-xl font-sans text-sm font-medium text-primary border-2 border-primary/20 hover:bg-primary/5 transition-all"
+              >
+                <Phone className="w-4 h-4" /> (805) 998-9082
+              </a>
+            </div>
+          </ScrollReveal>
         </div>
       </section>
 
