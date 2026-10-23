@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { Phone, Mail, MapPin, Facebook, Instagram, Youtube } from "lucide-react";
-
+import jgcLogo from "@/assets/jgc-logo.avif";
 import mml from "@/assets/mier-logo.webp";
 import GooglePreferredSource from "@/components/GooglePreferredSource";
 

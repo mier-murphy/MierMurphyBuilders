@@ -20,8 +20,8 @@ const GooglePreferredSource = ({ variant = "card" }: Props) => {
         rel="noopener noreferrer"
         className="inline-flex items-center gap-2 mt-5 px-3.5 py-2 rounded-lg bg-white text-[#1f2937] text-xs font-sans font-semibold shadow-sm hover:bg-white/90 transition-colors"
       >
-        <Star className="w-3.5 h-3.5 fill-brand-yellow text-brand-yellow" aria-hidden="true" />
-        Prefer us on Google
+        <img src="/google-g.png" alt="" width={16} height={16} className="w-4 h-4" aria-hidden="true" />
+        Add as preferred source
       </a>
     );
   }
@@ -43,6 +43,9 @@ const GooglePreferredSource = ({ variant = "card" }: Props) => {
         rel="noopener noreferrer"
         className="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-lg bg-primary px-4 py-2.5 font-sans text-sm font-semibold text-primary-foreground hover:bg-primary/90 transition-colors"
       >
+        <span className="flex h-5 w-5 items-center justify-center rounded-full bg-white">
+          <img src="/google-g.png" alt="" width={14} height={14} className="h-3.5 w-3.5" aria-hidden="true" />
+        </span>
         Add as preferred source
       </a>
     </div>
