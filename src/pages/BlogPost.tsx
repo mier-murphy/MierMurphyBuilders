@@ -21,6 +21,7 @@ import {
   type BlogPostSummary,
 } from "@/lib/sanity";
 import ScrollReveal from "@/components/ScrollReveal";
+import GooglePreferredSource from "@/components/GooglePreferredSource";
 import {
   Avatar,
   AvatarFallback,
@@ -370,6 +371,8 @@ const BlogPost = () => {
                 components={portableTextComponents}
               />
             )}
+
+            <GooglePreferredSource />
 
             <div className="flex items-center gap-3 mt-10 pt-6 border-t border-border">
               <span className="font-sans text-xs text-muted-foreground mr-1">

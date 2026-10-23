@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import { Phone, Mail, MapPin, Facebook, Instagram, Youtube } from "lucide-react";
 import jgcLogo from "@/assets/jgc-logo.avif";
 import mml from "@/assets/mier-logo.webp";
+import GooglePreferredSource from "@/components/GooglePreferredSource";
 
 const Footer = () => {
   return (
@@ -34,6 +35,8 @@ const Footer = () => {
                 <Youtube className="w-5 h-5" />
               </a> */}
             </div>
+
+            <GooglePreferredSource variant="compact" />
           </div>
 
           {/* Services */}
