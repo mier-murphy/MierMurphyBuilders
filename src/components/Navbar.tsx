@@ -1,4 +1,5 @@
 import { useState, useEffect, useLayoutEffect } from "react";
+const useIsomorphicLayoutEffect = typeof window !== "undefined" ? useLayoutEffect : useEffect;
 import { Link, useLocation } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, Phone, ChevronDown, MapPin, ArrowRight } from "lucide-react";
@@ -102,7 +103,7 @@ const Navbar = () => {
   // mobile Safari/Chrome can paint a frame where overflow is still
   // "hidden" while our own scroll-reset code is trying to run, and the
   // browser's own scroll-position bookkeeping wins that race.
-  useLayoutEffect(() => {
+  useIsomorphicLayoutEffect(() => {
     if (isOpen) {
       const original = document.body.style.overflow;
       document.body.style.overflow = "hidden";

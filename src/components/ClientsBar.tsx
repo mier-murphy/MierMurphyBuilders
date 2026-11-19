@@ -18,7 +18,7 @@ const ClientItem = ({ client }: { client: (typeof clients)[number] }) => (
         src={client.logo}
         alt={`${client.name} logo`}
         className="w-full h-full object-contain"
-        loading="eager"
+        loading="lazy"
         decoding="async"
         fetchPriority="high"
       />

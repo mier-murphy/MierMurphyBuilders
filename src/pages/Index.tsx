@@ -1,8 +1,8 @@
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { Helmet } from "react-helmet-async";
-import { ArrowRight, Shield, Award, Clock, Star, Droplets, Home, Paintbrush, Bug, MapPin, Phone, Building2, CheckCircle, HelpCircle } from "lucide-react";
-import { useState } from "react";
+import { ArrowRight, Star, Droplets, Bath, Hammer, PaintRoller, MapPin, Phone, Building2, CheckCircle, HelpCircle } from "lucide-react";
+import { useState, type ReactNode } from "react";
 import LeadCaptureForm from "@/components/LeadCaptureForm";
 import ScrollReveal from "@/components/ScrollReveal";
 
@@ -20,7 +20,8 @@ import projectBalcony from "@/assets/balcony/balcony-hero.webp";
 import projectCtenent from "@/assets/ctenant/ctenent-hero.webp";
 
 import whyChoose from "@/assets/home-why-choose.webp";
-import iicrcBadge from "@/assets/iicrc-badge.avif";
+import ogImage from "@/assets/home-og.webp";
+import logoImage from "@/assets/mier-logo.webp";
 import OurStorySection from "@/components/OurStorySection";
 
 
@@ -29,11 +30,14 @@ import iicrcMoldBadge from "@/assets/iicrc-mold-badge.png";
 
 
 const SITE_URL = "https://www.mierandmurphybuilders.com";
-const OG_IMAGE = `${SITE_URL}/hero-craftsmanship.jpg`;
+const PAGE_URL = `${SITE_URL}/`;
+const OG_IMAGE = `${SITE_URL}${ogImage}`;
+const OG_IMAGE_ALT = "Kitchen remodel by Mier & Murphy Builders with dark cabinets and a light wood island";
+const LOGO_URL = `${SITE_URL}${logoImage}`;
 
-const PAGE_TITLE = "Custom Home Builders & General Contractor in Thousand Oaks, CA | Mier & Murphy";
+const PAGE_TITLE = "Thousand Oaks General Contractor | Mier & Murphy Builders";
 const PAGE_DESCRIPTION =
-  "Mier & Murphy Builders provides custom home construction, remodeling, stucco repair, and restoration in Thousand Oaks, CA and Ventura County.";
+  "Family-owned general contractor for remodeling, water damage and mold remediation, stucco repair, and balcony repair in Thousand Oaks, CA and Ventura County.";
 
 const areasServed = [
   "Thousand Oaks",
@@ -48,39 +52,32 @@ const areasServed = [
   "Ventura County",
 ];
 
-const stats = [
-  { value: "20+", label: "Years Serving Thousand Oaks", icon: Clock },
-  { value: "500+", label: "Conejo Valley Projects", icon: Award },
-  { value: "100%", label: "Client Satisfaction Rate", icon: Star },
-  { value: "IICRC", label: "Certified Specialists", icon: Shield },
-];
-
 const services = [
   {
     title: "Expert Bathroom and Kitchen Remodeling in Thousand Oaks",
     description: "Full bathroom and kitchen remodels for homeowners across Thousand Oaks, Westlake Village, and Simi Valley, with clear timelines, permits handled for you, and a family-owned crew behind every job.",
-    icon: Paintbrush,
+    icon: Bath,
     image: projectBathroom,
     href: "/services/bathroom-kitchen-remodeling",
   },
   {
     title: "Trusted Water Damage and Mold Remediation Experts",
     description: "IICRC certified water damage and mold remediation for homeowners in Thousand Oaks, Westlake Village, and Simi Valley. We know what water damage does to a home, because it happened to ours.",
-    icon: Home,
+    icon: Droplets,
     image: projectWater,
     href: "/services/water-damage-mold-remediation",
   },
   {
     title: "Seamless Drywall and Stucco Repair in Thousand Oaks",
     description: "Drywall, plaster, and stucco repair for homeowners in Thousand Oaks, Westlake Village, and Simi Valley, matched to your existing finish so the repair disappears into the wall.",
-    icon: Droplets,
+    icon: PaintRoller,
     image: projectDrywall,
     href: "/services/drywall-plaster-stucco-repair",
   },
   {
     title: "Balcony and Deck Repair Experts in Thousand Oaks",
-    description: "Structural balcony and deck repair for homeowners, HOAs, and property managers in Thousand Oaks, Westlake Village, and Simi Valley. We help you meet California's inspection deadlines.",
-    icon: Bug,
+    description: "Structural balcony and deck repair for homeowners, HOAs, and property managers in Thousand Oaks, Westlake Village, and Simi Valley. We complete the repairs your balcony inspection calls for.",
+    icon: Hammer,
     image: projectBalcony,
     href: "/services/balcony-deck-repair",
   },
@@ -95,23 +92,20 @@ const services = [
 
 const projects = [
   {
-    title: "Transforming a historical cabin into a sophisticated living space.",
-    category: "Exterior",
-    location: "Westlake Village, CA 91361",
+    title: "Big Bear Cabin Remodel",
+    category: "Interior Remodel",
     image: projectExterior,
     link: "/projects/cabin",
   },
   {
-    title: "Urban Condo Remodel in Thousand Oaks, CA",
-    category: "Interior",
-    location: "Thousand Oaks, CA 91360",
+    title: "Los Angeles Condo Remodel",
+    category: "Bathroom & Kitchen",
     image: projectInterior,
     link: "/projects/condo-retreat",
   },
   {
-    title: "Cellphone & Electronics Repair Store Commercial Build-Out",
-    category: "Interior",
-    location: "Thousand Oaks, CA 91362",
+    title: "Cellphone Repair Store Build-Out",
+    category: "Commercial",
     image: projectComercial,
     link: "/projects/commercial-cell-store",
   },
@@ -137,12 +131,12 @@ const testimonials = [
 ];
 
 const serviceAreas = [
-  { name: "Thousand Oaks", zips: "91360, 91362", description: "Full-service luxury construction, restoration, and remediation for estates and custom homes." },
-  { name: "Westlake Village", zips: "91361, 91302", description: "Premium interior and exterior finishes for the most distinguished properties." },
-  { name: "Newbury Park", zips: "91320", description: "Expert drywall, stucco, and water damage restoration for homeowners." },
-  { name: "Agoura Hills", zips: "91301", description: "Certified mold remediation and water restoration services." },
-  { name: "Oak Park", zips: "91377", description: "Venetian plaster, interior painting, and custom finishes for luxury homes." },
-  { name: "Calabasas", zips: "91302", description: "High-end construction and restoration for celebrity estates and custom builds." },
+  { name: "Thousand Oaks", zips: "91360, 91362", href: "/areas/91360", description: "Our home base, with remodeling, repair, and restoration for homes across Thousand Oaks." },
+  { name: "Westlake Village", zips: "91361", href: "/areas/91361", description: "Remodeling, stucco, and restoration work for homes and condo communities." },
+  { name: "Newbury Park", zips: "91320", href: "/areas/91320", description: "Drywall, stucco, and water damage repair for Newbury Park homeowners." },
+  { name: "Agoura Hills", zips: "91301", href: "/areas/91301", description: "Water damage repair, mold remediation, and remodeling for Agoura Hills homes." },
+  { name: "Oak Park", zips: "91377", href: "/areas/91377", description: "Remodeling, stucco, and balcony repair for homes and communities in Oak Park." },
+  { name: "Calabasas", zips: "91302", href: "/areas/91302", description: "Remodeling and restoration for homes and HOA communities in Calabasas." },
 ];
 
 const faqs = [
@@ -169,7 +163,7 @@ const faqs = [
   {
     question: "Do I need an SB-326 or SB-721 balcony inspection?",
     answer:
-      "California law requires periodic inspection of exterior elevated elements like balconies and decks on multi-family properties. If your HOA or property has not had one, contact us to check your deadline and get an inspection scheduled.",
+      "California law requires periodic inspection of exterior elevated elements like balconies and decks on multi-family properties. Those inspections are performed by qualified inspectors, such as licensed architects and structural engineers. If your report calls for repairs, contact us and we can complete the work.",
   },
   {
     question: "What is stucco color matching and can you fix a small crack?",
@@ -191,13 +185,13 @@ const organizationSchema = {
   "@id": `${SITE_URL}/#organization`,
   name: "Mier & Murphy Builders",
   alternateName: "Mier & Murphy Builders Inc.",
-  url: SITE_URL,
-  logo: `${SITE_URL}/logo.png`,
+  url: PAGE_URL,
+  logo: LOGO_URL,
   image: OG_IMAGE,
   telephone: "+18059989082",
   priceRange: "$$",
   description:
-    "Family-owned, IICRC certified general contractor serving Thousand Oaks and the Conejo Valley. Remodeling, water damage restoration, mold remediation, drywall/stucco repair, balcony compliance repair, and commercial tenant improvement.",
+    "Family-owned, IICRC certified general contractor serving Thousand Oaks and the Conejo Valley. Remodeling, water damage restoration, mold remediation, drywall and stucco repair, balcony repair, and commercial tenant improvement.",
   address: {
     "@type": "PostalAddress",
     addressLocality: "Thousand Oaks",
@@ -242,7 +236,7 @@ const websiteSchema = {
   "@context": "https://schema.org",
   "@type": "WebSite",
   "@id": `${SITE_URL}/#website`,
-  url: SITE_URL,
+  url: PAGE_URL,
   name: "Mier & Murphy Builders",
   publisher: { "@id": `${SITE_URL}/#organization` },
 };
@@ -251,7 +245,18 @@ const websiteSchema = {
 const breadcrumbSchema = {
   "@context": "https://schema.org",
   "@type": "BreadcrumbList",
-  itemListElement: [{ "@type": "ListItem", position: 1, name: "Home", item: SITE_URL }],
+  itemListElement: [{ "@type": "ListItem", position: 1, name: "Home", item: PAGE_URL }],
+};
+
+// JSON-LD: FAQPage (matches the questions shown on the page)
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: faqs.map((f) => ({
+    "@type": "Question",
+    name: f.question,
+    acceptedAnswer: { "@type": "Answer", text: f.answer },
+  })),
 };
 
 const AnimatePresenceWrapper = ({
@@ -260,7 +265,7 @@ const AnimatePresenceWrapper = ({
   id,
 }: {
   isOpen: boolean;
-  children: React.ReactNode;
+  children: ReactNode;
   id: string;
 }) => (
   <motion.div
@@ -290,29 +295,34 @@ const Index = () => {
         
         <meta name="author" content="Mier & Murphy Builders" />
         <meta name="robots" content="index, follow" />
-        <link rel="canonical" href={SITE_URL} />
+        <link rel="canonical" href={PAGE_URL} />
 
         {/* Open Graph */}
         <meta property="og:type" content="website" />
-        <meta property="og:url" content={SITE_URL} />
+        <meta property="og:url" content={PAGE_URL} />
         <meta property="og:title" content={PAGE_TITLE} />
         <meta property="og:description" content={PAGE_DESCRIPTION} />
         <meta property="og:image" content={OG_IMAGE} />
-        <meta property="og:image:alt" content="Custom Home Builders & General Contractor in Thousand Oaks, CA | Mier & Murphy" />
+        <meta property="og:image:type" content="image/webp" />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+        <meta property="og:image:alt" content={OG_IMAGE_ALT} />
         <meta property="og:site_name" content="Mier & Murphy Builders" />
         <meta property="og:locale" content="en_US" />
 
         {/* Twitter Card */}
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:url" content={SITE_URL} />
+        <meta name="twitter:url" content={PAGE_URL} />
         <meta name="twitter:title" content={PAGE_TITLE} />
         <meta name="twitter:description" content={PAGE_DESCRIPTION} />
         <meta name="twitter:image" content={OG_IMAGE} />
+        <meta name="twitter:image:alt" content={OG_IMAGE_ALT} />
 
         {/* Structured data */}
         <script type="application/ld+json">{JSON.stringify(organizationSchema)}</script>
         <script type="application/ld+json">{JSON.stringify(websiteSchema)}</script>
         <script type="application/ld+json">{JSON.stringify(breadcrumbSchema)}</script>
+        <script type="application/ld+json">{JSON.stringify(faqSchema)}</script>
       </Helmet>
 
       {/* ── HERO ── Dark overlay, bold white text, like JGC */}
@@ -323,10 +333,11 @@ const Index = () => {
     <source media="(max-width: 767px)" srcSet={heroImageMobile} />
     <img
       src={heroImage}
-      alt="Luxury home renovation by Mier & Murphy Builders in Thousand Oaks, California"
+      alt=""
+      aria-hidden="true"
       className="w-full h-full object-cover"
       loading="eager"
-      fetchPriority="high"
+            {...{ fetchpriority: "high" }}
       width="1920"
       height="1080"
     />
@@ -418,14 +429,14 @@ const Index = () => {
                   <div className="relative h-56 overflow-hidden rounded-t-2xl">
                     <img
                       src={service.image}
-                      alt={service.title}
+                      alt=""
                       className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                       loading="lazy"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-[hsl(220,20%,12%)]/60 to-transparent" />
                     <div className="absolute bottom-4 left-4">
                       <div className="bg-primary/90 w-12 h-12 rounded-xl flex items-center justify-center shadow-lg">
-                        <service.icon className="w-5 h-5 text-white" />
+                        <service.icon className="w-5 h-5 text-white" aria-hidden="true" />
                       </div>
                     </div>
                   </div>
@@ -498,12 +509,12 @@ const Index = () => {
               </ScrollReveal>
 
               <ScrollReveal delay={0.2}>
-                <div className="rounded-2xl  bg-white/5 border border-white/10">
+                <div className="rounded-2xl bg-white/5 border border-white/10">
                 
               <div className="flex-shrink-0 bg-primary/5 p-3 rounded-3xl ">
                 <img
                   src={whyChoose}
-                  alt="Mier and Murphy Builders team member reviewing project plans with a Thousand Oaks homeowner"
+                  alt="Contractor standing in front of a stucco home in Thousand Oaks"
                   className=" object-contain"
                   loading="lazy"
                 />
@@ -607,7 +618,7 @@ const Index = () => {
                 Signature <span className="text-primary">Projects</span>
               </h2>
               <p className="font-sans text-base text-muted-foreground max-w-2xl mx-auto">
-              A look at recent remodels, restorations, and repairs from across Thousand Oaks and the Conejo Valley.
+              A look at recent remodels and build-outs, from a Big Bear cabin to a Los Angeles condo and a commercial store.
               </p>
               <div className="gold-divider mt-6" />
             </div>
@@ -620,7 +631,7 @@ const Index = () => {
                   <div className="relative h-80 overflow-hidden rounded-t-2xl">
                     <img
                       src={project.image}
-                      alt={`${project.title} - ${project.category}`}
+                      alt=""
                       className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                       loading="lazy"
                     />
@@ -632,9 +643,6 @@ const Index = () => {
                       <h3 className="font-serif text-xl font-bold text-white">
                         {project.title}
                       </h3>
-                      <p className="font-sans text-xs text-white/70 mt-1 flex items-center gap-1">
-                       
-                      </p>
                     </div>
                   </div>
                 </Link>
@@ -667,7 +675,7 @@ const Index = () => {
               </h2>
               <p className="font-sans text-base text-muted-foreground max-w-2xl mx-auto leading-relaxed">
                 Mier & Murphy Builders serves homeowners, HOAs, and property owners throughout
-                Thousand Oaks and the surrounding Conejo Valley communities.
+                Thousand Oaks, the Conejo Valley, and Ventura County.
               </p>
               <div className="gold-divider mt-6" />
             </div>
@@ -676,20 +684,20 @@ const Index = () => {
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {serviceAreas.map((area, i) => (
               <ScrollReveal key={area.name} delay={i * 0.1}>
-                <div className="luxury-card p-6 h-full">
+                <Link to={area.href} className="luxury-card p-6 h-full block group hover:border-primary/30 transition-all duration-300">
                   <div className="flex items-center gap-3 mb-3">
                     <div className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center flex-shrink-0">
-                      <MapPin className="w-5 h-5 text-primary" />
+                      <MapPin className="w-5 h-5 text-primary" aria-hidden="true" />
                     </div>
                     <div>
-                      <h3 className="font-serif text-lg font-bold text-foreground">{area.name}</h3>
+                      <h3 className="font-serif text-lg font-bold text-foreground group-hover:text-primary transition-colors">{area.name}</h3>
                       <p className="font-sans text-xs text-primary font-semibold">{area.zips}</p>
                     </div>
                   </div>
                   <p className="font-sans text-sm text-muted-foreground leading-relaxed">
                     {area.description}
                   </p>
-                </div>
+                </Link>
               </ScrollReveal>
             ))}
           </div>
@@ -719,7 +727,7 @@ const Index = () => {
           <div className="max-w-5xl mx-auto">
             <ScrollReveal>
               <div className="text-center mb-16">
-                <p className="font-sans text-xs tracking-[0.4em] text-brand-yellow uppercase font-semibold mb-3">Trusted by Conejo Valley Homeowners</p>
+                <p className="font-sans text-xs tracking-[0.4em] text-brand-yellow uppercase font-semibold mb-3">Trusted by Southern California Homeowners</p>
                 <h2 className="font-serif text-3xl md:text-4xl lg:text-5xl font-bold mb-4 text-white">
                   What Our <span className="text-brand-yellow">Homeowners Say</span>
                 </h2>
@@ -796,14 +804,14 @@ const Index = () => {
                     aria-controls={`faq-answer-${i}`}
                     className="w-full text-left px-6 py-5 flex items-start gap-4 hover:bg-primary/5 transition-colors"
                   >
-                    <HelpCircle className="w-5 h-5 text-primary mt-0.5 flex-shrink-0" />
+                    <HelpCircle className="w-5 h-5 text-primary mt-0.5 flex-shrink-0" aria-hidden="true" />
                     <h3 className="font-serif text-base md:text-lg font-bold flex-1 text-foreground">{faq.question}</h3>
                     <motion.div
                       animate={{ rotate: openFaq === i ? 45 : 0 }}
                       transition={{ duration: 0.2 }}
                       className="text-primary flex-shrink-0 mt-0.5"
                     >
-                      <span className="text-xl font-light">+</span>
+                      <span className="text-xl font-light" aria-hidden="true">+</span>
                     </motion.div>
                   </button>
                   <AnimatePresenceWrapper
@@ -828,7 +836,7 @@ const Index = () => {
         <div className="max-w-3xl mx-auto text-center">
           <ScrollReveal>
             <h2 className="font-serif text-3xl md:text-4xl lg:text-5xl font-bold mb-6 text-foreground">
-            Ready to Start Your {" "}
+            Ready to Start Your{" "}
               <span className="text-primary">Project</span>?
             </h2>
             <p className="font-sans text-base text-muted-foreground mb-10 max-w-xl mx-auto leading-relaxed">
@@ -839,7 +847,7 @@ const Index = () => {
                 to="/contact"
                 className="bg-primary text-primary-foreground px-10 py-4 rounded-xl font-sans text-sm font-semibold hover:bg-primary/90 transition-all duration-300 shadow-lg"
               >
-                Get Your Free Estimate
+                Get a Free Estimate
               </Link>
               <a
                 href="tel:+18059989082"
