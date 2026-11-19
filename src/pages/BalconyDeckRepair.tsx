@@ -1,29 +1,23 @@
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { Helmet } from "react-helmet-async";
-import { ArrowRight, CheckCircle, Paintbrush, Award, Clock, Shield, Star, MapPin } from "lucide-react";
+import { ArrowRight, CheckCircle, Hammer, Award, Wrench, Shield, Star, MapPin, ClipboardCheck, FileText } from "lucide-react";
 import ScrollReveal from "@/components/ScrollReveal";
 import ProcessTimeline from "@/components/ProcessTimeline";
 import LeadCaptureForm from "@/components/LeadCaptureForm";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import projectBalcony from "@/assets/balcony/balcony-hero.webp";
 import projectBalconyMain from "@/assets/balcony/balcony-main.webp";
+import ogImage from "@/assets/balcony/balcony-og.webp";
 
-
-import iicrcFirmBadge from "@/assets/iicrc-firm-badge.png";
-import iicrcMoldBadge from "@/assets/iicrc-mold-badge.png";
-
-// TODO: replace with the actual IICRC certification badge asset — this currently
-// points at the same interior photo as `projectInterior`, so the "badge" renders a room photo.
-import iicrcBadge from "@/assets/iicrc-badge.avif";
-
-const SITE_URL = "https://mierandmurphybuilders.com";
+const SITE_URL = "https://www.mierandmurphybuilders.com";
 const PAGE_URL = `${SITE_URL}/services/balcony-deck-repair`;
-const OG_IMAGE = `${SITE_URL}/service-balcony-deck-repair.jpg`;
+const OG_IMAGE = `${SITE_URL}${ogImage}`;
+const OG_IMAGE_ALT = "Repaired balcony with new decking and black metal railing";
 
-const PAGE_TITLE = "Balcony & Deck Repair Services | Mier & Murphy Builders";
+const PAGE_TITLE = "Balcony & Deck Repair in Thousand Oaks, CA | Mier & Murphy";
 const PAGE_DESCRIPTION =
-  "Restore and repair your balcony or deck with Mier & Murphy Builders. Reliable deck contractors serving Thousand Oaks and Ventura County homeowners.";
+  "Balcony and deck repair in Thousand Oaks and Ventura County, including SB-326 and SB-721 repair work for HOAs, property managers, and homeowners. CA Lic. #1077044.";
 
 const areasServed = [
   "Thousand Oaks",
@@ -40,11 +34,15 @@ const areasServed = [
 const faqs = [
   {
     q: "Do I need an SB-326 or SB-721 balcony inspection?",
-    a: "If your property is a multi-family rental with three or more units, or a condo or HOA property, California law likely requires periodic inspection. Contact us to check your deadline.",
+    a: "If your property is a multi-family rental with three or more units, or a condo or HOA property, California law likely requires periodic inspection by a qualified inspector, such as a licensed architect or structural engineer. Your local building department can confirm your deadline. If the report calls for repairs, we can complete that work.",
   },
   {
     q: "What happens if my inspection finds a problem?",
-    a: "The law requires repair of structural issues within a set timeframe. We complete the repair work to bring your property into compliance.",
+    a: "Your inspector\u2019s report identifies what must be addressed and when. We complete the repair work and provide documentation for your records.",
+  },
+  {
+    q: "Do you perform SB-326 or SB-721 inspections?",
+    a: "No. Inspections are performed by qualified independent professionals. Mier & Murphy Builders is the repair contractor: we complete the repairs the inspection report calls for.",
   },
   {
     q: "Do you work with HOAs and property managers?",
@@ -60,7 +58,7 @@ const faqs = [
   },
   {
     q: "What areas do you serve?",
-    a: "Thousand Oaks, Westlake Village, Simi Valley, Moorpark, Oak Park, Agoura Hills, and the surrounding Conejo Valley.",
+    a: "Thousand Oaks, Westlake Village, Newbury Park, Simi Valley, Moorpark, Oak Park, Agoura Hills, Camarillo, and the rest of Ventura County.",
   },
 ];
 
@@ -68,7 +66,7 @@ const process = [
   {
     step: "01",
     title: "Free Estimate",
-    desc: "We assess the balcony or deck and what your inspection or property needs.",
+    desc: "We assess the balcony or deck and review any inspection report you already have.",
   },
   {
     step: "02",
@@ -78,7 +76,7 @@ const process = [
   {
     step: "03",
     title: "Repair or Rebuild",
-    desc: "We complete the framing, decking, railing, and waterproofing work.",
+    desc: "We complete the framing, decking, and railing work.",
   },
   {
     step: "04",
@@ -87,8 +85,8 @@ const process = [
   },
   {
     step: "05",
-    title: "Final Inspection Support",
-    desc: "We confirm the work is complete and ready for sign-off.",
+    title: "Closeout Documentation",
+    desc: "We walk the finished work with you and provide repair records for your inspector, HOA, or building department.",
   },
 ];
 
@@ -123,7 +121,7 @@ const finishes = [
 const serviceSchema = {
   "@context": "https://schema.org",
   "@type": "Service",
-  "@id": `${PAGE_URL}/#service`,
+  "@id": `${PAGE_URL}#service`,
   name: "SB-326 & SB-721 Balcony & Deck Repair",
   serviceType: "Balcony and Deck Structural Repair",
   description: PAGE_DESCRIPTION,
@@ -177,9 +175,8 @@ const breadcrumbSchema = {
   "@context": "https://schema.org",
   "@type": "BreadcrumbList",
   itemListElement: [
-    { "@type": "ListItem", position: 1, name: "Home", item: SITE_URL },
-    { "@type": "ListItem", position: 2, name: "Services", item: `${SITE_URL}/services` },
-    { "@type": "ListItem", position: 3, name: "Balcony & Deck Repair", item: PAGE_URL },
+    { "@type": "ListItem", position: 1, name: "Home", item: `${SITE_URL}/` },
+    { "@type": "ListItem", position: 2, name: "Balcony & Deck Repair", item: PAGE_URL },
   ],
 };
 
@@ -208,7 +205,10 @@ const BalconyDeckRepair = () => {
         <meta property="og:title" content={PAGE_TITLE} />
         <meta property="og:description" content={PAGE_DESCRIPTION} />
         <meta property="og:image" content={OG_IMAGE} />
-        <meta property="og:image:alt" content="SB-326 and SB-721 compliant balcony repair in Thousand Oaks, CA" />
+        <meta property="og:image:type" content="image/webp" />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+        <meta property="og:image:alt" content={OG_IMAGE_ALT} />
         <meta property="og:site_name" content="Mier & Murphy Builders" />
         <meta property="og:locale" content="en_US" />
 
@@ -218,6 +218,7 @@ const BalconyDeckRepair = () => {
         <meta name="twitter:title" content={PAGE_TITLE} />
         <meta name="twitter:description" content={PAGE_DESCRIPTION} />
         <meta name="twitter:image" content={OG_IMAGE} />
+        <meta name="twitter:image:alt" content={OG_IMAGE_ALT} />
 
         {/* Structured data */}
         <script type="application/ld+json">{JSON.stringify(serviceSchema)}</script>
@@ -228,21 +229,21 @@ const BalconyDeckRepair = () => {
       {/* HERO */}
       <section className="relative min-h-[85vh] flex items-center overflow-hidden">
         <div className="absolute inset-0">
-          <img src={projectBalcony} alt="Luxury interior plaster finish in a Thousand Oaks estate" className="w-full h-full object-cover" />
+          <img src={projectBalcony} alt="" aria-hidden="true" className="w-full h-full object-cover" loading="eager" />
           <div className="absolute inset-0 bg-gradient-to-r from-[hsl(220,20%,12%)]/95 via-[hsl(220,20%,12%)]/80 to-[hsl(220,20%,12%)]/60" />
         </div>
         <div className="relative z-10 max-w-[90rem] mx-auto px-6 pt-40 pb-20 w-full grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           <motion.div initial={{ opacity: 0, x: -30 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.8 }}>
             <div className="inline-flex items-center gap-2 bg-primary/15 border border-primary/25 rounded-full px-4 py-1.5 mb-6">
-              <Paintbrush className="w-3.5 h-3.5 text-primary" />
-              <span className="font-sans text-xs font-semibold text-primary tracking-wide">SB-326 & SB-721 COMPLIANT</span>
+              <Hammer className="w-3.5 h-3.5 text-primary" aria-hidden="true" />
+              <span className="font-sans text-xs font-semibold text-primary tracking-wide">SB-326 & SB-721 REPAIR WORK</span>
             </div>
             <h1 className="font-serif text-4xl md:text-5xl lg:text-[3.4rem] font-bold mb-6 leading-[1.15] text-white">
-             <span className="text-primary">Balcony and Deck Repair Experts</span> in Thousand Oaks
+              <span className="text-primary">Balcony and Deck Repair</span> in Thousand Oaks, CA
             </h1>
             <p className="font-sans text-[15px] text-white/75 leading-relaxed max-w-lg">
-            Structural balcony and deck repair for homeowners, HOAs, and property managers in Thousand Oaks, Westlake Village,
-             and Simi Valley. We help you meet California's inspection deadlines.
+              Structural balcony and deck repair for homeowners, HOAs, and property managers in Thousand Oaks,
+              Westlake Village, and Simi Valley. We complete the repairs your balcony inspection calls for.
             </p>
           </motion.div>
           <LeadCaptureForm variant="full" />
@@ -254,7 +255,7 @@ const BalconyDeckRepair = () => {
           <div className="flex flex-wrap items-center justify-center gap-3">
             <span className="trust-badge"><CheckCircle className="w-4 h-4" /> 20 Years of Building Experience</span>
             <span className="trust-badge"><CheckCircle className="w-4 h-4" /> Family Owned & Operated</span>
-            <span className="trust-badge"><CheckCircle className="w-4 h-4" /> IICRC S500 & S520 Certified</span>
+            <span className="trust-badge"><CheckCircle className="w-4 h-4" /> Free Estimates</span>
             <span className="trust-badge"><CheckCircle className="w-4 h-4" /> CA Lic. #1077044</span>
           </div>
         </div>
@@ -266,28 +267,28 @@ const BalconyDeckRepair = () => {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
             <ScrollReveal direction="left">
               <div>
-              <div className="inline-flex items-center gap-2 bg-primary/15  px-4 py-1.5 mb-6">              
+              <div className="inline-flex items-center gap-2 bg-primary/15 px-4 py-1.5 mb-6">
               <span className="font-sans text-xs font-semibold text-primary tracking-[0.4em]">KNOW THE LAW</span>
             </div>
                 <h2 className="font-serif text-3xl md:text-4xl font-bold mb-6">
-                California Sets Hard Deadlines. <span className="text-primary">We Help You Comply.</span>
+                California Sets Inspection Deadlines. <span className="text-primary">We Handle the Repairs.</span>
                 </h2>
                 <p className="font-sans text-sm text-muted-foreground leading-relaxed mb-6">
-                California law requires periodic inspection of exterior elevated elements, balconies, decks, walkways, and stairways, on multi-family residential buildings. 
+                California law requires periodic inspection of exterior elevated elements, such as balconies, decks, walkways, and stairways, on multi-family residential buildings.
                 If your property has not had this inspection, or if repairs were identified and not yet completed, the clock is already running.
                 </p>
                 <p className="font-sans text-sm text-muted-foreground leading-relaxed mb-6">
-                Mier & Murphy Builders provides balcony and deck repair for homeowners, HOAs, and property managers across Thousand Oaks and the Conejo Valley, including SB-326 and SB-721 compliant repair work.
-                We have completed full balcony rebuilds and understand what these inspections require, from the structural repair to the documentation.
+                Mier & Murphy Builders provides balcony and deck repair for homeowners, HOAs, and property managers across Thousand Oaks and the Conejo Valley, including repair work tied to SB-326 and SB-721 inspections.
+                We have completed full balcony rebuilds and can document the repair work for your records.
                 </p>
                 <p className="font-sans text-sm text-muted-foreground leading-relaxed mb-8">
-                Almost no local competitor is talking about this work. We are, because we have done it, and because meeting these deadlines protects both your residents and your property.
+                These inspections are performed by qualified independent professionals, such as licensed architects and structural engineers. Mier & Murphy Builders does not perform them. We complete the repairs their reports call for.
                 </p>
                 <p className="font-sans text-xs text-muted-foreground/80 leading-relaxed mb-8 italic">
-                Inspection deadlines and thresholds vary by property type, unit count, and inspection cycle. Contact us or your local building department to confirm the exact requirement for your property.
+                Inspection deadlines and thresholds vary by property type, unit count, and inspection cycle. Your inspector or local building department can confirm the exact requirement for your property.
                 </p>
 
-                <h3 className="font-serif text-xl font-bold mb-4 text-foreground">Our Balcony and Deck Repair Services:</h3>
+                <h3 className="font-serif text-xl font-bold mb-4 text-foreground">Our Balcony and Deck Repair Services</h3>
                 <ul className="space-y-3 mb-8">
                   {[
                         "SB-326 and SB-721 repair work",
@@ -299,7 +300,7 @@ const BalconyDeckRepair = () => {
 
                   ].map((f) => (
                     <li key={f} className="flex items-center gap-3">
-                      <CheckCircle className="w-4 h-4 text-primary flex-shrink-0" />
+                      <CheckCircle className="w-4 h-4 text-primary flex-shrink-0" aria-hidden="true" />
                       <span className="font-sans text-sm text-foreground/80">{f}</span>
                     </li>
                   ))}
@@ -319,41 +320,42 @@ const BalconyDeckRepair = () => {
               <div className="luxury-card overflow-hidden">
                 <img
                   src={projectBalconyMain}
-                  alt="Premium Venetian plaster application in Westlake Village home"
+                  alt="Contractor installing new decking boards on a balcony"
                   className="w-full h-80 lg:h-[500px] object-cover"
                   loading="lazy"
                 />
               </div>
-              <div className="mt-8 glass ">
-              <div className="bg-[#f9f9f6] border border-gray-200 rounded-2xl p-4 mb-2 shadow-sm flex flex-col sm:flex-row items-center gap-6 text-center sm:text-left">
-            <img 
-              src={iicrcFirmBadge}
-              alt="IICRC Certified Firm badge" 
-              className="w-24 h-24 object-contain shrink-0" 
-            />
-            <div className="space-y-2">
-             
-              <h3 className="font-playfair text-2xl font-bold text-gray-900">IICRC Firm</h3>
-              <p className="text-sm text-gray-600 leading-relaxed">
-                A professional cleaning, restoration, or inspection company that is certified by the IICRC. Technicians who work for the firm have completed IICRC training and certification courses.
-              </p>
-            </div>
-          </div>
-
-          <div className="bg-[#f9f9f6] border border-gray-200 rounded-2xl p-4 shadow-sm flex flex-col sm:flex-row items-center gap-6 text-center sm:text-left">
-            <img 
-              src={iicrcMoldBadge}
-              alt="IICRC Mold Certified badge" 
-              className="w-24 h-24 object-contain shrink-0" 
-            />
-            <div className="space-y-2">
-              
-              <h3 className="font-playfair text-2xl font-bold text-gray-900">IICRC Mold</h3>
-              <p className="text-sm text-gray-600 leading-relaxed">
-                A technician or firm that is certified in mold remediation by IICRC.
-              </p>
-            </div>
-          </div>
+              <div className="mt-8 bg-[#f9f9f6] border border-gray-200 rounded-2xl p-6 shadow-sm">
+                <h3 className="font-serif text-2xl font-bold text-gray-900 mb-4">Inspection vs. Repair</h3>
+                <div className="space-y-4">
+                  <div className="flex items-start gap-4">
+                    <ClipboardCheck className="w-6 h-6 text-primary shrink-0 mt-0.5" aria-hidden="true" />
+                    <div>
+                      <p className="font-sans text-sm font-semibold text-gray-900">The inspection</p>
+                      <p className="font-sans text-sm text-gray-600 leading-relaxed">
+                        Performed by a qualified independent inspector, such as a licensed architect or structural engineer.
+                      </p>
+                    </div>
+                  </div>
+                  <div className="flex items-start gap-4">
+                    <Wrench className="w-6 h-6 text-primary shrink-0 mt-0.5" aria-hidden="true" />
+                    <div>
+                      <p className="font-sans text-sm font-semibold text-gray-900">The repair</p>
+                      <p className="font-sans text-sm text-gray-600 leading-relaxed">
+                        Completed by Mier & Murphy Builders, a licensed general contractor (CA Lic. #1077044).
+                      </p>
+                    </div>
+                  </div>
+                  <div className="flex items-start gap-4">
+                    <FileText className="w-6 h-6 text-primary shrink-0 mt-0.5" aria-hidden="true" />
+                    <div>
+                      <p className="font-sans text-sm font-semibold text-gray-900">The records</p>
+                      <p className="font-sans text-sm text-gray-600 leading-relaxed">
+                        We provide repair documentation for your inspector, HOA, or building department.
+                      </p>
+                    </div>
+                  </div>
+                </div>
               </div>
             </ScrollReveal>
           </div>
@@ -366,8 +368,8 @@ const BalconyDeckRepair = () => {
           steps={process}
           subheading="OUR PROCESS"
           heading={`How We Take You From \u00A0`}
-          headingHighlight="Inspection to Sign-Off"
-          description="Compliance work involves more than the repair itself. Here is how we handle your project from the first assessment through final sign-off. "
+          headingHighlight="Assessment to Completion"
+          description="Balcony repair involves more than the work itself. Here is how we handle your project from the first assessment through completion."
           variant="dark"
         />
       </section>
@@ -382,21 +384,21 @@ const BalconyDeckRepair = () => {
               Why HOAs and Owners <span className="text-primary">Trust Our Balcony Work</span>
               </h2>
               <p className="font-sans text-sm text-muted-foreground leading-relaxed p-5">
-              Balcony compliance is not something to hand to just any contractor. Here is why HOAs, owners, and property managers choose our team.
+              Structural balcony repair is not something to hand to just any contractor. Here is why HOAs, owners, and property managers choose our team.
                 </p>
             </div>
           </ScrollReveal>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {[
-              { icon: Award, title: "SB-326 & SB-721 Experience", desc: "We understand what these inspections require and how to meet them." },
-              { icon: Shield, title: "HOA-Experienced", desc: "We have worked directly with HOAs and property managers on compliance work." },
-              { icon: Clock, title: "Structural Rebuilds ", desc: "We handle full balcony rebuilds, not just surface repairs." },
+              { icon: Award, title: "SB-326 & SB-721 Repair Experience", desc: "We understand what inspection reports call for and how to carry out the repairs." },
+              { icon: Shield, title: "HOA-Experienced", desc: "We have worked directly with HOAs and property managers on balcony repair projects." },
+              { icon: Hammer, title: "Structural Rebuilds", desc: "We handle full balcony rebuilds, not just surface repairs." },
               { icon: Star, title: "Minimal Disruption", desc: "We keep resident disruption as low as possible during the project." },
             ].map((item) => (
               <ScrollReveal key={item.title}>
                 <div className="bg-background border border-border rounded-2xl p-6 text-center h-full hover:shadow-md hover:border-primary/20 transition-all duration-300">
                   <div className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-primary/10 mb-4">
-                    <item.icon className="w-5 h-5 text-primary" />
+                    <item.icon className="w-5 h-5 text-primary" aria-hidden="true" />
                   </div>
                   <h3 className="font-serif text-lg font-bold mb-3 text-foreground">{item.title}</h3>
                   <p className="font-sans text-sm text-muted-foreground leading-relaxed">{item.desc}</p>
@@ -407,7 +409,7 @@ const BalconyDeckRepair = () => {
         </div>
       </section>
 
-      {/* TYPES OF FINISHES */}
+      {/* REPAIR SERVICES */}
       <section className="section-padding" style={{ background: "hsl(220, 20%, 15%)" }}>
         <div className="max-w-6xl mx-auto">
           <ScrollReveal>
@@ -419,7 +421,7 @@ const BalconyDeckRepair = () => {
                Balcony and Deck Work <span className="text-primary">We Take On</span>
               </h2>
                  <p className="font-sans text-sm text-white/50 max-w-2xl mx-auto leading-relaxed">
-                 From compliance-driven repairs to full rebuilds, here is the balcony and deck work we handle for owners, HOAs, and property managers.
+                 From inspection-driven repairs to full rebuilds, here is the balcony and deck work we handle for owners, HOAs, and property managers.
               </p>
             </div>
           </ScrollReveal>
@@ -446,14 +448,14 @@ const BalconyDeckRepair = () => {
               Balcony Repair Contractors <span className="text-primary">Near You in Ventura County</span>
               </h2>
               <p className="font-sans text-sm text-muted-foreground max-w-2xl mx-auto leading-relaxed">
-              We serve homeowners, HOAs, and property managers across Thousand Oaks and the surrounding Conejo Valley on balcony and deck compliance work.
+              We serve homeowners, HOAs, and property managers across Thousand Oaks, the Conejo Valley, and Ventura County on balcony and deck repair work.
               </p>
             </div>
           </ScrollReveal>
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
             {areasServed.map((area) => (
               <div key={area} className="flex items-center gap-2 bg-background border border-border rounded-lg p-3">
-                <MapPin className="w-3.5 h-3.5 text-primary flex-shrink-0" />
+                <MapPin className="w-3.5 h-3.5 text-primary flex-shrink-0" aria-hidden="true" />
                 <span className="font-sans text-xs text-foreground/80">{area}</span>
               </div>
             ))}
@@ -467,17 +469,17 @@ const BalconyDeckRepair = () => {
           <ScrollReveal>
             <div className="gold-divider mb-8" />
             <h2 className="font-serif text-3xl md:text-4xl font-bold mb-4 text-white">
-            Meet Your Balcony Inspection Deadline <span className="text-primary">With Confidence</span>
+            Have a Balcony Inspection Report? <span className="text-primary">We Can Handle the Repairs</span>
             </h2>
             <p className="font-sans text-[15px] text-white/60 max-w-2xl mx-auto leading-relaxed mb-8">
-            Whether you need a single repair or a full rebuild, we help you get your property compliant and keep your residents safe.
+            Whether you need a single repair or a full rebuild, we help you address inspection findings and keep your residents safe.
             </p>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
               <Link
                 to="/contact"
                 className="bg-primary text-primary-foreground px-8 py-4 rounded-xl font-sans text-sm font-bold hover:bg-primary/90 transition-all duration-300 shadow-lg"
               >
-                Get Your Free Estimate
+                Get a Free Estimate
               </Link>
               <a
                 href="tel:+18059989082"
@@ -500,7 +502,8 @@ const BalconyDeckRepair = () => {
               Common Balcony and Deck <span className="text-primary">FAQ</span>
               </h2>
               <p className="font-sans text-sm text-muted-foreground max-w-xl mx-auto leading-relaxed mt-4">
-              Answers to the questions owners and property managers ask most about SB-326, SB-721, and balcony compliance.</p>
+              Answers to the questions owners and property managers ask most about SB-326, SB-721, and balcony repair.
+              </p>
             </div>
           </ScrollReveal>
           <Accordion type="single" collapsible className="space-y-4">

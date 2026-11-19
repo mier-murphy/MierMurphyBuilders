@@ -1,51 +1,78 @@
-import { Shield, Paintbrush, Droplets, Bug, Home, Hammer } from "lucide-react";
+import { Bath, Droplets, PaintRoller, Hammer, Building2 } from "lucide-react";
 import AreaPageTemplate, { AreaPageData } from "@/components/AreaPageTemplate";
 import projectExterior from "@/assets/areas/CALABASAS (91302).webp";
+
+const SITE_URL = "https://www.mierandmurphybuilders.com";
+const PAGE_URL = `${SITE_URL}/areas/91302`;
+
+const faqs = [
+  {
+    question: "Do you work on hillside properties in Calabasas?",
+    answer: "Yes, and we plan access and equipment staging around hillside lots before demolition starts.",
+  },
+  {
+    question: "What causes hidden leaks in Calabasas homes?",
+    answer:
+      "Canyon-adjacent terrain can lead to slow, hidden leaks, which is why our inspection process looks beyond what is immediately visible.",
+  },
+  {
+    question: "Do you handle SB-326 balcony repairs for Calabasas condo communities?",
+    answer:
+      "Yes. SB-326 inspections are performed by a licensed architect or structural engineer, and we complete the repairs their reports call for in HOA-managed communities.",
+  },
+  {
+    question: "Are you licensed to work in Calabasas?",
+    answer: "Yes. We are a licensed California contractor, CA Lic. #1077044.",
+  },
+  {
+    question: "Do you take commercial projects near Calabasas Road?",
+    answer: "Yes. We handle retail and office build-outs and renovations in Calabasas, including the Calabasas Road area.",
+  },
+];
 
 const data: AreaPageData = {
   zipCode: "91302",
   cityName: "Calabasas",
-  metaTitle: "General Contractor Calabasas CA 91302 | Mier & Murphy",
+  metaTitle: "Calabasas General Contractor, CA 91302 | Mier & Murphy",
   metaDescription:
-    "Luxury custom home construction, kitchen remodeling, and restoration services in Calabasas CA 91302 with Mier & Murphy Builders.",
-tagline: "PREMIUM & EXTENDED · ZIP 91302",
+    "Remodeling, water damage and mold remediation, stucco repair, and SB-326 balcony repair in Calabasas, CA 91302, including hillside homes and HOA communities. CA Lic. #1077044.",
+  tagline: "EXTENDED SERVICE AREA · ZIP 91302",
   heroHeadline: "Remodeling and Repair Contractor Serving",
-  tier: "premium",
+  tier: "secondary",
   heroImage: projectExterior,
   heroDescription:
     "Calabasas' hillside and canyon lots call for a contractor comfortable working on more complex terrain. We bring 20 years of building experience to every Calabasas project, planning around access, custom finishes, and HOA requirements from the very first estimate.",
-
 
   services: [
     {
       title: "Bathroom & Kitchen Remodeling",
       description:
         "Hillside lots around Calabasas sometimes mean tighter access for materials and equipment, which we plan for before the first day of demolition.",
-      icon: <Paintbrush className="w-6 h-6 text-primary" />,
+      icon: <Bath className="w-6 h-6 text-primary" aria-hidden="true" />,
     },
     {
       title: "Water Damage & Mold Remediation",
       description:
         "Calabasas properties near canyon terrain can be more prone to slow, hidden leaks, and our inspection process is built to catch what a quick look would miss.",
-      icon: <Droplets className="w-6 h-6 text-primary" />,
+      icon: <Droplets className="w-6 h-6 text-primary" aria-hidden="true" />,
     },
     {
       title: "Drywall & Stucco Repair",
       description:
         "The custom finishes found on many Calabasas homes take extra time to match correctly, and we treat that matching step as part of the job, not an afterthought.",
-      icon: <Home className="w-6 h-6 text-primary" />,
+      icon: <PaintRoller className="w-6 h-6 text-primary" aria-hidden="true" />,
     },
     {
       title: "Balcony & Deck Repair",
       description:
-        "Calabasas has no shortage of HOA-managed condo communities, and SB-326 compliance is a recurring part of our work there.",
-      icon: <Hammer className="w-6 h-6 text-primary" />,
+        "Calabasas has many HOA-managed condo communities, and we complete the balcony repairs that SB-326 inspections call for.",
+      icon: <Hammer className="w-6 h-6 text-primary" aria-hidden="true" />,
     },
     {
       title: "Commercial Tenant Improvement",
       description:
-        "The commercial center near Calabasas Road has been the site of several of our retail and office build-outs.",
-      icon: <Shield className="w-6 h-6 text-primary" />,
+        "Retail and office build-outs and renovations across Calabasas, including the commercial areas along Calabasas Road.",
+      icon: <Building2 className="w-6 h-6 text-primary" aria-hidden="true" />,
     },
   ],
 
@@ -65,55 +92,57 @@ tagline: "PREMIUM & EXTENDED · ZIP 91302",
     "Old Town Calabasas",
   ],
 
-  faqs: [
-    {
-      question: "Do you work on hillside properties in Calabasas?",
-      answer:
-        "Yes, and we plan access and equipment staging around hillside lots before demolition starts.",
-    },
-    {
-      question: "What causes hidden leaks in Calabasas homes?",
-      answer:
-        "Canyon-adjacent terrain can lead to slow, hidden leaks, which is why our inspection process looks beyond what is immediately visible.",
-    },
-    {
-      question: "Do you handle SB-326 for Calabasas condo communities?",
-      answer:
-        "Yes, this is a recurring part of our work given how many HOA-managed communities are in Calabasas.",
-    },
-    {
-      question: "Are you licensed to work in Calabasas?",
-      answer:
-        "Yes. We are a licensed California contractor, CA Lic. #1077044.",
-    },
-    {
-      question: "Do you take commercial projects near Calabasas Road?",
-      answer:
-        "Yes, we have completed several retail and office build-outs in that commercial center.",
-    },
-  ],
+  faqs,
 
   nearbyAreas: [
-    { name: "Westlake Village", zip: "91361", href: "/areas/91361" },
     { name: "Agoura Hills", zip: "91301", href: "/areas/91301" },
+    { name: "Westlake Village", zip: "91361", href: "/areas/91361" },
+    { name: "Woodland Hills", zip: "91367", href: "/areas/91367" },
     { name: "Malibu", zip: "90265", href: "/areas/90265" },
   ],
 
-  jsonLd: {
-    "@context": "https://schema.org",
-    "@type": "LocalBusiness",
-    name: "Mier & Murphy Builders – Calabasas 91302",
-    description:
-      "Remodeling, repair, water damage restoration, mold remediation, stucco repair, balcony repair and commercial tenant improvements in Calabasas, CA 91302.",
-    areaServed: {
-      "@type": "PostalAddress",
-      addressLocality: "Calabasas",
-      addressRegion: "CA",
-      postalCode: "91302",
+  jsonLd: [
+    {
+      "@context": "https://schema.org",
+      "@type": "Service",
+      "@id": `${PAGE_URL}#service`,
+      name: "General Contracting in Calabasas, CA 91302",
+      serviceType: "General Contractor",
+      description:
+        "Remodeling, water damage restoration, mold remediation, drywall and stucco repair, balcony repair, and commercial tenant improvement in Calabasas, CA 91302.",
+      url: PAGE_URL,
+      provider: {
+        "@type": "GeneralContractor",
+        "@id": `${SITE_URL}/#organization`,
+        name: "Mier & Murphy Builders",
+        telephone: "+18059989082",
+        url: `${SITE_URL}/`,
+      },
+      areaServed: {
+        "@type": "City",
+        name: "Calabasas",
+        containedInPlace: { "@type": "State", name: "California" },
+      },
     },
-    telephone: "+1-805-998-9082",
-    url: "https://mierandmurphybuilders.com/areas/91302",
-  },
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      mainEntity: faqs.map((f) => ({
+        "@type": "Question",
+        name: f.question,
+        acceptedAnswer: { "@type": "Answer", text: f.answer },
+      })),
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      itemListElement: [
+        { "@type": "ListItem", position: 1, name: "Home", item: `${SITE_URL}/` },
+        { "@type": "ListItem", position: 2, name: "Areas We Serve", item: `${SITE_URL}/areas` },
+        { "@type": "ListItem", position: 3, name: "Calabasas", item: PAGE_URL },
+      ],
+    },
+  ],
 };
 
 const Area91302 = () => <AreaPageTemplate data={data} />;

@@ -1,29 +1,26 @@
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { Helmet } from "react-helmet-async";
-import { ArrowRight, CheckCircle, Paintbrush, Award, Clock, Shield, Star, MapPin } from "lucide-react";
+import { ArrowRight, CheckCircle, Building2, CalendarClock, Users, Handshake, Star, MapPin, Store } from "lucide-react";
 import ScrollReveal from "@/components/ScrollReveal";
 import ProcessTimeline from "@/components/ProcessTimeline";
 import LeadCaptureForm from "@/components/LeadCaptureForm";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import projectCtenent from "@/assets/ctenant/ctenent-hero.webp";
 import projectCtenentMain from "@/assets/ctenant/ctenent-main.webp";
-
-
-import iicrcFirmBadge from "@/assets/iicrc-firm-badge.png";
-import iicrcMoldBadge from "@/assets/iicrc-mold-badge.png";
-
-// TODO: replace with the actual IICRC certification badge asset — this currently
-// points at the same interior photo as `projectInterior`, so the "badge" renders a room photo.
-import iicrcBadge from "@/assets/iicrc-badge.avif";
+import ogImage from "@/assets/ctenant/commercial-ti-og.webp";
 
 const SITE_URL = "https://www.mierandmurphybuilders.com";
 const PAGE_URL = `${SITE_URL}/services/commercial-tenant-improvement`;
-const OG_IMAGE = `${SITE_URL}/service-commercial-tenant-improvement.jpg`;
+const OG_IMAGE = `${SITE_URL}${ogImage}`;
+const OG_IMAGE_ALT = "Contractor framing a metal stud wall inside an empty retail space";
 
-const PAGE_TITLE = "Commercial Tenant Improvements | Mier & Murphy Builders";
+const PAGE_TITLE = "Tenant Improvement Contractor in Thousand Oaks | Mier & Murphy";
 const PAGE_DESCRIPTION =
-  "Professional commercial tenant improvement contractor for offices, retail, and commercial spaces in Thousand Oaks and greater Los Angeles.";
+  "Tenant improvement contractor for retail and office build-outs in Thousand Oaks and Ventura County, planned around your lease timeline. CA Lic. #1077044.";
+
+const PHONE_HREF = "tel:+18059989082";
+const PHONE_DISPLAY = "(805) 998-9082";
 
 const areasServed = [
   "Thousand Oaks",
@@ -56,7 +53,7 @@ const faqs = [
   },
   {
     q: "What areas do you serve?",
-    a: "Thousand Oaks, Westlake Village, Simi Valley, Moorpark, Oak Park, Agoura Hills, and the surrounding Conejo Valley.",
+    a: "Thousand Oaks, Westlake Village, Newbury Park, Simi Valley, Moorpark, Oak Park, Agoura Hills, Camarillo, and the rest of Ventura County.",
   },
 ];
 
@@ -74,7 +71,7 @@ const process = [
   {
     step: "03",
     title: "Framing & Rough-In",
-    desc: "Framing, and coordination of any rough-in trades.",
+    desc: "Framing, plus coordination of the electrical, plumbing, and HVAC rough-in trades.",
   },
   {
     step: "04",
@@ -115,11 +112,11 @@ const finishes = [
   },
 ];
 
-// JSON-LD: Service (name/description now match the page's actual subject matter)
+// JSON-LD: Service
 const serviceSchema = {
   "@context": "https://schema.org",
   "@type": "Service",
-  "@id": `${PAGE_URL}/#service`,
+  "@id": `${PAGE_URL}#service`,
   name: "Commercial Tenant Improvement & Build-Out",
   serviceType: "Commercial Tenant Improvement",
   description: PAGE_DESCRIPTION,
@@ -129,7 +126,7 @@ const serviceSchema = {
     "@id": `${SITE_URL}/#organization`,
     name: "Mier & Murphy Builders",
     telephone: "+18059989082",
-    url: SITE_URL,
+    url: `${SITE_URL}/`,
     address: {
       "@type": "PostalAddress",
       addressLocality: "Thousand Oaks",
@@ -169,9 +166,8 @@ const breadcrumbSchema = {
   "@context": "https://schema.org",
   "@type": "BreadcrumbList",
   itemListElement: [
-    { "@type": "ListItem", position: 1, name: "Home", item: SITE_URL },
-    { "@type": "ListItem", position: 2, name: "Services", item: `${SITE_URL}/services` },
-    { "@type": "ListItem", position: 3, name: "Commercial Tenant Improvement", item: PAGE_URL },
+    { "@type": "ListItem", position: 1, name: "Home", item: `${SITE_URL}/` },
+    { "@type": "ListItem", position: 2, name: "Commercial Tenant Improvement", item: PAGE_URL },
   ],
 };
 
@@ -183,7 +179,6 @@ const CommercialTenantImprovement = () => {
         <title>{PAGE_TITLE}</title>
         <meta name="title" content={PAGE_TITLE} />
         <meta name="description" content={PAGE_DESCRIPTION} />
-        
         <meta name="author" content="Mier & Murphy Builders" />
         <meta name="robots" content="index, follow" />
         <link rel="canonical" href={PAGE_URL} />
@@ -200,7 +195,10 @@ const CommercialTenantImprovement = () => {
         <meta property="og:title" content={PAGE_TITLE} />
         <meta property="og:description" content={PAGE_DESCRIPTION} />
         <meta property="og:image" content={OG_IMAGE} />
-        <meta property="og:image:alt" content="Commercial tenant improvement build-out in Thousand Oaks, CA" />
+        <meta property="og:image:type" content="image/webp" />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+        <meta property="og:image:alt" content={OG_IMAGE_ALT} />
         <meta property="og:site_name" content="Mier & Murphy Builders" />
         <meta property="og:locale" content="en_US" />
 
@@ -210,6 +208,7 @@ const CommercialTenantImprovement = () => {
         <meta name="twitter:title" content={PAGE_TITLE} />
         <meta name="twitter:description" content={PAGE_DESCRIPTION} />
         <meta name="twitter:image" content={OG_IMAGE} />
+        <meta name="twitter:image:alt" content={OG_IMAGE_ALT} />
 
         {/* Structured data */}
         <script type="application/ld+json">{JSON.stringify(serviceSchema)}</script>
@@ -220,21 +219,21 @@ const CommercialTenantImprovement = () => {
       {/* HERO */}
       <section className="relative min-h-[85vh] flex items-center overflow-hidden">
         <div className="absolute inset-0">
-          <img src={projectCtenent} alt="Luxury interior plaster finish in a Thousand Oaks estate" className="w-full h-full object-cover" />
+          <img src={projectCtenent} alt="" aria-hidden="true" className="w-full h-full object-cover" loading="eager" />
           <div className="absolute inset-0 bg-gradient-to-r from-[hsl(220,20%,12%)]/95 via-[hsl(220,20%,12%)]/80 to-[hsl(220,20%,12%)]/60" />
         </div>
         <div className="relative z-10 max-w-[90rem] mx-auto px-6 pt-40 pb-20 w-full grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           <motion.div initial={{ opacity: 0, x: -30 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.8 }}>
             <div className="inline-flex items-center gap-2 bg-primary/15 border border-primary/25 rounded-full px-4 py-1.5 mb-6">
-              <Paintbrush className="w-3.5 h-3.5 text-primary" />
+              <Building2 className="w-3.5 h-3.5 text-primary" aria-hidden="true" />
               <span className="font-sans text-xs font-semibold text-primary tracking-wide">COMMERCIAL BUILD-OUT</span>
             </div>
             <h1 className="font-serif text-4xl md:text-5xl lg:text-[3.4rem] font-bold mb-6 leading-[1.15] text-white">
-             <span className="text-primary">Commercial Tenant Improvement</span> Contractor in Thousand Oaks
+              <span className="text-primary">Commercial Tenant Improvement</span> Contractor in Thousand Oaks
             </h1>
             <p className="font-sans text-[15px] text-white/75 leading-relaxed max-w-lg">
-            Build-out and renovation work for retail and office spaces in Thousand Oaks, Westlake Village, 
-            and the surrounding Conejo Valley, planned around your lease timeline from day one.
+              Build-out and renovation work for retail and office spaces in Thousand Oaks, Westlake Village,
+              and the surrounding Conejo Valley, planned around your lease timeline from day one.
             </p>
           </motion.div>
           <LeadCaptureForm variant="full" />
@@ -244,10 +243,10 @@ const CommercialTenantImprovement = () => {
       <section className="py-6 bg-background">
         <div className="max-w-6xl mx-auto px-6">
           <div className="flex flex-wrap items-center justify-center gap-3">
-            <span className="trust-badge"><CheckCircle className="w-4 h-4" /> 20 Years of Building Experience</span>
-            <span className="trust-badge"><CheckCircle className="w-4 h-4" /> Family Owned & Operated</span>
-            <span className="trust-badge"><CheckCircle className="w-4 h-4" /> IICRC S500 & S520 Certified</span>
-            <span className="trust-badge"><CheckCircle className="w-4 h-4" /> CA Lic. #1077044</span>
+            <span className="trust-badge"><CheckCircle className="w-4 h-4" aria-hidden="true" /> 20 Years of Building Experience</span>
+            <span className="trust-badge"><CheckCircle className="w-4 h-4" aria-hidden="true" /> Family Owned & Operated</span>
+            <span className="trust-badge"><CheckCircle className="w-4 h-4" aria-hidden="true" /> Retail & Office Build-Outs</span>
+            <span className="trust-badge"><CheckCircle className="w-4 h-4" aria-hidden="true" /> CA Lic. #1077044</span>
           </div>
         </div>
       </section>
@@ -258,25 +257,25 @@ const CommercialTenantImprovement = () => {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
             <ScrollReveal direction="left">
               <div>
-              <div className="inline-flex items-center gap-2 bg-primary/15  px-4 py-1.5 mb-6">              
+              <div className="inline-flex items-center gap-2 bg-primary/15 px-4 py-1.5 mb-6">
               <span className="font-sans text-xs font-semibold text-primary tracking-[0.4em]">BUILT AROUND YOUR BUSINESS</span>
             </div>
                 <h2 className="font-serif text-3xl md:text-4xl font-bold mb-6">
                 Build-Outs That Respect Your <span className="text-primary">Timeline and Budget</span>
                 </h2>
                 <p className="font-sans text-sm text-muted-foreground leading-relaxed mb-6">
-                Commercial projects come with a different set of pressures than residential ones, lease deadlines, landlord requirements,
+                Commercial projects come with a different set of pressures than residential ones: lease deadlines, landlord requirements,
                  and the need to keep disruption to a minimum if your space is operating during construction.
                 </p>
                 <p className="font-sans text-sm text-muted-foreground leading-relaxed mb-6">
                 Mier & Murphy Builders provides commercial tenant improvement and build-out services for retail and office spaces across Thousand Oaks and the Conejo Valley. We bring the same 20 years of
-                 building experience to commercial work that we bring to every residential job, with the same attention to timeline and communication.
+                building experience to commercial work that we bring to every residential job, with the same attention to timeline and communication.
                 </p>
                 <p className="font-sans text-sm text-muted-foreground leading-relaxed mb-8">
                 We plan around your constraints from the estimate stage, not after work has already started, so your project stays on schedule and your business keeps moving.
                 </p>
 
-                <h3 className="font-serif text-xl font-bold mb-4 text-foreground">Our Commercial Tenant Improvement Services:</h3>
+                <h3 className="font-serif text-xl font-bold mb-4 text-foreground">Our Commercial Tenant Improvement Services</h3>
                 <ul className="space-y-3 mb-8">
                   {[
                         "Interior build-out and framing",
@@ -285,10 +284,9 @@ const CommercialTenantImprovement = () => {
                         "Commercial stucco and exterior repair",
                         "ADA-related updates",
                         "Coordination with landlords and property managers",
-
                   ].map((f) => (
                     <li key={f} className="flex items-center gap-3">
-                      <CheckCircle className="w-4 h-4 text-primary flex-shrink-0" />
+                      <CheckCircle className="w-4 h-4 text-primary flex-shrink-0" aria-hidden="true" />
                       <span className="font-sans text-sm text-foreground/80">{f}</span>
                     </li>
                   ))}
@@ -299,7 +297,7 @@ const CommercialTenantImprovement = () => {
                   className="inline-flex items-center gap-2 bg-primary text-primary-foreground px-8 py-3 rounded-lg font-sans text-sm font-semibold hover:bg-primary/90 transition-all duration-300 group"
                 >
                   Request a Free Estimate
-                  <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                  <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" aria-hidden="true" />
                 </Link>
               </div>
             </ScrollReveal>
@@ -308,41 +306,27 @@ const CommercialTenantImprovement = () => {
               <div className="luxury-card overflow-hidden">
                 <img
                   src={projectCtenentMain}
-                  alt="Premium Venetian plaster application in Westlake Village home"
+                  alt="Contractor framing a metal stud wall inside an empty retail space"
                   className="w-full h-80 lg:h-[500px] object-cover"
                   loading="lazy"
                 />
               </div>
-              <div className="mt-8 glass ">
-              <div className="bg-[#f9f9f6] border border-gray-200 rounded-2xl p-4 mb-2 shadow-sm flex flex-col sm:flex-row items-center gap-6 text-center sm:text-left">
-            <img 
-              src={iicrcFirmBadge}
-              alt="IICRC Certified Firm badge" 
-              className="w-24 h-24 object-contain shrink-0" 
-            />
-            <div className="space-y-2">
-             
-              <h3 className="font-playfair text-2xl font-bold text-gray-900">IICRC Firm</h3>
-              <p className="text-sm text-gray-600 leading-relaxed">
-                A professional cleaning, restoration, or inspection company that is certified by the IICRC. Technicians who work for the firm have completed IICRC training and certification courses.
-              </p>
-            </div>
-          </div>
-
-          <div className="bg-[#f9f9f6] border border-gray-200 rounded-2xl p-4 shadow-sm flex flex-col sm:flex-row items-center gap-6 text-center sm:text-left">
-            <img 
-              src={iicrcMoldBadge}
-              alt="IICRC Mold Certified badge" 
-              className="w-24 h-24 object-contain shrink-0" 
-            />
-            <div className="space-y-2">
-              
-              <h3 className="font-playfair text-2xl font-bold text-gray-900">IICRC Mold</h3>
-              <p className="text-sm text-gray-600 leading-relaxed">
-                A technician or firm that is certified in mold remediation by IICRC.
-              </p>
-            </div>
-          </div>
+              <div className="mt-8 bg-[#f9f9f6] border border-gray-200 rounded-2xl p-6 shadow-sm flex flex-col sm:flex-row items-center gap-5 text-center sm:text-left">
+                <div className="inline-flex items-center justify-center w-14 h-14 rounded-full bg-primary/10 shrink-0">
+                  <Store className="w-6 h-6 text-primary" aria-hidden="true" />
+                </div>
+                <div className="space-y-2">
+                  <h3 className="font-serif text-xl font-bold text-gray-900">Recent Commercial Project</h3>
+                  <p className="text-sm text-gray-600 leading-relaxed">
+                    See how we handled a retail cell phone store build-out, from framing through the finished sales floor.
+                  </p>
+                  <Link
+                    to="/projects/commercial-cell-store"
+                    className="inline-flex items-center gap-1 text-sm font-semibold text-primary hover:gap-2 transition-all"
+                  >
+                    View the cell store project <ArrowRight className="w-4 h-4" aria-hidden="true" />
+                  </Link>
+                </div>
               </div>
             </ScrollReveal>
           </div>
@@ -356,7 +340,7 @@ const CommercialTenantImprovement = () => {
           subheading="OUR PROCESS"
           heading={`How We Run Your Build-Out \u00A0`}
           headingHighlight="From Estimate to Opening"
-          description="A commercial project stays on budget when it stays on schedule. Here is how we run yours from the first estimate to opening day. "
+          description="A commercial project stays on budget when it stays on schedule. Here is how we run yours from the first estimate to opening day."
           variant="dark"
         />
       </section>
@@ -377,15 +361,15 @@ const CommercialTenantImprovement = () => {
           </ScrollReveal>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {[
-              { icon: Award, title: "Timeline-Focused", desc: "We plan around your lease deadlines and business hours from the start." },
-              { icon: Shield, title: "One Point of Contact", desc: "Family-owned means you deal directly with us, not a call center." },
-              { icon: Clock, title: "Landlord Coordination ", desc: "We coordinate directly with landlords and property managers when needed." },
+              { icon: CalendarClock, title: "Timeline-Focused", desc: "We plan around your lease deadlines and business hours from the start." },
+              { icon: Users, title: "One Point of Contact", desc: "Family-owned means you deal directly with the owners, not a call center." },
+              { icon: Handshake, title: "Landlord Coordination", desc: "We coordinate directly with landlords and property managers when needed." },
               { icon: Star, title: "20 Years of Experience", desc: "Two decades of building work applied to your commercial project." },
             ].map((item) => (
               <ScrollReveal key={item.title}>
                 <div className="bg-background border border-border rounded-2xl p-6 text-center h-full hover:shadow-md hover:border-primary/20 transition-all duration-300">
                   <div className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-primary/10 mb-4">
-                    <item.icon className="w-5 h-5 text-primary" />
+                    <item.icon className="w-5 h-5 text-primary" aria-hidden="true" />
                   </div>
                   <h3 className="font-serif text-lg font-bold mb-3 text-foreground">{item.title}</h3>
                   <p className="font-sans text-sm text-muted-foreground leading-relaxed">{item.desc}</p>
@@ -396,7 +380,7 @@ const CommercialTenantImprovement = () => {
         </div>
       </section>
 
-      {/* TYPES OF FINISHES */}
+      {/* BUILD-OUT SERVICES */}
       <section className="section-padding" style={{ background: "hsl(220, 20%, 15%)" }}>
         <div className="max-w-6xl mx-auto">
           <ScrollReveal>
@@ -435,17 +419,22 @@ const CommercialTenantImprovement = () => {
               Commercial Contractors <span className="text-primary">Near You in Ventura County</span>
               </h2>
               <p className="font-sans text-sm text-muted-foreground max-w-2xl mx-auto leading-relaxed">
-              We serve commercial properties across Thousand Oaks and the surrounding Conejo Valley, from retail storefronts to office suites.
+              We serve commercial properties across Thousand Oaks, the Conejo Valley, and Ventura County, from retail storefronts to office suites.
               </p>
             </div>
           </ScrollReveal>
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
             {areasServed.map((area) => (
               <div key={area} className="flex items-center gap-2 bg-background border border-border rounded-lg p-3">
-                <MapPin className="w-3.5 h-3.5 text-primary flex-shrink-0" />
+                <MapPin className="w-3.5 h-3.5 text-primary flex-shrink-0" aria-hidden="true" />
                 <span className="font-sans text-xs text-foreground/80">{area}</span>
               </div>
             ))}
+          </div>
+          <div className="text-center mt-8">
+            <Link to="/areas" className="inline-flex items-center gap-1 font-sans text-sm font-semibold text-primary hover:gap-2 transition-all">
+              See all service areas <ArrowRight className="w-4 h-4" aria-hidden="true" />
+            </Link>
           </div>
         </div>
       </section>
@@ -466,13 +455,13 @@ const CommercialTenantImprovement = () => {
                 to="/contact"
                 className="bg-primary text-primary-foreground px-8 py-4 rounded-xl font-sans text-sm font-bold hover:bg-primary/90 transition-all duration-300 shadow-lg"
               >
-                Get Your Free Estimate
+                Get a Free Estimate
               </Link>
               <a
-                href="tel:+18059989082"
+                href={PHONE_HREF}
                 className="border-2 border-white/20 text-white px-8 py-4 rounded-xl font-sans text-sm font-semibold hover:bg-white/10 transition-all duration-300"
               >
-                Call (805) 998-9082
+                Call {PHONE_DISPLAY}
               </a>
             </div>
           </ScrollReveal>
@@ -486,10 +475,11 @@ const CommercialTenantImprovement = () => {
             <div className="text-center mb-12">
               <p className="font-sans text-xs tracking-[0.4em] text-primary uppercase mb-4 font-semibold">Common Questions</p>
               <h2 className="font-serif text-3xl md:text-4xl font-bold">
-              Common Commercial Tenant <span className="text-primary">FAQ</span>
+              Tenant Improvement <span className="text-primary">FAQ</span>
               </h2>
               <p className="font-sans text-sm text-muted-foreground max-w-xl mx-auto leading-relaxed mt-4">
-              Answers to the questions business owners and property managers ask most about tenant improvement and commercial build-outs.</p>
+              Answers to the questions business owners and property managers ask most about tenant improvement and commercial build-outs.
+              </p>
             </div>
           </ScrollReveal>
           <Accordion type="single" collapsible className="space-y-4">

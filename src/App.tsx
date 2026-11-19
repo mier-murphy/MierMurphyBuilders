@@ -133,8 +133,24 @@ export const routes: RouteRecord[] = [
 
           {
             path: "blog",
-            lazy: () =>
-              import("./pages/Blog").then((m) => ({ Component: m.default })),
+            lazy: async () => {
+              const { default: Component } = await import("./pages/Blog");
+
+              return {
+                Component,
+
+                async loader() {
+                  const { getAllPosts } = await import("@/lib/sanity");
+
+                  try {
+                    return { posts: await getAllPosts(), failed: false };
+                  } catch (err) {
+                    console.error("Failed to load blog posts:", err);
+                    return { posts: [], failed: true };
+                  }
+                },
+              };
+            },
           },
           {
             path: "blog/:slug",
@@ -205,6 +221,14 @@ export const routes: RouteRecord[] = [
             path: "terms-and-conditions",
             lazy: () =>
               import("./pages/TermsAndConditions").then((m) => ({
+                Component: m.default,
+              })),
+          },
+
+          {
+            path: "thank-you",
+            lazy: () =>
+              import("./pages/ThankYou").then((m) => ({
                 Component: m.default,
               })),
           },
@@ -328,6 +352,15 @@ export const routes: RouteRecord[] = [
               })),
           },
 
+          {
+            // Prerendered to dist/404.html, which Vercel serves (with a 404
+            // status) for any URL that doesn't match a page.
+            path: "404",
+            lazy: () =>
+              import("./pages/NotFound").then((m) => ({
+                Component: m.default,
+              })),
+          },
           {
             path: "*",
             lazy: () =>

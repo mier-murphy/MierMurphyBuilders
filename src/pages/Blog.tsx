@@ -1,7 +1,6 @@
-import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { ArrowRight, Calendar } from "lucide-react";
-import { Link } from "react-router-dom";
+import { Link, useLoaderData } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
 import ScrollReveal from "@/components/ScrollReveal";
 import { getAllPosts, sanityImageUrl, type BlogPostSummary } from "@/lib/sanity";
@@ -26,33 +25,17 @@ const formatDate = (dateString?: string) => {
 };
 
 const Blog = () => {
-  const [posts, setPosts] = useState<BlogPostSummary[]>([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
-
-  useEffect(() => {
-    let isMounted = true;
-
-    getAllPosts()
-      .then((data) => {
-        if (isMounted) setPosts(data);
-      })
-      .catch((err) => {
-        console.error("Failed to load blog posts:", err);
-        if (isMounted) setError("We couldn't load blog posts right now. Please try again later.");
-      })
-      .finally(() => {
-        if (isMounted) setLoading(false);
-      });
-
-    return () => {
-      isMounted = false;
-    };
-  }, []);
+  const { posts, failed } = useLoaderData() as {
+    posts: BlogPostSummary[];
+    failed: boolean;
+  };
+  const error = failed
+    ? "We couldn't load blog posts right now. Please try again later."
+    : null;
 
   return (
     <>
-      <Helmet prioritizeSeoTags>
+      <Helmet>
         <title>{PAGE_TITLE}</title>
         <meta name="title" content={PAGE_TITLE} />
         <meta name="description" content={PAGE_DESCRIPTION} />
@@ -102,21 +85,17 @@ const Blog = () => {
       {/* POSTS GRID */}
       <section className="section-padding">
         <div className="max-w-7xl mx-auto">
-          {loading && (
-            <p className="text-center font-sans text-muted-foreground py-20">Loading posts...</p>
-          )}
-
           {error && (
             <p className="text-center font-sans text-destructive py-20">{error}</p>
           )}
 
-          {!loading && !error && posts.length === 0 && (
+          {!error && posts.length === 0 && (
             <p className="text-center font-sans text-muted-foreground py-20">
               No blog posts yet — check back soon.
             </p>
           )}
 
-          {!loading && !error && posts.length > 0 && (
+          {!error && posts.length > 0 && (
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
               {posts.map((post, i) => {
                 const imageUrl = sanityImageUrl(post.mainImage, 800);

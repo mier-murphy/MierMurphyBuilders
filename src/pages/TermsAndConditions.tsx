@@ -1,26 +1,54 @@
+import { Link } from "react-router-dom";
+import { Helmet } from "react-helmet-async";
 import ScrollReveal from "@/components/ScrollReveal";
+
+const SITE_URL = "https://www.mierandmurphybuilders.com";
+const PAGE_URL = `${SITE_URL}/terms-and-conditions`;
+const PAGE_TITLE = "Terms and Conditions | Mier & Murphy Builders";
+const PAGE_DESCRIPTION =
+  "Review the terms and conditions for using the Mier & Murphy Builders website and receiving SMS text messages from us.";
+
+const EMAIL = "frank@mierconstruction.com";
+const PHONE_HREF = "tel:+18059989082";
+const PHONE_DISPLAY = "(805) 998-9082";
+
+const linkClass = "text-primary underline hover:text-primary/80";
 
 const TermsAndConditions = () => {
   return (
+    <>
+      <Helmet>
+        <title>{PAGE_TITLE}</title>
+        <meta name="description" content={PAGE_DESCRIPTION} />
+        <meta name="robots" content="index, follow" />
+        <link rel="canonical" href={PAGE_URL} />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content={PAGE_URL} />
+        <meta property="og:title" content={PAGE_TITLE} />
+        <meta property="og:description" content={PAGE_DESCRIPTION} />
+        <meta property="og:site_name" content="Mier & Murphy Builders" />
+      </Helmet>
+
     <div className="pt-32 pb-20 bg-background">
       <div className="max-w-3xl mx-auto px-6">
         <ScrollReveal>
           <h1 className="font-serif text-3xl md:text-4xl font-bold mb-2">Terms &amp; Conditions</h1>
-          <p className="font-sans text-sm text-muted-foreground mb-10">Last Updated: [Month Day, Year]</p>
+          <p className="font-sans text-sm text-muted-foreground mb-10">Last Updated: November 19, 2026</p>
 
           <div className="font-sans text-[15px] text-foreground/80 leading-relaxed space-y-6">
             <p>
               Welcome to{" "}
-              <a
-                href="https://www.mierandmurphybuilders.com"
-                className="text-primary underline hover:text-primary/80"
-              >
+              <a href={`${SITE_URL}/`} className={linkClass}>
                 www.mierandmurphybuilders.com
               </a>{" "}
               (the "Site"), operated by Mier &amp; Murphy Builders ("we," "us," or "our"). By accessing or
               using our Site, our services, or opting in to receive text messages from us, you agree to be
               bound by these Terms &amp; Conditions ("Terms"). If you do not agree to these Terms, please do
-              not use our Site or services.
+              not use our Site or services. Our{" "}
+              <Link to="/privacy-policy" className={linkClass}>
+                Privacy Policy
+              </Link>{" "}
+              explains how we collect and use your information.
             </p>
 
             <h2 className="font-serif text-xl md:text-2xl font-bold mt-10 mb-3 text-foreground">1. Use of Our Site</h2>
@@ -33,9 +61,12 @@ const TermsAndConditions = () => {
 
             <h2 className="font-serif text-xl md:text-2xl font-bold mt-10 mb-3 text-foreground">2. Our Services</h2>
             <p>
-              Mier &amp; Murphy Builders provides [brief description of services, e.g., "general contracting,
-              remodeling, and remediation services"]. Any services described on our Site are subject to
-              availability, quote, and mutual agreement between you and Mier &amp; Murphy Builders.
+              Mier &amp; Murphy Builders is a licensed California general contractor (CA Lic. #1077044)
+              providing remodeling, water damage and mold remediation, drywall and stucco repair, balcony
+              and deck repair, and commercial tenant improvement services. Any services described on our
+              Site are subject to availability, an estimate, and a separate written agreement between you
+              and Mier &amp; Murphy Builders. Information on this Site, including project examples, is
+              general in nature and is not a quote, contract, or guarantee of any result.
             </p>
 
             <h2 className="font-serif text-xl md:text-2xl font-bold mt-10 mb-3 text-foreground">3. SMS Text Messaging Terms</h2>
@@ -45,13 +76,18 @@ const TermsAndConditions = () => {
               <li><strong className="text-foreground">Message Frequency:</strong> Message frequency varies depending on your interactions with us and the services you request.</li>
               <li><strong className="text-foreground">Message and Data Rates:</strong> Message and data rates may apply based on your mobile carrier and plan. Mier &amp; Murphy Builders is not responsible for any charges from your mobile carrier.</li>
               <li><strong className="text-foreground">Opt-Out:</strong> You may opt out of receiving text messages at any time by replying STOP to any message. You will receive a one-time confirmation message, and no further messages will be sent unless you opt in again.</li>
-              <li><strong className="text-foreground">Help:</strong> Reply HELP to any message, or contact us at              <a
-                href="mailto:frank@mierconstruction.com"
-                className="text-primary underline hover:text-primary/80"
-              >frank@mierconstruction.com
-              </a> for assistance.</li>
+              <li>
+                <strong className="text-foreground">Help:</strong> Reply HELP to any message, or contact us at{" "}
+                <a href={`mailto:${EMAIL}`} className={linkClass}>{EMAIL}</a> or{" "}
+                <a href={PHONE_HREF} className={linkClass}>{PHONE_DISPLAY}</a> for assistance.
+              </li>
               <li><strong className="text-foreground">Supported Carriers:</strong> Carriers are not liable for delayed or undelivered messages. Message delivery is subject to effective transmission from your network provider.</li>
               <li><strong className="text-foreground">No Sharing of Opt-In Data:</strong> Your mobile phone number and SMS consent information will not be shared or sold to any third party for marketing or promotional purposes.</li>
+              <li>
+                <strong className="text-foreground">Privacy:</strong> See our{" "}
+                <Link to="/privacy-policy" className={linkClass}>Privacy Policy</Link> for how we handle
+                your information.
+              </li>
             </ul>
 
             <h2 className="font-serif text-xl md:text-2xl font-bold mt-10 mb-3 text-foreground">4. Accuracy of Information</h2>
@@ -93,7 +129,7 @@ const TermsAndConditions = () => {
             <h2 className="font-serif text-xl md:text-2xl font-bold mt-10 mb-3 text-foreground">9. Governing Law</h2>
             <p>
               These Terms shall be governed by and construed in accordance with the laws of the State of
-              [State], without regard to its conflict of law principles.
+              California, without regard to its conflict of law principles.
             </p>
 
             <h2 className="font-serif text-xl md:text-2xl font-bold mt-10 mb-3 text-foreground">10. Changes to These Terms</h2>
@@ -105,27 +141,20 @@ const TermsAndConditions = () => {
 
             <h2 className="font-serif text-xl md:text-2xl font-bold mt-10 mb-3 text-foreground">11. Contact Us</h2>
             <p>If you have questions about these Terms &amp; Conditions, contact us at:</p>
-            <p className="not-italic">
+            <address className="not-italic">
               Mier &amp; Murphy Builders
               <br />
               Thousand Oaks, California
               <br />
-              <a
-                href="mailto:frank@mierconstruction.com"
-                className="text-primary underline hover:text-primary/80"
-              >frank@mierconstruction.com
-              </a>
+              <a href={`mailto:${EMAIL}`} className={linkClass}>{EMAIL}</a>
               <br />
-              <a
-                href="tel: 805-998-9082"
-                className="text-primary underline hover:text-primary/80"
-              >(805) 998-9082
-              </a>
-            </p>
+              <a href={PHONE_HREF} className={linkClass}>{PHONE_DISPLAY}</a>
+            </address>
           </div>
         </ScrollReveal>
       </div>
     </div>
+    </>
   );
 };
 

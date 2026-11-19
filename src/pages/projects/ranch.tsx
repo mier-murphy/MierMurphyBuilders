@@ -1,151 +1,268 @@
-import React from 'react';
-import { Phone, Menu, Mail, MapPin, Instagram, Facebook, ArrowRight } from 'lucide-react';
+import { ArrowRight, Check, Phone } from "lucide-react";
+import { Helmet } from "react-helmet-async";
+import { Link } from "react-router-dom";
 import {
   Carousel,
   CarouselContent,
   CarouselItem,
   CarouselPrevious,
   CarouselNext,
-} from '@/components/ui/carousel';
+} from "@/components/ui/carousel";
 
-// 1. Import your images here (place the actual files in src/assets/projects/ranch/)
-import heroImage from '@/assets/ranch/ranch-hero.avif';
-import gallery1 from '@/assets/ranch/ranch-1.avif';
-import gallery2 from '@/assets/ranch/ranch-2.avif';
-import gallery3 from '@/assets/ranch/ranch-3.avif';
-import gallery4 from '@/assets/ranch/ranch-4.avif';
-import gallery5 from '@/assets/ranch/ranch-5.avif';
-import gallery6 from '@/assets/ranch/ranch-6.avif';
-import gallery7 from '@/assets/ranch/ranch-7.avif';
-import gallery8 from '@/assets/ranch/ranch-8.avif';
-import gallery9 from '@/assets/ranch/ranch-9.avif';
-import gallery10 from '@/assets/ranch/ranch-10.avif';
-import gallery11 from '@/assets/ranch/ranch-11.avif';
-import gallery12 from '@/assets/ranch/ranch-12.avif';
-import gallery13 from '@/assets/ranch/ranch-m-1.avif';
-import gallery14 from '@/assets/ranch/ranch-m-2.avif';
-import gallery15 from '@/assets/ranch/ranch-m-3.avif';
-import gallery16 from '@/assets/ranch/ranch-m-4.avif';
-import gallery17 from '@/assets/ranch/ranch-m-5.avif';
-import gallery18 from '@/assets/ranch/ranch-m-6.avif';
-import gallery19 from '@/assets/ranch/ranch-m-7.avif';
-import gallery20 from '@/assets/ranch/ranch-m-8.avif';
+import heroImage from "@/assets/ranch/ranch-hero.avif";
+import ogImage from "@/assets/ranch/ranch-og.webp";
+import gallery1 from "@/assets/ranch/ranch-1.avif";
+import gallery2 from "@/assets/ranch/ranch-2.avif";
+import gallery3 from "@/assets/ranch/ranch-3.avif";
+import gallery4 from "@/assets/ranch/ranch-4.avif";
+import gallery5 from "@/assets/ranch/ranch-5.avif";
+import gallery6 from "@/assets/ranch/ranch-6.avif";
+import gallery7 from "@/assets/ranch/ranch-7.avif";
+import gallery8 from "@/assets/ranch/ranch-8.avif";
+import gallery9 from "@/assets/ranch/ranch-9.avif";
+import gallery10 from "@/assets/ranch/ranch-10.avif";
+import gallery11 from "@/assets/ranch/ranch-11.avif";
+import gallery12 from "@/assets/ranch/ranch-12.avif";
+import before1 from "@/assets/ranch/ranch-m-1.avif";
+import before2 from "@/assets/ranch/ranch-m-2.avif";
+import before3 from "@/assets/ranch/ranch-m-3.avif";
+import before4 from "@/assets/ranch/ranch-m-4.avif";
+import before5 from "@/assets/ranch/ranch-m-5.avif";
+import before6 from "@/assets/ranch/ranch-m-6.avif";
+import before7 from "@/assets/ranch/ranch-m-7.avif";
+import before8 from "@/assets/ranch/ranch-m-8.avif";
 
-
-import { Helmet } from "react-helmet-async";
 const SITE_URL = "https://www.mierandmurphybuilders.com";
-const PAGE_URL = `${SITE_URL}/services/bathroom-kitchen-remodeling`;
-const OG_IMAGE = `${SITE_URL}/service-bathroom-kitchen-remodeling.jpg`;
+const PAGE_URL = `${SITE_URL}/projects/ranch`;
+const OG_IMAGE = `${SITE_URL}${ogImage}`;
+const OG_IMAGE_ALT =
+  "Renovated Porter Ranch kitchen with dark cabinets and a light wood island";
 
-const PAGE_TITLE = "Custom Ranch Home Construction | Mier & Murphy Builders";
+const PAGE_TITLE = "Porter Ranch Home Renovation | Mier & Murphy Builders";
 const PAGE_DESCRIPTION =
-  "Discover our custom ranch property construction project delivered with precision engineering and luxury finish by Mier & Murphy Builders.";
+  "See how Mier & Murphy Builders renovated a Porter Ranch home with refinished walls, new bathrooms, a remodeled kitchen, a walk-in closet, and a rebuilt staircase.";
 
-// 2. Top row (3 large images) and bottom row (5 smaller images)
-const topGallery = [gallery1, gallery2, gallery3, gallery4,gallery5,gallery6,gallery7,gallery8,gallery9,gallery10,gallery11,gallery12];
-const bottomGallery = [gallery13, gallery14, gallery15, gallery16,gallery17,gallery18,gallery19,gallery20];
+const PHONE_HREF = "tel:+18059989082";
+const PHONE_DISPLAY = "(805) 998-9082";
 
-// Reusable image carousel used for both the "After" and "Before" sections
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    { "@type": "ListItem", position: 1, name: "Home", item: `${SITE_URL}/` },
+    { "@type": "ListItem", position: 2, name: "Projects", item: `${SITE_URL}/projects` },
+    { "@type": "ListItem", position: 3, name: "Porter Ranch Home Renovation", item: PAGE_URL },
+  ],
+};
+
+const projectScope = [
+  "Walls refinished to a smooth texture and freshly painted",
+  "New bathrooms",
+  "Remodeled kitchen",
+  "Custom walk-in closet added to the layout",
+  "Staircase rebuilt with a new storage area",
+];
+
+type GalleryImage = {
+  src: string;
+  alt: string;
+};
+
+const afterImages: GalleryImage[] = [
+  { src: gallery1, alt: "Renovated kitchen with a light wood island, dark cabinets, and white countertops" },
+  { src: gallery2, alt: "Kitchen island and dark cabinetry with recessed lighting" },
+  { src: gallery3, alt: "Open kitchen and dining area with a ceiling fan and sliding glass door" },
+  { src: gallery4, alt: "Rebuilt staircase with black metal railing and light wood treads" },
+  { src: gallery5, alt: "Upstairs landing with black railing, white doors, and a modern pendant light" },
+  { src: gallery6, alt: "Open living area with light wood flooring leading to the staircase" },
+  { src: gallery7, alt: "Renovated bathroom with double sinks, black mirrors, and a glass walk-in shower" },
+  { src: gallery8, alt: "Renovated bathroom with a round mirror, marble vanity top, and tub" },
+  { src: gallery9, alt: "Bright room with a vaulted ceiling, ceiling fan, and sliding glass door" },
+  { src: gallery10, alt: "Upstairs hallway with black railing and white doors" },
+  { src: gallery11, alt: "Kitchen with stainless steel double wall ovens and dark cabinets" },
+  { src: gallery12, alt: "Kitchen with long white countertops and a light wood island" },
+];
+
+const beforeImages: GalleryImage[] = [
+  { src: before1, alt: "Kitchen before renovation with dated wood cabinets and a paneled ceiling" },
+  { src: before2, alt: "Primary bathroom area before renovation with dark floral wallpaper" },
+  { src: before3, alt: "Room during renovation with stripped walls and a ladder" },
+  { src: before4, alt: "Hallway before renovation with floral wallpaper and worn carpet" },
+  { src: before5, alt: "Bedroom before renovation with dark blue walls and an arched window" },
+  { src: before6, alt: "Living room before renovation with long drapes and a tiled fireplace" },
+  { src: before7, alt: "Dining area before renovation with blue walls and a dark ceiling beam" },
+  { src: before8, alt: "Kitchen before renovation with wood cabinets and a tiled counter" },
+];
+
 const GalleryCarousel = ({
   images,
-  labelPrefix,
+  label,
 }: {
-  images: string[];
-  labelPrefix: string;
+  images: GalleryImage[];
+  label: string;
 }) => (
-  <Carousel opts={{ align: 'start', loop: false }} className="px-6 mb-12">
+  <Carousel
+    opts={{ align: "start", loop: false }}
+    className="max-w-7xl mx-auto px-12 mb-14"
+    aria-label={label}
+  >
     <CarouselContent>
-      {images.map((img, i) => (
-        <CarouselItem key={i} className="basis-1/2 md:basis-1/4">
-          <div className="h-84 bg-stone-200 rounded overflow-hidden">
+      {images.map((image) => (
+        <CarouselItem key={image.src} className="basis-full sm:basis-1/2 lg:basis-1/3">
+          <div className="aspect-[4/3] bg-stone-200 rounded overflow-hidden">
             <img
-              src={img}
-              alt={`${labelPrefix} gallery image ${i + 1}`}
+              src={image.src}
+              alt={image.alt}
               className="w-full h-full object-cover"
               loading="lazy"
+              decoding="async"
             />
           </div>
         </CarouselItem>
       ))}
     </CarouselContent>
-    <CarouselPrevious className="left-2" />
-    <CarouselNext className="right-2" />
+    <CarouselPrevious className="left-1" />
+    <CarouselNext className="right-1" />
   </Carousel>
 );
 
-export default function App() {
+export default function PorterRanchProject() {
   return (
-    <><Helmet>
-      {/* Primary meta tags */}
-      <title>{PAGE_TITLE}</title>
-      <meta name="title" content={PAGE_TITLE} />
-      <meta name="description" content={PAGE_DESCRIPTION} />
+    <>
+      <Helmet>
+        <title>{PAGE_TITLE}</title>
+        <meta name="title" content={PAGE_TITLE} />
+        <meta name="description" content={PAGE_DESCRIPTION} />
+        <meta name="author" content="Mier & Murphy Builders" />
+        <meta name="robots" content="index, follow" />
+        <link rel="canonical" href={PAGE_URL} />
 
-      <meta name="author" content="Mier & Murphy Builders" />
-      <meta name="robots" content="index, follow" />
-      <link rel="canonical" href={PAGE_URL} />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content={PAGE_URL} />
+        <meta property="og:title" content={PAGE_TITLE} />
+        <meta property="og:description" content={PAGE_DESCRIPTION} />
+        <meta property="og:image" content={OG_IMAGE} />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+        <meta property="og:image:type" content="image/webp" />
+        <meta property="og:image:alt" content={OG_IMAGE_ALT} />
+        <meta property="og:site_name" content="Mier & Murphy Builders" />
+        <meta property="og:locale" content="en_US" />
 
-      {/* Geo tags */}
-      <meta name="geo.placename" content="Thousand Oaks" />
-      <meta name="geo.region" content="US-CA" />
-      <meta name="geo.position" content="34.1706;-118.8376" />
-      <meta name="ICBM" content="34.1706, -118.8376" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:url" content={PAGE_URL} />
+        <meta name="twitter:title" content={PAGE_TITLE} />
+        <meta name="twitter:description" content={PAGE_DESCRIPTION} />
+        <meta name="twitter:image" content={OG_IMAGE} />
+        <meta name="twitter:image:alt" content={OG_IMAGE_ALT} />
 
-      {/* Open Graph */}
-      <meta property="og:type" content="website" />
-      <meta property="og:url" content={PAGE_URL} />
-      <meta property="og:title" content={PAGE_TITLE} />
-      <meta property="og:description" content={PAGE_DESCRIPTION} />
-      <meta property="og:image" content={OG_IMAGE} />
-      <meta property="og:image:alt" content="Bathroom and kitchen remodeling project in Thousand Oaks, CA" />
-      <meta property="og:site_name" content="Mier & Murphy Builders" />
-      <meta property="og:locale" content="en_US" />
+        <script type="application/ld+json">{JSON.stringify(breadcrumbSchema)}</script>
+      </Helmet>
 
-      {/* Twitter Card */}
-      <meta name="twitter:card" content="summary_large_image" />
-      <meta name="twitter:url" content={PAGE_URL} />
-      <meta name="twitter:title" content={PAGE_TITLE} />
-      <meta name="twitter:description" content={PAGE_DESCRIPTION} />
-      <meta name="twitter:image" content={OG_IMAGE} />
+      <div className="min-h-screen bg-white font-sans text-stone-800">
+        <section className="max-w-7xl mx-auto pt-36 pb-16 px-6">
+          <nav aria-label="Breadcrumb" className="mb-8 text-sm text-stone-600">
+            <Link to="/projects" className="hover:text-[#587b37] underline-offset-4 hover:underline">
+              Projects
+            </Link>
+            <span className="mx-2" aria-hidden="true">/</span>
+            <span aria-current="page">Porter Ranch Home Renovation</span>
+          </nav>
 
-    </Helmet><div className="min-h-screen bg-white font-sans text-stone-800">
-   
+          <div className="grid md:grid-cols-2 gap-8 lg:gap-12 items-center">
+            <div>
+              <p className="text-[#587b37] uppercase tracking-widest text-sm font-semibold mb-4">
+                Complete Interior Renovation
+              </p>
+              <h1 className="text-4xl md:text-5xl lg:text-6xl leading-tight mb-6">
+                Porter Ranch Home Renovation With a Clean, Timeless Feel
+              </h1>
+              <p className="text-stone-600 leading-relaxed">
+                This complete interior renovation transformed a dated house into a refined
+                suburban home. All walls were refinished to a smooth texture and freshly painted,
+                with new bathrooms and a remodeled kitchen bringing modern comfort and style.
+              </p>
+            </div>
+            <div className="bg-stone-200 aspect-[4/3] w-full rounded-lg overflow-hidden shadow-xl">
+              <img
+                src={heroImage}
+                alt={OG_IMAGE_ALT}
+                className="w-full h-full object-cover"
+                loading="eager"
+                decoding="async"
+              />
+            </div>
+          </div>
+        </section>
 
-        {/* Hero Section */}
-        <section className="grid md:grid-cols-2 gap-8 items-center max-w-7xl mx-auto pt-40 pb-16 px-6">
+        <section className="max-w-6xl mx-auto py-16 px-6 grid md:grid-cols-2 gap-10 lg:gap-16">
           <div>
-            <p className="text-[#587b37] uppercase tracking-widest text-sm font-semibold mb-4">PORTER RANCH HOME RENOVATION</p>
-            <h1 className="text-5xl md:text-6xl mb-6">Crafting a serene and clean home with modern finishes and timeless feel</h1>
-            <p className="text-stone-600 leading-relaxed">This complete interior renovation transformed a dated house into a refined suburban home. All walls were refinished to a smooth texture and freshly painted, with new bathrooms and a remodeled kitchen bringing modern comfort and style.</p>
+            <h2 className="text-3xl md:text-4xl mb-5">About the Project</h2>
+            <p className="text-lg leading-relaxed text-stone-700">
+              Working closely with the homeowner, our team reconfigured the layout to include a
+              custom walk-in closet and rebuilt the existing staircase to incorporate a new storage
+              area. The result is a cohesive, elegant space that blends functionality with a clean,
+              contemporary design.
+            </p>
           </div>
-          <div className="bg-stone-200 h-96 w-full rounded-lg overflow-hidden shadow-xl">
-            <img
-              src={heroImage}
-              alt="Big Bear ranch remodel hero"
-              className="w-full h-full object-cover"
-              loading="eager" />
+          <div>
+            <h2 className="text-3xl md:text-4xl mb-5">What We Completed</h2>
+            <ul className="space-y-3">
+              {projectScope.map((item) => (
+                <li key={item} className="flex items-start gap-3 text-stone-700">
+                  <Check className="w-5 h-5 mt-0.5 text-[#587b37] shrink-0" aria-hidden="true" />
+                  <span>{item}</span>
+                </li>
+              ))}
+            </ul>
           </div>
         </section>
 
-        {/* Project Description */}
-        <section className="max-w-3xl mx-auto py-16 px-6 text-center">
-          <p className="text-[#587b37] uppercase tracking-widest text-xs mb-6">More on the project</p>
-          <p className="text-lg leading-relaxed text-stone-700">
-            Working closely with the homeowner, our team reconfigured the layout to include a custom walk-in closet and rebuilt the existing staircase to incorporate a new storage area. The result is a cohesive, elegant space that blends functionality with a clean, contemporary design.
-          </p>
+        <section className="py-14 bg-stone-50">
+          <h2 className="text-4xl text-center mb-12 px-6">Project Gallery</h2>
+
+          <h3 className="text-2xl text-center mb-6 text-[#587b37]">After</h3>
+          <GalleryCarousel images={afterImages} label="Photos after the renovation" />
+
+          <h3 className="text-2xl text-center mb-6 text-[#587b37]">Before</h3>
+          <GalleryCarousel images={beforeImages} label="Photos before the renovation" />
         </section>
 
-        {/* Gallery Section */}
-        <section className="py-12 bg-stone-50">
-          <h2 className="text-4xl text-center mb-12">Gallery</h2>
-
-          <h4 className="text-2xl text-center mb-6 text-[#587b37]">After</h4>
-          <GalleryCarousel images={topGallery} labelPrefix="ranch remodel after" />
-
-          <h4 className="text-2xl text-center mb-6 text-[#587b37]">Before</h4>
-          <GalleryCarousel images={bottomGallery} labelPrefix="ranch remodel before" />
+        <section className="py-20 px-6 text-center" style={{ background: "hsl(220, 20%, 15%)" }}>
+          <div className="max-w-3xl mx-auto">
+            <h2 className="text-3xl md:text-4xl font-bold mb-4 text-white">
+              Planning a Home <span className="text-primary">Renovation?</span>
+            </h2>
+            <p className="text-[15px] text-white/70 leading-relaxed mb-8">
+              Tell us what you want to change. We will walk through the scope and prepare a free
+              estimate. You can also explore our{" "}
+              <Link
+                to="/services/bathroom-kitchen-remodeling"
+                className="text-white underline underline-offset-4"
+              >
+                bathroom and kitchen remodeling services
+              </Link>
+              .
+            </p>
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+              <Link
+                to="/contact"
+                className="bg-primary text-primary-foreground px-8 py-4 rounded-xl text-sm font-bold hover:bg-primary/90 transition-colors inline-flex items-center gap-2"
+              >
+                Get a Free Estimate
+                <ArrowRight className="w-4 h-4" aria-hidden="true" />
+              </Link>
+              <a
+                href={PHONE_HREF}
+                className="border border-white/30 text-white px-8 py-4 rounded-xl text-sm font-bold hover:bg-white/10 transition-colors inline-flex items-center gap-2"
+              >
+                <Phone className="w-4 h-4" aria-hidden="true" />
+                Call {PHONE_DISPLAY}
+              </a>
+            </div>
+          </div>
         </section>
-
-      </div></>
+      </div>
+    </>
   );
 }

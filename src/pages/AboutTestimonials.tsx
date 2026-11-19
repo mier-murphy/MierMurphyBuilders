@@ -1,18 +1,20 @@
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import { ArrowRight, Star, Quote, CheckCircle, MapPin, Calendar } from "lucide-react";
+import { ArrowRight, Star, Quote, CheckCircle, MapPin, Phone } from "lucide-react";
 import { Helmet } from "react-helmet-async";
 import ScrollReveal from "@/components/ScrollReveal";
 import LeadCaptureForm from "@/components/LeadCaptureForm";
 import heroImage from "@/assets/hero-craftsmanship.jpg";
 
-const SITE_URL = "https://mierandmurphybuilders.com";
+const SITE_URL = "https://www.mierandmurphybuilders.com";
 const PAGE_URL = `${SITE_URL}/about/testimonials`;
+const OG_IMAGE = `${SITE_URL}${heroImage}`;
+const OG_IMAGE_ALT = "Mier & Murphy Builders craftsmanship";
 
 const PAGE_TITLE = "Client Reviews & Testimonials | Mier & Murphy Builders";
 
 const PAGE_DESCRIPTION =
-  "Read reviews and testimonials from homeowners across Thousand Oaks and Ventura County who trusted Mier & Murphy Builders with their custom homes.";
+  "Read reviews from Southern California homeowners and businesses who hired Mier & Murphy Builders for remodels, water damage repair, stucco, and commercial build-outs.";
 
   const testimonials = [
     {
@@ -93,46 +95,54 @@ const PAGE_DESCRIPTION =
     },
   ];
 
-const stats = [
-  { value: "500+", label: "Projects Completed" },
-  { value: "100%", label: "Client Satisfaction" },
-  { value: "20+", label: "Years of Service" },
-  { value: "5 ★", label: "Average Rating" },
-];
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    { "@type": "ListItem", position: 1, name: "Home", item: `${SITE_URL}/` },
+    { "@type": "ListItem", position: 2, name: "About", item: `${SITE_URL}/about` },
+    { "@type": "ListItem", position: 3, name: "Testimonials", item: PAGE_URL },
+  ],
+};
 
 const AboutTestimonials = () => {
-  
   return (
     <>
-      <Helmet prioritizeSeoTags>
+      <Helmet>
         <title>{PAGE_TITLE}</title>
         <meta name="title" content={PAGE_TITLE} />
         <meta name="description" content={PAGE_DESCRIPTION} />
+        <meta name="robots" content="index, follow" />
         <link rel="canonical" href={PAGE_URL} />
 
         <meta property="og:type" content="website" />
         <meta property="og:url" content={PAGE_URL} />
         <meta property="og:title" content={PAGE_TITLE} />
         <meta property="og:description" content={PAGE_DESCRIPTION} />
-        <meta property="og:image" content={heroImage} />
+        <meta property="og:image" content={OG_IMAGE} />
+        <meta property="og:image:alt" content={OG_IMAGE_ALT} />
         <meta property="og:site_name" content="Mier & Murphy Builders" />
+        <meta property="og:locale" content="en_US" />
 
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content={PAGE_TITLE} />
         <meta name="twitter:description" content={PAGE_DESCRIPTION} />
-        <meta name="twitter:image" content={heroImage} />
+        <meta name="twitter:image" content={OG_IMAGE} />
+        <meta name="twitter:image:alt" content={OG_IMAGE_ALT} />
+
+        <script type="application/ld+json">{JSON.stringify(breadcrumbSchema)}</script>
       </Helmet>
 
       {/* ── HERO with Lead Form ── */}
       <section className="relative min-h-[85vh] flex items-center overflow-hidden">
         <div className="absolute inset-0">
-          <img src={heroImage} alt="Client testimonials for Mier & Murphy Builders in Thousand Oaks" className="w-full h-full object-cover" loading="eager" />
+          <img src={heroImage} alt="" aria-hidden="true" className="w-full h-full object-cover" loading="eager" />
           <div className="absolute inset-0 bg-gradient-to-r from-[hsl(220,20%,12%)]/95 via-[hsl(220,20%,12%)]/80 to-[hsl(220,20%,12%)]/60" />
         </div>
         <div className="relative z-10 max-w-[90rem] mx-auto px-6 pt-40 pb-20 w-full grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           <motion.div initial={{ opacity: 0, x: -30 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.8 }}>
             <div className="inline-flex items-center gap-2 bg-primary/15 border border-primary/25 rounded-full px-4 py-1.5 mb-6">
-              <Calendar className="w-3.5 h-3.5 text-primary" />
+              <Quote className="w-3.5 h-3.5 text-primary" aria-hidden="true" />
               <span className="font-sans text-xs font-semibold text-primary tracking-wide">WHAT OUR CLIENTS SAY</span>
             </div>
             <h1 className="font-serif text-4xl md:text-5xl lg:text-[3.5rem] font-bold mb-6 leading-[1.15] text-white">
@@ -140,9 +150,17 @@ const AboutTestimonials = () => {
               <span className="text-primary">Real Homeowners</span>
             </h1>
             <p className="font-sans text-[15px] text-white/75 leading-relaxed max-w-lg mb-8">
-            Do not take our word for it. Hear from Thousand Oaks, Westlake Village, and Conejo Valley homeowners who have worked with Mier & Murphy Builders firsthand.
+              Do not take our word for it. Hear from homeowners and business owners across Southern
+              California, from Thousand Oaks to Los Angeles, who have worked with Mier & Murphy Builders
+              firsthand.
             </p>
-        
+            <a
+              href="tel:+18059989082"
+              className="inline-flex items-center gap-2 text-white font-sans text-sm font-semibold hover:text-primary transition-colors"
+            >
+              <Phone className="w-4 h-4 text-primary" aria-hidden="true" />
+              Call (805) 998-9082
+            </a>
           </motion.div>
 
           <LeadCaptureForm variant="full" />
@@ -165,33 +183,36 @@ const AboutTestimonials = () => {
           <ScrollReveal>
             <p className="font-sans text-xs tracking-[0.4em] text-primary uppercase text-center mb-3 font-semibold">Real Reviews from Real Homeowners</p>
             <h2 className="font-serif text-3xl md:text-4xl text-center font-bold mb-4 text-white">
-              Trusted by <span className="text-primary">Conejo Valley Homeowners</span>
+              Trusted by <span className="text-primary">Southern California Clients</span>
             </h2>
             <p className="font-sans text-sm text-white/50 text-center max-w-xl mx-auto mb-14">
-              Every review represents a family whose home we've transformed with care, precision, and dedication.
+              Remodels, repairs, water damage restoration, and a commercial build-out, in our clients' own words.
             </p>
           </ScrollReveal>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {testimonials.map((testimonial, i) => (
-              <ScrollReveal key={testimonial.author} delay={i * 0.1}>
+              <ScrollReveal key={`${testimonial.author}-${i}`} delay={Math.min(i % 2, 1) * 0.1}>
                 <div className="group bg-white/[0.06] border border-white/10 rounded-2xl p-7 h-full flex flex-col hover:bg-white/[0.1] hover:border-primary/30 transition-all duration-300">
-                  <div className="flex items-center gap-1 mb-4">
+                  <div
+                    className="flex items-center gap-1 mb-4"
+                    role="img"
+                    aria-label={`${testimonial.rating} out of 5 stars`}
+                  >
                     {Array.from({ length: testimonial.rating }).map((_, j) => (
-                      <Star key={j} className="w-4 h-4 text-primary fill-primary" />
+                      <Star key={j} className="w-4 h-4 text-primary fill-primary" aria-hidden="true" />
                     ))}
                   </div>
-                  <Quote className="w-8 h-8 text-primary/20 mb-3" />
-                  <p className="font-sans text-sm text-white/70 leading-relaxed mb-6 flex-1 italic">
-                    "{testimonial.quote}"
-                  </p>
+                  <Quote className="w-8 h-8 text-primary/20 mb-3" aria-hidden="true" />
+                  <blockquote className="font-sans text-sm text-white/70 leading-relaxed mb-6 flex-1 italic">
+                    <p>"{testimonial.quote}"</p>
+                  </blockquote>
                   <div className="border-t border-white/10 pt-4">
                     <p className="font-serif text-sm font-bold text-white">{testimonial.author}</p>
                     <div className="flex items-center gap-1 mt-1">
-                      <MapPin className="w-3 h-3 text-primary" />
+                      <MapPin className="w-3 h-3 text-primary" aria-hidden="true" />
                       <span className="font-sans text-xs text-white/50">{testimonial.location}</span>
                     </div>
-                  
                   </div>
                 </div>
               </ScrollReveal>
@@ -211,10 +232,8 @@ const AboutTestimonials = () => {
           <ScrollReveal>
             <p className="font-sans text-xs tracking-[0.4em] text-primary uppercase text-center mb-3 font-semibold">The Mier & Murphy Difference</p>
             <h2 className="font-serif text-3xl md:text-4xl text-center font-bold mb-4 text-foreground">
-              Why Conejo Valley Homeowners <span className="text-primary">Choose Us</span>
-
+              Why Clients <span className="text-primary">Choose Us</span>
             </h2>
-            
             <div className="gold-divider mb-12" />
           </ScrollReveal>
 
@@ -227,12 +246,11 @@ const AboutTestimonials = () => {
               "Free in-home estimates for all services",
               "Licensed California contractor, CA Lic. #1077044",
               "One team from remediation through rebuild",
-              "HOA-experienced on balcony and deck projects,"
-              
+              "HOA-experienced on balcony and deck projects",
             ].map((item, i) => (
-              <ScrollReveal key={item} delay={i * 0.05}>
+              <ScrollReveal key={item} delay={Math.min(i, 3) * 0.05}>
                 <div className="flex items-center gap-3 p-4 bg-background border border-border rounded-2xl hover:shadow-md hover:border-primary/20 transition-all duration-300">
-                  <CheckCircle className="w-5 h-5 text-primary flex-shrink-0" />
+                  <CheckCircle className="w-5 h-5 text-primary flex-shrink-0" aria-hidden="true" />
                   <span className="font-sans text-sm text-foreground/80">{item}</span>
                 </div>
               </ScrollReveal>
@@ -247,10 +265,10 @@ const AboutTestimonials = () => {
           <ScrollReveal>
             <div className="gold-divider mb-8" />
             <h2 className="font-serif text-3xl md:text-4xl font-bold mb-4 text-white">
-            Work With a <span className="text-primary">Family-Owned Contracto</span> You Can Trust
+            Work With a <span className="text-primary">Family-Owned Contractor</span> You Can Trust
             </h2>
             <p className="font-sans text-[15px] text-white/60 mb-10 max-w-xl mx-auto leading-relaxed">
-            Experience the honest work, real certifications, and family name that have made Mier & Murphy Builders a trusted contractor in Thousand Oaks and the Conejo Valley for two decades of building experience.
+            Honest work, a family name on every job, and 20 years of building experience. Tell us about your project and we will prepare a free estimate.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link

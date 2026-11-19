@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { Link, useLoaderData } from "react-router-dom";
 import {
   Calendar,
@@ -27,11 +26,13 @@ import {
   AvatarFallback,
   AvatarImage,
 } from "@/components/ui/avatar";
+import fallbackSocialImage from "@/assets/hero-craftsmanship.jpg";
+import logoImage from "@/assets/mier-logo.webp";
 
 const SITE_URL = "https://www.mierandmurphybuilders.com";
 
 type BlogPostLoaderData = {
-  post: BlogPostType;
+  post: BlogPostType & { _updatedAt?: string };
   relatedPosts: BlogPostSummary[];
 };
 
@@ -42,6 +43,8 @@ const formatDate = (dateString?: string) => {
     year: "numeric",
     month: "short",
     day: "numeric",
+    // Fixed time zone so the prerendered date matches what the browser shows.
+    timeZone: "UTC",
   });
 };
 
@@ -91,16 +94,29 @@ const portableTextComponents: PortableTextComponents = {
   },
 
   marks: {
-    link: ({ children, value }) => (
-      <a
-        href={value?.href}
-        target="_blank"
-        rel="noopener noreferrer"
-        className="text-primary underline hover:text-primary/80"
-      >
-        {children}
-      </a>
-    ),
+    link: ({ children, value }) => {
+      const href: string = value?.href || "";
+      const isExternal =
+        /^https?:\/\//i.test(href) && !href.includes("mierandmurphybuilders.com");
+
+      if (href.startsWith("/")) {
+        return (
+          <Link to={href} className="text-primary underline hover:text-primary/80">
+            {children}
+          </Link>
+        );
+      }
+
+      return (
+        <a
+          href={href}
+          {...(isExternal ? { target: "_blank", rel: "noopener noreferrer" } : {})}
+          className="text-primary underline hover:text-primary/80"
+        >
+          {children}
+        </a>
+      );
+    },
     strong: ({ children }) => (
       <strong className="font-bold text-foreground">{children}</strong>
     ),
@@ -144,7 +160,7 @@ const RelatedPostCard = ({ post }: { post: BlogPostSummary }) => {
         {imageUrl ? (
           <img
             src={imageUrl}
-            alt={post.mainImage?.alt || post.title}
+            alt=""
             className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
             loading="lazy"
           />
@@ -172,8 +188,6 @@ const BlogPost = () => {
   const { post, relatedPosts } =
     useLoaderData() as BlogPostLoaderData;
 
-  const [comment, setComment] = useState("");
-
   const pageUrl = `${SITE_URL}/blog/${post.slug}`;
 
   const pageTitle =
@@ -182,11 +196,11 @@ const BlogPost = () => {
   const pageDescription =
     post.seo?.description ||
     post.excerpt ||
-    "Expert home renovation, restoration, and craftsmanship insights from Mier & Murphy Builders.";
+    "Remodeling, restoration, and home repair advice from Mier & Murphy Builders, a family-owned contractor in Thousand Oaks, CA.";
 
   const socialImage =
     sanityImageUrl(post.seo?.image || post.mainImage, 1200) ||
-    `${SITE_URL}/hero-craftsmanship.jpg`;
+    `${SITE_URL}${fallbackSocialImage}`;
 
   const socialImageAlt =
     post.seo?.image?.alt ||
@@ -202,10 +216,8 @@ const BlogPost = () => {
   const authorImageUrl = sanityImageUrl(post.author?.image, 100);
   const readingTime = estimateReadingTime(post.body);
 
-  const shareUrl =
-    typeof window !== "undefined"
-      ? window.location.href
-      : pageUrl;
+  // Always share the clean canonical URL (no query strings or tracking tags).
+  const shareUrl = pageUrl;
 
   const shareLinks = {
     facebook: `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(
@@ -231,20 +243,31 @@ const BlogPost = () => {
     url: pageUrl,
     image: socialImage,
     datePublished: post.publishedAt,
-    dateModified: post.publishedAt,
+    dateModified: post._updatedAt || post.publishedAt,
     author: {
       "@type": "Person",
       name: post.author?.name || "Mier & Murphy Builders",
     },
     publisher: {
       "@type": "Organization",
+      "@id": `${SITE_URL}/#organization`,
       name: "Mier & Murphy Builders",
-      url: SITE_URL,
+      url: `${SITE_URL}/`,
       logo: {
         "@type": "ImageObject",
-        url: `${SITE_URL}/logo.png`,
+        url: `${SITE_URL}${logoImage}`,
       },
     },
+  };
+
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Home", item: `${SITE_URL}/` },
+      { "@type": "ListItem", position: 2, name: "Blog", item: `${SITE_URL}/blog` },
+      { "@type": "ListItem", position: 3, name: post.title, item: pageUrl },
+    ],
   };
 
   const copyLink = async () => {
@@ -258,7 +281,7 @@ const BlogPost = () => {
 
   return (
     <>
-      <Helmet prioritizeSeoTags>
+      <Helmet>
         <title>{pageTitle}</title>
         <meta name="title" content={pageTitle} />
         <meta name="description" content={pageDescription} />
@@ -300,10 +323,21 @@ const BlogPost = () => {
         <script type="application/ld+json">
           {JSON.stringify(articleSchema)}
         </script>
+        <script type="application/ld+json">
+          {JSON.stringify(breadcrumbSchema)}
+        </script>
       </Helmet>
 
       <div className="pt-32 pb-20 bg-background">
         <div className="max-w-4xl mx-auto px-6">
+          <nav aria-label="Breadcrumb" className="mb-6 font-sans text-sm text-muted-foreground">
+            <Link to="/blog" className="hover:text-primary underline-offset-4 hover:underline">
+              Blog
+            </Link>
+            <span className="mx-2" aria-hidden="true">/</span>
+            <span aria-current="page" className="line-clamp-1 inline">{post.title}</span>
+          </nav>
+
           <ScrollReveal>
             <div className="flex items-center gap-3 mb-6">
               <Avatar className="h-9 w-9">
@@ -328,19 +362,19 @@ const BlogPost = () => {
 
                 {post.publishedAt && (
                   <>
-                    <span>·</span>
+                    <span aria-hidden="true">·</span>
 
                     <span className="flex items-center gap-1">
-                      <Calendar className="w-3.5 h-3.5" />
-                      {formatDate(post.publishedAt)}
+                      <Calendar className="w-3.5 h-3.5" aria-hidden="true" />
+                      <time dateTime={post.publishedAt}>{formatDate(post.publishedAt)}</time>
                     </span>
                   </>
                 )}
 
-                <span>·</span>
+                <span aria-hidden="true">·</span>
 
                 <span className="flex items-center gap-1">
-                  <Clock className="w-3.5 h-3.5" />
+                  <Clock className="w-3.5 h-3.5" aria-hidden="true" />
                   {readingTime} min read
                 </span>
               </div>
@@ -362,6 +396,7 @@ const BlogPost = () => {
                 alt={post.mainImage?.alt || post.title}
                 className="w-full rounded-xl mb-10"
                 loading="eager"
+                decoding="async"
               />
             )}
 
@@ -386,7 +421,7 @@ const BlogPost = () => {
                 aria-label="Share on Facebook"
                 className="w-8 h-8 flex items-center justify-center rounded-full bg-muted hover:bg-primary hover:text-primary-foreground transition-colors"
               >
-                <Facebook className="w-4 h-4" />
+                <Facebook className="w-4 h-4" aria-hidden="true" />
               </a>
 
               <a
@@ -396,7 +431,7 @@ const BlogPost = () => {
                 aria-label="Share on X"
                 className="w-8 h-8 flex items-center justify-center rounded-full bg-muted hover:bg-primary hover:text-primary-foreground transition-colors"
               >
-                <Twitter className="w-4 h-4" />
+                <Twitter className="w-4 h-4" aria-hidden="true" />
               </a>
 
               <a
@@ -406,7 +441,7 @@ const BlogPost = () => {
                 aria-label="Share on LinkedIn"
                 className="w-8 h-8 flex items-center justify-center rounded-full bg-muted hover:bg-primary hover:text-primary-foreground transition-colors"
               >
-                <Linkedin className="w-4 h-4" />
+                <Linkedin className="w-4 h-4" aria-hidden="true" />
               </a>
 
               <button
@@ -415,7 +450,7 @@ const BlogPost = () => {
                 aria-label="Copy link"
                 className="w-8 h-8 flex items-center justify-center rounded-full bg-muted hover:bg-primary hover:text-primary-foreground transition-colors"
               >
-                <Link2 className="w-4 h-4" />
+                <Link2 className="w-4 h-4" aria-hidden="true" />
               </button>
             </div>
 
@@ -441,7 +476,7 @@ const BlogPost = () => {
                     to="/blog"
                     className="font-sans text-sm font-semibold text-primary hover:text-primary/80"
                   >
-                    See All
+                    See All Articles
                   </Link>
                 </div>
 

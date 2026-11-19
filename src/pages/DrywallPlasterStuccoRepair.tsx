@@ -1,27 +1,26 @@
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { Helmet } from "react-helmet-async";
-import { ArrowRight, CheckCircle, Paintbrush, Award, Clock, Shield, Star, MapPin } from "lucide-react";
+import { ArrowRight, CheckCircle, Layers, Award, Search, Shield, Star, MapPin, Droplets } from "lucide-react";
 import ScrollReveal from "@/components/ScrollReveal";
 import ProcessTimeline from "@/components/ProcessTimeline";
 import LeadCaptureForm from "@/components/LeadCaptureForm";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import projectDrywall from "@/assets/drywall/drywall-hero.webp";
 import projectDrywallHero from "@/assets/drywall/drywall-main.webp";
-
-import iicrcFirmBadge from "@/assets/iicrc-firm-badge.png";
-import iicrcMoldBadge from "@/assets/iicrc-mold-badge.png";
-// TODO: replace with the actual IICRC certification badge asset — this currently
-// points at the same interior photo as `projectInterior`, so the "badge" renders a room photo.
-import iicrcBadge from "@/assets/iicrc-badge.avif";
+import ogImage from "@/assets/drywall/drywall-stucco-og.webp";
 
 const SITE_URL = "https://www.mierandmurphybuilders.com";
 const PAGE_URL = `${SITE_URL}/services/drywall-plaster-stucco-repair`;
-const OG_IMAGE = `${SITE_URL}/service-drywall-plaster-stucco-repair.jpg`;
+const OG_IMAGE = `${SITE_URL}${ogImage}`;
+const OG_IMAGE_ALT = "Contractor troweling a stucco patch to match the existing wall texture";
 
-const PAGE_TITLE = "Drywall, Plaster & Stucco Repair | Mier & Murphy Builders";
+const PAGE_TITLE = "Drywall & Stucco Repair in Thousand Oaks, CA | Mier & Murphy";
 const PAGE_DESCRIPTION =
-  "Expert drywall, Venetian plaster, and stucco repair in Thousand Oaks and Westlake Village. Quality finish and restoration by Mier & Murphy Builders.";
+  "Drywall, plaster, and stucco repair in Thousand Oaks and Ventura County, matched to your existing texture and color. Free estimates. CA Lic. #1077044.";
+
+const PHONE_HREF = "tel:+18059989082";
+const PHONE_DISPLAY = "(805) 998-9082";
 
 const areasServed = [
   "Thousand Oaks",
@@ -58,7 +57,7 @@ const faqs = [
   },
   {
     q: "What areas do you serve?",
-    a: "Thousand Oaks, Westlake Village, Simi Valley, Moorpark, Oak Park, Agoura Hills, and the surrounding Conejo Valley.",
+    a: "Thousand Oaks, Westlake Village, Newbury Park, Simi Valley, Moorpark, Oak Park, Agoura Hills, Camarillo, and the rest of Ventura County.",
   },
 ];
 
@@ -96,14 +95,14 @@ const finishes = [
   { title: "Lace / Skip Trowel", desc: "Hand-troweled texture matched to the surrounding surface." },
   { title: "Dash Texture", desc: "Traditional dash-coat stucco texture repair and matching." },
   { title: "Color Matching", desc: "Blending repaired sections into surrounding stucco color." },
-  { title: "Venetian Plaster", desc: "Decorative plaster finishes for homeowners who want them." },
+  { title: "Plaster Wall Repair", desc: "Cracked or damaged plaster walls patched and blended into the surrounding surface." },
 ];
 
-// JSON-LD: Service (name/description now match the page's actual subject matter)
+// JSON-LD: Service
 const serviceSchema = {
   "@context": "https://schema.org",
   "@type": "Service",
-  "@id": `${PAGE_URL}/#service`,
+  "@id": `${PAGE_URL}#service`,
   name: "Drywall, Plaster & Stucco Repair",
   serviceType: "Drywall, Plaster, and Stucco Repair",
   description: PAGE_DESCRIPTION,
@@ -113,7 +112,7 @@ const serviceSchema = {
     "@id": `${SITE_URL}/#organization`,
     name: "Mier & Murphy Builders",
     telephone: "+18059989082",
-    url: SITE_URL,
+    url: `${SITE_URL}/`,
     address: {
       "@type": "PostalAddress",
       addressLocality: "Thousand Oaks",
@@ -153,9 +152,8 @@ const breadcrumbSchema = {
   "@context": "https://schema.org",
   "@type": "BreadcrumbList",
   itemListElement: [
-    { "@type": "ListItem", position: 1, name: "Home", item: SITE_URL },
-    { "@type": "ListItem", position: 2, name: "Services", item: `${SITE_URL}/services` },
-    { "@type": "ListItem", position: 3, name: "Drywall, Plaster & Stucco Repair", item: PAGE_URL },
+    { "@type": "ListItem", position: 1, name: "Home", item: `${SITE_URL}/` },
+    { "@type": "ListItem", position: 2, name: "Drywall, Plaster & Stucco Repair", item: PAGE_URL },
   ],
 };
 
@@ -167,7 +165,6 @@ const DrywallPlasterStuccoRepair = () => {
         <title>{PAGE_TITLE}</title>
         <meta name="title" content={PAGE_TITLE} />
         <meta name="description" content={PAGE_DESCRIPTION} />
-        
         <meta name="author" content="Mier & Murphy Builders" />
         <meta name="robots" content="index, follow" />
         <link rel="canonical" href={PAGE_URL} />
@@ -184,7 +181,10 @@ const DrywallPlasterStuccoRepair = () => {
         <meta property="og:title" content={PAGE_TITLE} />
         <meta property="og:description" content={PAGE_DESCRIPTION} />
         <meta property="og:image" content={OG_IMAGE} />
-        <meta property="og:image:alt" content="Seamless stucco and drywall repair in Thousand Oaks, CA" />
+        <meta property="og:image:type" content="image/webp" />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+        <meta property="og:image:alt" content={OG_IMAGE_ALT} />
         <meta property="og:site_name" content="Mier & Murphy Builders" />
         <meta property="og:locale" content="en_US" />
 
@@ -194,6 +194,7 @@ const DrywallPlasterStuccoRepair = () => {
         <meta name="twitter:title" content={PAGE_TITLE} />
         <meta name="twitter:description" content={PAGE_DESCRIPTION} />
         <meta name="twitter:image" content={OG_IMAGE} />
+        <meta name="twitter:image:alt" content={OG_IMAGE_ALT} />
 
         {/* Structured data */}
         <script type="application/ld+json">{JSON.stringify(serviceSchema)}</script>
@@ -204,21 +205,21 @@ const DrywallPlasterStuccoRepair = () => {
       {/* HERO */}
       <section className="relative min-h-[85vh] flex items-center overflow-hidden">
         <div className="absolute inset-0">
-          <img src={projectDrywall} alt="Luxury interior plaster finish in a Thousand Oaks estate" className="w-full h-full object-cover" />
+          <img src={projectDrywall} alt="" aria-hidden="true" className="w-full h-full object-cover" loading="eager" />
           <div className="absolute inset-0 bg-gradient-to-r from-[hsl(220,20%,12%)]/95 via-[hsl(220,20%,12%)]/80 to-[hsl(220,20%,12%)]/60" />
         </div>
         <div className="relative z-10 max-w-[90rem] mx-auto px-6 pt-40 pb-20 w-full grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           <motion.div initial={{ opacity: 0, x: -30 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.8 }}>
             <div className="inline-flex items-center gap-2 bg-primary/15 border border-primary/25 rounded-full px-4 py-1.5 mb-6">
-              <Paintbrush className="w-3.5 h-3.5 text-primary" />
+              <Layers className="w-3.5 h-3.5 text-primary" aria-hidden="true" />
               <span className="font-sans text-xs font-semibold text-primary tracking-wide">REPAIRS THAT BLEND IN</span>
             </div>
             <h1 className="font-serif text-4xl md:text-5xl lg:text-[3.5rem] font-bold mb-6 leading-[1.15] text-white">
-            Seamless  <span className="text-primary">Drywall, Plaster and Stucco Repair</span> in Thousand Oaks
+              Seamless <span className="text-primary">Drywall, Plaster and Stucco Repair</span> in Thousand Oaks
             </h1>
             <p className="font-sans text-[15px] text-white/75 leading-relaxed max-w-lg">
-            Drywall, plaster, and stucco repair for homeowners in Thousand Oaks, Westlake Village, and Simi Valley,
-             matched to your existing finish so the repair disappears into the wall.
+              Drywall, plaster, and stucco repair for homeowners in Thousand Oaks, Westlake Village, and Simi Valley,
+              matched to your existing finish so the repair blends into the wall.
             </p>
           </motion.div>
           <LeadCaptureForm variant="full" />
@@ -228,10 +229,10 @@ const DrywallPlasterStuccoRepair = () => {
       <section className="py-6 bg-background">
         <div className="max-w-6xl mx-auto px-6">
           <div className="flex flex-wrap items-center justify-center gap-3">
-            <span className="trust-badge"><CheckCircle className="w-4 h-4" /> 20 Years of Building Experience</span>
-            <span className="trust-badge"><CheckCircle className="w-4 h-4" /> Family Owned & Operated</span>
-            <span className="trust-badge"><CheckCircle className="w-4 h-4" /> IICRC S500 & S520 Certified</span>
-            <span className="trust-badge"><CheckCircle className="w-4 h-4" /> CA Lic. #1077044</span>
+            <span className="trust-badge"><CheckCircle className="w-4 h-4" aria-hidden="true" /> 20 Years of Building Experience</span>
+            <span className="trust-badge"><CheckCircle className="w-4 h-4" aria-hidden="true" /> Family Owned & Operated</span>
+            <span className="trust-badge"><CheckCircle className="w-4 h-4" aria-hidden="true" /> Interior & Exterior Repairs</span>
+            <span className="trust-badge"><CheckCircle className="w-4 h-4" aria-hidden="true" /> CA Lic. #1077044</span>
           </div>
         </div>
       </section>
@@ -242,7 +243,7 @@ const DrywallPlasterStuccoRepair = () => {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
             <ScrollReveal direction="left">
               <div>
-              <div className="inline-flex items-center gap-2 bg-primary/15  px-4 py-1.5 mb-6">              
+              <div className="inline-flex items-center gap-2 bg-primary/15 px-4 py-1.5 mb-6">
               <span className="font-sans text-xs font-semibold text-primary tracking-[0.4em]">REPAIRS DONE RIGHT</span>
             </div>
                 <h2 className="font-serif text-3xl md:text-4xl font-bold mb-6">
@@ -260,7 +261,7 @@ const DrywallPlasterStuccoRepair = () => {
                 We handle repairs of every size, from a single drywall patch to larger stucco sections, and we will tell you honestly if what you are seeing points to a bigger issue worth inspecting.
                 </p>
 
-                <h3 className="font-serif text-xl font-bold mb-4 text-foreground">Our Drywall, Plaster, and Stucco Repair Services:</h3>
+                <h3 className="font-serif text-xl font-bold mb-4 text-foreground">Our Drywall, Plaster, and Stucco Repair Services</h3>
                 <ul className="space-y-3 mb-8">
                   {[
                         "Drywall repair and patching",
@@ -268,11 +269,10 @@ const DrywallPlasterStuccoRepair = () => {
                         "Stucco color matching",
                         "Interior and exterior texture matching",
                         "Water-damaged drywall replacement",
-                        "Venetian plaster and decorative finishes",
-
+                        "Plaster wall crack and patch repair",
                   ].map((f) => (
                     <li key={f} className="flex items-center gap-3">
-                      <CheckCircle className="w-4 h-4 text-primary flex-shrink-0" />
+                      <CheckCircle className="w-4 h-4 text-primary flex-shrink-0" aria-hidden="true" />
                       <span className="font-sans text-sm text-foreground/80">{f}</span>
                     </li>
                   ))}
@@ -283,7 +283,7 @@ const DrywallPlasterStuccoRepair = () => {
                   className="inline-flex items-center gap-2 bg-primary text-primary-foreground px-8 py-3 rounded-lg font-sans text-sm font-semibold hover:bg-primary/90 transition-all duration-300 group"
                 >
                   Request a Free Estimate
-                  <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                  <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" aria-hidden="true" />
                 </Link>
               </div>
             </ScrollReveal>
@@ -292,41 +292,27 @@ const DrywallPlasterStuccoRepair = () => {
               <div className="luxury-card overflow-hidden">
                 <img
                   src={projectDrywallHero}
-                  alt="Premium Venetian plaster application in Westlake Village home"
+                  alt="Contractor troweling a stucco patch to match the existing wall texture"
                   className="w-full h-80 lg:h-[500px] object-cover"
                   loading="lazy"
                 />
               </div>
-              <div className="mt-8 glass ">
-              <div className="bg-[#f9f9f6] border border-gray-200 rounded-2xl p-4 mb-2 shadow-sm flex flex-col sm:flex-row items-center gap-6 text-center sm:text-left">
-            <img 
-              src={iicrcFirmBadge}
-              alt="IICRC Certified Firm badge" 
-              className="w-24 h-24 object-contain shrink-0" 
-            />
-            <div className="space-y-2">
-             
-              <h3 className="font-playfair text-2xl font-bold text-gray-900">IICRC Firm</h3>
-              <p className="text-sm text-gray-600 leading-relaxed">
-                A professional cleaning, restoration, or inspection company that is certified by the IICRC. Technicians who work for the firm have completed IICRC training and certification courses.
-              </p>
-            </div>
-          </div>
-
-          <div className="bg-[#f9f9f6] border border-gray-200 rounded-2xl p-4 shadow-sm flex flex-col sm:flex-row items-center gap-6 text-center sm:text-left">
-            <img 
-              src={iicrcMoldBadge}
-              alt="IICRC Mold Certified badge" 
-              className="w-24 h-24 object-contain shrink-0" 
-            />
-            <div className="space-y-2">
-              
-              <h3 className="font-playfair text-2xl font-bold text-gray-900">IICRC Mold</h3>
-              <p className="text-sm text-gray-600 leading-relaxed">
-                A technician or firm that is certified in mold remediation by IICRC.
-              </p>
-            </div>
-          </div>
+              <div className="mt-8 bg-[#f9f9f6] border border-gray-200 rounded-2xl p-6 shadow-sm flex flex-col sm:flex-row items-center gap-5 text-center sm:text-left">
+                <div className="inline-flex items-center justify-center w-14 h-14 rounded-full bg-primary/10 shrink-0">
+                  <Droplets className="w-6 h-6 text-primary" aria-hidden="true" />
+                </div>
+                <div className="space-y-2">
+                  <h3 className="font-serif text-xl font-bold text-gray-900">Drywall Damaged by a Leak?</h3>
+                  <p className="text-sm text-gray-600 leading-relaxed">
+                    Wet drywall needs to be dried and checked for mold before it is patched, or the damage comes back.
+                  </p>
+                  <Link
+                    to="/services/water-damage-mold-remediation"
+                    className="inline-flex items-center gap-1 text-sm font-semibold text-primary hover:gap-2 transition-all"
+                  >
+                    Water damage and mold remediation <ArrowRight className="w-4 h-4" aria-hidden="true" />
+                  </Link>
+                </div>
               </div>
             </ScrollReveal>
           </div>
@@ -363,13 +349,13 @@ const DrywallPlasterStuccoRepair = () => {
             {[
               { icon: Award, title: "Seamless Matching", desc: "We match texture and color so the repair does not stand out as a patch." },
               { icon: Shield, title: "Any Size Job", desc: "From a single patch to large stucco sections, no job too small." },
-              { icon: Clock, title: "Honest Assessment ", desc: "We tell you if a crack points to a bigger moisture or structural issue." },
+              { icon: Search, title: "Honest Assessment", desc: "We tell you if a crack points to a bigger moisture or structural issue." },
               { icon: Star, title: "20 Years of Experience", desc: "Two decades of drywall, plaster, and stucco work across the Conejo Valley." },
             ].map((item) => (
               <ScrollReveal key={item.title}>
                 <div className="bg-background border border-border rounded-2xl p-6 text-center h-full hover:shadow-md hover:border-primary/20 transition-all duration-300">
                   <div className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-primary/10 mb-4">
-                    <item.icon className="w-5 h-5 text-primary" />
+                    <item.icon className="w-5 h-5 text-primary" aria-hidden="true" />
                   </div>
                   <h3 className="font-serif text-lg font-bold mb-3 text-foreground">{item.title}</h3>
                   <p className="font-sans text-sm text-muted-foreground leading-relaxed">{item.desc}</p>
@@ -389,10 +375,10 @@ const DrywallPlasterStuccoRepair = () => {
 
 
                <h2 className="font-serif text-3xl md:text-4xl font-bold mb-4 text-white">
-               Wall Finishes and Textures <span className="text-primary">We Match Perfectly</span>
+               Wall Finishes and Textures <span className="text-primary">We Match</span>
               </h2>
                  <p className="font-sans text-sm text-white/50 max-w-2xl mx-auto leading-relaxed">
-                 Southern California homes use a wide range of wall finishes. We match the exact one you already have so your repair is completely invisible.
+                 Southern California homes use a wide range of wall finishes. We match the one you already have so your repair blends into the surrounding wall.
               </p>
             </div>
           </ScrollReveal>
@@ -419,17 +405,22 @@ const DrywallPlasterStuccoRepair = () => {
               Repair Contractors <span className="text-primary">Near You in Ventura County</span>
               </h2>
               <p className="font-sans text-sm text-muted-foreground max-w-2xl mx-auto leading-relaxed">
-              We serve homeowners across Thousand Oaks and the surrounding Conejo Valley, matching repairs to the wall finishes common throughout the area.
+              We serve homeowners across Thousand Oaks, the Conejo Valley, and Ventura County, matching repairs to the wall finishes common throughout the area.
               </p>
             </div>
           </ScrollReveal>
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
             {areasServed.map((area) => (
               <div key={area} className="flex items-center gap-2 bg-background border border-border rounded-lg p-3">
-                <MapPin className="w-3.5 h-3.5 text-primary flex-shrink-0" />
+                <MapPin className="w-3.5 h-3.5 text-primary flex-shrink-0" aria-hidden="true" />
                 <span className="font-sans text-xs text-foreground/80">{area}</span>
               </div>
             ))}
+          </div>
+          <div className="text-center mt-8">
+            <Link to="/areas" className="inline-flex items-center gap-1 font-sans text-sm font-semibold text-primary hover:gap-2 transition-all">
+              See all service areas <ArrowRight className="w-4 h-4" aria-hidden="true" />
+            </Link>
           </div>
         </div>
       </section>
@@ -443,20 +434,20 @@ const DrywallPlasterStuccoRepair = () => {
             Get Your Drywall or Stucco <span className="text-primary">Repair Estimated</span>
             </h2>
             <p className="font-sans text-[15px] text-white/60 max-w-2xl mx-auto leading-relaxed mb-8">
-            Send us a photo of what needs repair or schedule a free estimate, and we will tell you exactly what it takes to fix it.
+            Send us a photo of what needs repair or schedule a free estimate, and we will tell you what it takes to fix it.
             </p>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
               <Link
                 to="/contact"
                 className="bg-primary text-primary-foreground px-8 py-4 rounded-xl font-sans text-sm font-bold hover:bg-primary/90 transition-all duration-300 shadow-lg"
               >
-                Get Your Free Estimate
+                Get a Free Estimate
               </Link>
               <a
-                href="tel:+18059989082"
+                href={PHONE_HREF}
                 className="border-2 border-white/20 text-white px-8 py-4 rounded-xl font-sans text-sm font-semibold hover:bg-white/10 transition-all duration-300"
               >
-                Call (805) 998-9082
+                Call {PHONE_DISPLAY}
               </a>
             </div>
           </ScrollReveal>
@@ -473,7 +464,8 @@ const DrywallPlasterStuccoRepair = () => {
               Drywall, Plaster & Stucco <span className="text-primary">Repair FAQ</span>
               </h2>
               <p className="font-sans text-sm text-muted-foreground max-w-xl mx-auto leading-relaxed mt-4">
-               Answers to the questions homeowners ask most about drywall, plaster, and stucco repair, and how we match it to your existing finish.</p>
+               Answers to the questions homeowners ask most about drywall, plaster, and stucco repair, and how we match it to your existing finish.
+              </p>
             </div>
           </ScrollReveal>
           <Accordion type="single" collapsible className="space-y-4">

@@ -1,28 +1,40 @@
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { Helmet } from "react-helmet-async";
-import { ArrowRight, CheckCircle, Paintbrush, Award, Clock, Shield, Star, MapPin } from "lucide-react";
+import { ArrowRight, CheckCircle, Bath, Award, FileCheck, Shield, Star, MapPin } from "lucide-react";
 import ScrollReveal from "@/components/ScrollReveal";
 import ProcessTimeline from "@/components/ProcessTimeline";
 import LeadCaptureForm from "@/components/LeadCaptureForm";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import projectKC from "@/assets/btkc/kc-hero.webp";
 import projectKcmain from "@/assets/btkc/kc-main-1.webp";
-// TODO: replace with the actual IICRC certification badge asset — this currently
-// points at the same interior photo as `projectInterior`, so the "badge" renders a room photo.
-import iicrcBadge from "@/assets/iicrc-badge.avif";
-
-
-import iicrcFirmBadge from "@/assets/iicrc-firm-badge.png";
-import iicrcMoldBadge from "@/assets/iicrc-mold-badge.png";
+import ogImage from "@/assets/btkc/bathroom-kitchen-og.webp";
+import condoProject from "@/assets/condo-retreat/condo-retreat-hero.avif";
+import ranchProject from "@/assets/ranch/ranch-hero.avif";
 
 const SITE_URL = "https://www.mierandmurphybuilders.com";
 const PAGE_URL = `${SITE_URL}/services/bathroom-kitchen-remodeling`;
-const OG_IMAGE = `${SITE_URL}/service-bathroom-kitchen-remodeling.jpg`;
+const OG_IMAGE = `${SITE_URL}${ogImage}`;
+const OG_IMAGE_ALT = "Remodeled bathroom with a glass walk-in shower and freestanding tub";
 
-const PAGE_TITLE = "Kitchen & Bathroom Remodeling | Mier & Murphy Builders";
+const PAGE_TITLE = "Bathroom & Kitchen Remodeling Thousand Oaks | Mier & Murphy";
 const PAGE_DESCRIPTION =
-  "Transform your kitchen and bathroom with Mier & Murphy Builders. Premier remodeling contractors serving Thousand Oaks and Ventura County.";
+  "Bathroom and kitchen remodeling in Thousand Oaks and Ventura County from a family-owned contractor. Free in-home estimates, permits handled. CA Lic. #1077044.";
+
+const recentProjects = [
+  {
+    title: "Los Angeles Condo Remodel",
+    desc: "Two bathrooms fully renovated, plus new kitchen countertops and backsplash tile.",
+    image: condoProject,
+    href: "/projects/condo-retreat",
+  },
+  {
+    title: "Porter Ranch Home Renovation",
+    desc: "New bathrooms, a remodeled kitchen, a walk-in closet, and a rebuilt staircase.",
+    image: ranchProject,
+    href: "/projects/ranch",
+  },
+];
 
 const areasServed = [
   "Thousand Oaks",
@@ -63,7 +75,7 @@ const faqs = [
     },
     {
       q: "What areas do you serve?",
-      a: "Thousand Oaks, Westlake Village, Simi Valley, Moorpark, Oak Park, Agoura Hills, and the surrounding Conejo Valley.",
+      a: "Thousand Oaks, Westlake Village, Newbury Park, Simi Valley, Moorpark, Oak Park, Agoura Hills, Camarillo, and the rest of Ventura County.",
     },
   ];
 
@@ -88,7 +100,7 @@ const finishes = [
 const serviceSchema = {
   "@context": "https://schema.org",
   "@type": "Service",
-  "@id": `${PAGE_URL}/#service`,
+  "@id": `${PAGE_URL}#service`,
   name: "Bathroom & Kitchen Remodeling",
   serviceType: "Bathroom and Kitchen Remodeling",
   description: PAGE_DESCRIPTION,
@@ -98,7 +110,7 @@ const serviceSchema = {
     "@id": `${SITE_URL}/#organization`,
     name: "Mier & Murphy Builders",
     telephone: "+18059989082",
-    url: SITE_URL,
+    url: `${SITE_URL}/`,
     address: {
       "@type": "PostalAddress",
       addressLocality: "Thousand Oaks",
@@ -138,9 +150,8 @@ const breadcrumbSchema = {
   "@context": "https://schema.org",
   "@type": "BreadcrumbList",
   itemListElement: [
-    { "@type": "ListItem", position: 1, name: "Home", item: SITE_URL },
-    { "@type": "ListItem", position: 2, name: "Services", item: `${SITE_URL}/services` },
-    { "@type": "ListItem", position: 3, name: "Bathroom & Kitchen Remodeling", item: PAGE_URL },
+    { "@type": "ListItem", position: 1, name: "Home", item: `${SITE_URL}/` },
+    { "@type": "ListItem", position: 2, name: "Bathroom & Kitchen Remodeling", item: PAGE_URL },
   ],
 };
 
@@ -150,9 +161,9 @@ const ServiceBathroomKitchenRemodeling = () => {
       <Helmet>
         {/* Primary meta tags */}
         <title>{PAGE_TITLE}</title>
-        <meta name="title" content="Kitchen & Bathroom Remodeling | Mier & Murphy Builders" />
-        <meta name="description" content="Transform your kitchen and bathroom with Mier & Murphy Builders. Premier remodeling contractors serving Thousand Oaks and Ventura County." />
-        
+        <meta name="title" content={PAGE_TITLE} />
+        <meta name="description" content={PAGE_DESCRIPTION} />
+
         <meta name="author" content="Mier & Murphy Builders" />
         <meta name="robots" content="index, follow" />
         <link rel="canonical" href={PAGE_URL} />
@@ -169,7 +180,10 @@ const ServiceBathroomKitchenRemodeling = () => {
         <meta property="og:title" content={PAGE_TITLE} />
         <meta property="og:description" content={PAGE_DESCRIPTION} />
         <meta property="og:image" content={OG_IMAGE} />
-        <meta property="og:image:alt" content="Bathroom and kitchen remodeling project in Thousand Oaks, CA" />
+        <meta property="og:image:type" content="image/webp" />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+        <meta property="og:image:alt" content={OG_IMAGE_ALT} />
         <meta property="og:site_name" content="Mier & Murphy Builders" />
         <meta property="og:locale" content="en_US" />
 
@@ -179,6 +193,7 @@ const ServiceBathroomKitchenRemodeling = () => {
         <meta name="twitter:title" content={PAGE_TITLE} />
         <meta name="twitter:description" content={PAGE_DESCRIPTION} />
         <meta name="twitter:image" content={OG_IMAGE} />
+        <meta name="twitter:image:alt" content={OG_IMAGE_ALT} />
 
         {/* Structured data */}
         <script type="application/ld+json">{JSON.stringify(serviceSchema)}</script>
@@ -189,17 +204,17 @@ const ServiceBathroomKitchenRemodeling = () => {
       {/* HERO */}
       <section className="relative min-h-[85vh] flex items-center overflow-hidden">
         <div className="absolute inset-0">
-          <img src={projectKC} alt="Luxury interior plaster finish in a Thousand Oaks estate" className="w-full h-full object-cover" />
+          <img src={projectKC} alt="" aria-hidden="true" className="w-full h-full object-cover" loading="eager" />
           <div className="absolute inset-0 bg-gradient-to-r from-[hsl(220,20%,12%)]/95 via-[hsl(220,20%,12%)]/80 to-[hsl(220,20%,12%)]/60" />
         </div>
         <div className="relative z-10 max-w-[90rem] mx-auto px-6 pt-40 pb-20 w-full grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           <motion.div initial={{ opacity: 0, x: -30 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.8 }}>
             <div className="inline-flex items-center gap-2 bg-primary/15 border border-primary/25 rounded-full px-4 py-1.5 mb-6">
-              <Paintbrush className="w-3.5 h-3.5 text-primary" />
+              <Bath className="w-3.5 h-3.5 text-primary" aria-hidden="true" />
               <span className="font-sans text-xs font-semibold text-primary tracking-wide">FAMILY-OWNED REMODELING</span>
             </div>
             <h1 className="font-serif text-4xl md:text-5xl lg:text-[3.5rem] font-bold mb-6 leading-[1.15] text-white">
-            Expert <span className="text-primary">Bathroom and Kitchen Remodeling</span> in Thousand Oaks
+              <span className="text-primary">Bathroom and Kitchen Remodeling</span> in Thousand Oaks, CA
             </h1>
             <p className="font-sans text-[15px] text-white/75 leading-relaxed max-w-lg">
             Full bathroom and kitchen remodels for homeowners across Thousand Oaks, Westlake Village, and Simi Valley, with clear timelines, 
@@ -215,7 +230,7 @@ const ServiceBathroomKitchenRemodeling = () => {
           <div className="flex flex-wrap items-center justify-center gap-3">
             <span className="trust-badge"><CheckCircle className="w-4 h-4" /> 20 Years of Building Experience</span>
             <span className="trust-badge"><CheckCircle className="w-4 h-4" /> Family Owned & Operated</span>
-            <span className="trust-badge"><CheckCircle className="w-4 h-4" /> IICRC S500 & S520 Certified</span>
+            <span className="trust-badge"><CheckCircle className="w-4 h-4" /> Permits Handled for You</span>
             <span className="trust-badge"><CheckCircle className="w-4 h-4" /> CA Lic. #1077044</span>
           </div>
         </div>
@@ -227,8 +242,7 @@ const ServiceBathroomKitchenRemodeling = () => {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
             <ScrollReveal direction="left">
               <div>
-              <div className="inline-flex items-center gap-2 bg-primary/15  px-4 py-1.5 mb-6">
-              
+              <div className="inline-flex items-center gap-2 bg-primary/15 px-4 py-1.5 mb-6">
               <span className="font-sans text-xs font-semibold text-primary tracking-[0.4em]">BUILT FOR YOUR HOME</span>
             </div>
                 <h2 className="font-serif text-3xl md:text-4xl font-bold mb-6">
@@ -246,7 +260,7 @@ const ServiceBathroomKitchenRemodeling = () => {
                 From a single bathroom refresh to a full kitchen renovation with new layout, plumbing, and cabinetry, we scope every project to your home and your budget, not a one-size-fits-all package.
                 </p>
 
-                <h3 className="font-serif text-xl font-bold mb-4 text-foreground">Our Bathroom and Kitchen Remodeling Services:</h3>
+                <h3 className="font-serif text-xl font-bold mb-4 text-foreground">Our Bathroom and Kitchen Remodeling Services</h3>
                 <ul className="space-y-3 mb-8">
                   {[
                         "Full bathroom remodels",
@@ -255,11 +269,9 @@ const ServiceBathroomKitchenRemodeling = () => {
                         "Cabinet and countertop replacement",
                         "Tile, flooring, and finish work",
                         "Layout changes, plumbing, and electrical",
-                        
-
                   ].map((f) => (
                     <li key={f} className="flex items-center gap-3">
-                      <CheckCircle className="w-4 h-4 text-primary flex-shrink-0" />
+                      <CheckCircle className="w-4 h-4 text-primary flex-shrink-0" aria-hidden="true" />
                       <span className="font-sans text-sm text-foreground/80">{f}</span>
                     </li>
                   ))}
@@ -279,47 +291,44 @@ const ServiceBathroomKitchenRemodeling = () => {
               <div className="luxury-card overflow-hidden">
                 <img
                   src={projectKcmain}
-                  alt="Premium Venetian plaster application in Westlake Village home"
+                  alt="Tile installer setting large-format floor tile in a bathroom remodel"
                   className="w-full h-80 lg:h-[500px] object-cover"
                   loading="lazy"
                 />
               </div>
 
 
-              <div className="mt-8 glass ">
-              <div className="bg-[#f9f9f6] border border-gray-200 rounded-2xl p-4 mb-2 shadow-sm flex flex-col sm:flex-row items-center gap-6 text-center sm:text-left">
-            <img 
-              src={iicrcFirmBadge}
-              alt="IICRC Certified Firm badge" 
-              className="w-24 h-24 object-contain shrink-0" 
-            />
-            <div className="space-y-2">
-             
-              <h3 className="font-playfair text-2xl font-bold text-gray-900">IICRC Firm</h3>
-              <p className="text-sm text-gray-600 leading-relaxed">
-                A professional cleaning, restoration, or inspection company that is certified by the IICRC. Technicians who work for the firm have completed IICRC training and certification courses.
-              </p>
-            </div>
-          </div>
-
-          <div className="bg-[#f9f9f6] border border-gray-200 rounded-2xl p-4 shadow-sm flex flex-col sm:flex-row items-center gap-6 text-center sm:text-left">
-            <img 
-              src={iicrcMoldBadge}
-              alt="IICRC Mold Certified badge" 
-              className="w-24 h-24 object-contain shrink-0" 
-            />
-            <div className="space-y-2">
-              
-              <h3 className="font-playfair text-2xl font-bold text-gray-900">IICRC Mold</h3>
-              <p className="text-sm text-gray-600 leading-relaxed">
-                A technician or firm that is certified in mold remediation by IICRC.
-              </p>
-            </div>
-          </div>
+              <div className="mt-8 bg-[#f9f9f6] border border-gray-200 rounded-2xl p-6 shadow-sm">
+                <h3 className="font-serif text-2xl font-bold text-gray-900 mb-4">Recent Remodels</h3>
+                <div className="space-y-4">
+                  {recentProjects.map((project) => (
+                    <Link
+                      key={project.href}
+                      to={project.href}
+                      className="flex items-center gap-4 group"
+                    >
+                      <img
+                        src={project.image}
+                        alt=""
+                        className="w-24 h-20 rounded-xl object-cover shrink-0"
+                        loading="lazy"
+                      />
+                      <div>
+                        <p className="font-sans text-sm font-semibold text-gray-900 group-hover:text-primary transition-colors">
+                          {project.title}
+                        </p>
+                        <p className="font-sans text-sm text-gray-600 leading-relaxed">{project.desc}</p>
+                      </div>
+                    </Link>
+                  ))}
+                </div>
+                <Link
+                  to="/projects"
+                  className="inline-flex items-center gap-1 mt-5 font-sans text-sm font-semibold text-primary hover:gap-2 transition-all"
+                >
+                  See all projects <ArrowRight className="w-4 h-4" aria-hidden="true" />
+                </Link>
               </div>
-
-
-              
             </ScrollReveal>
           </div>
         </div>
@@ -329,8 +338,8 @@ const ServiceBathroomKitchenRemodeling = () => {
       <section className="section-padding" style={{ background: "hsl(220, 20%, 15%)" }}>
         <ProcessTimeline
           steps={process}
-          subheading=" OUR PROCESS"
-          heading={` How Your Remode \u00A0`}
+          subheading="OUR PROCESS"
+          heading={`How Your Remodel \u00A0`}
           headingHighlight="Comes Together, Step by Step"
           description="No surprises and no guessing. Every remodel follows the same clear five-step process, from your first free estimate to the final walkthrough together."
           variant="dark"
@@ -355,13 +364,13 @@ const ServiceBathroomKitchenRemodeling = () => {
             {[
               { icon: Award, title: "Family Owned & Operated", desc: "One point of contact from estimate to final walkthrough, never a rotating crew." },
               { icon: Shield, title: "Honest Timelines", desc: "We tell you how long it will take before we start, and we tell you early if anything changes." },
-              { icon: Clock, title: "Permits Handled", desc: " We manage the permitting and inspection process as part of your project." },
+              { icon: FileCheck, title: "Permits Handled", desc: "We manage the permitting and inspection process as part of your project." },
               { icon: Star, title: "20 Years of Experience", desc: "Two decades of building work behind every bathroom and kitchen we remodel." },
             ].map((item) => (
               <ScrollReveal key={item.title}>
                 <div className="bg-background border border-border rounded-2xl p-6 text-center h-full hover:shadow-md hover:border-primary/20 transition-all duration-300">
                   <div className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-primary/10 mb-4">
-                    <item.icon className="w-5 h-5 text-primary" />
+                    <item.icon className="w-5 h-5 text-primary" aria-hidden="true" />
                   </div>
                   <h3 className="font-serif text-lg font-bold mb-3 text-foreground">{item.title}</h3>
                   <p className="font-sans text-sm text-muted-foreground leading-relaxed">{item.desc}</p>
@@ -372,14 +381,14 @@ const ServiceBathroomKitchenRemodeling = () => {
         </div>
       </section>
 
-      {/* TYPES OF FINISHES */}
+      {/* REMODEL OPTIONS */}
       <section className="section-padding" style={{ background: "hsl(220, 20%, 15%)" }}>
         <div className="max-w-6xl mx-auto">
           <ScrollReveal>
             <div className="text-center mb-16">
               <p className="font-sans text-xs tracking-[0.4em] text-primary uppercase mb-4">REMODEL OPTIONS</p>
                <h2 className="font-serif text-3xl md:text-4xl font-bold mb-4 text-white">
-               Remodeling Projects We <span className="text-primary">Take On Every Day</span>
+               Bathroom and Kitchen <span className="text-primary">Projects We Take On</span>
               </h2>
                  <p className="font-sans text-sm text-white/50 max-w-2xl mx-auto leading-relaxed">
                  Whether you want a full renovation or a targeted upgrade, here are the bathroom and kitchen projects Conejo Valley homeowners hire us for most.
@@ -409,17 +418,22 @@ const ServiceBathroomKitchenRemodeling = () => {
               Remodeling Contractors <span className="text-primary">Near You in Ventura County</span>
               </h2>
               <p className="font-sans text-sm text-muted-foreground max-w-2xl mx-auto leading-relaxed">
-              We serve homeowners across Thousand Oaks and the surrounding Conejo Valley, bringing local knowledge of the homes and building codes in your area.
+              We serve homeowners across Thousand Oaks, the Conejo Valley, and Ventura County, with local knowledge of the homes and permit requirements in your area.
               </p>
             </div>
           </ScrollReveal>
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
             {areasServed.map((area) => (
               <div key={area} className="flex items-center gap-2 bg-background border border-border rounded-lg p-3">
-                <MapPin className="w-3.5 h-3.5 text-primary flex-shrink-0" />
+                <MapPin className="w-3.5 h-3.5 text-primary flex-shrink-0" aria-hidden="true" />
                 <span className="font-sans text-xs text-foreground/80">{area}</span>
               </div>
             ))}
+          </div>
+          <div className="text-center mt-8">
+            <Link to="/areas" className="inline-flex items-center gap-1 font-sans text-sm font-semibold text-primary hover:gap-2 transition-all">
+              See all service areas <ArrowRight className="w-4 h-4" aria-hidden="true" />
+            </Link>
           </div>
         </div>
       </section>
@@ -440,7 +454,7 @@ const ServiceBathroomKitchenRemodeling = () => {
                 to="/contact"
                 className="bg-primary text-primary-foreground px-8 py-4 rounded-xl font-sans text-sm font-bold hover:bg-primary/90 transition-all duration-300 shadow-lg"
               >
-                Get Your Free Estimate
+                Get a Free Estimate
               </Link>
               <a
                 href="tel:+18059989082"

@@ -4,6 +4,8 @@ import Navbar from "./Navbar";
 import Footer from "./Footer";
 import ScrollToTopButton from "./Scrolltotopbutton";
 
+const CHAT_WIDGET_ID = "6a4be675af4e62471825701c";
+
 const Layout = () => {
   const location = useLocation();
 
@@ -13,62 +15,62 @@ const Layout = () => {
     }
   }, []);
 
-  // Reset scroll to top on every route change. Uses two animation-frame
-  // passes since some layout/content (images, fonts, widgets) can still
-  // be settling after the immediate reset, which would otherwise leave
-  // the page scrolled slightly on the next paint.
+  // On every route change, scroll to the section named in the URL hash
+  // (for example /contact#iirc), or to the top of the page when there is
+  // none. Two animation-frame passes cover content that is still settling
+  // (images, fonts, widgets) after the first paint.
   useEffect(() => {
     document.body.style.overflow = "";
     document.documentElement.style.overflow = "";
 
-    const scrollTop = () => {
+    const hashId = location.hash ? decodeURIComponent(location.hash.slice(1)) : "";
+
+    const scrollToTarget = () => {
+      const target = hashId ? document.getElementById(hashId) : null;
+
+      if (target) {
+        target.scrollIntoView({ block: "start" });
+        return;
+      }
+
       window.scrollTo(0, 0);
       document.documentElement.scrollTop = 0;
       document.body.scrollTop = 0;
     };
 
-    scrollTop();
+    scrollToTarget();
 
-    requestAnimationFrame(() => {
-      scrollTop();
-      requestAnimationFrame(scrollTop);
+    const frame = requestAnimationFrame(() => {
+      scrollToTarget();
+      requestAnimationFrame(scrollToTarget);
     });
-  }, [location.pathname]);
 
-  // Defer the GoHighLevel chat widget until the browser is idle AND/OR
-  // the user shows intent to engage with the page (scroll/mouse/touch).
-  // This keeps it out of the critical path so it doesn't compete with
-  // hero content for bandwidth/main-thread time during initial load.
+    return () => cancelAnimationFrame(frame);
+  }, [location.pathname, location.hash]);
+
+  // Sends a GA4 event whenever a visitor taps any phone link on the site.
+  useEffect(() => {
+    const onClick = (event: MouseEvent) => {
+      const link = (event.target as Element | null)?.closest?.('a[href^="tel:"]');
+      if (!link) return;
+
+      const { gtag } = window as Window & { gtag?: (...args: unknown[]) => void };
+      gtag?.("event", "phone_click", {
+        link_url: link.getAttribute("href"),
+        page_path: window.location.pathname,
+      });
+    };
+
+    document.addEventListener("click", onClick);
+    return () => document.removeEventListener("click", onClick);
+  }, []);
+
+  // Defer the GoHighLevel chat widget until the visitor interacts with the
+  // page (scroll, mouse, touch, key) or a few seconds have passed. This keeps
+  // it out of the critical path so it doesn't compete with the hero content.
   useEffect(() => {
     let loaded = false;
-
-    const loadChatWidget = () => {
-      if (loaded) return;
-      loaded = true;
-
-      const existingScript = document.querySelector(
-        'script[data-widget-id="6a4be675af4e62471825701c"]'
-      );
-
-      if (!existingScript) {
-        const script = document.createElement("script");
-
-        script.src = "https://widgets.leadconnectorhq.com/loader.js";
-
-        script.setAttribute(
-          "data-resources-url",
-          "https://widgets.leadconnectorhq.com/chat-widget/loader.js"
-        );
-
-        script.setAttribute("data-widget-id", "6a4be675af4e62471825701c");
-
-        script.async = true;
-
-        document.body.appendChild(script);
-      }
-
-      cleanupListeners();
-    };
+    let idleId: number | undefined;
 
     const interactionEvents: (keyof WindowEventMap)[] = [
       "scroll",
@@ -83,6 +85,28 @@ const Layout = () => {
       );
     };
 
+    function loadChatWidget() {
+      if (loaded) return;
+      loaded = true;
+      cleanupListeners();
+
+      const existingScript = document.querySelector(
+        `script[data-widget-id="${CHAT_WIDGET_ID}"]`
+      );
+
+      if (existingScript) return;
+
+      const script = document.createElement("script");
+      script.src = "https://widgets.leadconnectorhq.com/loader.js";
+      script.setAttribute(
+        "data-resources-url",
+        "https://widgets.leadconnectorhq.com/chat-widget/loader.js"
+      );
+      script.setAttribute("data-widget-id", CHAT_WIDGET_ID);
+      script.async = true;
+      document.body.appendChild(script);
+    }
+
     interactionEvents.forEach((event) =>
       window.addEventListener(event, loadChatWidget, {
         once: true,
@@ -90,33 +114,38 @@ const Layout = () => {
       })
     );
 
-    // Safety net: load anyway after idle time / timeout, in case the
-    // user never scrolls or interacts (e.g. reads a long hero section).
-    let idleId: number | undefined;
-    let timeoutId: ReturnType<typeof setTimeout> | undefined;
-
-    if ("requestIdleCallback" in window) {
-      idleId = window.requestIdleCallback(loadChatWidget, { timeout: 5000 });
-    } else {
-      timeoutId = setTimeout(loadChatWidget, 4000);
-    }
+    // Safety net: wait 4 seconds, then load during the next idle moment,
+    // in case the visitor never interacts. (Calling requestIdleCallback
+    // straight away would load the widget almost immediately after page load.)
+    const timeoutId = setTimeout(() => {
+      if ("requestIdleCallback" in window) {
+        idleId = window.requestIdleCallback(loadChatWidget, { timeout: 2000 });
+      } else {
+        loadChatWidget();
+      }
+    }, 4000);
 
     return () => {
       cleanupListeners();
+      clearTimeout(timeoutId);
       if (idleId !== undefined && "cancelIdleCallback" in window) {
         window.cancelIdleCallback(idleId);
-      }
-      if (timeoutId !== undefined) {
-        clearTimeout(timeoutId);
       }
     };
   }, []);
 
   return (
     <div className="min-h-screen bg-background">
+      <a
+        href="#main-content"
+        className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[100] focus:bg-primary focus:text-primary-foreground focus:px-4 focus:py-2 focus:rounded-lg focus:font-sans focus:text-sm focus:font-semibold"
+      >
+        Skip to main content
+      </a>
+
       <Navbar />
 
-      <main>
+      <main id="main-content" tabIndex={-1} className="outline-none">
         <Outlet />
       </main>
 

@@ -21,7 +21,9 @@ export interface AreaPageData {
   // SEO
   metaTitle?: string;
   metaDescription?: string;
-  metaKeywords?: string;
+  /** Optional 1200×630 sharing image (imported asset). Falls back to heroImage. */
+  ogImage?: string;
+  ogImageAlt?: string;
 
   // Area Information
   zipCode: string;
@@ -65,90 +67,56 @@ export interface AreaPageData {
   jsonLd: object;
 }
 
+const SITE_URL = "https://www.mierandmurphybuilders.com";
+const PHONE_HREF = "tel:+18059989082";
+const PHONE_DISPLAY = "(805) 998-9082";
+
 const AreaPageTemplate = ({ data }: { data: AreaPageData }) => {
   const tierLabel =
     data.tier === "primary"
       ? "Core Service Area"
       : data.tier === "secondary"
         ? "Extended Service Area"
-        : "Premium Service Zone";
+        : "Service Area";
 
-  const canonicalUrl = `https://www.mierandmurphybuilders.com/areas/${data.zipCode}`;
+  const canonicalUrl = `${SITE_URL}/areas/${data.zipCode}`;
 
-  const defaultMetaTitle = `Luxury Builders & Restoration in ${data.cityName} ${data.zipCode} | Mier & Murphy`;
+  const defaultMetaTitle = `Contractor in ${data.cityName}, CA ${data.zipCode} | Mier & Murphy`;
+  const defaultMetaDescription = `Family-owned remodeling, stucco repair, and water damage restoration in ${data.cityName} (${data.zipCode}). CA Lic. #1077044. Free estimates.`;
 
-  const defaultMetaDescription = `Premium interior & exterior painting, stucco, water damage restoration & mold remediation in ${data.cityName} (${data.zipCode}). Licensed, IICRC certified. 20+ years serving luxury homes. Call today.`;
+  const title = data.metaTitle || defaultMetaTitle;
+  const description = data.metaDescription || defaultMetaDescription;
+  const ogImage = `${SITE_URL}${data.ogImage || data.heroImage}`;
+  const ogImageAlt =
+    data.ogImageAlt || `Home in ${data.cityName} served by Mier & Murphy Builders`;
+  const badgeText = data.tagline || `${tierLabel.toUpperCase()} · ZIP ${data.zipCode}`;
 
   return (
     <>
       <Helmet>
-        {/* Primary SEO */}
-        <title>{data.metaTitle || defaultMetaTitle}</title>
-
-        <meta
-          name="description"
-          content={data.metaDescription || defaultMetaDescription}
-        />
-
-        {data.metaKeywords && (
-          <meta name="keywords" content={data.metaKeywords} />
-        )}
-
-        {/* Canonical URL */}
+        <title>{title}</title>
+        <meta name="description" content={description} />
         <link rel="canonical" href={canonicalUrl} />
 
         {/* Open Graph */}
-        <meta
-          property="og:title"
-          content={data.metaTitle || defaultMetaTitle}
-        />
-
-        <meta
-          property="og:description"
-          content={data.metaDescription || defaultMetaDescription}
-        />
-
         <meta property="og:type" content="website" />
-
         <meta property="og:url" content={canonicalUrl} />
-
-        <meta
-          property="og:image"
-          content={data.heroImage}
-        />
-
-        <meta
-          property="og:image:alt"
-          content={`${data.cityName} remodeling and restoration services`}
-        />
+        <meta property="og:title" content={title} />
+        <meta property="og:description" content={description} />
+        <meta property="og:image" content={ogImage} />
+        <meta property="og:image:alt" content={ogImageAlt} />
+        <meta property="og:site_name" content="Mier & Murphy Builders" />
+        <meta property="og:locale" content="en_US" />
 
         {/* Twitter / X */}
-        <meta
-          name="twitter:card"
-          content="summary_large_image"
-        />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content={title} />
+        <meta name="twitter:description" content={description} />
+        <meta name="twitter:image" content={ogImage} />
+        <meta name="twitter:image:alt" content={ogImageAlt} />
 
-        <meta
-          name="twitter:title"
-          content={data.metaTitle || defaultMetaTitle}
-        />
-
-        <meta
-          name="twitter:description"
-          content={
-            data.metaDescription || defaultMetaDescription
-          }
-        />
-
-        <meta
-          name="twitter:image"
-          content={data.heroImage}
-        />
-
-        {/* Structured Data */}
-        <script type="application/ld+json">
-          {JSON.stringify(data.jsonLd)}
-        </script>
+        {/* Structured data (each page passes Service, FAQPage and BreadcrumbList) */}
+        <script type="application/ld+json">{JSON.stringify(data.jsonLd)}</script>
       </Helmet>
 
       {/* Hero */}
@@ -156,7 +124,8 @@ const AreaPageTemplate = ({ data }: { data: AreaPageData }) => {
         <div className="absolute inset-0">
           <img
             src={data.heroImage}
-            alt={`${data.cityName} painting and restoration services`}
+            alt=""
+            aria-hidden="true"
             className="w-full h-full object-cover"
             loading="eager"
           />
@@ -171,10 +140,9 @@ const AreaPageTemplate = ({ data }: { data: AreaPageData }) => {
             transition={{ duration: 0.8 }}
           >
             <div className="inline-flex items-center gap-2 bg-primary/15 border border-primary/25 rounded-full px-4 py-1.5 mb-6">
-              <MapPin className="w-3.5 h-3.5 text-primary" />
-
+              <MapPin className="w-3.5 h-3.5 text-primary" aria-hidden="true" />
               <span className="font-sans text-xs font-semibold text-primary tracking-wide">
-                {tierLabel.toUpperCase()} · ZIP {data.zipCode}
+                {badgeText}
               </span>
             </div>
 
@@ -188,15 +156,13 @@ const AreaPageTemplate = ({ data }: { data: AreaPageData }) => {
                 </>
               ) : (
                 <>
-                  Luxury Builders & Restoration Experts in{" "}
+                  Remodeling and Repair Contractor in{" "}
                   <span className="text-primary">
                     {data.cityName}
                   </span>
                 </>
               )}
             </h1>
-
-
 
             <p className="font-sans text-[15px] text-white/75 leading-relaxed max-w-lg mb-8">
               {data.heroDescription}
@@ -208,17 +174,15 @@ const AreaPageTemplate = ({ data }: { data: AreaPageData }) => {
                 className="inline-flex items-center gap-2 bg-primary text-primary-foreground px-8 py-3 rounded-xl font-sans text-sm font-semibold hover:bg-primary/90 transition-all group"
               >
                 Get a Free Estimate
-
-                <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" aria-hidden="true" />
               </Link>
 
               <a
-                href="tel:+18059989082"
+                href={PHONE_HREF}
                 className="inline-flex items-center gap-2 border-2 border-white/20 text-white px-8 py-3 rounded-xl font-sans text-sm font-medium hover:bg-white/10 transition-all"
               >
-                <Phone className="w-4 h-4" />
-
-                (805) 998-9082
+                <Phone className="w-4 h-4" aria-hidden="true" />
+                Call {PHONE_DISPLAY}
               </a>
             </div>
           </motion.div>
@@ -232,22 +196,22 @@ const AreaPageTemplate = ({ data }: { data: AreaPageData }) => {
         <div className="max-w-6xl mx-auto px-6">
           <div className="flex flex-wrap items-center justify-center gap-3">
             <span className="trust-badge">
-              <CheckCircle className="w-4 h-4" />
+              <CheckCircle className="w-4 h-4" aria-hidden="true" />
               20 Years of Building Experience
             </span>
 
             <span className="trust-badge">
-              <CheckCircle className="w-4 h-4" />
+              <CheckCircle className="w-4 h-4" aria-hidden="true" />
               Family Owned & Operated
             </span>
 
             <span className="trust-badge">
-              <CheckCircle className="w-4 h-4" />
+              <CheckCircle className="w-4 h-4" aria-hidden="true" />
               IICRC S500 & S520 Certified
             </span>
 
             <span className="trust-badge">
-              <CheckCircle className="w-4 h-4" />
+              <CheckCircle className="w-4 h-4" aria-hidden="true" />
               CA Lic. #1077044
             </span>
           </div>
@@ -264,7 +228,7 @@ const AreaPageTemplate = ({ data }: { data: AreaPageData }) => {
               </p>
 
               <h2 className="font-serif text-3xl md:text-4xl font-bold">
-                Complete Home Solutions for{" "}
+                Remodeling and Repair Services in{" "}
                 <span className="text-primary">
                   {data.cityName}
                 </span>
@@ -338,7 +302,7 @@ const AreaPageTemplate = ({ data }: { data: AreaPageData }) => {
                     key={n}
                     className="flex items-center gap-2"
                   >
-                    <CheckCircle className="w-4 h-4 text-primary flex-shrink-0" />
+                    <CheckCircle className="w-4 h-4 text-primary flex-shrink-0" aria-hidden="true" />
 
                     <span className="font-sans text-sm text-white/70">
                       {n}
@@ -349,16 +313,15 @@ const AreaPageTemplate = ({ data }: { data: AreaPageData }) => {
 
               <div className="mt-8 bg-white/[0.06] border border-white/10 rounded-2xl p-6">
                 <div className="flex items-center gap-3 mb-3">
-                  <Shield className="w-5 h-5 text-primary" />
-
+                  <Shield className="w-5 h-5 text-primary" aria-hidden="true" />
                   <h4 className="font-serif text-base font-bold text-white">
                     Licensed & Insured
                   </h4>
                 </div>
 
                 <p className="font-sans text-sm text-white/60 leading-relaxed">
-                  Every remodel is handled by a fully licensed,
-                  family-owned contractor with 20 years of building
+                  Every project is handled by a licensed, family-owned
+                  contractor (CA Lic. #1077044) with 20 years of building
                   experience, so your project is built right and
                   backed by our name.
                 </p>
@@ -441,13 +404,21 @@ const AreaPageTemplate = ({ data }: { data: AreaPageData }) => {
                 </Link>
               ))}
             </div>
+
+            <Link
+              to="/areas"
+              className="inline-flex items-center gap-1 mt-8 font-sans text-sm font-semibold text-primary hover:gap-2 transition-all"
+            >
+              See all service areas
+              <ArrowRight className="w-4 h-4" aria-hidden="true" />
+            </Link>
           </ScrollReveal>
         </div>
       </section>
 
       {/* CTA */}
       <section className="section-padding relative overflow-hidden bg-muted/50">
-        <div className="absolute inset-0">
+        <div className="absolute inset-0" aria-hidden="true">
           <div
             className="absolute top-[-20%] left-[-10%] w-[500px] h-[500px] rounded-full blur-3xl"
             style={{
@@ -468,18 +439,17 @@ const AreaPageTemplate = ({ data }: { data: AreaPageData }) => {
             <div className="gold-divider mb-8" />
 
             <h2 className="font-serif text-3xl md:text-4xl font-bold mb-4">
-              Ready to Transform Your{" "}
+              Planning a Project in{" "}
               <span className="text-primary">
                 {data.cityName}
-              </span>{" "}
-              Home?
+              </span>
+              ?
             </h2>
 
             <p className="font-sans text-sm text-muted-foreground mb-8 max-w-xl mx-auto leading-relaxed">
-              Schedule a free on-site consultation with our expert
-              team. We'll assess your project, provide a detailed
-              estimate, and show you why {data.cityName} homeowners
-              trust Mier & Murphy.
+              Schedule a free on-site estimate. We will look at the
+              project with you, explain what it takes, and give you a
+              clear written estimate.
             </p>
 
             <div className="flex flex-wrap justify-center gap-4">
@@ -487,18 +457,16 @@ const AreaPageTemplate = ({ data }: { data: AreaPageData }) => {
                 to="/contact"
                 className="inline-flex items-center gap-2 bg-primary text-primary-foreground px-8 py-4 rounded-xl font-sans text-sm font-bold hover:bg-primary/90 transition-all shadow-lg group"
               >
-                Schedule Consultation
-
-                <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                Schedule a Free Estimate
+                <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" aria-hidden="true" />
               </Link>
 
               <a
-                href="tel:+18059989082"
+                href={PHONE_HREF}
                 className="inline-flex items-center gap-2 border-2 border-border text-foreground px-8 py-4 rounded-xl font-sans text-sm font-semibold hover:bg-muted transition-all"
               >
-                <Phone className="w-4 h-4" />
-
-                Call (805) 998-9082
+                <Phone className="w-4 h-4" aria-hidden="true" />
+                Call {PHONE_DISPLAY}
               </a>
             </div>
           </ScrollReveal>

@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { Helmet } from "react-helmet-async";
-import { ArrowRight, CheckCircle, Paintbrush, Award, Clock, Shield, Star, MapPin } from "lucide-react";
+import { ArrowRight, CheckCircle, Droplets, Award, Search, Shield, Star, MapPin, Phone } from "lucide-react";
 import ScrollReveal from "@/components/ScrollReveal";
 import ProcessTimeline from "@/components/ProcessTimeline";
 import LeadCaptureForm from "@/components/LeadCaptureForm";
@@ -11,18 +11,19 @@ import projectWaterMain from "@/assets/water/water-hero-main.webp";
 
 import iicrcFirmBadge from "@/assets/iicrc-firm-badge.png";
 import iicrcMoldBadge from "@/assets/iicrc-mold-badge.png";
-
-// TODO: replace with the actual IICRC certification badge asset — this currently
-// points at the same interior photo as `projectInterior`, so the "badge" renders a room photo.
-import iicrcBadge from "@/assets/iicrc-badge.avif";
+import ogImage from "@/assets/water/water-damage-og.webp";
 
 const SITE_URL = "https://www.mierandmurphybuilders.com";
 const PAGE_URL = `${SITE_URL}/services/water-damage-mold-remediation`;
-const OG_IMAGE = `${SITE_URL}/service-water-damage-mold-remediation.jpg`;
+const OG_IMAGE = `${SITE_URL}${ogImage}`;
+const OG_IMAGE_ALT = "Technician extracting water from a floor with drying fans in place";
 
-const PAGE_TITLE = "Water Damage & Mold Remediation | Mier & Murphy Builders";
+const PAGE_TITLE = "Water Damage & Mold Remediation, Thousand Oaks | Mier & Murphy";
 const PAGE_DESCRIPTION =
-  "Fast, IICRC-certified water damage restoration and mold remediation in Thousand Oaks, CA. Mier & Murphy Builders restores your home safely.";
+  "IICRC-certified water damage restoration and mold remediation in Thousand Oaks and Ventura County. One family-owned team from drying through rebuild. CA Lic. #1077044.";
+
+const PHONE_HREF = "tel:+18059989082";
+const PHONE_DISPLAY = "(805) 998-9082";
 
 const areasServed = [
   "Thousand Oaks",
@@ -39,7 +40,7 @@ const areasServed = [
 const faqs = [
     {
       q: "How do I know if I have mold, and what should I do?",
-      a: "Common signs include a musty smell, visible spotting, and past water damage that was not fully dried out. If you suspect mold, contact us for an inspection.",
+      a: "Common signs include a musty smell, visible spotting, and past water damage that was not fully dried out. If you suspect mold, contact us for an assessment before it spreads.",
     },
     {
       q: "What is the difference between water damage restoration and mold remediation?",
@@ -63,7 +64,7 @@ const faqs = [
     },
     {
       q: "What areas do you serve?",
-      a: "Thousand Oaks, Westlake Village, Simi Valley, Moorpark, Oak Park, Agoura Hills, and the surrounding Conejo Valley.",
+      a: "Thousand Oaks, Westlake Village, Newbury Park, Simi Valley, Moorpark, Oak Park, Agoura Hills, Camarillo, and the rest of Ventura County.",
     },
   ];
 
@@ -72,7 +73,7 @@ const process = [
   { step: "02", title: "Inspection", desc: "We assess the source, the extent of the damage, and whether mold is present or likely." },
   { step: "03", title: "Extraction & Drying", desc: "We remove standing water and dry the structure properly." },
   { step: "04", title: "Mold Remediation", desc: "If mold is present, we contain the area and remove it to IICRC S520 standards." },
-  { step: "05", title: "Reconstruction ", desc: "We repair the drywall, flooring, and finishes to put your home back together." },
+  { step: "05", title: "Reconstruction", desc: "We repair the drywall, flooring, and finishes to put your home back together." },
 ];
 
 const finishes = [
@@ -88,7 +89,7 @@ const finishes = [
 const serviceSchema = {
   "@context": "https://schema.org",
   "@type": "Service",
-  "@id": `${PAGE_URL}/#service`,
+  "@id": `${PAGE_URL}#service`,
   name: "Water Damage Restoration & Mold Remediation",
   serviceType: "Water Damage Restoration and Mold Remediation",
   description: PAGE_DESCRIPTION,
@@ -98,7 +99,7 @@ const serviceSchema = {
     "@id": `${SITE_URL}/#organization`,
     name: "Mier & Murphy Builders",
     telephone: "+18059989082",
-    url: SITE_URL,
+    url: `${SITE_URL}/`,
     address: {
       "@type": "PostalAddress",
       addressLocality: "Thousand Oaks",
@@ -143,9 +144,8 @@ const breadcrumbSchema = {
   "@context": "https://schema.org",
   "@type": "BreadcrumbList",
   itemListElement: [
-    { "@type": "ListItem", position: 1, name: "Home", item: SITE_URL },
-    { "@type": "ListItem", position: 2, name: "Services", item: `${SITE_URL}/services` },
-    { "@type": "ListItem", position: 3, name: "Water Damage & Mold Remediation", item: PAGE_URL },
+    { "@type": "ListItem", position: 1, name: "Home", item: `${SITE_URL}/` },
+    { "@type": "ListItem", position: 2, name: "Water Damage & Mold Remediation", item: PAGE_URL },
   ],
 };
 
@@ -154,15 +154,10 @@ const WaterDamageMoldRemediation = () => {
     <>
       <Helmet>
         {/* Primary meta tags */}
-        <title>
-    Water Damage & Mold Remediation | Mier & Murphy Builders
-  </title>
+        <title>{PAGE_TITLE}</title>
         <meta name="title" content={PAGE_TITLE} />
-        <meta
-    name="description"
-    content="Fast, IICRC-certified water damage restoration and mold remediation in Thousand Oaks, CA. Mier & Murphy Builders restores your home safely."
-  />
-        
+        <meta name="description" content={PAGE_DESCRIPTION} />
+
         <meta name="author" content="Mier & Murphy Builders" />
         <meta name="robots" content="index, follow" />
         <link rel="canonical" href={PAGE_URL} />
@@ -179,7 +174,10 @@ const WaterDamageMoldRemediation = () => {
         <meta property="og:title" content={PAGE_TITLE} />
         <meta property="og:description" content={PAGE_DESCRIPTION} />
         <meta property="og:image" content={OG_IMAGE} />
-        <meta property="og:image:alt" content="IICRC certified water damage restoration and mold remediation in Thousand Oaks, CA" />
+        <meta property="og:image:type" content="image/webp" />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+        <meta property="og:image:alt" content={OG_IMAGE_ALT} />
         <meta property="og:site_name" content="Mier & Murphy Builders" />
         <meta property="og:locale" content="en_US" />
 
@@ -189,6 +187,7 @@ const WaterDamageMoldRemediation = () => {
         <meta name="twitter:title" content={PAGE_TITLE} />
         <meta name="twitter:description" content={PAGE_DESCRIPTION} />
         <meta name="twitter:image" content={OG_IMAGE} />
+        <meta name="twitter:image:alt" content={OG_IMAGE_ALT} />
 
         {/* Structured data */}
         <script type="application/ld+json">{JSON.stringify(serviceSchema)}</script>
@@ -199,22 +198,29 @@ const WaterDamageMoldRemediation = () => {
       {/* HERO */}
       <section className="relative min-h-[85vh] flex items-center overflow-hidden">
         <div className="absolute inset-0">
-          <img src={projectWater} alt="Luxury interior plaster finish in a Thousand Oaks estate" className="w-full h-full object-cover" />
+          <img src={projectWater} alt="" aria-hidden="true" className="w-full h-full object-cover" loading="eager" />
           <div className="absolute inset-0 bg-gradient-to-r from-[hsl(220,20%,12%)]/95 via-[hsl(220,20%,12%)]/80 to-[hsl(220,20%,12%)]/60" />
         </div>
         <div className="relative z-10 max-w-[90rem] mx-auto px-6 pt-40 pb-20 w-full grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           <motion.div initial={{ opacity: 0, x: -30 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.8 }}>
             <div className="inline-flex items-center gap-2 bg-primary/15 border border-primary/25 rounded-full px-4 py-1.5 mb-6">
-              <Paintbrush className="w-3.5 h-3.5 text-primary" />
+              <Droplets className="w-3.5 h-3.5 text-primary" aria-hidden="true" />
               <span className="font-sans text-xs font-semibold text-primary tracking-wide">IICRC CERTIFIED RESTORATION</span>
             </div>
             <h1 className="font-serif text-4xl md:text-5xl lg:text-[3.5rem] font-bold mb-6 leading-[1.15] text-white">
-            Trusted <span className="text-primary">Water Damage and Mold Remediation</span> Experts
+              <span className="text-primary">Water Damage and Mold Remediation</span> in Thousand Oaks, CA
             </h1>
-            <p className="font-sans text-[15px] text-white/75 leading-relaxed max-w-lg">
-            IICRC certified water damage and mold remediation for homeowners in Thousand Oaks, Westlake Village,
-             and Simi Valley. We know what water damage does to a home, because it happened to ours.
+            <p className="font-sans text-[15px] text-white/75 leading-relaxed max-w-lg mb-8">
+              IICRC certified water damage and mold remediation for homeowners in Thousand Oaks, Westlake Village,
+              and Simi Valley. We know what water damage does to a home, because it happened to ours.
             </p>
+            <a
+              href={PHONE_HREF}
+              className="inline-flex items-center gap-2 bg-primary text-primary-foreground px-6 py-3 rounded-lg font-sans text-sm font-semibold hover:bg-primary/90 transition-colors"
+            >
+              <Phone className="w-4 h-4" aria-hidden="true" />
+              Active leak? Call {PHONE_DISPLAY}
+            </a>
           </motion.div>
           <LeadCaptureForm variant="full" />
         </div>
@@ -237,8 +243,7 @@ const WaterDamageMoldRemediation = () => {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
             <ScrollReveal direction="left">
               <div>
-              <div className="inline-flex items-center gap-2 bg-primary/15  px-4 py-1.5 mb-6">
-              
+              <div className="inline-flex items-center gap-2 bg-primary/15 px-4 py-1.5 mb-6">
               <span className="font-sans text-xs font-semibold text-primary tracking-[0.4em]">RESTORATION IS PERSONAL</span>
             </div>
                 <h2 className="font-serif text-3xl md:text-4xl font-bold mb-6">
@@ -258,7 +263,7 @@ const WaterDamageMoldRemediation = () => {
                  remediation as one job, not three separate problems.
                 </p>
 
-                <h3 className="font-serif text-xl font-bold mb-4 text-foreground">Our Water Damage and Mold Restoration Services:</h3>
+                <h3 className="font-serif text-xl font-bold mb-4 text-foreground">Our Water Damage and Mold Restoration Services</h3>
                 <ul className="space-y-3 mb-8">
                   {[
                         "Water extraction and structural drying",
@@ -267,10 +272,9 @@ const WaterDamageMoldRemediation = () => {
                         "Leak and moisture source repair",
                         "Drywall, flooring, and finish reconstruction",
                         "Insurance claim documentation support",
-
                   ].map((f) => (
                     <li key={f} className="flex items-center gap-3">
-                      <CheckCircle className="w-4 h-4 text-primary flex-shrink-0" />
+                      <CheckCircle className="w-4 h-4 text-primary flex-shrink-0" aria-hidden="true" />
                       <span className="font-sans text-sm text-foreground/80">{f}</span>
                     </li>
                   ))}
@@ -290,22 +294,22 @@ const WaterDamageMoldRemediation = () => {
               <div className="luxury-card overflow-hidden">
                 <img
                   src={projectWaterMain}
-                  alt="Premium Venetian plaster application in Westlake Village home"
+                  alt="Technician extracting standing water with drying fans set up in the room"
                   className="w-full h-80 lg:h-[500px] object-cover"
                   loading="lazy"
                 />
               </div>
 
-              <div className="mt-8 glass ">
+              <div className="mt-8 space-y-2">
               <div className="bg-[#f9f9f6] border border-gray-200 rounded-2xl p-4 mb-2 shadow-sm flex flex-col sm:flex-row items-center gap-6 text-center sm:text-left">
             <img 
               src={iicrcFirmBadge}
               alt="IICRC Certified Firm badge" 
-              className="w-24 h-24 object-contain shrink-0" 
+              className="w-24 h-24 object-contain shrink-0"
+              loading="lazy"
             />
             <div className="space-y-2">
-             
-              <h3 className="font-playfair text-2xl font-bold text-gray-900">IICRC Firm</h3>
+              <h3 className="font-serif text-2xl font-bold text-gray-900">IICRC Firm</h3>
               <p className="text-sm text-gray-600 leading-relaxed">
                 A professional cleaning, restoration, or inspection company that is certified by the IICRC. Technicians who work for the firm have completed IICRC training and certification courses.
               </p>
@@ -316,11 +320,11 @@ const WaterDamageMoldRemediation = () => {
             <img 
               src={iicrcMoldBadge}
               alt="IICRC Mold Certified badge" 
-              className="w-24 h-24 object-contain shrink-0" 
+              className="w-24 h-24 object-contain shrink-0"
+              loading="lazy"
             />
             <div className="space-y-2">
-              
-              <h3 className="font-playfair text-2xl font-bold text-gray-900">IICRC Mold</h3>
+              <h3 className="font-serif text-2xl font-bold text-gray-900">IICRC Mold</h3>
               <p className="text-sm text-gray-600 leading-relaxed">
                 A technician or firm that is certified in mold remediation by IICRC.
               </p>
@@ -361,15 +365,15 @@ const WaterDamageMoldRemediation = () => {
           </ScrollReveal>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {[
-              { icon: Award, title: "IICRC Certified ", desc: "Certified to S500 water damage and S520 mold remediation standards." },
+              { icon: Award, title: "IICRC Certified", desc: "Certified to S500 water damage and S520 mold remediation standards." },
               { icon: Shield, title: "One Company, Start to Finish", desc: "Extraction, remediation, and reconstruction handled by one crew." },
-              { icon: Clock, title: "We Fix the Source", desc: "We address what caused the moisture, so the problem does not come back." },
+              { icon: Search, title: "We Fix the Source", desc: "We address what caused the moisture, so the problem does not come back." },
               { icon: Star, title: "Personal Standard", desc: "We got into restoration because of our own family, and we hold every job to that bar." },
             ].map((item) => (
               <ScrollReveal key={item.title}>
                 <div className="bg-background border border-border rounded-2xl p-6 text-center h-full hover:shadow-md hover:border-primary/20 transition-all duration-300">
                   <div className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-primary/10 mb-4">
-                    <item.icon className="w-5 h-5 text-primary" />
+                    <item.icon className="w-5 h-5 text-primary" aria-hidden="true" />
                   </div>
                   <h3 className="font-serif text-lg font-bold mb-3 text-foreground">{item.title}</h3>
                   <p className="font-sans text-sm text-muted-foreground leading-relaxed">{item.desc}</p>
@@ -380,7 +384,7 @@ const WaterDamageMoldRemediation = () => {
         </div>
       </section>
 
-      {/* TYPES OF FINISHES */}
+      {/* SERVICES */}
       <section className="section-padding" style={{ background: "hsl(220, 20%, 15%)" }}>
         <div className="max-w-6xl mx-auto">
           <ScrollReveal>
@@ -419,18 +423,23 @@ const WaterDamageMoldRemediation = () => {
               Restoration Contractors <span className="text-primary">Near You in Ventura County</span>
               </h2>
               <p className="font-sans text-sm text-muted-foreground max-w-2xl mx-auto leading-relaxed">
-              We serve homeowners across Thousand Oaks and the surrounding Conejo Valley, and we understand the regional
-               conditions that lead to water damage and mold here.
+              We serve homeowners across Thousand Oaks, the Conejo Valley, and Ventura County, and we understand the regional
+              conditions that lead to water damage and mold here.
               </p>
             </div>
           </ScrollReveal>
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
             {areasServed.map((area) => (
               <div key={area} className="flex items-center gap-2 bg-background border border-border rounded-lg p-3">
-                <MapPin className="w-3.5 h-3.5 text-primary flex-shrink-0" />
+                <MapPin className="w-3.5 h-3.5 text-primary flex-shrink-0" aria-hidden="true" />
                 <span className="font-sans text-xs text-foreground/80">{area}</span>
               </div>
             ))}
+          </div>
+          <div className="text-center mt-8">
+            <Link to="/areas" className="inline-flex items-center gap-1 font-sans text-sm font-semibold text-primary hover:gap-2 transition-all">
+              See all service areas <ArrowRight className="w-4 h-4" aria-hidden="true" />
+            </Link>
           </div>
         </div>
       </section>
@@ -444,20 +453,20 @@ const WaterDamageMoldRemediation = () => {
             Dealing With Water Damage or Mold <span className="text-primary">Right Now?</span>
             </h2>
             <p className="font-sans text-[15px] text-white/60 max-w-2xl mx-auto leading-relaxed mb-8">
-            Call us now and we will help you understand what you are dealing with and exactly what it takes to fix it.
+            Call us and we will help you understand what you are dealing with and what it takes to fix it.
             </p>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
               <Link
                 to="/contact"
                 className="bg-primary text-primary-foreground px-8 py-4 rounded-xl font-sans text-sm font-bold hover:bg-primary/90 transition-all duration-300 shadow-lg"
               >
-                Get Your Free Estimate
+                Get a Free Estimate
               </Link>
               <a
-                href="tel:+18059989082"
+                href={PHONE_HREF}
                 className="border-2 border-white/20 text-white px-8 py-4 rounded-xl font-sans text-sm font-semibold hover:bg-white/10 transition-all duration-300"
               >
-                Call (805) 998-9082
+                Call {PHONE_DISPLAY}
               </a>
             </div>
           </ScrollReveal>
@@ -474,7 +483,8 @@ const WaterDamageMoldRemediation = () => {
               Common Water Damage and Mold <span className="text-primary">FAQ</span>
               </h2>
               <p className="font-sans text-sm text-muted-foreground max-w-xl mx-auto leading-relaxed mt-4">
-               Answers to the questions homeowners ask most about water damage, mold, and what it takes to fix them for good.</p>
+                Answers to the questions homeowners ask most about water damage, mold, and what it takes to fix them for good.
+              </p>
             </div>
           </ScrollReveal>
           <Accordion type="single" collapsible className="space-y-4">
