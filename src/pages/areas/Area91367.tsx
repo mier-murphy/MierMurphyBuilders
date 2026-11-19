@@ -35,7 +35,7 @@ const data: AreaPageData = {
   cityName: "Woodland Hills",
   metaTitle: "Woodland Hills General Contractor, CA 91367 | Mier & Murphy",
   metaDescription:
-    "Remodeling, water damage and mold remediation, stucco repair, SB-326 and SB-721 balcony repair, and commercial build-outs in Woodland Hills, CA 91367. CA Lic. #1077044.",
+    "Remodeling, mold remediation, stucco, SB-326 and SB-721 balcony repair, and commercial build-outs in Woodland Hills, CA 91367. CA Lic. #1077044.",
   tagline: "EXTENDED SERVICE AREA · ZIP 91367",
   heroHeadline: "Remodeling and Repair Contractor Serving",
   tier: "secondary",

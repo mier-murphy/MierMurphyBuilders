@@ -17,7 +17,7 @@ const OG_IMAGE_ALT = "Repaired balcony with new decking and black metal railing"
 
 const PAGE_TITLE = "Balcony & Deck Repair in Thousand Oaks, CA | Mier & Murphy";
 const PAGE_DESCRIPTION =
-  "Balcony and deck repair in Thousand Oaks and Ventura County, including SB-326 and SB-721 repair work for HOAs, property managers, and homeowners. CA Lic. #1077044.";
+  "Balcony and deck repair in Thousand Oaks and Ventura County, including SB-326 and SB-721 repairs for HOAs and homeowners. CA Lic. #1077044.";
 
 const areasServed = [
   "Thousand Oaks",

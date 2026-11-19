@@ -37,7 +37,7 @@ const data: AreaPageData = {
   cityName: "Moorpark",
   metaTitle: "Moorpark General Contractor, CA 93021 | Mier & Murphy",
   metaDescription:
-    "Remodeling, water damage and mold remediation, stucco repair, and townhome balcony repair in Moorpark, CA 93021, from a family-owned Thousand Oaks contractor. CA Lic. #1077044.",
+    "Remodeling, water damage and mold remediation, stucco, and townhome balcony repair in Moorpark, CA 93021, near Thousand Oaks. CA Lic. #1077044.",
   tagline: "SURROUNDING AREA · ZIP 93021",
   heroHeadline: "Remodeling and Repair Contractor in",
   tier: "secondary",

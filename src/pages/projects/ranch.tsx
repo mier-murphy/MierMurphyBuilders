@@ -40,7 +40,7 @@ const OG_IMAGE_ALT =
 
 const PAGE_TITLE = "Porter Ranch Home Renovation | Mier & Murphy Builders";
 const PAGE_DESCRIPTION =
-  "See how Mier & Murphy Builders renovated a Porter Ranch home with refinished walls, new bathrooms, a remodeled kitchen, a walk-in closet, and a rebuilt staircase.";
+  "See how Mier & Murphy Builders renovated a Porter Ranch home with new bathrooms, a remodeled kitchen, a walk-in closet, and a rebuilt staircase.";
 
 const PHONE_HREF = "tel:+18059989082";
 const PHONE_DISPLAY = "(805) 998-9082";

@@ -14,7 +14,7 @@ const OG_IMAGE_ALT = "Mier & Murphy Builders service areas across the Conejo Val
 
 const PAGE_TITLE = "Areas We Serve | Thousand Oaks Contractor | Mier & Murphy";
 const PAGE_DESCRIPTION =
-  "Mier & Murphy Builders provides remodeling, repair, and restoration in Thousand Oaks, Westlake Village, Newbury Park, Agoura Hills, Oak Park, Calabasas, and nearby communities.";
+  "Remodeling, repair, and restoration in Thousand Oaks, Westlake Village, Newbury Park, Agoura Hills, Oak Park, Calabasas, and nearby communities.";
 
 const PHONE_HREF = "tel:+18059989082";
 const PHONE_DISPLAY = "(805) 998-9082";

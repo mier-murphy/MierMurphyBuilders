@@ -37,7 +37,7 @@ const data: AreaPageData = {
   cityName: "Oak Park",
   metaTitle: "Oak Park Balcony & Stucco Contractor, CA 91377 | Mier & Murphy",
   metaDescription:
-    "Balcony reconstruction, stucco and drywall repair, remodeling, and water damage restoration in Oak Park, CA 91377, from a contractor with completed local projects. CA Lic. #1077044.",
+    "Balcony reconstruction, stucco and drywall repair, remodeling, and water damage restoration in Oak Park, CA 91377. CA Lic. #1077044.",
   tagline: "SURROUNDING AREA · ZIP 91377",
   heroHeadline: "Remodeling and Repair Contractor in",
   tier: "secondary",

@@ -36,7 +36,7 @@ const data: AreaPageData = {
   cityName: "Thousand Oaks / Westlake Village",
   metaTitle: "Thousand Oaks & Westlake Contractor, CA 91362 | Mier & Murphy",
   metaDescription:
-    "Remodeling, water damage and mold remediation, stucco repair, and balcony repair in east Thousand Oaks and Westlake Village, CA 91362, from a local family-owned contractor. CA Lic. #1077044.",
+    "Remodeling, water damage and mold remediation, stucco, and balcony repair in east Thousand Oaks and Westlake Village, CA 91362. CA Lic. #1077044.",
   tagline: "CORE SERVICE AREA · ZIP 91362",
   heroHeadline: "Remodeling and Repair Contractor Serving",
   tier: "primary",

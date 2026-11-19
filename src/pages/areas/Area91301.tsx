@@ -36,7 +36,7 @@ const data: AreaPageData = {
   cityName: "Agoura Hills",
   metaTitle: "Agoura Hills General Contractor, CA 91301 | Mier & Murphy",
   metaDescription:
-    "Remodeling, water damage and mold remediation, stucco repair, and balcony repair in Agoura Hills, CA 91301, from Old Agoura to the hillside neighborhoods. CA Lic. #1077044.",
+    "Remodeling, water damage and mold remediation, stucco, and balcony repair in Agoura Hills, CA 91301, from Old Agoura to the hills. CA Lic. #1077044.",
   tagline: "SURROUNDING AREA · ZIP 91301",
   heroHeadline: "Remodeling and Repair Contractor in",
   tier: "secondary",

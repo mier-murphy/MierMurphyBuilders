@@ -37,7 +37,7 @@ const data: AreaPageData = {
   cityName: "Thousand Oaks",
   metaTitle: "Thousand Oaks General Contractor, CA 91360 | Mier & Murphy",
   metaDescription:
-    "Family-owned general contractor based in Thousand Oaks, CA 91360. Remodeling, water damage and mold remediation, stucco repair, and balcony repair. CA Lic. #1077044.",
+    "Family-owned contractor in Thousand Oaks, CA 91360: remodeling, water damage and mold remediation, stucco, and balcony repair. CA Lic. #1077044.",
   tagline: "CORE SERVICE AREA · ZIP 91360",
   heroHeadline: "Family-Owned Remodeling and Restoration in",
   tier: "primary",

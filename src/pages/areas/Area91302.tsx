@@ -35,7 +35,7 @@ const data: AreaPageData = {
   cityName: "Calabasas",
   metaTitle: "Calabasas General Contractor, CA 91302 | Mier & Murphy",
   metaDescription:
-    "Remodeling, water damage and mold remediation, stucco repair, and SB-326 balcony repair in Calabasas, CA 91302, including hillside homes and HOA communities. CA Lic. #1077044.",
+    "Remodeling, mold remediation, stucco, and SB-326 balcony repair in Calabasas, CA 91302, for hillside homes and HOA communities. CA Lic. #1077044.",
   tagline: "EXTENDED SERVICE AREA · ZIP 91302",
   heroHeadline: "Remodeling and Repair Contractor Serving",
   tier: "secondary",

@@ -36,7 +36,7 @@ const data: AreaPageData = {
   cityName: "Newbury Park",
   metaTitle: "Newbury Park General Contractor, CA 91320 | Mier & Murphy",
   metaDescription:
-    "Remodeling, water damage and mold remediation, stucco repair, and balcony repair in Newbury Park, CA 91320, from a family-owned contractor next door in Thousand Oaks. CA Lic. #1077044.",
+    "Remodeling, water damage and mold remediation, stucco, and balcony repair in Newbury Park, CA 91320, from a local family contractor. CA Lic. #1077044.",
   tagline: "CORE SERVICE AREA · ZIP 91320",
   heroHeadline: "Remodeling and Repair Contractor in",
   tier: "primary",

@@ -37,7 +37,7 @@ const data: AreaPageData = {
   cityName: "Los Angeles",
   metaTitle: "Los Angeles Remodeling & Repair Contractor | Mier & Murphy",
   metaDescription:
-    "Select remodeling, water damage and mold remediation, stucco repair, balcony repair, and commercial build-out projects across greater Los Angeles. CA Lic. #1077044.",
+    "Select remodeling, water damage and mold remediation, stucco, balcony repair, and commercial build-outs across greater Los Angeles. CA Lic. #1077044.",
   tagline: "EXTENDED SERVICE AREA · GREATER LOS ANGELES",
   heroHeadline: "Remodeling and Repair Contractor Serving",
   tier: "secondary",

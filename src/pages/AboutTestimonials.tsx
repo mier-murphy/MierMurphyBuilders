@@ -14,7 +14,7 @@ const OG_IMAGE_ALT = "Mier & Murphy Builders craftsmanship";
 const PAGE_TITLE = "Client Reviews & Testimonials | Mier & Murphy Builders";
 
 const PAGE_DESCRIPTION =
-  "Read reviews from Southern California homeowners and businesses who hired Mier & Murphy Builders for remodels, water damage repair, stucco, and commercial build-outs.";
+  "Reviews from Southern California homeowners and businesses who hired Mier & Murphy Builders for remodels, water damage repair, stucco, and build-outs.";
 
   const testimonials = [
     {

@@ -11,7 +11,7 @@ const SITE_URL = "https://www.mierandmurphybuilders.com";
 const PAGE_URL = `${SITE_URL}/about/team`;
 const PAGE_TITLE = "Our Team | Mier & Murphy Builders, Thousand Oaks";
 const PAGE_DESCRIPTION =
-  "Meet Frank Mier and the family-owned crew behind Mier & Murphy Builders, a licensed general contractor in Thousand Oaks, CA with 20 years of building experience.";
+  "Meet Frank Mier and the family-owned crew behind Mier & Murphy Builders, a licensed Thousand Oaks contractor with 20 years of building experience.";
 
 const PHONE_HREF = "tel:+18059989082";
 const PHONE_DISPLAY = "(805) 998-9082";

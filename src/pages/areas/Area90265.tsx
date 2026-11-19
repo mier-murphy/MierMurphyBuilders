@@ -36,7 +36,7 @@ const data: AreaPageData = {
   cityName: "Malibu",
   metaTitle: "Malibu Stucco & Restoration, CA 90265 | Mier & Murphy",
   metaDescription:
-    "Stucco repair, waterproofing, water damage restoration, deck repair, and remodeling in Malibu, CA 90265, planned for salt air and coastal permitting. CA Lic. #1077044.",
+    "Stucco repair, waterproofing, water damage restoration, deck repair, and remodeling in Malibu, CA 90265, planned for salt air. CA Lic. #1077044.",
   tagline: "EXTENDED SERVICE AREA · ZIP 90265",
   heroHeadline: "Stucco, Repair, and Restoration Contractor Serving",
   tier: "secondary",

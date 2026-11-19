@@ -37,7 +37,7 @@ const data: AreaPageData = {
   cityName: "Ventura County",
   metaTitle: "Ventura County General Contractor | Mier & Murphy Builders",
   metaDescription:
-    "Remodeling, water damage and mold remediation, stucco repair, and balcony repair across Ventura County from a family-owned contractor based in Thousand Oaks. CA Lic. #1077044.",
+    "Remodeling, water damage and mold remediation, stucco, and balcony repair across Ventura County from a Thousand Oaks contractor. CA Lic. #1077044.",
   tagline: "CORE SERVICE AREA · VENTURA COUNTY",
   heroHeadline: "Remodeling and Repair Contractor Serving",
   tier: "primary",

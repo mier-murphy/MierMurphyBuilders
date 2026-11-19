@@ -36,7 +36,7 @@ const data: AreaPageData = {
   cityName: "Woodland Hills South",
   metaTitle: "Woodland Hills Hillside Contractor, CA 91364 | Mier & Murphy",
   metaDescription:
-    "Remodeling, stucco repair, hillside deck repair, and water damage and mold remediation for hillside and custom homes in southern Woodland Hills, CA 91364. CA Lic. #1077044.",
+    "Remodeling, stucco repair, hillside deck repair, and water damage and mold remediation in southern Woodland Hills, CA 91364. CA Lic. #1077044.",
   tagline: "EXTENDED SERVICE AREA · ZIP 91364",
   heroHeadline: "Remodeling and Repair Contractor Serving",
   tier: "secondary",

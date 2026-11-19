@@ -20,7 +20,7 @@ const OG_IMAGE_ALT = "Technician extracting water from a floor with drying fans 
 
 const PAGE_TITLE = "Water Damage & Mold Remediation, Thousand Oaks | Mier & Murphy";
 const PAGE_DESCRIPTION =
-  "IICRC-certified water damage restoration and mold remediation in Thousand Oaks and Ventura County. One family-owned team from drying through rebuild. CA Lic. #1077044.";
+  "IICRC-certified water damage restoration and mold remediation in Thousand Oaks and Ventura County, from drying through rebuild. CA Lic. #1077044.";
 
 const PHONE_HREF = "tel:+18059989082";
 const PHONE_DISPLAY = "(805) 998-9082";

@@ -37,7 +37,7 @@ const data: AreaPageData = {
   cityName: "Westlake Village",
   metaTitle: "Westlake Village General Contractor, CA 91361 | Mier & Murphy",
   metaDescription:
-    "Remodeling, water damage and mold remediation, stucco repair, and SB-326 balcony repair in Westlake Village, CA 91361, with HOA coordination included. CA Lic. #1077044.",
+    "Remodeling, mold remediation, stucco, and SB-326 balcony repair in Westlake Village, CA 91361, with HOA coordination included. CA Lic. #1077044.",
   tagline: "CORE SERVICE AREA · ZIP 91361",
   heroHeadline: "Remodeling and Repair Contractor in",
   tier: "primary",
